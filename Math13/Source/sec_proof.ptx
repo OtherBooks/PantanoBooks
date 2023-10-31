@@ -1,0 +1,867 @@
+<section xml:id="sec_proof">
+  <title>Methods of Proof</title>
+  <introduction>
+    <p>
+      There are four standard methods for proving a theorem <m>\timplies P{Q.}</m> In practice,
+      long proofs will use several such arguments joined together.
+      We have already discussed the first two types of proof in <xref ref="sec_prop">Section</xref>.
+      <ul>
+        <li>
+          <title>Direct</title>
+          <p>
+            Assume <m>P</m> is true and deduce that <m>Q</m> is true.
+          </p>
+        </li>
+        <li>
+          <title>Contrapositive</title>
+          <p>
+            Assume <m>\neg Q</m> and deduce <m>\neg P</m>.
+            This is enough since the contrapositive
+            <m>\timplies{\neg Q}{\neg P}</m> is logically equavalent to <m>\timplies P{Q.}</m>
+          </p>
+        </li>
+        <li>
+          <title>Contradiction</title>
+          <p>
+            Assume that <m>P</m> and <m>\neg Q</m> are true and deduce a <em>contradiction</em>.
+            Since <m>P\wedge\neg Q</m> implies a contradiction,
+            it follows that <m>P\wedge\neg Q</m> must be <em>false.</em>
+            By <xref ref="thm_negconditional">Theorem</xref>,
+            we see that <m>\timplies PQ</m> is true.
+          </p>
+        </li>
+        <li>
+          <title>Induction</title>
+          <p>
+            This has a completely different flavor:
+            we will consider it in <xref ref="sec_ind">Chapter</xref>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Each of the methods has advantages and disadvantages.
+      For instance,
+      the direct method has the advantage of a straightforward logical flow.
+      The contrapositive method is useful when the
+      <em>negations</em> <m>\neg P</m>,
+      <m>\neg Q</m> are simpler than <m>P</m>, <m>Q</m> themselves.
+      This is often the case when one or both statements involve the
+      <em>non-existence</em> of something.
+      Working with their negations might give you the existence of ingredients with which you can calculate.
+      Proof by contradiction has a similar advantage:
+      assuming both <m>P</m> and <m>\neg Q</m> gives you two pieces of information with which you can calculate.
+      Logically speaking there is no difference between the three methods,
+      beyond how you visualize your argument.
+    </p>
+    <p>
+      To illustrate the difference between direct proof,
+      proof by contrapositive, and proof by contradiction,
+      we prove the same simple theorem in three different ways.
+    </p>
+    <theorem xml:id="thm_3xodd">
+      <statement>
+        <p>
+          Suppose that <m>x</m> is an integer.
+          If <m>3x+5</m> is even, then <m>3x</m> is odd.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        We show that if <m>3x+5</m> is even then <m>3x</m> is odd.
+      </p>
+      <p>
+        Assume that <m>3x+5</m> is even,
+        then <m>3x+5=2n</m> for some integer <m>n</m>.
+        Hence
+        <me>
+          3x=2n-5=2(n-3)+1
+        </me>.
+      </p>
+      <p>
+        This is clearly odd,
+        because it is of the form <sq>an even integer plus one.</sq>
+      </p>
+    </proof>
+    <proof>
+      <p>
+        We show that if <m>3x</m> is even then <m>3x+5</m> is odd.
+      </p>
+      <p>
+        Assume that <m>3x</m> is even,
+        and write <m>3x=2n</m> for some integer <m>n</m>.
+        Then
+        <me>
+          3x+5=2n+5=2(n+2)+1
+        </me>.
+      </p>
+      <p>
+        This is odd, because <m>n+2</m> is an integer.
+      </p>
+    </proof>
+    <proof>
+      <p>
+        We assume that <m>3x+5</m> and <m>3x</m> are both even,
+        and we deduce a falsehood.
+      </p>
+      <p>
+        Write <m>3x+5=2m</m> and <m>3x=2n</m> for some integers <m>m</m> and <m>n</m>.
+        Then
+        <me>
+          5=(3x+5)-3x=2m-2n=2(m-n)
+        </me>.
+      </p>
+      <p>
+        Since <m>m-n</m> is an integer,
+        this says that 5 is even: a contradiction.
+      </p>
+    </proof>
+  </introduction>
+  <subsection>
+    <title>Some simple proofs</title>
+    <theorem xml:id="thm_oddprod">
+      <statement>
+        <p>
+          Let <m>m,n\in\Z</m>.
+          Both <m>m</m> and <m>n</m> are odd if and only if the product <m>mn</m> is odd.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      There are really two theorems here:
+      <ul>
+        \itemstart{(<m>\Rightarrow</m>)} If <m>m</m> and <m>n</m> are both odd integers, then the product <m>mn</m> is odd. \itemstart{(<m>\Leftarrow</m>)} If the product <m>mn</m> of two integers is odd, then both <m>m</m> and <m>n</m> are odd.
+      </ul>
+    </p>
+    <p>
+      Often when there are two directions you'll have to prove them separately.
+      Here we give a direct proof for (<m>\Rightarrow</m>) and a contapositive proof for
+      (<m>\Leftarrow</m>).
+    </p>
+    <proof>
+      <ol>
+        <li>
+          <title>(<m>\Rightarrow</m>)</title>
+          <p>
+            Let <m>m</m> and <m>n</m> be odd.
+            Then <m>m=2k+1</m> and <m>n=2l+1</m> for some <m>k,l\in\Z</m>.
+            Then
+            <me>
+              mn=(2k+1)(2l+1)=4kl+2k+2l+1=2(2kl+k+l)+1
+            </me>.
+            This is odd, because <m>2kl+k+l\in\Z</m>.
+          </p>
+        </li>
+        <li>
+          <title>(<m>\Leftarrow</m>)</title>
+          <p>
+            Suppose that the integers <m>m</m> and <m>n</m> are <em>not</em> both odd.
+            That is, assume that <em>at least one</em>
+            of <m>m</m> and <m>n</m> is even.
+            We show that the product <m>mn</m> is even.
+            Without loss of generality,<fn>
+            See <sq>Potential Mistakes</sq> below for what this means.
+            </fn> we may assume that <m>n</m> is even,
+            from which <m>n=2k</m> for some integer <m>k</m>.
+            Then,
+            <me>
+              mn=m(2k)=2(mk)\text{ is even }
+            </me>.
+          </p>
+        </li>
+      </ol>
+    </proof>
+    <p>
+      In the second part of the proof,
+      we did not need to consider whether <m>m</m> was even or odd:
+      if <m>n</m> is even, the product <m>mn</m> is even regardless.
+      The second part would have been very difficult to prove directly.
+      For instance, you might have tried to start a direct proof with:
+      <me>
+        \text{ Assume that \(mn\) is odd, then \(mn=2k+1\) for some integer \(k\). Then\ldots }
+      </me>
+    </p>
+    <p>
+      We are stuck!
+    </p>
+    <theorem xml:id="thm__x_odd_if_3x_5_is_odd">
+      <statement>
+        <p>
+          If <m>3x+5</m> is even, then <m>x</m> is odd.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      We can prove this directly, by the contrapositive method,
+      or by contradiction.
+      We'll do all of them, so you can appreciate the difference.
+    </p>
+    <proof>
+      <p>
+        Simply quote the two previous theorems.
+        Because <m>3x+5</m> is even,
+        <m>3x</m> must be odd by <xref ref="thm_3xodd">Theorem</xref>.
+        Now, since <m>3x</m> is odd,
+        both <m>3</m> and <m>x</m> are odd by <xref ref="thm_oddprod">Theorem</xref>.
+      </p>
+    </proof>
+    <proof>
+      <p>
+        Suppose that <m>x</m> is even.
+        Then <m>x=2m</m> for some integer <m>m</m> and we get
+        <me>
+          3x+5=6m+5=2(3m+2)+1
+        </me>.
+      </p>
+      <p>
+        Because <m>3m+2\in\Z</m>, we have <m>3x+5</m> odd.
+      </p>
+    </proof>
+    <proof>
+      <p>
+        Suppose that both <m>3x+5</m> and <m>x</m> are even.
+        We can write <m>3x+5=2m</m> and <m>x=2k</m> for some integers <m>m</m> and <m>k</m>.
+        Then
+        <me>
+          5= (3x+5)-3x = 2m - 6k=2(m-3k)
+        </me>
+        is even.
+        Contradiction.
+      </p>
+    </proof>
+    <p>
+      Selecting a method of proof is often a matter of taste.
+      You should be able to see the advantages and disadvantages of the various approaches.
+      The direct proof is more logically straightforward,
+      but it depends on two previous results.
+      The contrapositive and the contradiction arguments are quicker and more self-contained,
+      but they require a greater level of comfort with logic.
+      Consider who you are writing for before you decide to present a slick difficult proof over a slow simple one.<fn>
+      The Hungarian mathematician Paul Erdős used to refer to simple,
+      elegant proofs as being <sq>from the Book,</sq> as if the Almighty had a book of perfect proofs of which mere mortals might occasionally be permitted a glimpse.
+      Of course, as with all matters spiritual,
+      one person's Book may be very different to another's<ellipsis/>
+      </fn> For even more variety,
+      here is a direct proof of <xref ref="thm__x_odd_if_3x_5_is_odd">Theorem</xref>
+      that does not use any previous result.
+    </p>
+    <proof>
+      <p>
+        Suppose <m>3x+5</m> is even, so <m>3x+5=2n</m> for some integer <m>n</m>.
+        Then
+        <md>
+          <mrow>x\amp = (3x+5)-2x-5=2n-2x-5</mrow>
+          <mrow>\amp =2(x-n-3)+1</mrow>
+        </md>
+        is odd.
+      </p>
+    </proof>
+    <p>
+      The fact that such variety is possible just makes proving theorems even more fun!
+    </p>
+  </subsection>
+  <subsection>
+    <title>Common Mistake 1.<nbsp/><nbsp/> Generality and <sq>Without Loss of Generality</sq></title>
+    <p>
+      There are many common mistakes in the writing of proofs that you should be careful to avoid.
+      Here are two incorrect <sq>proofs</sq> of the
+      <m>\implies</m> direction of <xref ref="thm_oddprod">Theorem</xref>.
+    </p>
+    <proof>
+      <p>
+        <m>m=3</m> and <m>n=5</m> are both odd,
+        and so <m>mn=15</m> is odd.
+      </p>
+    </proof>
+    <p>
+      This is an <em>example</em> of the theorem, not a proof.
+      Examples are critical to helping you understand and believe what a theorem says,
+      but they are no substitute for a proof!
+      Recall the discussion in the Introduction on the usage of the word
+      <em>proof</em> in English.
+    </p>
+    <proof>
+      <p>
+        Let <m>m=2k+1</m> and <m>n=2k+1</m> be odd.
+        Then,
+        <me>
+          mn=(2k+1)(2k+1)=2(2k^2+2k)+1
+        </me>
+        is odd.
+      </p>
+    </proof>
+    <p>
+      The problem with this second <sq>proof</sq> is that it is insufficiently general.
+      <m>m</m> and <m>n</m> are supposed to be
+      <em>any</em> odd integers,
+      but by setting both of them equal to <m>2k+1</m>,
+      we've chosen <m>m</m> and <m>n</m> to be the same!
+      Notice how the correct proof uses <m>m=2k+1</m> and <m>n=2l+1</m>,
+      where we place no restriction on the integers <m>k</m> and <m>l</m>.
+    </p>
+    <p>
+      By <em>generality</em> we mean that we must make sure to consider all possibilities encompassed by the hypothesis.
+      The phrase <em>Without Loss of Generality,</em>
+      often shorted to WLOG, is used when a choice is made which might at first appear to restrict things but, in fact,
+      does not.
+    </p>
+    <p>
+      Think back to how this was used in the the proof of <xref ref="thm_oddprod">Theorem</xref>.
+      Since the integers <m>m</m> and <m>n</m> appear symmetrically in the Theorem,
+      if at least one of them is even,
+      then we lose nothing by assuming that the second integer <m>n</m> is even.
+    </p>
+    <p>
+      The phrase WLOG is used to pre-empt a challenge to a proof in the sense of <em>Fake Proof 2,</em>
+      as if to say to the reader:
+      <sq>You might be tempted to object that my argument is not general enough.
+      However, I</sq>ve thought about it, and there is no problem.'
+    </p>
+    <p>
+      \paragraph{Common Mistake 2.Incorrect use of the equal sign}
+    </p>
+    <p>
+      Remember that propositions should be joined by connectives:
+      i.e., by <m>\implies</m> or <m>\iff</m>.
+      It is very common to see students write something like
+      <me>
+        \text{ \(m\) is odd \(=m=2k+1\) for some integer \(k\) }
+      </me>
+    </p>
+    <p>
+      This is extremely confusing!
+      If this is part of a longer argument,
+      things will become very difficult to follow.
+      Since <sq><m>m</m> is odd</sq> and <sq><m>m=2k+1</m> for some integer <m>k</m></sq> are both <em>propositions,</em>
+      they should be linked by a <em>connective.</em> We should instead write
+      <me>
+        \text{ \(m\) is odd \(\iff m=2k+1\) for some integer \(k\) }
+      </me>
+    </p>
+    <p>
+      \paragraph{Common Mistake 3.Becoming distracted by algebra}
+    </p>
+    <p>
+      Here is a palpably ludicrous <sq>theorem</sq> which illustrates another potential mistake.
+    </p>
+    <theorem>
+      <title>Fake Theorem</title>
+      <statement>
+        <p>
+          The only number is zero.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        Let <m>x</m> be any number and let <m>y=x</m>, then
+        <md>
+          <mrow>x=y\implies \amp x^2=xy\tag{(Multiply both sides by $x$)}</mrow>
+          <mrow>\implies \amp x^2-y^2=xy-y^2\tag{(Subtract $y^2$ from both sides)}</mrow>
+          <mrow>\implies \amp (x-y)(x+y)=(x-y)y\tag{(Factorize)}</mrow>
+          <mrow>\implies \amp x+y=y\tag{(Divide both sides by $x-y$)}</mrow>
+          <mrow>\implies \amp x=0</mrow>
+        </md>
+      </p>
+    </proof>
+    <p>
+      Everything is fine up to the third line,
+      but then we divide by <m>x-y</m>, which is zero!
+      Don't let yourself become so enamoured of logical manipulations that you forget to check the basics.
+    </p>
+  </subsection>
+  <subsection>
+    <title>More simple proofs</title>
+    <p>
+      We continue with more straightforward proofs.
+      None of these results are particularly important,
+      they are just exercises in deciding how to present an argument.
+    </p>
+    <theorem xml:id="thm_polyroot">
+      <statement>
+        <p>
+          Suppose that <m>x\in\R</m>.
+          Then <m>x^3+2x^2-3x-10=0\implies x=2</m>.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      We can prove this theorem using any of the three methods.
+      All rely on your ability to factorize the polynomial:
+      <me>
+        x^3+2x^2-3x-10=(x-2)(x^2+4x+5)=(x-2)\Bigl[(x+2)^2+1\Bigr]
+      </me>,
+      and partly on your knowledge that <m>ab=0\iff a=0</m> or <m>b=0</m>
+      (proof in the exercises).
+    </p>
+    <proof>
+      <p>
+        If <m>x^3+2x^2-3x-10=0</m>, then <m>(x-2)[(x+2)^2+1]=0</m>.
+        Hence at least one of the factors <m>x-2</m> or <m>(x+2)^2+1</m> is zero.
+      </p>
+      <p>
+        In the first case we conclude that <m>x=2</m>.
+      </p>
+      <p>
+        The second case is impossible,
+        since <m>(x+2)^2\ge 0\implies (x+2)^2+1>0</m>.
+      </p>
+      <p>
+        Therefore <m>x=2</m> is the only solution.
+      </p>
+    </proof>
+    <proof>
+      <p>
+        Suppose that <m>x\neq 2</m>.
+        Then <m>x^3+2x^2-3x-10=(x-2)[(x+2)^2+1]\neq 0</m> since neither of the factors is zero.
+      </p>
+    </proof>
+    <proof>
+      <p>
+        Suppose that <m>x^3+2x^2-3x-10=0</m> and <m>x\neq 2</m>.
+        Then
+        <me>
+          0=x^3+2x^2-3x-10=(x-2)[(x+2)^2+1]
+        </me>.
+      </p>
+      <p>
+        Since <m>x\neq 2</m>, we have <m>x-2\neq 0</m>.
+      </p>
+      <p>
+        It follows that <m>(x+2)^2+1</m> must be zero.
+        However, <m>(x+2)^2+1\ge 1</m> for all real numbers <m>x</m>,
+        so we have a contradiction.
+      </p>
+    </proof>
+    <p>
+      On balance, the contrapositive proof is probably the most elegant,
+      but you can decide for yourself.
+    </p>
+    <p>
+      \paragraph{Common Mistake 4.Being excessively logical}
+    </p>
+    <p>
+      The statement of <xref ref="thm_polyroot">Theorem</xref>
+      is an implication <m>\timplies PQ</m> where <m>P</m> and <m>Q</m> are:
+      <me>
+        P. x^3+2x^2-3x-10=0, \qquad\qquad Q. x=2
+      </me>.
+    </p>
+    <p>
+      You can make life very hard for yourself by being overly logical.
+      For instance,
+      you may wish take a third proposition <m>R</m>.<m>x\in\R</m>,
+      and state the theorem as <m>\timplies R{(P\implies Q).}</m> This is the way of pain!
+      It's easier to assume, as a universal constraint,
+      that you're always dealing with real numbers;
+      you can then ignore said constraint within the argument.
+    </p>
+    <p>
+      Indeed, one can always append a third proposition to the front of any theorem, namely,
+      <q>all math I already know.</q>
+      Try to resist the temptation to be so logical that your arguments become unreadable.
+      The goal is to convince the reader that the theorem is true,
+      not to confuse them!
+    </p>
+  </subsection>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol>
+      <li>
+        <p>
+          In a <em>proof by contrapositive</em> of <m>P \implies Q</m>,
+          we assume that (1) <fillin/> and deduce that (2) <fillin/>.
+          <ol>
+            <li>
+              <p>
+                (1) <m>\neg Q</m> is true, <nbsp/><nbsp/> (2) <m>P</m> is true
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) <m>Q</m> is false, <nbsp/><nbsp/> (2) <m>P</m> is true
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) <m>\neg P</m> is true, <nbsp/><nbsp/> (2) <m>\neg Q</m> is true
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) <m>\neg Q</m> is true, <nbsp/><nbsp/> (2) <m>\neg P</m> is true
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          A <em>proof by contradiction</em>
+          of <m>P \implies Q</m> begins by assuming that <fillin/>.
+          <ol>
+            <li>
+              <p>
+                <m>\neg P \lor Q</m> is true
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>P \land \neg Q</m> is true
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>P \implies Q</m> is true
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>Q \implies P</m> is false
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          In which of the following situations would it be correct to invoke
+          <em>without loss of generality</em>?
+          Select all that apply.
+          <ol>
+            <li>
+              <p>
+                Suppose we are attempting to prove that for two integers <m>m</m> and <m>n</m>,
+                if either one is even, then so is the product.
+                Without loss of generality we can assume that <m>n</m> is even.
+              </p>
+            </li>
+            <li>
+              <p>
+                We are trying to prove that for two integers <m>m</m> and <m>n</m>,
+                if both are odd, then so is the product.
+                Without loss of generality,
+                we can assume that both <m>m</m> and <m>n</m> are equal to <m>2k + 1</m> for some integer <m>k</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Attempting to prove that if <m>m</m> is even and <m>n</m> is odd,
+                then <m>mn</m> is even.
+                Without loss of generality can be used to assume that <m>m = 2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Attempting to prove that if three boxes are painted either green or gold,
+                there must be two boxes which are painted the same color.
+                Without loss of generality can be used to assume that the first box is painted green.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>x</m> and <m>y</m> be integers.
+          Prove: For <m>x^2+y^2</m> to be even,
+          it is necessary that <m>x</m> and <m>y</m> have the same parity (i.e. both even or both odd).
+          <url href="https://youtu.be/X3LG7pfEY_c">Video Solution</url>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>n</m> be an integer.
+          Prove that, in order for <m>n</m> to be odd,
+          it is sufficient that its ones digit is either 1, 3, 5, 7, or 9.
+          <url href="https://youtu.be/9wHi0ojmvDg">Video Solution</url>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Show that for any given integers <m>a,b,c</m>,
+          if <m>a</m> is even and <m>b</m> is odd,
+          then <m>7a-ab+12c+b^2+4</m> is odd.
+        </p>
+      </li>
+      <li>
+        <p>
+          Augustus de Morgan satisfied his own problem:\prelistskip I turn(ed) <m>x</m> years of age in the year <m>x^2</m>.\prelistskip
+          <ol>
+            <li>
+              <p>
+                Given that de Morgan died in 1871,
+                and that he wasn't the beneficiary of some miraculous anti-aging treatment,
+                find the year in which he was born.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose you have an acquaintance who satisfies the same problem.
+                How old will they turn this year?
+              </p>
+            </li>
+          </ol>
+        </p>
+        Give a formal argument which justifies that you are correct.
+      </li>
+      <li>
+        <p>
+          Suppose you are teleported to a world in which the law of double negation does not necessarily hold,
+          i.e., it is not the case that
+          <m>\neg \neg P</m> is equivalent to <m>P</m>.
+          Would you be able to carry out proofs by contradiction in this world?
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that if <m>n</m> is a positive integer greater than 1, then <m>n!+2</m> is even.
+          <em>Here <m>n!</m> denotes the <em>factorial</em> of the integer <m>n</m>.
+          Look up the definition if you forgot about it.</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the following proposition,
+          where <m>x</m> is assumed to be a real number.
+          <me>
+            x^3-3x^2-2x+6=0\implies x=3\tag{(\(\ast\))}
+          </me>
+          <ol>
+            <li>
+              <p>
+                Is the proposition (<m>\ast</m>) true or false?
+                Justify your answer.
+                Is its converse true?
+              </p>
+            </li>
+            <li>
+              <p>
+                Repeat part (a) for the proposition
+                <me>
+                  x^3-3x^2-2x+6=0\implies x\neq 3
+                </me>
+              </p>
+            </li>
+            <li>
+              <p>
+                Does anything change about the truth status of (<m>\ast</m>) if we assume that it is a statement about
+                <em>rational numbers <m>x</m></em>?
+                Explain.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Let <m>x\in\Z</m>.
+              Prove that <m>5x+3</m> is even if and only if <m>7x-2</m> is odd.
+              Can you conclude anything about <m>7x-2</m> if <m>5x+3</m> is odd?
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove or disprove: An integer <m>n</m> is even if and only if <m>n^3</m> is even.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Let <m>n</m> and <m>m</m> be positive integers.
+          Prove <m>n^2 m</m> is even if and only if <m>n</m> and <m>m</m> are not both odd.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>x</m> and <m>y</m> be integers.
+          Prove <m>x^2+y^2</m> is even <term>if and only if</term>
+          <m>x</m> and <m>y</m> have the same parity (i.e. both even or both odd).
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>n</m> be an integer.
+          Prove <m>n^2 + n + 58</m> is even.
+        </p>
+      </li>
+      <li>
+        <p>
+          Below is the proof of a result.
+          What result is being proved?
+          <proof>
+            <p>
+              Assume that <m>x</m> is odd.
+              Then <m>x=2k+1</m> for some integer <m>k</m>.
+              Then
+              <me>
+                2x^2-3x-4=2(2k+1)^2-3(2k+1)-4=8k^2+2k-5=2(4k^2+k-3)+1
+              </me>.
+            </p>
+            <p>
+              Since <m>4k^2+k-3</m> is an integer, <m>2x^2-3x-4</m> is odd.
+            </p>
+          </proof>
+        </p>
+      </li>
+      <li>
+        <p>
+          Here is another proof.
+          What is the result this time?
+          <proof>
+            <p>
+              Assume, without loss of generality,
+              that <m>x</m> and <m>y</m> are even.
+              Then <m>x=2a</m> and <m>y=2b</m> for some integers <m>a,b</m>.
+              Therefore,
+              <me>
+                xy+xz+yz=(2a)(2b)+(2a)z+(2b)z=2(2ab+az+bz)
+              </me>.
+            </p>
+            <p>
+              Since <m>2ab+az+bz</m> is an integer, <m>xy+xz+yz</m> is even.
+            </p>
+          </proof>
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the following proof of the fact that
+          (for <m>m</m> an integer)
+          if <m>m^2</m> is even, then <m>m</m> is even.
+          Is proceeding by contradiction necessary?
+          Can you re-write the proof so that it doesn't use contradiction?
+          <proof>
+            <p>
+              Suppose, for contradiction, that <m>m^2</m> is even, but <m>m</m> is odd.
+              Say <m>m = 2k + 1</m> for some integer <m>k</m>.
+              Then
+              <me>
+                m^2 = (2k + 1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1
+              </me>
+              is odd, contradicting that <m>m^2</m> is even.
+              Thus <m>m</m> must be even.
+            </p>
+          </proof>
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Prove that if <m>x</m> and <m>y</m> are positive real numbers,
+              then <m>\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}</m>.
+              <em>Argue by contradiction.</em>
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that if <m>x</m> and <m>y</m> are positive real numbers,
+              then <m>\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}</m>.
+              <em>Argue by contrapositive.</em>
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Prove that <m>ab=0\iff a=0</m> or <m>b=0</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          You meet three men, Corey, Jansen,
+          and Vogel, each of whom is a either Truthteller or a Liar.
+          Truthtellers speak only the truth; Liars speak only lies.
+          You ask Corey whether he is a Truthteller or a Liar.
+          Corey answers with his back turned,
+          so you cannot hear what he says.
+          <q>What did he say?</q>
+          you ask Jansen.
+          Jansen replies:
+          <q>Corey says he is a Truthteller.</q>
+          Vogel says:
+          <q>Jansen is lying.</q>
+          Is Vogel a Truthteller or a Liar?
+          Explain your answer.
+        </p>
+      </li>
+      <li>
+        <p>
+          Assume that Mary's father lives in California.
+          Consider the following implication <m>P</m>: If Mary's father is an oilman and does not have any friends in Wisconsin,
+          then Mary plays tennis or basketball,
+          or she appeared in at least one article of a December 1997 New York Times newspaper edition.
+          <ol>
+            <li>
+              <p>
+                Find the contrapositive of <m>P</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find the converse of <m>P</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find the negation of <m>P</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Imagine you are a detective and want to find the truth value of <m>P</m>.
+                Describe your action-strategy in full detail.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose we have three proposition <m>P</m>, <m>Q</m>,
+          and <m>R</m>,
+          and we want to prove that all three are equivalent,
+          i.e., <m>P \iff Q</m>, <m>Q \iff R</m>, and <m>P \iff R</m>.
+          <ol>
+            <li>
+              <p>
+                Prove that to establish these three equivalences,
+                it is enough to show <m>P \iff Q</m> and <m>Q \iff R</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that to establish these three equivalences,
+                it is enough to show <m>P \implies Q</m>,
+                <m>Q \implies R</m>, and <m>R \implies P</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Numbers of the form <m>\frac{k(k + 1)}{2}</m>,
+          where <m>k</m> is a positive integer,
+          are called <em>triangular numbers</em>.
+          Prove that <m>n</m> is the square of an odd number if and only if <m>\frac{n-1}{8}</m> is triangular.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

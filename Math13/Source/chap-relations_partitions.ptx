@@ -1,0 +1,32 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="chap-relations_partitions">
+  <title>Relations and Partitions</title>
+  <introduction>
+    <p>
+      The mathematics of sets is rather basic,
+      at least until one has a notion of how to relate elements of sets to each other.
+      We are already familiar with examples of this:
+      <ol>
+        <li>
+          <p>
+            The usual <em>order</em> of numbers (e.g.
+            <m>3\lt 7</m>) is a way of relating/comparing two elements of <m>\R</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            A <em>function</em> <m>f:A\to B</m> relates elements in a set <m>A</m> with those in <m>B</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      It turns out that the concept of ordered pair (Cartesian product) is essential to relating elements.
+    </p>
+  </introduction>
+  <xi:include  href="sec_set_relation.ptx"/>
+  <xi:include  href="sec_func2.ptx"/>
+  <xi:include  href="sec_equiv.ptx"/>
+  <xi:include  href="sec_partitions.ptx"/>
+  <xi:include  href="sec_welldefn.ptx"/>
+  <xi:include  href="sec_functions_and_partitions.ptx"/>
+</chapter>

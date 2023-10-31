@@ -1,0 +1,1693 @@
+<section xml:id="sec_prop">
+  <title>Propositions</title>
+  <introduction>
+    <definition>
+      <statement>
+        <p>
+          A <term>proposition</term> or <term>statement</term>
+          is an expression that is either true or false.
+        </p>
+      </statement>
+    </definition>
+    <example>
+      <statement>
+        <p>
+          \item <m>17-24=7</m>. \item <m>39^2</m> is an odd integer. \item The moon is made of cheese. \item Every cloud has a silver lining. \item God exists.
+        </p>
+      </statement>
+    </example>
+    <p>
+      In order to make sense,
+      these propositions require a clear <em>definition</em>
+      of every concept they contain.
+      There are many concepts of God in many cultures,
+      but once it is decided <em>which</em> we are talking about,
+      it is clear that They either exist or do not.
+      This example illustrates that a statement need not be indisputably true or false,
+      or even determinable, in order to qualify as a proposition.
+      Mostly when people argue over propositions and statements,
+      what they are really disagreeing about are definitions!
+    </p>
+    <p>
+      Note that any expression that is neither true nor false is not a proposition.
+      <em>January 1<m>^{\text{ st } }</m></em> is not a proposition,
+      neither is <em>Green.</em>
+    </p>
+  </introduction>
+  <subsection>
+    <title>Truth Tables</title>
+    <p>
+      One often has to deal with abstract propositions;
+      those where you do not know the truth or falsity,
+      or indeed when you don't explicitly know the proposition!
+      In such cases it can be convenient to represent the combinations of propositions in a tabular format.
+      For instance,
+      if we have two propositions (<m>P</m> and <m>Q</m>),
+      or even three (<m>P,Q</m> and <m>R</m>) then all possible combinations of truth <m>T</m> and falsehood <m>F</m> are represented in the following tables:
+      <me>
+        \begin{array}{cc} P \amp  Q\\\hline T \amp  T\\ T \amp  F\\ F \amp  T\\ F \amp  F\\ \amp \\\amp \\\amp \\\amp \end{array} \qquad\qquad\qquad \begin{array}{ccc} P \amp  Q \amp  R\\\hline T \amp  T \amp  T\\ T \amp  T \amp  F\\ T \amp  F \amp  T\\ T \amp  F \amp  F\\ F \amp  T \amp  T\\ F \amp  T \amp  F\\ F \amp  F \amp  T\\ F \amp  F \amp  F \end{array}
+      </me>
+    </p>
+    <p>
+      The mathematician in you should be looking for patterns and asking:
+      how many rows would a truth table corresponding to <m>n</m> propositions have,
+      and can I <em>prove</em> my assertion?
+      Right now it is hard to prove that the answer is <m>2^n</m>:
+      induction (<xref ref="sec_ind">Chapter</xref>) makes this very easy.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Connecting Propositions: Conjunction, Disjunction and Negation</title>
+    <p>
+      We now <em>define</em> how to combine propositions in natural ways,
+      modeled on the words <em>and, or</em> and <em>not.</em>
+    </p>
+    <definition>
+      <statement>
+        <p>
+          Let <m>P</m> and <m>Q</m> be propositions.
+          The <term>conjunction</term> (AND, <m>\wedge</m>) of <m>P</m> and <m>Q</m>,
+          the <term>disjunction</term> (OR, <m>\vee</m>) of <m>P</m> and <m>Q</m>,
+          and the <term>negation</term> (NOT, <m>\neg</m>, <m>\sim</m>,
+          <m>\cl{}</m>) of <m>P</m> are defined by the following truth tables,
+          <me>
+            \begin{array}{cc|c} P \amp  Q \amp  P\wedge Q\\\hline T \amp  T \amp  T\\ T \amp  F \amp  F\\ F \amp  T \amp  F\\ F \amp  F \amp  F \end{array} \qquad\qquad \begin{array}{cc|c} P \amp  Q \amp  P\vee Q\\\hline T \amp  T \amp  T\\ T \amp  F \amp  T\\ F \amp  T \amp  T\\ F \amp  F \amp  F \end{array} \qquad\qquad \begin{array}{c|c} P \amp  \neg P\\\hline T \amp  F\\ F \amp  T \end{array}
+          </me>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      It is usually better to use <em>and,
+      or</em> and <em>not</em> rather than <em>conjunction,
+      disjunction</em> and <em>negation</em>:
+      the latter may make you sound educated,
+      but at the risk of being misunderstood!
+    </p>
+    <example>
+      <statement>
+        <p>
+          Let <m>P,Q</m> and <m>R</m> be the following propositions:
+          <ul>
+            \itemstart{<m>P</m>.} Irvine is a city in California. \itemstart{<m>Q</m>.} Irvine is a town in Ayrshire, Scotland. \itemstart{<m>R</m>.} Irvine has seven letters.
+          </ul>
+        </p>
+        <p>
+          Clearly <m>P</m> is true while <m>R</m> is false.
+          If you happen to know someone from Scotland,
+          you might know that <m>Q</m> is true.<fn>
+          The second syllable is pronounced like the i in bin or win.
+          Indeed the first Californian antecedent of the Irvine family which gave its name to UCI was an Ulster-Scotsman named James Irvine (1827<ndash/>1886).
+          Probably the family name was originally pronounced in the Scottish manner.
+          </fn> We can now compute the following
+          (increasingly grotesque)
+          combinations<ellipsis/>
+          <me>
+            \begin{array}{c|c|c|c|c|c|c} P\wedge Q\amp P\vee Q\amp P\wedge R\amp \neg R\amp (\neg R)\wedge P\amp \neg(R\vee P)\amp (\neg P)\vee [((\neg R)\vee P)\wedge Q] \\\hline T \amp  T \amp  F \amp  T \amp  T \amp  F \amp  T \end{array}
+          </me>
+        </p>
+      </statement>
+    </example>
+    <p>
+      How did we establish these facts?
+      Some are quick, and can be done in your head.
+      Consider, for instance, the statement <m>(\neg R)\wedge P</m>.
+      Because <m>R</m> is false, <m>\neg R</m> is true.
+      Thus <m>(\neg R)\wedge P</m> is the conjunction of two true statements,
+      hence it is true.
+      Similarly, we can argue that <m>R\vee P</m> is true
+      (because <m>R</m> is false and <m>P</m> is true),
+      so the negation <m>\neg(R\vee P)</m> is false.
+    </p>
+    <p>
+      Establishing the truth value of the final proposition <m>(\neg P)\vee [((\neg R)\vee P) \wedge Q]</m> requires more work.
+      You may want to set up a truth table with several auxiliary columns to help you compute:
+      <me>
+        \begin{array}{c|c|c|c|c|c|c|c} P \amp  Q \amp  R \amp  \neg P \amp  \neg R \amp  (\neg R) \vee P \amp  ((\neg R)\vee P) \wedge Q \amp   (\neg P) \vee [ ((\neg R)\vee P) \wedge Q] \\\hline T \amp  T \amp  F \amp  F            \amp  T         \amp  T                        \amp  T                                               \amp  T \end{array}
+      </me>
+    </p>
+    <p>
+      The importance of parentheses in a logical expressions cannot be stressed enough.
+      For example, try building the truth table for the propositions
+      <m>P\vee(Q\wedge R)</m> and <m>(P\vee Q)\wedge R</m>.
+      Are they the same?
+    </p>
+  </subsection>
+  <subsection>
+    <title>Conditional and Biconditional Connectives</title>
+    <p>
+      In order to logically set up proofs,
+      we need to see how propositions can lead one to another.
+    </p>
+    <definition xml:id="defn_implies">
+      <statement>
+        <p>
+          The <term>conditional</term> (<m>\implies</m>) and
+          <term>biconditional</term>
+          (<m>\iff</m>) <em>connectives</em> have the truth tables
+          <me>
+            \begin{array}{cc|c} P \amp  Q \amp  P\implies Q\\\hline T \amp  T \amp  T\\ T \amp  F \amp  F\\ F \amp  T \amp  T\\ F \amp  F \amp  T \end{array} \qquad\qquad\qquad \begin{array}{cc|c} P \amp  Q \amp  P\iff Q\\\hline T \amp  T \amp  T\\ T \amp  F \amp  F\\ F \amp  T \amp  F\\ F \amp  F \amp  T \end{array}
+          </me>
+        </p>
+        <p>
+          For the proposition <m>\timplies P{Q,}</m> we call <m>P</m> the <term>hypothesis</term>
+          and <m>Q</m> the <term>conclusion</term>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Observe that the expressions <m>\timplies PQ</m> and
+      <m>\ P\iff Q\</m> are themselves <em>propositions</em>:
+      they are sentences which are either true or false!
+    </p>
+  </subsection>
+  <subsection>
+    <title>Synonyms</title>
+    <p>
+      <m>\implies</m> and <m>\iff</m> can be read in many different ways:
+    </p>
+    <tabular>
+      <row>
+        <cell><m>P\implies Q</m></cell>
+        <cell><m>P\iff Q</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>P</m> implies <m>Q</m></cell>
+        <cell><m>P</m> if and only if <m>Q</m></cell>
+      </row>
+      <row>
+        <cell><m>Q</m> if <m>P</m></cell>
+        <cell><m>P</m> iff <m>Q</m></cell>
+      </row>
+      <row>
+        <cell><m>P</m> only if <m>Q</m></cell>
+        <cell><m>P</m> and <m>Q</m> are equivalent</cell>
+      </row>
+      <row>
+        <cell><m>P</m> is sufficient for <m>Q</m></cell>
+        <cell><m>P</m> is necessary and sufficient for <m>Q</m></cell>
+      </row>
+      <row>
+        <cell><m>Q</m> is necessary for <m>P</m></cell>
+        <cell></cell>
+      </row>
+    </tabular>
+    <example>
+      <statement>
+        <p>
+          The following propositions all mean exactly the same thing:
+          <ul>
+            <li>
+              <p>
+                If you are born in Rome, then you are Italian.
+              </p>
+            </li>
+            <li>
+              <p>
+                You are Italian if you are born in Rome.
+              </p>
+            </li>
+            <li>
+              <p>
+                You are born in Rome only if you are Italian.
+              </p>
+            </li>
+            <li>
+              <p>
+                Being born in Rome is sufficient to be Italian.
+              </p>
+            </li>
+            <li>
+              <p>
+                Being Italian is necessary for being born in Rome.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </example>
+    <p>
+      Are you comfortable with what <m>P</m> and <m>Q</m> are here?
+    </p>
+    <p>
+      The biconditional connective should be easy to remember:
+      <m>\ P\iff Q\</m> is true precisely when <m>P</m> and <m>Q</m> have identical truth states.
+      It is harder to make sense of the conditional connective.
+      One way of thinking about it is to consider what it means for an implication to be <em>false.</em>
+      If <m>P\implies Q</m> is false,
+      it is impossible to create a logical argument which assumes <m>P</m> and concludes <m>Q</m>.
+      The second row of <m>\timplies PQ</m> encapsulates the fact that it should be impossible for truth ever to logically imply falsehood.
+    </p>
+    <aside>
+      <p>
+        <term>Why is <m>F\implies T</m> considered <em>true?</em></term>
+      </p>
+      <p>
+        This is the most immediately confusing part of the truth table for the conditional connective.
+        One way that may help to remember this is to think of the implication <m>P \implies Q</m> as making a promise.
+        For example, suppose your teacher says:
+        <q>if the class earns a B average on the midterm exam,
+        then I will buy donuts for the class.</q>
+        Under what circumstances will your teacher have lied to you?
+        Only in the case that it is true that the class earned a B average,
+        but the teacher failed to provide donuts for the class.
+      </p>
+      <p>
+        Here is a mathematical example,
+        written with an English translation at the side.
+        <md>
+          <mrow>7=3\implies\ \amp 0\cdot 7=0\cdot 3\tag{(If 7 = 3, then 0 times 7 equals 0 times 3)}</mrow>
+          <mrow>\implies\ \amp 0=0\tag{(then 0 equals 0)}</mrow>
+        </md>
+      </p>
+      <p>
+        Thus <m>7=3\implies 0=0</m>.
+        Logically speaking this is a perfectly correct argument,
+        thus the <em>implication</em> is true.
+        The argument makes us uncomfortable because <m>7=3</m> is clearly false.
+      </p>
+    </aside>
+  </subsection>
+  <subsection>
+    <title>Theorems and Direct Proofs</title>
+    <p>
+      Truth tables and connectives are very abstract.
+      To apply them to mathematics we need the following basic notions of theorem and proof.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          A <term>theorem</term> is a justified assertion that some statement of the form <m>\timplies PQ</m> is true.
+        </p>
+        <p>
+          A <term>proof</term> is an argument that justifies the truth of a theorem.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Think back to the truth table for
+      <m>\timplies PQ</m> in <xref ref="defn_implies">Definition</xref>.
+      Suppose that the hypothesis <m>P</m> is true and that <m>\timplies PQ</m> is true:
+      that is, <m>\timplies PQ</m> is a <em>theorem.</em>
+      We must be in the <em>first row</em> of the truth table,
+      and so the conclusion <m>Q</m> is also true.
+      This is how we think about proving basic theorems.
+      In a <em>direct proof</em> we start by assuming the hypothesis (<m>P</m>) is true and make a logical argument (<m>P\implies Q</m>) which asserts that the conclusion (<m>Q</m>) is true.
+      As such, it often convenient to rewrite the statement of a theorem as an implication of the form
+      <m>\timplies P{Q.}</m> Here is a very simple theorem which we prove directly.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          The product of two odd integers is odd.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      The first thing to do is to write the theorem in terms of propositions and connectives:
+      that is, in the form <m>P\implies Q</m>.
+      <ul>
+        <li>
+          <p>
+            <m>P</m> is <sq><m>x</m> and <m>y</m> are odd integers.</sq> This is our assumption,
+            the hypothesis.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>Q</m> is <sq>The product of <m>x</m> and <m>y</m> is odd.</sq> This is what we want to show,
+            the conclusion.
+          </p>
+        </li>
+        <li>
+          <p>
+            Showing that <m>\timplies PQ</m> is true, that
+            (the truth of)
+            <m>P</m> implies
+            (the truth of)
+            <m>Q</m> requires an argument.
+            This is the <em>proof.</em>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <proof>
+      <p>
+        Let <m>x</m> and <m>y</m> be <em>any</em> two odd integers.
+        We want to show that product <m>x\cdot y</m> is an odd integer.
+      </p>
+      <p>
+        By definition,
+        an integer is odd if it can be written in the form <m>2k+1</m> for
+        <em>some</em> integer <m>k</m>.
+        Thus there must be integers <m>n</m>,
+        <m>m</m> such that <m>x=2n+1</m> and <m>y=2m+1</m>.
+        We compute:
+        <me>
+          x\cdot y=(2n+1)(2m+1)=4mn+2n+2m+1=2(2mn+n+m)+1
+        </me>.
+      </p>
+      <p>
+        Because <m>2mn+n+m</m> is an integer,
+        this shows that <m>x\cdot y</m> is an odd integer.
+      </p>
+    </proof>
+    <p>
+      It is common to place a symbol
+      (in this case \smash{<m>\qedsymbol</m>})
+      at the end of a proof to tell the reader that your argument is complete.
+      Traditionally the letters Q.E.D.
+      (from the Latin <em>quod erat demonstrandum,</em>
+      literally <sq>which is what had to be demonstrated</sq>)
+      were used, but this has gone out of style.You may also feel that you want to write more,
+      or less than the above.
+      This is a difficult thing to judge.
+      What do you feel is a convincing argument?
+      Test your argument on your classmates.
+      The appropriate level of detail will depend on your readership:
+      a middle school student will need more detail than a graduate student!
+      At the moment,
+      the best guide is to write for someone with the same mathematical sophistication as yourself.
+      If, in three weeks' time,
+      you can return to what you've written and understand it,
+      then it's probably good!
+    </p>
+  </subsection>
+  <subsection>
+    <title>The Converse and Contrapositive</title>
+    <p>
+      The following constructions are used continually in mathematics:
+      it is vitally important to know the difference between them.
+    </p>
+    <definition xml:id="defn_contra">
+      <statement>
+        <p>
+          The <term>converse</term> of an implication
+          <m>\timplies PQ</m> is the reversed implication <m>\timplies Q{P.}</m>
+        </p>
+        <p>
+          The <term>contrapositive</term> of
+          <m>\timplies PQ</m> is <m>\timplies{\neg Q}{\neg P.}</m>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      In general, we cannot say anything about the truth value of the converse of a true implication.
+      The contrapositive of a true implication is,
+      however, <em>always</em> true.
+      Actually, even more is true,
+      an implication and its contrapositive always have the same truth value.
+      This is a common enough phenomenon that we give it its own name.
+    </p>
+    <definition xml:id="defn_logequiv">
+      <statement>
+        <p>
+          We say two propositions are <term>logically equivalent</term>
+          if they have the same truth table.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      This definition is a bit vague
+      (what does having the same truth table mean?)
+      We could give a more rigorous definition,
+      but instead hope that the following examples will make the definition clear.
+    </p>
+    <example>
+      <statement>
+        <p>
+          We prove that the expressions <m>(P\implies Q) \wedge (Q\implies P)</m> and
+          <m>\ P\iff Q\</m> are logically equivalent by computing their truth tables:
+          <me>
+            \begin{array}{cc|c|c|c} P \amp  Q \amp  P\implies Q \amp  Q \implies P \amp  (P \implies Q) \land (Q \implies P) \\ \hline T \amp  T \amp  T \amp  T \amp  \mathbf T \\ T \amp  F \amp  F \amp  T \amp  \mathbf F \\ F \amp  T \amp  T \amp  F \amp  \mathbf F \\ F \amp  F \amp  T \amp  T \amp  \mathbf T \end{array}  \qquad \begin{array}{cc|c} P \amp  Q \amp  P \iff Q \\ \hline T \amp  T \amp  \mathbf T \\ T \amp  F \amp  \mathbf F \\ F \amp  T \amp  \mathbf F \\ F \amp  F \amp  \mathbf T \end{array}
+          </me>
+        </p>
+        <p>
+          Notice that the bolded columns are the same in each table.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Note that when comparing truth tables,
+      one should make sure the inputs (e.g. the columns for <m>P</m> and <m>Q</m> in the above example) are in the same order in both tables.
+    </p>
+    <theorem xml:id="thm_contrapos">
+      <statement>
+        <p>
+          The contrapositive of an implication is logically equivalent the original implication.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        Simply use our definitions of negation and implication to compute the truth table:
+        <md>
+          <mrow>\begin{array}{cc|c||cc|c} P \amp  Q \amp  P\implies Q \amp  \neg Q \amp  \neg P \amp  \neg Q\implies\neg P\\\hline T \amp  T \amp  \mathbf T \amp  F \amp  F \amp  \mathbf T\\ T \amp  F \amp  \mathbf F \amp  T \amp  F \amp  \mathbf F\\ F \amp  T \amp  \mathbf T \amp  F \amp  T \amp  \mathbf T\\ F \amp  F \amp  \mathbf T \amp  T \amp  T \amp  \mathbf T \end{array}</mrow>
+        </md>
+      </p>
+      <p>
+        Since the truth states in the third and sixth columns
+        (in bold)
+        are identical, we see that
+        <m>\timplies PQ</m> and its contrapositive
+        <m>\timplies{\neg Q}{\neg P}</m> are logically equivalent.
+      </p>
+    </proof>
+    <example>
+      <statement>
+        <p>
+          Let <m>P</m> and <m>Q</m> be the following statements:
+          <ul>
+            \itemstart{<m>P</m>.} Claudia is holding a peach. \itemstart{<m>Q</m>.} Claudia is holding a piece of fruit.
+          </ul>
+        </p>
+        <p>
+          The implication <m>P\implies Q</m> is true,
+          since all peaches are fruit.
+          As a sentence, we have:
+          <ul>
+            <li class="custom-list-style-type">
+              <p>
+                If Claudia is holding a peach,
+                then Claudia is holding a piece of fruit.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          The <em>converse</em> of <m>P\implies Q</m> is the sentence:
+          <ul>
+            <li class="custom-list-style-type">
+              <p>
+                If Claudia is holding a piece of fruit,
+                then Claudia is holding a peach.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          This is palpably false: Claudia could be holding an apple!
+        </p>
+        <p>
+          The <em>contrapositive</em> of
+          <m>P\implies Q</m> is the following sentence:
+          <ul>
+            <li class="custom-list-style-type">
+              <p>
+                If Claudia is <em>not</em> holding any fruit,
+                then she is <em>not</em> holding a peach.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          This is clearly true.
+        </p>
+      </statement>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Proof by Contrapositive</title>
+    <p>
+      The fact that <m>\timplies PQ</m> and
+      <m>\timplies{\neg Q}{\neg P}</m> are logically equivalent allows us,
+      when convenient,
+      to prove <m>\timplies PQ</m> by instead proving its contrapositive.
+      As an example, consider another basic theorem.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          Let <m>x</m> and <m>y</m> be integers.
+          If <m>x+y</m> is odd, then exactly one of <m>x</m> or <m>y</m> is odd.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      The theorem is an implication of the form <m>\timplies PQ</m> where
+      <ul>
+        \itemstart{<m>P</m>.} The sum <m>x+y</m> of integers <m>x</m> and <m>y</m> is odd. \itemstart{<m>Q</m>.} Exactly one of <m>x</m> or <m>y</m> is odd.
+      </ul>
+    </p>
+    <p>
+      A direct proof would require that we assume <m>P</m> to be true and logically deduce the truth of <m>Q</m>.
+      For instance we might start our argument with:
+      <me>
+        \text{ Suppose that \(x+y=2n+1\) for some integer \(n\) }
+      </me>
+    </p>
+    <p>
+      The problem is that this doesn't really tell us anything about <m>x</m> and <m>y</m>,
+      which we need to think about in order to demonstrate the truth of <m>Q</m>.
+      Instead we consider the negations of our propositions:
+      <ul>
+        \itemstart{<m>\neg Q</m>.}<nbsp/><nbsp/> <m>x</m> and <m>y</m> are both even or both odd (they have the same parity). \itemstart{<m>\neg P</m>.}<nbsp/><nbsp/> The sum <m>x+y</m> of integers <m>x</m> and <m>y</m> is even.
+      </ul>
+    </p>
+    <p>
+      Since <m>\timplies PQ</m> is logically equivalent to the seemingly simpler contrapositive
+      <m>\timplies{(\neg Q)}{(\neg P),}</m> we choose to prove the latter.
+      This is, by <xref ref="thm_contrapos">Theorem</xref>,
+      equivalent to proving the original implication.
+    </p>
+    <proof>
+      <p>
+        Assume that <m>x</m> and <m>y</m> have the same parity.
+        There are two cases: <m>x</m> and <m>y</m> are both even,
+        or both odd.
+        <ul>
+          <li>
+            <title>Case 1:</title>
+            <p>
+              Let <m>x=2m</m> and <m>y=2n</m> be even.
+              Then <m>x+y=2(m+n)</m> is even.
+            </p>
+          </li>
+          <li>
+            <title>Case 2:</title>
+            <p>
+              Let <m>x=2m+1</m> and <m>y=2n+1</m> be odd.
+              Then <m>x+y=2(m+n+1)</m> is even.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        In both cases <m>x+y</m> is even, and the result is proved.
+      </p>
+    </proof>
+  </subsection>
+  <subsection>
+    <title>De Morgan's Laws</title>
+    <p>
+      In order to perform proofs by contrapositive
+      (and later by contradiction)
+      it is necessary to compute the negations of propositions.
+      The most helpful results in this regard are attributable to Augustus de Morgan,
+      a very famous 19th century logician.
+    </p>
+    <theorem xml:id="thm_demorgan">
+      <title>de Morgan's laws</title>
+      <statement>
+        <p>
+          Let <m>P</m> and <m>Q</m> be any propositions.
+          Then:
+          <ol>
+            <li>
+              <p>
+                <m>\neg(P\wedge Q)</m> is logically equivalent to <m>\neg P\vee\neg Q</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\neg(P\vee Q)</m> is logically equivalent to <m>\neg P\wedge\neg Q</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      Here is a proof of the first law.
+      Try the second on your own.
+    </p>
+    <proof>
+      <p>
+        <m>\begin{array}{cc|cc|ccc} P \amp Q \amp P\wedge Q \amp \neg(P\wedge Q) \amp \neg P \amp \neg Q \amp \neg P\vee\neg Q\\\hline T \amp T \amp T \amp \mathbf F \amp F \amp F \amp \mathbf F\\ T \amp F \amp F \amp \mathbf T \amp F \amp T \amp \mathbf T\\ F \amp T \amp F \amp \mathbf T \amp T \amp F \amp \mathbf T\\ F \amp F \amp F \amp \mathbf T \amp T \amp T \amp \mathbf T \end{array}</m>
+      </p>
+      <p>
+        Simply observe that the fourth and seventh columns are identical.
+      </p>
+    </proof>
+    <p>
+      It is worth pausing to observe how similar the two laws are,
+      and how concise.
+      There is some beauty here.
+      With a written example the laws are much easier to comprehend.
+    </p>
+    <example>
+      <statement>
+        <p>
+          (Of the first law) Suppose that of a morning you can choose
+          (or not)
+          to ride the subway to work, and you can choose
+          (or not)
+          to have a cup of coffee.
+          Consider the following sentence:
+          <ul>
+            <li class="custom-list-style-type">
+              <p>
+                I rode the subway <em>and</em> I had coffee.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          What would it mean for this sentence to be <em>false?</em>
+          Any sentence which asserts the falsehood of the above is a suitable
+          <em>negation.</em> For example:
+          <ul>
+            <li class="custom-list-style-type">
+              <p>
+                I <em>didn't</em> ride the subway <em>or</em>
+                I <em>didn't</em> have coffee.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          Note that the mathematical use of <em>or</em>
+          includes the possibility that you neither rode the subway nor had coffee.
+        </p>
+      </statement>
+    </example>
+    <p>
+      You will see de Morgan's laws again when we encounter sets.
+    </p>
+    <aside>
+      <p>
+        <term>Think about the meaning!</term>
+      </p>
+      <p>
+        In the previous example we saw how negation switches
+        <em>and</em> to <em>or.</em>
+        This is true only when <em>and</em>
+        denotes a conjunction between two propositions.
+        Before applying De Morgan's laws,
+        think about the <em>meaning</em> of the sentence.
+        For example, the negation of
+        <ul>
+          <li class="custom-list-style-type">
+            <p>
+              Mark and Mary have the same height.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        is the proposition:
+        <ul>
+          <li class="custom-list-style-type">
+            <p>
+              Mark and Mary do not have the same height.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        If you blindly appeal to De Morgan's laws you might end up with the following piece of nonsense:
+        <ul>
+          <li class="custom-list-style-type">
+            <p>
+              Mark <em>or</em> Mary do not have the same height.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        Logical rules are wonderfully concise, but very easy to misuse.
+        Always think about the meaning of a sentence and you shouldn't go wrong.
+      </p>
+    </aside>
+  </subsection>
+  <subsection>
+    <title>Negating Conditionals</title>
+    <p>
+      You will often want to understand the negation of a statement.
+      In particular,
+      it is important to understand the negation of a conditional
+      <m>\timplies P{Q.}</m> Is it enough to say <sq><m>P</m> doesn</sq>t imply <m>Q</m>'? And what could this mean?
+      To answer the question you can use truth tables, or just think.
+    </p>
+    <p>
+      Here is the truth table for <m>\timplies PQ</m> and its negation:
+      recall that negation simply swaps <m>T</m> and <m>F</m>.
+      <me>
+        \begin{array}{cc|c|c} P \amp  Q \amp  P\implies Q \amp  \neg(P\implies Q)\\\hline T \amp  T \amp  T \amp  F\\ T \amp  F \amp  F \amp  T\\ F \amp  T \amp  T \amp  F\\ F \amp  F \amp  T \amp  F \end{array}
+      </me>
+    </p>
+    <p>
+      The only time there is a <m>T</m> in the final column is when <em>both</em>
+      <m>P</m> is true <em>and</em> <m>Q</m> is false.
+      We have therefore proved the following:
+    </p>
+    <theorem xml:id="thm_negconditional">
+      <statement>
+        <p>
+          <m>\neg(P\implies Q)</m> is logically equivalent to <m>P\wedge\neg Q</m>
+          (read <sq><m>P</m> and not <m>Q</m></sq>).
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      Now <em>think</em> in words rather than calculate.
+      What is the negation of the following implication?
+      <ul>
+        <li class="custom-list-style-type">
+          <p>
+            It's the morning therefore I'll have coffee.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Hopefully it is clear that the negation is:
+      <ul>
+        <li class="custom-list-style-type">
+          <p>
+            It's the morning <em>and</em> I
+            <em>won't</em> have coffee.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      The implication <em><sq>therefore</sq></em>
+      has disappeared and the expression
+      <em><sq>and won</sq>t'</em> is in its place.
+    </p>
+    <p>
+      <term>Warning!</term> The negation of <m>\timplies PQ</m> is
+      <em>not a conditional.</em>
+      In particular it is <em>neither</em> of the following:
+      <ul>
+        <li class="custom-list-style-type">
+          <p>
+            The converse, <m>Q\implies P</m>.
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            The contrapositive of the converse,
+            <m>\neg P\implies\neg Q</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      If you are unsure about this,
+      write down the truth tables and compare.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Let <m>x</m> be an integer.
+          What is the negation of the following sentence?
+          <ul>
+            <li class="custom-list-style-type">
+              <p>
+                If <m>x</m> is even, then <m>x^2</m> is even.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          Written in terms of propositions,
+          we wish to negate <m>\timplies PQ</m>,
+          where <m>P</m> and <m>Q</m> are:
+          <ul>
+            \itemstart{<m>P</m>.} <m>x</m> is even. \itemstart{<m>Q</m>.} <m>x^2</m> is even.
+          </ul>
+        </p>
+        <p>
+          The negation of <m>P\implies Q</m> is <m>P\wedge\neg Q</m>, namely:
+          <ul>
+            <li class="custom-list-style-type">
+              <p>
+                <m>x</m> is even and <m>x^2</m> is odd.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          This is very different to <m>\timplies{\neg P}{\neg Q}</m>
+          (if <m>x</m> is odd then <m>x^2</m> is odd).
+        </p>
+        <p>
+          Keep yourself straight by thinking about the meaning of these sentences.
+          It should be obvious that <sq><m>x</m> even <m>\implies x^2</m> even</sq> is true.
+          It negation should therefore be <em>false.</em>
+          The fact that it is false should make reading the negation feel a little uncomfortable.
+        </p>
+      </statement>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Tautologies and Contradictions</title>
+    <p>
+      We finish this section with two related concepts that are helpful for understanding proofs.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          A <term>tautology</term> is a logical expression that is always true,
+          regardless of what the component statements might be.
+        </p>
+        <p>
+          A <term>contradiction</term> is a logical expression that is always false.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The easiest way to detect these is simply to construct a truth table.
+      We remark that two propositions <m>\varphi</m> and <m>\psi</m> are logically equivalent if and only if <m>\varphi \iff \psi</m> is a tautology.
+    </p>
+    <example>
+      <statement>
+        <p>
+          \item <m>P\wedge(\neg P)</m> is a very simple contradiction:
+          <me>
+            \begin{array}{cc|c} P \amp  \neg P \amp  P\wedge(\neg P)\\\hline T \amp  F \amp  F\\ F \amp  T \amp  F \end{array}
+          </me>
+        </p>
+        <p>
+          Whatever the proposition <m>P</m> is,
+          it cannot be true at the same time as its negation. \item <m>(P\wedge(P\implies Q))\implies Q</m>  is a tautology.
+          This is essentially how we understand a direct proof:
+          if <m>P</m> is true and we have a correct argument <m>P\implies Q</m>,
+          then <m>Q</m> must also be true.
+          <me>
+            \begin{array}{cc|cc|c} P \amp  Q \amp  P\implies Q \amp  P\wedge(P\implies Q) \amp  (P\wedge(P\implies Q))\implies Q\\\hline T \amp  T \amp  T \amp  T\amp  T\\ T \amp  F \amp  F \amp  F\amp  T\\ F \amp  T \amp  T \amp  F\amp  T\\ F \amp  F \amp  T \amp  F\amp  T \end{array}
+          </me>
+        </p>
+      </statement>
+    </example>
+    <aside>
+      <p>
+        <term>Algebraic Logic</term>
+      </p>
+      <p>
+        One can study logic in a more algebraic manner.
+        De Morgan's Laws are algebraic.
+        Here are a few of the other basic laws of logic.
+        <md>
+          <mrow xml:id="aside_logicalalg" number="yes">\hypertarget{aside:logicalalglnk}{} \amp \text{ Law of Double Negation } :</mrow>
+          <mrow>\amp \neg(\neg P)  \text{ is logically equivalent to }   P</mrow>
+          <mrow>\amp \text{ Commutative laws } :</mrow>
+          <mrow>\amp P\wedge Q  \text{ is logically equivalent to }   Q\wedge P</mrow>
+          <mrow>\amp P\vee Q  \text{ is logically equivalent to }   Q\vee P</mrow>
+          <mrow>\amp \text{ Associative laws } :</mrow>
+          <mrow>\amp (P\wedge Q)\wedge R  \text{ is logically equivalent to }   P\wedge(Q\wedge R)</mrow>
+          <mrow>\amp (P\vee Q)\vee R  \text{ is logically equivalent to }   P\vee(Q\vee R)</mrow>
+          <mrow>\amp \text{ Distributive laws } :</mrow>
+          <mrow>\amp (P\wedge Q)\vee R  \text{ is logically equivalent to }   (P\vee R)\wedge (Q\vee R)</mrow>
+          <mrow>\amp (P\vee Q)\wedge R  \text{ is logically equivalent to }   (P\wedge R)\vee (Q\wedge R)</mrow>
+        </md>
+      </p>
+      <p>
+        You can check them all with truth tables.
+        Using these rules, one can answer questions,
+        such as deciding when an expression is a tautology,
+        without laboriously creating truth tables.
+        It is even fun!
+        Such an approach is appropriate when you are considering abstract propositions,
+        say in a formal logic course.
+        In this text our primary interest with logic lies in using it to prove theorems.
+        When one has an explicit theorem it is important to keep the meanings of all propositions clear.
+        By relying too much on abstract laws like the above,
+        it is easy to lose the meaning and write nonsense!
+      </p>
+    </aside>
+  </subsection>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol>
+      <li>
+        <p>
+          A <em>tautology</em> is a proposition which <fillin/>
+          <ol>
+            <li>
+              <p>
+                is false no matter what the truth value of its component propositions.
+              </p>
+            </li>
+            <li>
+              <p>
+                is only true when all of its component propositions are true.
+              </p>
+            </li>
+            <li>
+              <p>
+                is never false,
+                no matter what the truth value of its component propositions.
+              </p>
+            </li>
+            <li>
+              <p>
+                is built only using the connectives <m>\land, \lor</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          A <em>contradiction</em> is a proposition which <fillin/>
+          <ol>
+            <li>
+              <p>
+                is false no matter what the truth value of its component propositions.
+              </p>
+            </li>
+            <li>
+              <p>
+                is only true when all of its component propositions are false.
+              </p>
+            </li>
+            <li>
+              <p>
+                is never false,
+                no matter what the truth value of its component propositions.
+              </p>
+            </li>
+            <li>
+              <p>
+                is built only using the connective <m>\neg</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          The <em>contrapositive</em> of the conditional
+          <m>P\implies Q</m> is the conditional <fillin/>
+          <ol>
+            <li>
+              <p>
+                <m>\neg P \implies Q</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\neg Q \implies \neg P</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>Q \implies P</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>P \implies \neg Q</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: The <em>converse</em>
+          of <m>P\implies Q</m> is always logically equivalent to <m>P\implies Q</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          The <em>negation</em> of the conditional
+          <q>if I study at least 25 hours per week,
+          then I will be successful</q>
+          is the proposition <fillin/>
+          <ol>
+            <li>
+              <p>
+                <q>I study at least 25 hours per week,
+                but I am not successful.</q>
+              </p>
+            </li>
+            <li>
+              <p>
+                <q>Either I study less than 25 hours per week, or I am successful.</q>
+              </p>
+            </li>
+            <li>
+              <p>
+                <q>Either I study at least 25 hours per week,
+                or I am not successful.</q>
+              </p>
+            </li>
+            <li>
+              <p>
+                <sq>If I am successful,
+                then I will study at least 25 hours per week.</sq>'
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          De Morgan's laws state that:
+          <md>
+            <mrow>\neg(P\vee Q) \text{ is logically equivalent to }  (1) \underline{\qquad}</mrow>
+            <mrow>\neg(P\wedge Q) \text{ is logically equivalent to }  (2) \underline{}</mrow>
+          </md>
+          <ol>
+            <li>
+              <p>
+                (1) <m>\neg (P \implies Q)</m>,
+                <nbsp/><nbsp/> (2) <m>(\neg P \lor \neg Q)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) <m>(\neg P \land \neg Q)</m>,
+                <nbsp/><nbsp/> (2) <m>(P \lor Q)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) <m>(\neg P \land Q)</m>, <nbsp/><nbsp/> (2) <m>(P \lor \neg Q)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) <m>(\neg P \land \neg Q)</m>,
+                <nbsp/><nbsp/> (2) <m>(\neg P \lor \neg Q)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Suppose that
+          <q>If Colin was early, then no-one was playing pool</q>
+          is a true statement.\prelistskip
+        </p>
+        <ol>
+          <li>
+            <p>
+              What is its contrapositive of this statement?
+              Is it true?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the converse?
+              Is it true?
+            </p>
+          </li>
+          <li>
+            <p>
+              What can we conclude
+              (if anything?)
+              if we discover each of the following?
+              <em>Treat the two scenarios separately.</em>
+            </p>
+            <ol>
+              <li>
+                <title>(i)</title>
+                <p>
+                  Someone was playing pool.
+                </p>
+              </li>
+              <li>
+                <title>(ii)</title>
+                <p>
+                  Colin was late.
+                </p>
+              </li>
+            </ol>
+          </li>
+        </ol>
+        <url href="https://youtu.be/BI_M1-OoMac">Video Solution</url>
+      </li>
+      <li>
+        <p>
+          Prove that <m>P \lor \neg Q</m> is logically equivalent to <m>\neg P \implies (\neg P \land \neg Q)</m>.
+          <url href="https://youtu.be/NrbdGXAP6Ug">Video Solution</url>
+        </p>
+      </li>
+      <li>
+        <p>
+          Define the connective <m>\uparrow</m>
+          (called the <em>Sheffer stroke</em>, or <em>NAND</em>)
+          by the following truth table:
+          <me>
+            \begin{array}{cc|c} P \amp  Q \amp  P \uparrow Q\\\hline T \amp  T \amp  F\\ T \amp  F \amp  T\\ F \amp  T \amp  T\\ F \amp  F \amp  T \end{array}
+          </me>
+          <ol>
+            <li>
+              <p>
+                Prove <m>P \uparrow Q</m> is logically equivalent to <m>\neg (P \land Q)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find an expression built using only <m>P</m> and the connective
+                <m>\uparrow</m> which is logically equivalent to <m>\neg P</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find an expression built using only <m>P</m>, <m>Q</m>,
+                and the connective <m>\uparrow</m> which is logically equivalent to <m>P \land Q</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <url href="https://youtu.be/bxYgvuXtcTM">Video Solution</url>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Express each of the following statements in the
+          <q>If <m>\dots</m>, then <m>\dots</m></q>
+          form.
+          There are many possible correct answers.\prelistskip
+          <ol>
+            <li>
+              <p>
+                You must eat your dinner if you want to grow.
+              </p>
+            </li>
+            <li>
+              <p>
+                Being a multiple of 12 is a sufficient condition for a number to be even.
+              </p>
+            </li>
+            <li>
+              <p>
+                It is necessary for you to pass your exams in order for you to obtain a degree.
+              </p>
+            </li>
+            <li>
+              <p>
+                A triangle is equilateral only if all its sides have the same length.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose that
+          <q><m>x</m> is an even integer</q>
+          and
+          <q><m>y</m> is an irrational number</q>
+          are true statements and that
+          <q><m>z\geq 3</m></q>
+          is a false statement.
+          Which of the following are true?
+          <em>Hint: Label each of the given statements,
+          and think about each of the following using connectives.</em>\prelistskip
+          <ol>
+            <li>
+              <p>
+                If <m>x</m> is an even integer, then <m>z\geq 3</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>z\geq 3</m>, then <m>y</m> is an irrational number.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>z\geq 3</m> or <m>x</m> is an even integer,
+                then <m>y</m> is an irrational number.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>y</m> is an irrational number and <m>x</m> is an even integer,
+                then <m>z\geq 3</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Write the negation,
+          the converse and the contrapositive of the following claim:\prelistskip
+          <ol>
+            <li class="custom-list-style-type">
+              <p>
+                If <m>A</m> and <m>B</m> are invertible matrices,
+                then <m>AB</m> is a square matrix and <m>\det(AB) \neq 0</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        Write your answers in sentences, like the original.
+      </li>
+      <li>
+        <p>
+          Orange County has two competing transport plans under consideration:
+          widening the 405 freeway and constructing light rail down its median.
+          A local politician is asked,
+          <q>Would you like to see the 405 widened or would you like to see light rail constructed?</q>
+          The politician wants to sound positive,
+          but to avoid being tied to one project.
+          What is their response? (<em>Hint: Think about how the word <sq>OR</sq> is used in logic<ellipsis/></em>)
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the proposition <m>P</m> given below: If the integer <m>m</m> is greater than 3, the integer <m>2m</m> is not prime.
+          <ol>
+            <li>
+              <p>
+                Rewrite <m>P</m> using the word <sq>necessary.</sq>
+              </p>
+            </li>
+            <li>
+              <p>
+                Rewrite <m>P</m> using the word <sq>sufficient.</sq>
+              </p>
+            </li>
+            <li>
+              <p>
+                Write the negation, the converse and the contrapositive of <m>P</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        Write your answers in sentences, like the originals.
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> be a square matrix.
+          Consider the proposition <m>Q</m> given below: For <m>A</m> to be invertible,
+          it is necessary and sufficient that <m>A</m> is non-singular.
+          <ol>
+            <li>
+              <p>
+                Rewrite <m>Q</m> as a biconditional.
+              </p>
+            </li>
+            <li>
+              <p>
+                Write the negation of <m>Q</m>.
+                (Hint: Your answer should be the disjunction of two sentences.)
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>m</m> and <m>n</m> be two integers.
+          Consider the statement:
+          <me>
+            m \text{ and }  n \text{ are not both even }
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Your friend writes this statement as
+                <me>
+                  m \land n \text{ are not both even }
+                </me>.
+                What are some issues with what your friend wrote, if any?
+              </p>
+            </li>
+            <li>
+              <p>
+                Then your friend claims that the negation of this statement is
+                <me>
+                  m \text{ or }  n \text{ is odd }
+                </me>.
+                Is this the correct negation?
+                If not, what is the correct negation?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Construct the truth tables for the propositions
+          <m>P\vee(Q\wedge R)</m> and <m>(P\vee Q)\wedge R</m>.
+          Are they the same?
+        </p>
+      </li>
+      <li>
+        <p>
+          Complete the truth table for the following proposition.
+          <me>
+            \begin{array}{ccc|c|c|c} P \amp  Q \amp  R \amp  P\implies Q \amp  (P\implies Q) \land \neg R \amp  ((P\implies Q) \land \neg R)\implies P\\\hline T \amp  T \amp  T \amp   \amp   \amp  \\ T \amp  T \amp  F \amp   \amp   \amp  \\ T \amp  F \amp  T \amp   \amp   \amp  \\ T \amp  F \amp  F \amp   \amp   \amp  \\ F \amp  T \amp  T \amp   \amp   \amp  \\ F \amp  T \amp  F \amp   \amp   \amp  \\ F \amp  F \amp  T \amp   \amp   \amp  \\ F \amp  F \amp  F \amp   \amp   \amp \end{array}
+          </me>
+        </p>
+      </li>
+      <li xml:id="ex_demorganimplies">
+        <p>
+          Apply de Morgan's laws to the result of <xref ref="thm_negconditional">Theorem</xref>
+          to prove that <m>\timplies PQ</m> is logically equivalent to <m>\neg P\vee Q</m>.
+          Do not use truth tables for this exercise.
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove the law of <em>double negation</em>, i.e., that
+          <me>
+            \neg(\neg P) \text{ is logically equivalent to }  P
+          </me>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that
+          <ol>
+            <li>
+              <p>
+                <m>(P \lor P)</m> is logically equivalent to <m>P</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(P \land P)</m> is logically equivalent to <m>P</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+        This is known as <em>idempotence</em>
+        for <m>\lor</m> and <m>\land</m>, respectively.
+      </li>
+      <li>
+        <p>
+          Prove that
+          <ol>
+            <li>
+              <p>
+                <m>P \lor (P \land Q)</m> is logically equivalent to <m>P</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>P \land (P \lor Q)</m> is logically equivalent to <m>P</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+        These are known as the <em>absorption laws</em>.
+      </li>
+      <li>
+        <p>
+          Prove or disprove:
+          <m>\neg P \lor \neg Q</m> is logically equivalent to <m>P \implies (P \land \neg Q)</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Recall that a contradiction is a combination of statements that is always false,
+          regardless of the truth values of the original statements.
+          A combination of statements that is always true is called a tautology.
+          <ol>
+            <li>
+              <p>
+                Is <m>(P\wedge \neg P ) \implies Q</m> a tautology,
+                a contradiction, or neither?
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>((P\vee Q)\wedge \neg P)\wedge\neg Q</m> is a contradiction.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>(\neg P\wedge Q)\vee(P\wedge\neg Q)\iff\neg(P\iff Q)</m> is a tautology.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove or disprove:
+          <m>(P\wedge \neg Q\implies F)\iff (P\implies Q)</m> is a tautology.
+          Here <m>F</m> represents a <em>contradiction:</em>
+          some proposition which is always false.
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Suppose that <sq><m>f</m> is a linear function and <m>b</m> is a zero of <m>f</m></sq> is a
+              <em>false</em> statement.
+              What can we conclude if we discover each of the following?
+              <em>Treat the two scenarios separately.</em>
+              <ol>
+                <li>
+                  <p>
+                    <m>f</m> is a linear function.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <m>f</m> is a linear function if and only if <m>b</m> is a zero of <m>f</m>.
+                  </p>
+                </li>
+              </ol>
+            </p>
+          </li>
+          <li>
+            <p>
+              Suppose that <sq>If <m>Amy</m> likes art,
+              then no one likes history.</sq> is a
+              <em>true</em> statement.
+            </p>
+            <ol>
+              <li>
+                <p>
+                  What is the contrapositive of this statement?
+                  Is it true?
+                </p>
+              </li>
+              <li>
+                <p>
+                  What is the converse of this statement?
+                  Is it true?
+                </p>
+              </li>
+              <li>
+                <p>
+                  What can we conclude
+                  (if anything?)
+                  if we discover each of the following?
+                  <em>Treat the two scenarios separately.</em>
+                </p>
+                <ol>
+                  <li>
+                    <p>
+                      Someone likes history.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Amy does not like art.
+                    </p>
+                  </li>
+                </ol>
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Suppose that the following statements are <em>true</em>:
+          <ul>
+            <li>
+              <p>
+                Every octagon is magical.
+              </p>
+            </li>
+            <li>
+              <p>
+                If a polygon is not a rectangle, then is it not a square.
+              </p>
+            </li>
+            <li>
+              <p>
+                A polygon is a square, if it is magical.
+              </p>
+            </li>
+          </ul>
+        </p>
+        Is it true that <sq>Octagons are rectangles</sq>?
+        Explain your answer.  (<em>Hint:
+        try rewriting each of the statements as an implication.</em>)  \item
+        <ol>
+          <li>
+            <p>
+              Use a truth table to prove the distributive law:
+              <me>
+                (P\wedge Q)\vee R \text{ is logically equivalent to }  (P\vee R)\wedge(Q\vee R)
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              Use logical algebra
+              (see the aside on page \hyperlink{aside:logicalalglnk}{ <xref ref="aside_logicalalg"></xref>})
+              to prove that
+              <me>
+                \left((P\implies R)\wedge(Q\implies R)\right)\iff \left((P\vee Q)\implies R\right)
+              </me>
+              is a tautology. (<em>Hint:
+              start by using the result of <xref ref="ex_demorganimplies">question</xref></em>)
+            </p>
+          </li>
+        </ol>
+        \item
+        <ol>
+          <li>
+            <p>
+              Do there exists propositions <m>P,Q</m> such that both
+              <m>\timplies PQ</m> and its converse are true?
+            </p>
+          </li>
+          <li>
+            <p>
+              Do there exist propositions <m>P,Q</m> such that both
+              <m>\timplies PQ</m> and its converse are false?
+            </p>
+          </li>
+        </ol>
+        Justify your answers by giving an example or a proof that no such examples exist.
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Suppose we have propositions <m>P</m> and <m>Q</m> such that both <m>P</m> and <m>\neg P</m> are sufficient for <m>Q</m>.
+              What, if anything, can be said about the tuth value of <m>Q</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              Find truth values for <m>P</m> and <m>Q</m> which make the following expression false.
+              <me>
+                (\neg P \land \neg Q) \lor Q
+              </me>
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          (Hammack's
+          <url href="http://www.people.vcu.edu/~rhammack/BookOfProof/"><em>Book of Proof</em></url>,
+          Section 2.5, Exercise 11.) Suppose <m>P</m> is false and that the statement <m>(R\implies S) \iff (P \wedge Q)</m> is true.
+          Find the truth values of <m>R</m> and <m>S</m>. (This can be done with or without a truth table).
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>R</m> be the proposition
+          <q>The summit of Mount Everest is underwater</q>. Suppose that <m>S</m> is a proposition such that <m>(R\vee S)\iff (R\wedge S)</m> is false.
+          <ol>
+            <li>
+              <p>
+                What can you say about <m>S</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                What if, instead, <m>(R\vee S)\iff (R\wedge S)</m> is true?
+              </p>
+            </li>
+          </ol>
+        </p>
+        <em>Hopefully it is obvious to you that <m>R</m> is false<ellipsis/></em>
+      </li>
+      <li>
+        <p>
+          Complete the following.
+          <ol>
+            <li>
+              <p>
+                Let <m>F</m> be a contradiction and <m>R</m> any proposition.
+                Prove <m>F \land R</m> is a contradiction.
+              </p>
+            </li>
+            <li>
+              <p>
+                Fill in the following proof of the fact that <m>Q \land \neg (P \implies Q)</m> is a contradiction.
+                <proof>
+                  <p>
+                    We give a chain of logical equivalences which simplifies the statement:
+                    <md>
+                      <mrow>{3} Q \land \neg (P \implies Q) \amp \text{ is logically equivalent to }  Q \land (P \land \neg Q) \qquad \amp \amp (\rule{3cm}{0.15mm})</mrow>
+                      <mrow>\amp \text{ is logically equivalent to }  \rule{3cm}{0.15mm} \qquad \amp \amp (\text{ Commutative law } )</mrow>
+                      <mrow>\amp \text{ is logically equivalent to }  (Q \land \neg Q) \land P \qquad \amp \amp (\rule{3cm}{0.15mm})</mrow>
+                    </md>
+                  </p>
+                  <p>
+                    By part (a),
+                    since <m>\rule{2cm}{0.15mm}</m> is a contradiction,
+                    so is <m>(Q \land \neg Q) \land P</m>.
+                    Hence <m>Q \land \neg (P \implies Q)</m> is a contradiction.
+                  </p>
+                </proof>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Define the connective <m>\downarrow</m>
+          (called the <em>Quine dagger</em>, or <em>NOR</em>)
+          by the following truth table:
+          <me>
+            \begin{array}{cc|c} P \amp  Q \amp  P \downarrow Q\\\hline T \amp  T \amp  F\\ T \amp  F \amp  F\\ F \amp  T \amp  F\\ F \amp  F \amp  T \end{array}
+          </me>
+          <ol>
+            <li>
+              <p>
+                Prove <m>P \downarrow Q</m> is logically equivalent to <m>\neg (P \lor Q)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find an expression built using only <m>P</m> and the connective
+                <m>\downarrow</m> which is logically equivalent to <m>\neg P</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find an expression built using only <m>P</m>, <m>Q</m>,
+                and the connective <m>\downarrow</m> which is logically equivalent to <m>P \land Q</m>.
+                <hint>
+                  <p>
+                    do the problem for <m>P \lor Q</m> first,
+                    then use De Morgan's laws.
+                  </p>
+                </hint>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          (Hard) Suppose that <m>P,Q</m> are propositions.
+          Argue that <em>any</em> of the 16 possible truth tables
+          <me>
+            \begin{array}{cc|c} P\amp Q\amp ?\\\hline T\amp T \amp  T/F\\ T\amp F \amp  T/F\\ F\amp T \amp  T/F\\ F\amp F \amp  T/F \end{array}
+          </me>
+          represents an expression ? created using only <m>P</m> and <m>Q</m> and the operations <m>\wedge,\vee,\neg</m>.
+          Can you extend your argument to show that any truth table with any number of inputs represents some logical expression?
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

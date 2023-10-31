@@ -1,0 +1,868 @@
+<section xml:id="sec_set_notation">
+  <title>Set Notation and Describing a Set</title>
+  <introduction>
+    <p>
+      We start with a naïve notion:
+      a set is a collection of objects.<fn>
+      For this course, our notion is enough.
+      It eventually became clear that some collections of objects cannot be considered sets,
+      and the search for a completely rigorous definition began;
+      thus was Axiomatic Set Theory born.
+      </fn>
+    </p>
+    <definition>
+      <statement>
+        <p>
+          A <term>set</term> is a collection of objects.
+        </p>
+        <p>
+          If <m>x</m> is an object in a set <m>A</m>,
+          we write <m>x\in A</m> and say that <m>x</m> is an <term>element</term>
+          or <term>member</term> of <m>A</m>.
+          On the other hand,
+          if <m>x</m> is a member of some other set <m>B</m>,
+          but not of <m>A</m>, we write <m>x\notin A</m>.
+        </p>
+        <p>
+          Sets <m>A</m> and <m>B</m> are described as <term>equal</term>,
+          written <m>A = B</m>, if they have exactly the same elements.
+        </p>
+      </statement>
+    </definition>
+    <sidebyside>
+      When thinking abstractly about sets, you may find <em>Venn diagrams</em> useful. A set is visualized as a region in the plane and, if necessary, members of the set can be thought of as dots in this region. This is most useful when one has to think about multiple, possibly over-lapping, sets. The graphic represents a set <m>A</m> with at least three elements <m>a_1,a_2,a_3</m>. The element <m>x</m> does not lie in <m>A</m>.
+      \vspace{5pt}
+      <image width="73%" source="sets-01-venn"/>
+    </sidebyside>
+  </introduction>
+  <subsection>
+    <title>Notation and Conventions</title>
+    <p>
+      We use capital letters for sets, e.g.
+      <m>A,B,C,S</m>, and lower-case letters for elements.
+      It is conventional, though not required,
+      to denote an abstract element of a set by the corresponding lower-case letter:
+      thus <m>a\in A</m>, <m>b\in B</m>, etc.
+    </p>
+    <p>
+      Curly brackets <m>\{\,,\,\}</m> are used to bookend the elements of a set:
+      for instance, if we wrote
+      <me>
+        S=\{3,5,f,\alpha,\beta\}
+      </me>
+      then we'd say,
+      <sq><m>S</m> is the set whose elements are 3, 5, <m>f</m>,
+      <m>\alpha</m> and <m>\beta</m>.</sq>
+    </p>
+    <p>
+      The order in which we list the elements of a set is irrelevant, thus
+      <me>
+        S=\{\beta,f,5,\alpha,3\}=\{f,\alpha,3,\beta,5\}
+      </me>.
+    </p>
+    <p>
+      Listing all the elements in such a fashion is known as
+      <em>roster notation.</em>
+    </p>
+    <p>
+      By contrast, <em>set-builder notation</em>
+      describes the elements of a set by starting with a larger set and restricting to those elements which satisfy some property.
+      The symbols <m>\mid</m> or <m>:</m> are used as a short-hand for <sq>such that.</sq> Which symbol you use depends partly on taste,
+      although the context may make one clearer to read.<fn>
+      See Choice of Notation, below.
+      </fn> For example,
+      if <m>S=\{3,5,f,\alpha,\beta\}</m> is the set defined above,
+      we could write,
+      <me>
+        \{s\in S\mid s\text{ is a Greek letter } \}=\{s\in S:s\text{ is a Greek letter } \}=\{\alpha,\beta\}
+      </me>
+    </p>
+    <p>
+      We would read:
+      <sq>The set of elements <m>s</m> in <m>S</m> such that <m>s</m> is a Greek letter is the set <m>\{\alpha,\beta\}</m>.</sq>
+    </p>
+    <p>
+      More generally,
+      if <m>S</m> is a set and <m>P</m> is a propositional function whose domain is <m>S</m>,
+      then we can define a new set
+      <me>
+        A:=\{s\in S:P(s)\text{ is true } \}
+      </me>
+    </p>
+    <example>
+      <statement>
+        <p>
+          Let <m>A=\{2,4,6\}</m> and <m>B=\{1,2,5,6\}</m>.
+          There are many options for how to write <m>A</m> and <m>B</m> in set-builder notation.
+          For example, we could write
+          <me>
+            A=\{2n\in\Z:n=1,\,2\text{ or } 3\}\text{ and }  B=\{n\in\Z\mid 1\le n\le 6\text{ and } n\neq 3,4\}
+          </me>.
+        </p>
+        <p>
+          We now practice the opposite skill by converting five sets from set-builder to roster notation.
+          <ol>
+            <li class="custom-list-style-type">
+              <p>
+                <m>S_1=\{a\in A:a\text{ is divisible by 4 } \}=\{4\}</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type">
+              <p>
+                <m>S_2=\{b\in B:b\text{ is odd } \}=\{1,5\}</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type">
+              <p>
+                <m>S_3=\{a\in A\mid a\in B\}=\{2,6\}</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type">
+              <p>
+                <m>S_4=\{a\in A:a\not\in B\}=\{4\}</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type">
+              <p>
+                <m>S_5=\{b\in B\mid b\text{ is odd and \(b-1\in A\) } \}=\{5\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </example>
+    <p>
+      Take your time getting used to this notation.
+      Can you find an alternative description in set-builder notation for the sets <m>S_1,\ldots,S_5</m> above?
+      It is <em>crucial</em> that you can translate between various descriptions of a set or you won't be able to read much mathematics!
+    </p>
+  </subsection>
+  <subsection>
+    <title>Sets of Numbers</title>
+    <p>
+      Common sets of numbers are written in the
+      <m>\mathbb{B}</m>{ <m>\mathbb{LACKBOARD}</m>}
+      <m>\mathbb{B}</m>{ <m>\mathbb{OLD}</m>} typeface.
+      <ul>
+        <li class="custom-list-style-type">
+          <p>
+            <m>\N=\Z^+=\text{ natural numbers } =\{1,2,3,4,\ldots\}</m>
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            <m>\N_0=\{0,1,2,3,4,\ldots\}</m>
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            <m>\Z=\text{ integers } =\{\ldots,-3,-2,-1,0,1,2,3,\ldots\}</m>
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            <m>\Q=\text{ rational numbers } =\{\frac mn\colon m\in\Z\text{ and } n\in\N\} =\{\frac ab\colon a,b\in\Z\text{ and } b\neq 0\}</m>
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            <m>\R=\text{ real numbers }</m>
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            <m>\R\setminus\Q=\text{ irrational numbers }</m> (read <sq><m>\R</m> minus <m>\Q</m></sq>)
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            <m>\C=\text{ complex numbers } =\{x+iy:x,y\in\R,\text{ where } i=\sqrt{-1}\}</m>
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            <m>\Z_{\ge n}=\text{ integers \(\ge n\) } =\{n,n+1,n+2,n+3,\ldots\}</m>
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            <m>n\Z=\text{ multiples of \(n\) } =\{\ldots,-3n,-2n,-n,0,n,2n,3n,\ldots\}</m>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Where there are multiple choices of notation,
+      we will tend to use the first in the list:
+      for example <m>\N_0</m> is preferred to <m>\Z_{\ge 0}</m>.
+      The use of a subscript <m>0</m> to include zero and a superscript <m>\pm</m> to restrict to positive or negative numbers is standard.
+    </p>
+    <paragraphs>
+      <title>Examples</title>
+      <p>
+        <m>7\in\Z,\qquad \pi\in\R,\qquad \pi\not\in\Q,\qquad \sqrt{-5}\in\C,\qquad -e^2\in\R^-</m>.
+      </p>
+      <p>
+        There are often many different ways to represent the same set in set-builder notation.
+        For example,
+        the set of even numbers may be written in multiple ways:
+        think about the English translations.
+        <md>
+          <mrow>2\Z\amp =\{2n\in\Z:n\in\Z\}\tag{(The set of integers of the form $2n$ such that $n$ is an integer)}</mrow>
+          <mrow>\amp =\{n\in\Z:\exists k\in\Z,\ n=2k\} \tag{(The set of integers which are a multiple of 2)}</mrow>
+          <mrow>\amp =\{n\in\Z:\ 2\divides n\}\tag{(The set of integers which are divisible by 2)}</mrow>
+        </md>
+      </p>
+      <p>
+        Can you find any other ways to describe the even numbers using basic set notation?
+      </p>
+    </paragraphs>
+    <p>
+      The notation <m>n\Z</m> is most commonly used when <m>n</m> is a natural number,
+      but it can also be used for other <m>n</m>.
+      For example
+      <me>
+        \tfrac 12\Z=\left\{\tfrac 12x:x\in\Z\right\}=\left\{m,m+\tfrac 12:m\in\Z\right\}
+      </me>
+      is the set of multiples of <m>\frac 12</m>
+      (comprising the integers and half-integers).
+      The notation can also be extended:
+      for example <m>2\Z+1</m> would denote the odd integers.
+    </p>
+    <aside>
+      <p>
+        <term>Choice of Notation</term>
+      </p>
+      <p>
+        The notations <m>\,\mid</m> and <m>:</m> for <sq>such that</sq> give you leeway in case one these symbols is being used to mean something else.
+        For example,
+        the final expression (above) for the even numbers is much cleaner than the alternative
+        <me>
+          2\Z=\{n\in\Z\mid 2\mid n\}
+        </me>.
+      </p>
+      <p>
+        In other situations the opposite is true.
+        In <xref ref="sec_func1">Section</xref> we shall consider functions.
+        If you recall the concept of an even function from calculus,
+        we could denote the set of such as
+        <me>
+          \{f:\R\to\R:\forall x\,f(x)=f(-x)\}\qquad\text{ or } \qquad\{f:\R\to\R\mid \forall x\,f(x)=f(-x)\}
+        </me>.
+      </p>
+      <p>
+        In this case the latter notation is clearly superior.
+      </p>
+    </aside>
+    <example>
+      <statement>
+        <p>
+          \item Write the set <m>A=\{x\in\R:x^2+3x+2=0\}</m> in roster notation.
+        </p>
+        <p>
+          We are looking for the set of all real number solutions to the quadratic equation <m>x^2+3x+2=0</m>.
+          A simple factorization tells us that <m>x^2+3x+2=(x+1)(x+2)</m>,
+          whence <m>A=\{-1,-2\}</m>. \item Use the set
+          <m>B=\{0,1,2,3,\ldots,24\}</m> to describe <m>C=\{n\in\Z:n^2-3\in B\}</m> in roster notation.
+        </p>
+        <p>
+          We see that
+          <me>
+            n^2-3\in B\iff n^2\in\{3,4,5,\ldots,25,26,27\}
+          </me>
+        </p>
+        <p>
+          Since <m>n</m> must be an integer in order to be an element of <m>C</m>,
+          it follows that
+          <me>
+            C=\{\pm 2,\pm 3,\pm 4,\pm 5\}
+          </me>.
+        </p>
+        <p>
+          \item It is often harder to convert from roster to set-builder notation,
+          as you might be required to spot a pattern,
+          and many choices could be available.
+          For example, if
+          <me>
+            D=\left\{\frac 16,\frac 1{20},\frac 1{42},\frac 1{72},\frac 1{110},\frac 1{156},\ldots\right\}
+          </me>,
+          you might consider it reasonable to write
+          <me>
+            D=\left\{\frac 1{2n(2n+1)}:n\in\N\right\}
+          </me>.
+        </p>
+        <p>
+          Of course the ellipses (<ellipsis/>) might not indicate that the elements of the set continue in the way you expect.
+          For larger sets,
+          the concision and clarity of set-builder notation makes it much preferred! \item Are the following sets equal?
+          <me>
+            E=\{n^2+2\in\Z:\text{ \(n\) is an odd integer } \},\qquad F=\{n\in\Z:n^2+2\text{ is an odd integer } \}
+          </me>.
+        </p>
+        <p>
+          It may help to first construct a table listing some of the values of <m>n^2+2</m>:
+          <me>
+            \begin{array}{c|c|c} n\amp n^2\amp n^2+2\\\hline \pm 1\amp 1\amp 3\\ \pm 3\amp 9\amp 11\\ \pm 5\amp 25\amp 27\\ \pm 7\amp 49\amp 51\\ \pm 9\amp 81\amp 83\\[-5pt] \vdots\amp \vdots\amp \vdots \end{array}
+          </me>
+        </p>
+        <p>
+          The set <m>E</m> consists of those integers of the form <m>n^2+2</m> where <m>n</m> is an odd integer.
+          By the table,
+          <me>
+            E=\{3,11,27,51,83,\ldots\}
+          </me>.
+        </p>
+        <p>
+          On the other hand,
+          <m>F</m> includes all those integers <m>n</m> such that <m>n^2+2</m> is odd.
+          It is easy to see that
+          <me>
+            n^2+2\text{ is odd } \iff n^2\text{ is odd } \iff n\text{ is odd. }
+          </me>
+        </p>
+        <p>
+          Thus <m>F</m> is simply the set of all odd integers:
+          <me>
+            F=\{\pm 1,\pm 3,\pm 5,\pm 7,\ldots\}=2\Z+1
+          </me>.
+        </p>
+        <p>
+          Plainly the two sets are not equal.
+        </p>
+      </statement>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Intervals</title>
+    <p>
+      <em>Interval notation</em> is useful when discussing collections of <em>real numbers.</em>
+      You should be familiar from calculus with the words
+      <em>open</em> and <em>closed</em>
+      with regard to intervals.
+      For example,
+      <md>
+        <mrow>(0,1)\amp =\{x\in\R:0\lt x\lt 1\},\tag{(Open interval)}</mrow>
+        <mrow>[0,1]\amp =\{x\in\R:0\le x\le 1\},\tag{(Closed interval)}</mrow>
+        <mrow>(0,1]\amp =\{x\in\R:0\lt x\le 1\}.\tag{(Half-open interval)}</mrow>
+      </md>
+    </p>
+    <p>
+      When writing intervals with
+      <m>\pm\infty</m> use an open bracket at the infinite end(s):
+      <m>[1,\infty)=\{x\in\R:x\ge 1\}</m>.
+      This is since the symbols <m>\pm\infty</m> do not represent real numbers and so are not members of any interval.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Recall some basic trigonometry.
+          Consider the set of solutions to the equation
+          <m>\cos x=-\frac 12</m> where <m>x</m> lies in the interval <m>[0,4\pi]</m>.
+          This set can be written in set-builder and roster notation as
+          <me>
+            \left\{x\in[0,4\pi]:\cos x=-\frac 12\right\}=\left\{\frac{2\pi}3,\frac{4\pi}3,\frac{8\pi}3,\frac{10\pi}3\right\}
+          </me>
+        </p>
+        <p>
+          <image width="60%" source="sets-03-cos"/>
+        </p>
+      </statement>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Cardinality and the Empty Set</title>
+    <definition>
+      <statement>
+        <p>
+          A set <m>A</m> is <term>finite</term>
+          if it contains a finite number of elements:
+          this number is the set's <term>cardinality</term>, written <m>\nm A</m>.
+          If <m>A</m> contains infinitely many elements,
+          it said to be an <term>infinite set</term>.
+        </p>
+      </statement>
+    </definition>
+    <example>
+      <statement>
+        <p>
+          \item Let <m>A=\{a,b,\alpha,\gamma,\sqrt 2\}</m>,
+          then <m>\nm A=5</m>. \item Let <m>B=\Big\{4,\{1,2\},\{3\}\Big\}</m>.
+          It is important to note that the
+          <em>elements/members</em>
+          of <m>B</m> are <m>4</m>,
+          <m>\{1,2\}</m> and <m>\{3\}</m>,
+          two of which are themselves sets.
+          Therefore <m>\nm B=3</m>.
+          The set <m>\{1,2\}</m> is an object in its own right,
+          and can therefore be placed in a set along with other objects.<fn>
+          The fact that a set
+          (containing objects)
+          is also an object might seem confusing,
+          but you should be familiar with the same problem in English.
+          Consider the following sentences:
+          <sq>UCI <em>are</em> constructing a laboratory</sq> and <sq>UCI <em>is</em>
+          constructing a laboratory.</sq> In the first case we are thinking of UCI as a collection of individuals,
+          in the latter case UCI is a single object.
+          Opinions differ in various modes of English as to which is grammatically correct.
+          </fn>
+        </p>
+      </statement>
+    </example>
+    <p>
+      Cardinality is a very simple concept for finite sets.
+      For infinite sets, such as the natural numbers <m>\N</m>,
+      the concept of cardinality much more subtle.
+      In <xref ref="chap-cardinalities">Chapter</xref>
+      we will consider what cardinality means for infinite sets and meet several bizarre and fun consequences.
+      For the present, cardinality only has meaning for finite sets.
+    </p>
+    <p>
+      To round things off we need a symbol to denote a set that contains nothing at all!
+    </p>
+    <axiom>
+      <statement>
+        <p>
+          There exists a set <m>\emptyset</m> with no elements
+          (cardinality zero: <m>\nm\emptyset=0</m>).
+          We call <m>\emptyset</m> the <term>empty set</term>.
+        </p>
+      </statement>
+    </axiom>
+    <p>
+      There are many <em>representations</em> of the empty set.
+      For example <m>\{x\in\N:x^2+3x+2=0\}</m> and <m>\{n\in\N:n\lt 0\}</m> are both empty.
+      Despite this,
+      we will see in Theorem \hyperlink{thm:subsettranslnk}{ <xref ref="thm_subsettrans"></xref>} that there is only one set with no elements,
+      so that all representations actually denote the
+      <em>same set</em> <m>\emptyset</m>.
+      Note also that <m>\nm A\in\N</m> for any
+      <em>finite non-empty</em> set <m>A</m>.
+    </p>
+    <aside>
+      <p>
+        <term>Axioms</term>
+      </p>
+      <p>
+        An axiom is a basic assumption;
+        something that we need in order to do mathematics, but cannot prove.
+        This is the cheat by which mathematicians can be 100% sure that something is true:
+        a result is proved based on the assumption of several axioms.
+        With regard to the empty set axiom,
+        it probably seems bizarre that we can assume the existence of some set that has nothing in it.
+        Regardless, mathematicians have universally agreed that we need the empty set in order to do the rest of mathematics.
+        The assumption that set-builder notation always defines a new set is another axiom.
+      </p>
+    </aside>
+  </subsection>
+  <subsection>
+    <title>Reading Questions</title>
+    <ol>
+      <li>
+        <p>
+          Which of the following describe the following set?
+          Select all that apply.
+          <me>
+            \{0,1,2,3,4\}
+          </me>
+          <ol>
+            <li>
+              <p>
+                <m>\{x \in \N_0 : x \leq 4\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{x \in \Q : x \in [0,4]\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{x \in \Z : x \in [0,4)\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{x \in \Z : x \in [0,4]\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          What is the cardinality of the set <m>\{\text{ cat } , \{1,2\},2\}?</m>
+          <ol>
+            <li>
+              <p>
+                <m>2</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>3</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>4</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                it is an infinite set
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: An open interval contains its endpoints.
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: <m>\{1,2,3\} = \{3,1,2\}</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Which of the following sets are empty?
+          <ol>
+            <li>
+              <p>
+                <m>\{x \in \R : x^2 \lt 0\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{x \in \R : x^2 \leq 0\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{x \in \N : x \in [0.5, 0.75)\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>[1,1]</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Write each of the following sets in roster notation (i.e. list their elements).
+          <ol>
+            <li>
+              <p>
+                <m>\{x \in \R : x^2 - 5x + 4 = -2\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{x \in \Q : 2x \in \Z\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{n^2 - 1 \in \Z : n \in \{-3,-1,1,3\}\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{x \in 2\Z + 1 : x \in (0,10]\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+        <url href="https://youtu.be/UkwSlMK6-OM">Video Solution</url>
+      </li>
+      <li>
+        <p>
+          Write each of the following sets in set-builder notation.
+          <ol>
+            <li>
+              <p>
+                <m>\{\ldots,-8,-3,2,7,12,17,\ldots\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{2,3,5,7,11,13\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{1,\frac{1}{4},\frac{1}{16},\frac{1}{64},\ldots\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+        <url href="https://youtu.be/mBtKZXmbp54">Video Solution</url>
+      </li>
+      <li>
+        <p>
+          Let
+          <me>
+            A = \{0, \{0\}, \{1,2\}, \{0,\{1,3\}\}\}
+          </me>
+          Answer True or False for each of the following:
+          <ol>
+            <li>
+              <p>
+                <m>0 \in A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{0\} \in A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>1 \in A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{1\} \in A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{1,3\} \in A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{0,\{1,3\}\} \in A</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+        What is the cardinality of <m>A</m>?
+      </li>
+    </ol>
+    <p>
+      <url href="https://youtu.be/kxglfP-FLpY">Video Solution</url>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Describe the following sets in roster notation:
+          that is, list their elements.
+          <ol>
+            <li>
+              <p>
+                <m>\{x\in\N:x^2\le 5x\}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{x^2\in\R:x^2-3x+2=0\}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bigl\{n\in\{-4,-3,-2,-1,0,1,\ldots,21\}:4\divides n^2\bigr\}</m> (<em>does <m>:</m> or <m>|</m> denote the condition?</em>)
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{x\in \frac 12\Z: 0\le x\le 4\text{ and } 4x^2\in 2\Z+1\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Describe the following sets in set-builder notation
+          (<em>look for a pattern</em>).
+          <ol>
+            <li>
+              <p>
+                <m>\{\ldots,-3,0,3,6,9,\ldots\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{-3,1,5,9,13,\ldots\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{1,\frac 13,\frac 17,\frac 1{15},\frac 1{31},\ldots\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let
+          <md>
+            <mrow>A \amp = \emptyset</mrow>
+            <mrow>B \amp = \{A\}</mrow>
+            <mrow>C \amp = \{\{A\}\}</mrow>
+            <mrow>D \amp = \{A, \{0\}, \{0,1\}\}</mrow>
+          </md>
+          Answer True or False for each of the following:
+          <ol>
+            <li>
+              <p>
+                <m>0 \in A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \in B</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \in C</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>B \in C</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \in D</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>B \in D</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>0 \in D</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{0\} \in D</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{1\} \in D</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Each of the following sets of real numbers is a single interval.
+          Determine the interval.
+          <ol>
+            <li>
+              <p>
+                <m>\{x\in\R:x>5\text{ and } x\le 19\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{x\in\R:x\nleq 5\text{ or } x\le 19\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{x^2\in\R:x\neq 0\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{x\in\R^-:x^2\ge 16\text{ and } x^3\le 27\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Can you describe the set <m>\{x\in\Z:-3\le x\lt 77\}</m> in interval notation?
+          Why/why not?
+        </p>
+      </li>
+      <li>
+        <p>
+          Compare the sets <m>A=\{3x\in\Z:x\in 2\Z\}</m> and <m>B=\{x\in\Z: 6 \mid (x - 12)\}</m>.
+          Are they equal?
+        </p>
+      </li>
+      <li>
+        <p>
+          What is the cardinality of the following set?
+          What are the elements?
+          <me>
+            \Bigl\{\emptyset,\bigl\{\emptyset\bigr\},\bigl\{\emptyset,\{\emptyset\}\bigr\}\Bigr\}
+          </me>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A=\{\text{ 1,2,3,4 } \}</m>,
+          and let <m>B</m> be the set
+          <me>
+            B=\Bigl\{\{x,y\}:x,y\in A\Bigr\}
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Describe <m>B</m> in roster notation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Now compute the cardinality of the sets
+                <me>
+                  C=\Bigl\{\bigl\{x,\{y\}\bigr\}:x,y\in A\Bigr\}
+                </me>
+                and
+                <me>
+                  D=\biggl\{\Bigl\{\bigl\{x,\{y\}\bigr\}:x,y\in A\Bigr\}\biggr\}
+                </me>.
+                Compare them to <m>\nm B</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove or disprove the following conjectures.
+          <ol>
+            <li>
+              <p>
+                There exists <m>x \in \R \setminus \Q</m> such that <m>x^2\in\Q</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                For all <m>x \in \R \setminus \Q</m> we have <m>x^2\in\Q</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

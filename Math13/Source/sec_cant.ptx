@@ -1,0 +1,800 @@
+<section xml:id="sec_cant">
+  <title>Cantor's Notion of Cardinality</title>
+  <introduction>
+    <p>
+      During the late 1800's a German mathematician named Georg Cantor almost single-handedly overturned the foundations of mathematics.
+      Prior to Cantor,
+      mathematicians had understood a set to be nothing more than a collection of objects.
+      Via the consideration of certain infinite sets
+      (in particular his middle third set),
+      Cantor showed this naïve idea to be woefully inadequate.
+      Cantor met great resistance from many famous mathematicians and philosophers who felt his ideas to be unnatural.
+      He even managed to inflame several religious scholars who believed his investigation of infinity to be an affront to the divine!
+      Despite strong initial antipathy, Cantor's notion of cardinality is now universally accepted by mathematicians.
+      More importantly,
+      by exposing the contradictions inherent in contemporary set theory,
+      he convinced mathematicians that a rigorous axiomatic approach was necessary.
+      The result was a revolution in foundational mathematics,
+      now known as <em>axiomatic set theory.</em>
+      Indeed, Cantor's legacy is arguably the modern axiomatic nature of pure mathematics,
+      where rigor dominates and mathematicians are obliged to follow logic wherever it leads,
+      regardless of the bizarre paradoxes which might appear.
+    </p>
+    <p>
+      In this chapter we consider the basics of Cantor's contribution,
+      essentially his extension of the concept of
+      <em>cardinality</em> to infinite sets.
+    </p>
+    <p>
+      Recall that if <m>A</m> is a <em>finite</em> set, then <m>\nm A</m>,
+      the cardinality of <m>A</m>, is simply the number of elements in <m>A</m>.
+      This definition obviously does not extend to infinite sets.
+      However, cardinality has a stronger purpose than merely attaching a number to each set:
+      it can be viewed as a <em>relation</em>
+      and used to <em>compare</em> sets.
+      It is this interpretation that turns out to apply to infinite sets.
+      For example, suppose that
+      <me>
+        A=\{\text{ fish } ,\text{ dog } \},\text{ and }  B=\{\alpha,\beta,\gamma\}
+      </me>.
+    </p>
+    <p>
+      Even though the elements of the sets <m>A</m> and <m>B</m> are completely different,
+      we may use cardinality to compare the sizes of <m>A</m> and <m>B</m>:
+      since <m>\nm A=2</m> and <m>\nm B=3</m>,
+      we may write <m>\nm A\lt \nm B</m> to indicate that <m>B</m> has more elements as <m>A</m>:
+      colloquially,
+      <q><m>B</m> is larger than <m>A</m>.</q>
+    </p>
+    <p>
+      It is at this point that Cantor enters the discussion.
+      By <xref ref="thm_finitecard">Theorem</xref>
+      and <xref ref="cor_finitecard">Corollary</xref>,
+      the condition <m>\nm A\lt \nm B</m> is equivalent to the existence of an injective (one-to-one) function
+      <m>f:A\to B</m> and the non-existence of a bijection <m>g:A\to B</m>.
+      For example, the function <m>f:A\to B</m> defined by
+      <me>
+        \text{ fish } \longmapsto\alpha,\qquad\text{ dog } \longmapsto\beta
+      </me>,
+      is clearly injective.
+      In a sense, <xref ref="thm_finitecard">Theorem</xref>
+      tells us how to compare the cardinalities of finite sets
+      <em>without</em> counting their elements.
+      Cantor's seemingly innocuous idea was to turn this <em>theorem</em>
+      for finite sets into a <em>definition</em>
+      of cardinality for all sets.[4]
+    </p>
+    <definition xml:id="defn_infcard">
+      <statement>
+        <p>
+          The <term>cardinalities</term> of two sets <m>A,B</m> are denoted <m>\nm A</m> and <m>\nm B</m>.
+          We compare cardinalities as follows:
+          <ul>
+            <li>
+              <p>
+                <m>\nm A\le\nm B\iff\exists f:A\to B</m> injective.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\nm A=\nm B\iff\exists f:A\to B</m> bijective.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          We write <m>\nm A\lt \nm B\iff \nm A\le \nm B</m> and <m>\nm A\neq \nm B</m>.
+          That is <m>\exists f:A\to B</m> injective but <m>\nexists g:A\to B</m> bijective.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Cardinality is defined as an abstract <em>property</em>
+      whereby two sets can be <em>compared.</em> Otherwise said,
+      it is a <em>relation.</em> To define a cardinality <m>\nm A</m> as an object,
+      we need the following theorem.
+    </p>
+    <theorem xml:id="thm_cardequiv">
+      <statement>
+        <p>
+          On any collection of sets,
+          the relation <m>A\sim B\iff\nm A=\nm B</m> is an equivalence relation.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      The cardinality of a set <m>A</m> can then be defined to be the equivalence class of <m>A</m> with respect to this relation:
+      <m>\nm A:=[A]</m>.
+      It is now clear that cardinality partitions any collection of sets:
+      every set has a cardinality, and no set has more than one cardinality.
+      We can moreover identify the cardinalities of finite sets with the cardinal numbers <m>0,1,2,3,4,\ldots</m> in a natural way.
+      To get further it is useful to introduce a symbol for the cardinality of the simplest infinite set.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Countably Infinite Sets</title>
+    <definition>
+      <statement>
+        <p>
+          The cardinality of the set of natural numbers <m>\N</m> is denoted <m>\aleph_0</m>,
+          read <em>aleph-nought</em> or <em>aleph-null.</em>
+          We say that a set <m>A</m> is <term>countably infinite,</term>
+          or <term>denumerable</term><fn>
+          Sometimes this is shortened to <term>countable,</term>
+          although some authors use countable to mean <sq>finite or denumerable,</sq> i.e. any <m>A</m> for which <m>\nm A\le\aleph_0</m>.
+          Use <term>countably infinite</term>
+          or <term>denumerable</term> to avoid confusion.
+          <m>\aleph</m> is the first letter of the Hebrew alphabet.
+          </fn> if <m>\nm A=\aleph_0</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      We will discuss in a moment why we need a new symbol,
+      why <m>\infty</m> doesn't suffice.
+      First we consider an example of <xref ref="defn_infcard">Definition</xref> at work.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Let <m>2\N=\{2,4,6,8,10,\ldots\}</m> be the set of positive even integers.
+          The function
+          <me>
+            f:\N\to 2\N:n\mapsto 2n
+          </me>
+          is a bijection.
+          It follows that <m>\nm{2\N}=\nm\N=\aleph_0</m> and we say that <m>2\N</m> is countably infinite.
+        </p>
+      </statement>
+    </example>
+    <p>
+      This example immediately demonstrates one of strange properties of infinite sets:
+      <m>2\N</m> is a <em>proper subset</em> of <m>\N</m>,
+      and yet the two sets are in bijective correspondence with one another!
+      You should feel like you want to say two contradictory things simultaneously:
+      <ul>
+        <li>
+          <p>
+            <m>\N</m> has the same <sq>number of elements</sq> as <m>2\N</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\N</m> has twice the <sq>number of elements</sq> as <m>2\N</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      If this doesn't make you feel uncomfortable, then read it again!
+      The remedy to your discomfort is to appreciate that <em>cardinality</em>
+      and <em>number of elements</em> are different concepts.
+      Replacing <sq>number of elements</sq> with <sq>cardinality</sq> in the two statements makes both true!
+      Indeed it is completely legitimate to write <m>2\aleph_0=\aleph_0</m>.
+      The idea of a set having a proper subset with the same cardinality can be used as a
+      <em>definition</em> of infinite set
+      (see <xref ref="sec_cant">Exercise</xref>.
+      <xref ref="ex_cardinf"></xref>).
+    </p>
+    <p>
+      Here is another example of the same phenomenon;
+      <m>\N</m> has one more element than
+      <m>\N_{\ge 2}</m> and yet they have the same cardinality:
+      <m>\aleph_0+1=\aleph_0</m>.
+    </p>
+    <example>
+      <statement>
+        <p>
+          The function <m>g:\N\to\N_{\ge 2}:n\mapsto n+1</m> is a bijection,
+          whence <m>\N_{\ge 2}=\{2,3,4,5,\ldots\}</m> is countably infinite.
+        </p>
+      </statement>
+    </example>
+    <p>
+      \paragraph{Proving that a set is countably infinite}
+    </p>
+    <p>
+      While it is possible to use any number of clever theorems to prove the denumerability of a set <m>A</m>,
+      the simplest thing to imagine listing the elements in some order so that <m>A</m> <sq>looks like</sq> the natural numbers,
+      or some other known countably infinite set.
+      For instance,
+      the above examples can be summarized by listing the elements of these sets below those of the natural numbers:
+      <me>
+        \begin{array}{c||ccccccccccc} \N\amp 1\amp 2\amp 3\amp 4\amp 5\amp 6\amp 7\amp 8\amp 9\amp 10\amp \cdots\\\hline\hline 2\N\amp 2\amp 4\amp 6\amp 8\amp 10\amp 12\amp 14\amp 16\amp 18\amp 20\amp \cdots\\\hline \N_{\ge 2}\amp 2\amp 3\amp 4\amp 5\amp 6\amp 7\amp 8\amp 9\amp 10\amp 11\amp \cdots \end{array}
+      </me>
+    </p>
+    <p>
+      The required bijective functions are then easy to read off!
+      We use this technique to construct bijections which show the denumerability of two important examples.
+    </p>
+    <theorem xml:id="thm_zcount">
+      <statement>
+        <p>
+          The integers <m>\Z</m> are countably infinite.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        We must construct a bijective function <m>f:\N\to\Z</m>.
+        By experimenting with listing the integers,
+        we write down the first few terms of a suitable function in tabular form:
+        <me>
+          \begin{array}{c|ccccccccccc} n\amp 1\amp 2\amp 3\amp 4\amp 5\amp 6\amp 7\amp 8\amp 9\amp 10\amp \cdots\\\hline f(n)\amp 0\amp 1\amp -1\amp 2\amp -2\amp 3\amp -3\amp 4\amp -4\amp 5\amp \cdots \end{array}
+        </me>
+      </p>
+      <p>
+        Two things should be clear from the table:
+        <ul>
+          <li>
+            <title>Surjectivity</title>
+            <p>
+              <nbsp/><nbsp/> Every integer appears at least once in the second row.
+            </p>
+          </li>
+          <li>
+            <title>Injectivity</title>
+            <p>
+              <nbsp/><nbsp/> No integer appears more than once in the second row.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        It follows that the function <m>f</m> is bijective.
+      </p>
+    </proof>
+    <p>
+      You might object that the above argument is too quick,
+      and perhaps you don't trust the reasoning.
+      Does the table really define a function?
+      Is it really obvious that the function is bijective?
+      We can be more formal and explicit,
+      but the cost is that the big picture becomes less clear.
+      Our function may be written
+      <me>
+        f(n)=\begin{cases}\frac 12n\amp \text{ if \(n\) is even, } \\ -\frac 12(n-1)\amp \text{ if \(n\) is odd. } \end{cases}
+      </me>
+    </p>
+    <p>
+      Now we check that this is bijective:
+      <md>
+        -5pt]  (\emph{Injectivity}) Let <m>m,n\in\N</m>, and suppose that <m>f(m)=f(n)</m>. Without loss of generality, there are three cases to consider. \begin{ptabular}{(\emph{<m>m</m> even, <m>n</m> odd})} (\emph{<m>m,n</m> both even})\amp <m>f(m)=f(n)\implies \frac m2=\frac n2\implies m=n</m>.\\ (\emph{<m>m,n</m> both odd})\amp <m>f(m)=f(n)\implies-\frac 12(m-1)=-\frac 12(n-1)\implies m=n</m>.\\ (\emph{<m>m</m> even, <m>n</m> odd})\amp <m>f(m)=f(n)\implies\frac m2=-\frac 12(n-1)\implies m+n=1</m>. But <m>m,n\in\N</m>, so <m>m+n\ge 2</m>, which is a contradiction. \end{ptabular} Therefore <m>f</m> is injective.\\[-5pt]  (\emph{Surjectivity}) With a little calculation, you should be able to see that, for any <m>z\in\Z</m>, there exists a positive integer <m>n</m> such that <m>f(n)=z</m>, namely: \[z=\begin{cases}f(2z)\amp \text{ if \(z>0\), } \\ f(1-2z)\amp \text{ if \(z\le 0\). } \end{cases}
+      </md>
+    </p>
+    <p>
+      Hence <m>f</m> is surjective.
+    </p>
+    <p>
+      For basic examples you are encouraged to use the listing/pictorial construction rather than explicitly writing everything out.
+      Training your intuition is more important than the formality here!
+      Indeed we would likely have been unable to come up with an explicit formula for <m>f</m> without the table,
+      and it is easier to get a feel for what <m>f</m> is using the table rather than the formula.
+    </p>
+    <p>
+      As you build up examples,
+      you no longer have to compare countably infinite sets directly to the natural numbers.
+      A set <m>B</m> is countably infinite if and only if there exists a bijection <m>f:A\to B</m> where <m>A</m> is
+      <em>any countably infinite set</em>.
+      This holds because the composition of bijective function is also bijective
+      (<xref ref="thm_compinjsurj">Theorem</xref>).
+      For instance,
+      we immediately see that the set of even integers <m>2\Z</m> is countably infinite because
+      <me>
+        f:\Z\to 2\Z:z\mapsto 2z
+      </me>
+      is a bijection,
+      and because we now know that <m>\Z</m> is countably infinite.
+      We use this approach to help prove the following result,
+      the first of Cantor's truly counter-intuitive revelations.
+    </p>
+    <theorem xml:id="thm_qcount">
+      <statement>
+        <p>
+          The rational numbers <m>\Q</m> are countably infinite.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      We prove the Theorem in stages.
+      First we construct a bijection between the natural numbers <m>\N</m> and the positive rational numbers <m>\Q^+</m>.
+      We then modify this to obtain a bijection between the integers <m>\Z</m> and the full set of rational numbers <m>\Q</m>.
+      By the previous Theorem,
+      it follows that <m>\Q</m> must be countably infinite.
+    </p>
+    <proof>
+      <p>
+        For each pair of natural numbers <m>a,b</m>,
+        place the fraction <m>\frac ab\in\Q^+</m> in the <m>a</m>th column and <m>b</m>th row of an infinite square as shown below.
+        Now list the positive rational numbers by tracing the diagonals as shown,
+        deleting any number that has already appeared in the list
+        (<m>\frac 22=\frac 11</m>, <m>\frac 64=\frac 32</m>, etc.).
+      </p>
+      <sidebyside>
+        <image width="73%" source="cardinality-01-qcount"/>
+        The infinite square
+        <image width="73%" source="cardinality-02-qcount"/>
+        Trace diagonals and delete repeats
+      </sidebyside>
+      <p>
+        We obtain the <em>ordered set</em>
+        <me>
+          \{a_1,a_2,a_3,a_4,\ldots\}=\left\{{\frac 11,\,\frac 21,\,\frac 12,\,\frac 13,\,\frac 31,\,\frac 41,\,\frac 32,\,\frac 23,\,\frac 14,\,\frac 15,\,\ldots}\right\}
+        </me>.
+      </p>
+      <p>
+        Now define the function <m>f:\N\to\Q^+</m> by <m>f(n)=a_n</m>.
+        This is certainly a function.
+        We claim that it is a bijection.
+        <me>
+          -5pt]  (\emph{Injectivity}) Let \(m,n\in\N\), and suppose that \(f(n)=f(m)\). Then \(a_m=a_n\). In the above construction we deleted any rational number which had already appeared in the list. Thus \(a_m\) can only equal \(a_n\) if \(m=n\).\\[-5pt]  (\emph{Surjectivity}) A positive rational number \(\frac ab\) appears in the \(a\)th column and \(b\)th row of the square (and in many other places, \(\frac ab=\frac{2a}{2b}=\cdots\)). We only delete a fraction \(\frac ab\) if it has already appeared in the list, therefore every positive rational lies in the range of \(f\).\\[-5pt]  To finish things off, we extend the function to all rational numbers by \[g:\Z\to\Q:n\mapsto\begin{cases}f(n)\amp \text{ if } n>0,\\ 0\amp \text{ if } n=0,\\ -f(-n)\amp \text{ if } n\lt 0. \end{cases}
+        </me>
+      </p>
+      <p>
+        We are merely using <m>f</m> to identify the negative integers with the negative rationals.
+        It is immediate that <m>g:\Z\to\Q</m> is a bijection.
+        Appealing to <xref ref="thm_zcount">Theorem</xref>,
+        we deduce that <m>\nm{\Q}=\nm{\Z}=\aleph_0</m>,
+        and so <m>\Q</m> is countably infinite.
+      </p>
+    </proof>
+    <p>
+      This result should surprise you!
+      Any sensible person should feel that there are far,
+      far more rational numbers than integers,
+      and yet the two sets have the same cardinality.
+      Bizarre.
+    </p>
+    <p>
+      There are other countably infinite sets that appear to be even larger than <m>\Q</m>.
+      For example, we can show that the Cartesian product
+      <m>\N\times\N</m> is countably infinite:
+      use almost the same proof as for <m>\Q^+</m> except that there are no repeats to delete.
+      For a much larger-seeming yet still countably infinite set,
+      consider the <em>algebraic numbers:</em>
+      <me>
+        \big\{x\in\R:p(x)=0\text{ for some polynomial \(p\) with integer coefficients } \big\}
+      </me>.
+    </p>
+    <p>
+      Algebraic numbers are the zeros of polynomials with integer coefficients.
+      Clearly any rational number <m>\frac ab</m> is algebraic,
+      since it satisfies <m>p(x)=0</m> for <m>p(x)=bx-a</m>.
+      There are many more algebraic numbers than rational numbers: e.g.
+      <m>\sqrt[5]{2}-3</m> is algebraic since it is a root of the polynomial <m>p(x)=(x+3)^5-2=0</m>.
+      Not all real numbers are algebraic however:
+      those which aren't, such as <m>\pi</m> and <m>e</m>,
+      are termed <em>transcendental.</em>
+    </p>
+  </subsection>
+  <subsection>
+    <title>The least infinite cardinal?</title>
+    <p>
+      We originally introduced the symbol
+      <m>\aleph_0</m> to represent the cardinality of the <sq>simplest</sq> infinite set.
+      While the natural numbers are certainly infinite and straightforward,
+      is there any more compelling reason why we should consider them to be the
+      <em>most simple</em> infinite set?
+      One reason lies in the following result.
+    </p>
+    <theorem xml:id="thm_finitealeph">
+      <statement>
+        <p>
+          <m>A</m> is a finite set if and only if <m>\nm A\lt \aleph_0</m>.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      Otherwise said, every infinite set has cardinality
+      <em>at least as large</em> as the natural numbers:
+      <m>\aleph_0</m> may be considered the least infinite cardinal.
+    </p>
+    <proof>
+      <p>
+        (<m>\Longrightarrow</m>)The <m>n=0</m> case is left to the Exercises.
+        Suppose that <m>\nm A=n\ge 1</m> so that we may list the elements of <m>A</m> as <m>\{a_1,\ldots,a_n\}</m>.
+        We must prove two things:
+        <ol>
+          <li>
+            <p>
+              <m>\nm A\le\aleph_0</m>.
+              That is, <m>\exists f:A\to\N</m> which is <em>injective.</em>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\nm A\neq\aleph_0</m>.
+              That is, <m>\nexists g:A\to\N</m> which is <em>bijective.</em>
+              By symmetry this is equivalent to showing that there is no bijective function <m>h:\N\to A</m>.<fn>
+              If <m>g:A\to\N</m> is a bijection,
+              then <m>g^{-1}:\N\to A</m> is also a bijection.
+              </fn>
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        For part 1., simply define <m>f</m> by
+        <m>f(a_k)=k</m> for each <m>k\in\{1,2,3,\ldots,n\}</m>.
+        This is injective since the distinct elements <m>a_k</m> of <m>A</m> map to distinct integers.
+      </p>
+      <p>
+        For part 2., suppose that <m>h:\N\to A</m> is bijective.
+        Consider the set
+        <me>
+          h\bigl(\{1,\ldots,n+1\}\bigr)=\bigl\{h(1),\ldots,h(n+1)\bigr\}\subseteq A
+        </me>.
+      </p>
+      <p>
+        Since <m>A</m> has <m>n</m> elements,
+        by Dirichlet's box principle,
+        at least two of the values <m>h(1),\ldots,h(n+1)</m> must be equal.
+        Therefore <m>h</m> is not injective and consequently not bijective.
+        A contradiction.
+      </p>
+      <p>
+        (<m>\Longleftarrow</m>)See <xref ref="sec_cant">Exercise</xref>.
+        <xref ref="ex_cardinf"></xref>.
+      </p>
+    </proof>
+    <p>
+      Of course, this doesn't answer the question of whether there exist infinite sets with larger cardinality than <m>\aleph_0</m>,
+      though we shall answer this in the next section.
+    </p>
+    <aside>
+      <p>
+        <term><m>\aleph_0</m> versus <m>\infty</m>:
+        what's the difference?</term>
+      </p>
+      <p>
+        It can be difficult to grasp why
+        <m>\aleph_0</m> and <m>\infty</m> are not the same thing.
+        The problem is compounded by references to an <sq>infinite number</sq> of objects whenever the cardinality of a set is not finite.
+        This loose phrase is commonly used,
+        but risks conflating the concepts of <sq>infinite set</sq> and <sq>infinity.</sq>
+      </p>
+      <p>
+        So what is the difference between <m>\aleph_0</m> and <m>\infty</m>?
+        If there aren't an <sq>infinite number</sq> of natural numbers,
+        how many are there?
+        <xref ref="thm_finitealeph">Theorem</xref>
+        says that <m>\aleph_0</m> is <sq>larger than any natural number.</sq> Is this not what we mean by infinity?
+        The reason we need a new symbol <m>\aleph_0</m>,
+        and why it and <m>\infty</m> are different, is twofold:
+        <ol>
+          <li>
+            <p>
+              As we shall see shortly,
+              there are infinite sets with greater cardinality than <m>\aleph_0</m>:
+              in a naïve sense, there are multiple infinities.
+              The single symbol <m>\infty</m> is insufficient to distinguish sets with different infinite cardinalities.
+            </p>
+          </li>
+          <li>
+            <p>
+              More philosophically, <m>\aleph_0</m> is an
+              <em>object</em> in its own right;
+              an object to which the cardinality of some set may be equal.
+              Indeed, by <xref ref="thm_cardequiv">Theorem</xref>,
+              <m>\aleph_0</m> is an equivalence class.
+              By contrast, <m>\infty</m> is typically not an object.
+              The symbol <m>\infty</m> is mostly used in
+              <em>interval notation</em>
+              and when talking about <em>limits:</em>
+              in neither case does the symbol represent an object.
+              For example:
+              <ul>
+                <li>
+                  <p>
+                    The interval <m>(2,\infty)</m> is the set of all real numbers greater than 2.
+                    We don't say <sq>greater than 2 and
+                    <em>less than infinity.</em></sq>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <m>\lim\limits_{x\to 3}\frac 1{(x-3)^2}=\infty</m> means that the function
+                    <m>f(x)=\frac 1{(x-3)^2}</m> gets unboundedly larger as <m>x</m> approaches 3.
+                    It is incorrect to say that <m>f(x)</m> <sq>approaches infinity.</sq> It is even worse to write <m>f(3)=\frac 1{(3-3)^2}=\infty</m>.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        The challenge of Cantor's notion of cardinality is to appreciate that the question,
+        <sq>How many natural numbers are there?</sq> is meaningless!
+      </p>
+    </aside>
+  </subsection>
+  <subsection>
+    <title>Reading Questions</title>
+    <ol>
+      <li>
+        <p>
+          A set <m>A</m> is <em>countably infinite</em> or <em>denumerable</em>
+          if \rule{3cm}{0.15mm}. Select all that apply.
+          <ol>
+            <li>
+              <p>
+                There exists a surjection from <m>\N</m> onto <m>A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                There exists an injection from <m>\N</m> into <m>A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                There exists a bijection between <m>A</m> and <m>\Q</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                There exists an injection from <m>A</m> into <m>\N</m> and no injection from <m>A</m> into any finite set.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: if <m>A</m> is a proper subset of <m>B</m>,
+          then <m>A</m> has strictly smaller cardinality than <m>B</m>.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Suppose that <m>A \neq \emptyset</m>.
+          Prove that <m>|A| \leq |B|</m> if and only if there is a surjection <m>g : B \to A</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>a,b \in \R</m> with <m>a \lt b</m>.
+          Show that <m>|(a,b)| = |(0,1)|</m>.
+          Conclude that any two open intervals in <m>\R</m> have the same cardinality.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Refresh your proof skills by proving explicitly that the following functions are bijections:
+          <ol>
+            <li>
+              <p>
+                <m>f:\N\to 2\N:n\mapsto 2n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>g:\N\to\N_{\ge 2}:n\mapsto n+1</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Construct a function <m>f:\N\to\Z_{\ge -3}=\{-3,-2,-1,0,1,2,3,4,\ldots\}</m> which proves that the latter set is countably infinite:
+          you must show that your function is a bijection.
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that the set <m>3\Z+2=\{3n+2:n\in\Z\}</m> is countably infinite.
+        </p>
+      </li>
+      <li>
+        <p>
+          Show that the set of all triples of the form <m>(n^2,5,n+2)</m> with
+          <m>n\in 3\Z</m> is countably infinite by explicitly providing a bijection with a countably infinite set <m>A</m>. (<em>You must check that the set <m>A</m> is countably infinite,
+          and that your map is indeed a bijection.</em>)
+        </p>
+      </li>
+      <li>
+        <p>
+          Imagine a hotel with an infinite number of rooms: Room 1, Room 2, Room 3, Room 4, etc.. Show that,
+          even if the hotel is full,
+          the guests may be re-accommodated so that there is always a room free for one additional guest.
+          <em>Hint: consider the function <m>f:\N\to\N:n\mapsto n+1</m>.</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> be a set, and let <m>B</m> be a subset of <m>A</m>.
+          Suppose <m>B</m> is countably infinite and <m>a \in A \setminus B</m>.
+          Show <m>B \cup \{a\}</m> is countably infinite.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find an injection <m>f : \Z \to (0,1)</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find an explicit bijection <m>f : [0,1] \to (0,1)</m>.
+          Make sure to show your map is a bijection.
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that <m>A\subseteq B\Longrightarrow \nm A\le\nm B</m>. (<em>You need an injective function <m>f:A\to B</m></em>)
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove <xref ref="thm_cardequiv">Theorem</xref>. (<em>You need little more than <xref ref="thm_compinjsurj">Theorem</xref>
+          on the composition of bijective functions.</em>)
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that the set <m>\N\times\N</m> is countably infinite.
+          You should base your proof on <xref ref="thm_qcount">Theorem</xref>.
+        </p>
+      </li>
+      <li>
+        <p>
+          We know that <m>\Q</m> is countably infinite, and we saw
+          (<xref ref="thm_qcount">Theorem</xref>)
+          that there must exist a bijective function <m>f:\N\to\Q</m>.
+          Show that <m>g:\N\times\N\to\Q\times\Q</m> defined by <m>g(m,n)=(f(m),f(n))</m> is a bijection.
+          Appeal to the previous question to show that
+          <m>\Q\times\Q</m> is countably infinite.
+        </p>
+      </li>
+      <li>
+        <p>
+          Here we consider the <m>n=0</m> case of <xref ref="thm_finitealeph">Theorem</xref>.
+          Recall the definition of function in <xref ref="sec_func2">Section</xref>.
+          <ol>
+            <li>
+              <p>
+                If <m>\nm A=0</m>, then <m>A=\emptyset</m>.
+                Suppose that <m>f:\emptyset\to\N</m> is a function.
+                Use <xref ref="defn_func">Definition</xref>
+                to prove that <m>f=\emptyset</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                State what it means,
+                in the language of <xref ref="defn_func">Definition</xref>,
+                for a function <m>f:A\to\N</m> to be injective.
+                Show that <m>f=\emptyset</m> is an injective function.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>B</m> is a set with <m>\nm B\ge 1</m>.
+                Prove by contradiction that there are no functions <m>h:B\to\emptyset</m>.
+                Conclude that <m>0\lt \aleph_0</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> be a countably infinite set.
+          Show that for any <m>n \in \N</m>,
+          there is a partition <m>\mathcal{A} = \{A_1,\ldots,A_n\}</m> of <m>A</m> such that each subset <m>A_i</m> in the partition is also countably infinite.
+        </p>
+      </li>
+      <li xml:id="ex_cardunion">
+        <p>
+          Suppose that the set <m>A_n</m> is countably infinite for each <m>n\in\N</m>.
+          We may then list the elements of each set:
+          <m>A_n=\{a_{n1},a_{n2},a_{n3},a_{n4},\ldots\}</m>.
+          Now list the elements of the sets <m>A_1,A_2,A_3,\ldots</m> as follows:
+          <md>
+            <mrow>A_1=\{a_{11},a_{12},a_{13},a_{14},\ldots\}</mrow>
+            <mrow>A_2=\{a_{21},a_{22},a_{23},a_{24},\ldots\}</mrow>
+            <mrow>A_3=\{a_{31},a_{32},a_{33},a_{34},\ldots\}</mrow>
+            <mrow>\qquad\vdots</mrow>
+          </md>
+          Use this construction to prove that
+          <m>\bigcup\limits_{n\in\N}A_n</m> is a countably infinite set.
+          <em>This result is often stated,
+          <sq>A countable union of countable sets is countable.</sq></em>
+        </p>
+      </li>
+      <li xml:id="ex_algcard">
+        <p>
+          Let <m>A = \{x \in \R : p(x) = 0 \text{ for some polynomial \(p\) with integer coefficients } \}</m> be the set of
+          <em>algebraic</em> numbers.
+          We will show that <m>A</m> is countable.
+          <ol>
+            <li>
+              <p>
+                Let <m>M \in \N</m>.
+                Prove that there are only finitely many choices of <m>d \in \N</m> and
+                <m>a_0,\ldots,a_d \in \Z</m> such that <m>M = d + |a_0| + \cdots + |a_d|</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>P_M = \{a_d x^d + \cdots + a_1 x + a_0 : M = d + |a_0| + \cdots + |a_d|\}</m>.
+                Explain why <m>P_M</m> is finite.
+              </p>
+            </li>
+            <li>
+              <p>
+                Using the fact that a polynomial of degree <m>d</m> can have at most <m>d</m> roots in <m>\R</m>,
+                show that
+                <me>
+                  R_M = \{x \in \R : p(x) = 0 \text{ for some }  p \in P_M\}
+                </me>
+                is finite.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>A = \bigcup_{M \in \N} R_M</m> and conclude by <xref ref="ex_cardunion">Exercise</xref>
+                that <m>A</m> must be countably infinite.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          (Hard!) In this question we complete the proof of <xref ref="thm_finitealeph">Theorem</xref>
+          by showing that if <m>\nm A\lt \aleph_0</m>,
+          then <m>A</m> is a finite set.
+          We prove by contradiction.
+          Suppose that <m>A</m> is an infinite set such that <m>\nm A\lt \aleph_0</m>.
+          Then there exists an injective function <m>f:A\to\N</m>.
+          List the elements of the image of <m>f</m> in increasing order:
+          <me>
+            \range(f)=\{n_1,n_2,n_3,\ldots\}
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Prove that <m>\im f</m> is an infinite set.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that for all <m>k\in\N</m>,
+                there exists a unique <m>a_k\in A</m> satisfying <m>f(a_k)=n_k</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Define <m>g:\N\to A</m> by <m>g(k)=a_k</m>.
+                Prove that <m>g</m> is a bijection.
+              </p>
+            </li>
+            <li>
+              <p>
+                Why do we obtain a contradiction?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li xml:id="ex_cardinf">
+        <p>
+          (Hard) Prove that a set <m>A</m> is infinite if and only if it has a proper subset
+          <m>B\subset A</m> with the same cardinality <m>\nm B=\nm A</m>.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

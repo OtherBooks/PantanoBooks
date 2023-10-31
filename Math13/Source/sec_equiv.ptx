@@ -1,0 +1,907 @@
+<section xml:id="sec_equiv">
+  <title>Equivalence Relations</title>
+  <introduction>
+    <p>
+      In mathematics, the notion of <em>equality</em>
+      is not as simple as one might think.
+      The idea of two numbers being equal is straightforward,
+      but suppose we want to consider two paths between given points as <sq>equal</sq> if and only if they have the same length?
+      Since two <sq>equal</sq> paths might look very different,
+      is this a good notion of equality?
+      Mathematicians often want to gather together objects that have a common property and then treat them as if they were a single object.
+      This is done using equivalence relations and equivalence classes.
+    </p>
+    <p>
+      First recall the alternative notation for a relation on a set <m>A</m>:
+      if <m>\cR\subseteq A\times A</m> is a relation on <m>A</m>,
+      then <m>x\,\cR\,y</m> has the same meaning as <m>(x,y)\in\cR</m>.
+      We might read <m>x\,\cR\,y</m> as <sq><m>x</m> is <m>\cR</m>-related to <m>y</m>.</sq>
+    </p>
+    <p>
+      \newsavebox\mybox \sbox{\mybox}{<em>Transitivity</em>}
+    </p>
+    <definition>
+      <statement>
+        <p>
+          A relation <m>\cR</m> on a set <m>A</m> may be described as <term>reflexive,
+          symmetric</term> or <term>transitive</term>
+          if it satisfies the following properties: \begin{ptabular}{\makebox[\wd\mybox][l]{<em>Transitivity</em>}} \makebox[\wd\mybox][l]{<em>Reflexivity</em>}&amp;<m>\forall x\in A</m>,
+          <m>x\,\cR\,x</m>(every element of <m>A</m> is related to itself)
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Symmetry</em>}&amp;<m>\forall x,y\in A,\ x\,\cR\,y\implies y\,R\,x</m>(if <m>x</m> is related to <m>y</m>,
+          then <m>y</m> is related to <m>x</m>)
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Transitivity</em>}&amp;<m>\forall x,y,z\in A,\ x\,\cR\,y</m> and
+          <m>y\,\cR\,z\implies x\,\cR\,z</m>(if <m>x</m> is related to <m>y</m>,
+          and <m>y</m> is related to <m>z</m>,
+          then <m>x</m> is related to <m>z</m>) \end{ptabular}
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Symmetry is exactly the same notion as in <xref ref="defn_relnsym">Definition</xref>.
+    </p>
+    <example>
+      <statement>
+        <p>
+          \item Let <m>A=\R</m> and let <m>\cR</m> be <m>\le</m>.
+          Thus <m>2\le 3</m>, but <m>7\nleq 4</m>.
+          We check whether <m>\cR</m> satisfies the above properties.
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Reflexivity</em>} True.
+          <m>\forall x\in\R</m>, <m>x\le x</m>.
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Symmetry</em>} False.
+          For example, <m>2\le 3</m> but <m>3\nleq 2</m>.
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Transitivity</em>} True.
+          <m>\forall x,y,z\in\R</m>,
+          if <m>x\le y</m> and <m>y\le z</m>, then <m>x\le z</m>.
+        </p>
+        <p>
+          \item Let <m>A</m> be the set of lines in the plane and define
+          <m>\ell_1\,R\,\ell_2\iff \ell_1</m> and <m>\ell_2</m> intersect.
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Reflexivity</em>} True.
+          Every line intersects itself,
+          so <m>\ell\,\cR\,\ell</m> for all <m>\ell\in A</m>.
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Symmetry</em>} True.
+          For all lines <m>\ell_1,\ell_2\in A</m>,
+          if <m>\ell_1</m> intersects <m>\ell_2</m>,
+          then <m>\ell_2</m> intersects <m>\ell_1</m>..
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Transitivity</em>} False.
+          As the picture illustrates,
+          we may let <m>\ell_1</m> and <m>\ell_3</m> be parallel lines,
+          and <m>\ell_2</m> cross both of these.
+          Then <m>\ell_1\,\cR\,\ell_2</m> and <m>\ell_2\,\cR\,\ell_3</m>,
+          but <m>\ell_1\not\!\!\cR\,\ell_3</m>.
+        </p>
+        <p>
+          <image width="73%" source="relations-07-parallel"/>
+        </p>
+      </statement>
+    </example>
+    <definition>
+      <statement>
+        <p>
+          An <term>equivalence relation</term>
+          is a relation <m>\sim</m> which is reflexive, symmetric and transitive.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The symbol <m>\sim</m> is almost universally used for an abstract equivalence relation.
+      It can be read as <sq>related to,</sq> <sq>tilde,</sq> or <sq>twiddles.</sq> The two examples above are <em>not</em>
+      equivalence relations because they fail one of the three conditions.
+      We now exhibit the simplest equivalence relation.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Equals <sq>=</sq> is an equivalence relation on any set,
+          hence the name!
+        </p>
+      </statement>
+    </example>
+    <p>
+      Read the definitions of reflexive,
+      symmetric and transitive until you are certain of this fact.
+      There are countless other equivalence relations: here are a few.
+    </p>
+    <example>
+      <statement>
+        <p>
+          \item For all <m>x,y\in\Z</m>,
+          we define the relation <m>\sim</m> by
+          <me>
+            x\sim y\iff x-y\ \text{ is even. }
+          </me>
+        </p>
+        <p>
+          We claim that <m>\sim</m> is an equivalence relation on <m>\Z</m>. \begin{eptabular}{\makebox[\wd\mybox][l]{<em>Transitivity</em>}} \makebox[\wd\mybox][l]{<em>Reflexivity</em>}&amp;<m>\forall x\in\Z,\ x-x=0</m> is even,
+          hence <m>x\sim x</m>.
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Symmetry</em>}&amp;<m>\forall x,y\in\Z,\ x\sim y\implies x-y</m> is even
+          <m>\implies y-x</m> is even <m>\implies y\sim x</m>.
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Transitivity</em>}&amp;<m>\forall x,y,z\in\Z</m>,
+          if <m>x\sim y</m> and <m>y\sim z</m>,
+          then <m>x-y</m> and <m>y-z</m> are even.
+          But the sum of two even numbers is even,
+          hence <m>x-z=(x-y)+(y-z)</m> is even,
+          and so <m>x\sim z</m>. \end{eptabular}
+        </p>
+        <p>
+          \item Let <m>A=\{</m>all students taking this course<m>\}</m>.
+          For all <m>x,y\in A</m>, let
+          <me>
+            x\sim y\iff x\ \text{ achieves the same letter-grade as \(y\). }
+          </me>
+        </p>
+        <p>
+          Then <m>\sim</m> is an equivalence relation on <m>A</m>;
+          here is the proof. \begin{eptabular}{\makebox[\wd\mybox][l]{<em>Transitivity</em>}} \makebox[\wd\mybox][l]{<em>Reflexivity</em>}&amp;<m>\forall x\in A,\ x\sim x</m> since everyone scores the same as themself!
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Symmetry</em>}&amp;<m>\begin{array}{@{}rl} \forall x,y\in A,\ x\sim y\amp \implies x\ \text{ achieves the same letter-grade as \(y\) } \\ \amp \implies y\ \text{ achieves the same letter-grade as \(x\) } \\ \amp \implies y\sim x \end{array}</m>
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Transitivity</em>}&amp;<m>\forall x,y,z\in A</m>,
+          if <m>x\sim y</m> and <m>y\sim z</m>,
+          then <m>x</m> achieves the same as <m>y</m> who achieves the same as <m>z</m>,
+          whence <m>x</m> achieves the same as <m>z</m>.
+          Thus <m>x\sim z</m>. \end{eptabular}
+        </p>
+        <p>
+          \item We define an equivalence relation on <m>\Z</m> by
+          <me>
+            \forall x,y\in\Z,\ \ x\sim y\iff x^2\equiv y^2\pmod 5
+          </me>.
+        </p>
+        <p>
+          \begin{eptabular}{\makebox[\wd\mybox][l]{<em>Transitivity</em>}} \makebox[\wd\mybox][l]{<em>Reflexivity</em>}&amp;<m>\forall x\in\Z,\ x\sim x</m> since <m>x^2</m> is always congruent to itself!
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Symmetry</em>}&amp;<m>\begin{array}{@{}rl} \forall x,y\in\Z,\ x\sim y\amp \implies x^2\equiv y^2\pmod 5\\ \amp \implies y^2\equiv x^2\pmod 5\\ \amp \implies y\sim x \end{array}</m>
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Transitivity</em>}&amp;<m>\forall x,y,z\in\Z</m>,
+          if <m>x\sim y</m> and <m>y\sim z</m>,
+          then <m>x^2\equiv y^2</m> and <m>y^2\equiv z^2\pmod 5</m>.
+          But then <m>x^2\equiv z^2\pmod 5</m> and so <m>x\sim z</m>. \end{eptabular}
+        </p>
+      </statement>
+    </example>
+    <p>
+      The most important thing to observe in each of these examples is that
+      <term>an equivalence relation separates elements of a set into subsets where elements share a common property</term>
+      (even/oddness, letter-grade, etc.).
+      The next definition formalizes this idea.
+    </p>
+    <definition xml:id="defn_equivrel">
+      <statement>
+        <p>
+          Let <m>\sim</m> be an equivalence relation on a set <m>X</m>.
+          The <term>equivalence class</term>
+          of an element <m>x\in X</m> is the set
+          <me>
+            [x]=\{y\in X:y\sim x\}
+          </me>.
+        </p>
+        <p>
+          Otherwise said, <m>y\sim x\iff y\in[x]</m>.
+          The set of all equivalence classes is known as the <term>quotient</term>
+          of <m>X</m> by <m>\sim</m> or simply <sq><m>X</m> mod <m>\sim</m>,</sq> and is denoted
+          <me>
+            \quotient X\sim=\Big\{[x]:x\in X\Big\}
+          </me>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Let us think about the definition of equivalence class in the context of our previous examples.
+    </p>
+    <example>
+      <statement>
+        <p>
+          \item <m>[0]=\{y\in\Z:y\sim 0\}=\{y\in\Z:y\text{ is even } \}</m> is the set of even numbers.
+          Note that <m>[0]=[2]=[4]=[6]</m>, etc.
+          The other equivalence class is <m>[1]=\{y\in\Z:y-1\text{ is even } \}</m>,
+          which is the set of odd numbers.
+          The quotient set is
+          <me>
+            \smash{\quotient \Z\sim}=\bigl\{[0],[1]\bigr\}=\bigl\{\{\text{ even numbers } \},\{\text{ odd numbers } \}\bigr\}
+          </me>.
+        </p>
+        <p>
+          \item There is one equivalence class for each letter grade awarded.
+          Each equivalence class contains all the students who obtain a particular letter-grade.
+          If we call the equivalence classes \mathrm{A^+,A,A^-,B^+,<ellipsis/>,F}, where, say,
+          <m>\mathrm B=\{</m>students obtaining a B-grade<m>\}</m>, then
+          <me>
+            \smash{\quotient{\{\text{ Students } \}}{\sim}}=\{\mathrm{A^+,A,A^-,B^+,\ldots,F}\}
+          </me>.
+        </p>
+        <p>
+          \item The equivalence classes for this example are a little tricky.
+          First observe that
+          <me>
+            x\equiv y\tpmod 5\implies x^2\equiv y^2\tpmod 5
+          </me>,
+          so that there are at most five equivalence classes;
+          those of 0, 1, 2, 3 and 4.
+          Are they distinct?
+          If we square each of these and consider the remainder modulo 5, we obtain
+          <me>
+            \begin{array}{l@{}r|c|c|c|c|c} x\amp \tpmod 5\amp 0\amp 1\amp 2\amp 3\amp 4\\\hline x^2\amp \tpmod 5\amp 0\amp 1\amp 4\amp 4\amp 1 \end{array}
+          </me>
+        </p>
+        <p>
+          Notice that <m>1\sim 4</m>, so they share an equivalence class.
+          Similarly <m>2\sim 3</m>.
+          Indeed the distinct equivalence classes are
+          <md>
+            <mrow>=\{x\in\Z:x\equiv 0\tpmod 5\}</mrow>
+            <mrow>[1]=\{x\in\Z:x\equiv 1,4\tpmod 5\}</mrow>
+            <mrow>[2]=\{x\in\Z:x\equiv 2,3\tpmod 5\}</mrow>
+          </md>
+        </p>
+        <p>
+          In this case the quotient is the set
+          <me>
+            \smash{\quotient{\Z}{\sim}}=\Bigl\{[0],[1],[2]\Bigr\}
+          </me>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Here is one further example of an equivalence relation,
+      this time on <m>\R^2</m>.
+      Be careful with the notation:
+      <m>\R^2=\R\times\R</m> is already a Cartesian product,
+      so a relation on <m>\R^2</m> is a subset of <m>\R^2\times\R^2</m>!
+    </p>
+    <example xml:id="ex_equivcircle">
+      <statement>
+        <p>
+          Let <m>\sim</m> be the relation on <m>\R^2</m> defined by <m>(x,y)\sim(v,w)\iff x^2+y^2=v^2+w^2</m>.
+          We claim that this is an equivalence relation. \begin{ptabular}{\makebox[\wd\mybox][l]{<em>Transitivity</em>}} \makebox[\wd\mybox][l]{<em>Reflexivity</em>}&amp;<m>\forall (x,y)\in\R^2,\ x^2+y^2=x^2+y^2</m>.
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Symmetry</em>}&amp;<m>\begin{array}{@{}rl} \forall (x,y),(v,w)\in\R^2,\ (x,y)\sim(v,w)\amp \implies x^2+y^2=v^2+w^2\\ \amp \implies v^2+w^2=x^2+y^2\\ \amp \implies (v,w)\sim(x,y) \end{array}</m>
+        </p>
+        <p>
+          \makebox[\wd\mybox][l]{<em>Transitivity</em>}&amp;<m>\forall (x,y),(v,w),(p,q)\in\R^2</m>,
+          if <m>(x,y)\sim (v,w)</m> and <m>(v,w)\sim (p,q)</m>,
+          then <m>x^2+y^2=v^2+w^2</m> and <m>v^2+w^2=p^2+q^2</m>.
+          But then <m>x^2+y^2=p^2+q^2</m> and so <m>(x,y)\sim (p,q)</m>. \end{ptabular}
+        </p>
+        <p>
+          <m>\sim</m> is therefore an equivalence relation.
+          But what are the equivalence classes?
+          By definition,
+          <me>
+            [(x,y)]=\Bigl\{(v,w)\in\R^2:v^2+w^2=x^2+y^2\Bigr\}
+          </me>.
+        </p>
+        <sidebyside>
+          This isn't particularly helpful. Indeed it is easier to think of each of these sets as
+          <me>
+            \Bigl\{(v,w)\in\R^2:v^2+w^2\text{ is \emph{constant}} \Bigr\}
+          </me>.
+          Each equivalence class is therefore a <em>circle</em> centered at the origin! Some of the equivalence classes are drawn in the picture: the class <m>[(1,0)]</m> is highlighted. Moreover, the quotient set is
+          <me>
+            \quotient{\R^2}{\sim}=\{\text{ circles centered at the origin } \}
+          </me>.
+          <image width="73%" source="relations-24-circles"/>
+        </sidebyside>
+      </statement>
+    </example>
+  </introduction>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol cols="2">
+      <li>
+        <p>
+          True or False:
+          a relation <m>\sim</m> on a set <m>X</m> is <em>reflexive</em>
+          if <m>\exists x\in X</m> such that <m>x\sim x</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose that <m>x,y,z\in X</m> and <m>\sim</m> is an equivalence relation on <m>X</m>.
+          Express each of the following assertions in terms of the properties satisfied by an equivalence relation.
+          <ol marker="labelarabic">
+            <li>
+              <p>
+                <m>x\in[y]</m> and <m>y\in[z]\implies x\in[z]</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>x\in[x]</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>x\in[y]\iff y\in[x]</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) is reflexivity, (2) is symmetry, and (3) is transitivity
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) is transitivity, (2) is symmetry, and (3) is reflexivity
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) is transitivity, (2) is reflexivity, and (3) is antisymmetry
+              </p>
+            </li>
+            <li>
+              <p>
+                (1) is transitivity, (2) is reflexivity, and (3) is symmetry
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose <m>\cR</m> is an equivalence relation on a set <m>X</m>.
+          Then <m>\cR^{-1}</m> is \rule{2cm}{0.15mm} also an equivalence relation.
+          <ol>
+            <li>
+              <p>
+                never
+              </p>
+            </li>
+            <li>
+              <p>
+                sometimes
+              </p>
+            </li>
+            <li>
+              <p>
+                always
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Define <m>\cR</m> on <m>\N_{\geq 2}</m> by
+          <m>a \, \cR \, b</m> if and only if <m>\gcd(a,b) > 1</m>.
+          Determine whether or not <m>\cR</m> is reflexive, symmetric,
+          or transitive.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\sim</m> be the relation on <m>\R</m> defined by
+          <m>x \sim y</m> if and only if <m>x - y \in \Z</m>.
+          <ol>
+            <li>
+              <p>
+                Prove that <m>\sim</m> is an equivalence relation.
+              </p>
+            </li>
+            <li>
+              <p>
+                List three distinct elements of the equivalence class <m>[5/2]</m>.
+                In general, what is an equivalence class <m>[x]</m> as a set?
+              </p>
+            </li>
+            <li>
+              <p>
+                Describe the quotient <m>\R/\sim</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          A relation <m>\cR</m> is <em>antisymmetric</em>
+          if <m>((x,y)\in \cR)\wedge((y,x)\in \cR)\implies x=y</m>.
+          Give examples of relations <m>\cR</m> on
+          <m>A=\{1,2,3\}</m> having the stated property.
+          <ol>
+            <li>
+              <p>
+                <m>\cR</m> is both symmetric and antisymmetric.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\cR</m> is neither symmetric nor antisymmetric.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\cR</m> is transitive but <m>\cR\cup \cR^{-1}</m> is not transitive.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          A relation <m>\cR</m> on a set <m>X</m> is called a
+          <em>partial order</em> if it is reflexive,
+          antisymmetric, and transitive.
+          Show the divisibility relation <m>\mid</m> is a partial order on <m>\N</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\cS=\{(x,y)\in\R^2:\sin^2x+\cos^2y=1\}</m>.
+          <ol>
+            <li>
+              <p>
+                Give an example of two real numbers <m>x,y</m> such that <m>x\,\cS\,y</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Is <m>\cS</m> reflexive?
+                Symmetric?
+                Transitive?
+                Justify your answers.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Each of the following relations <m>\sim</m> is an equivalence relation on <m>\R^2</m>.
+          Identify the equivalence classes and draw several of them.
+          <ol>
+            <li>
+              <p>
+                <m>(a,b)\sim(c,d)\iff ab=cd</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(v,w)\sim(x,y)\iff v^2w=x^2y</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        \item
+        <ol>
+          <li>
+            <p>
+              Let <m>\sim</m> be the relation defined on <m>\Z</m> by <m>a\sim b\iff a+b</m> is even.
+              Show that <m>\sim</m> is an equivalence relation and determine the distinct equivalence classes.
+            </p>
+          </li>
+          <li>
+            <p>
+              Suppose that <sq>even</sq> is replaced by <sq>odd</sq> in part (a).
+              Which of the properties reflexive, symmetric,
+              transitive does <m>\sim</m> possess?
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          For each of the following relations <m>\cR</m> on <m>\Z</m>,
+          decide whether <m>\cR</m> is reflexive, symmetric,
+          or transitive, and whether <m>\cR</m> is an equivalence relation.
+          <ol>
+            <li>
+              <p>
+                <m>a\,\cR\,b \iff a\equiv b\pmod 3
+                <term> or </term> a\equiv b\pmod 4</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>a\,\cR\,b \iff a\equiv b\pmod 3
+                <term> and </term> a\equiv b\pmod 4</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          For the purposes of this question,
+          we call a real number <m>x</m> <em>small</em> if <m>\nm x\le 1</m>.
+          Let <m>\cR</m> be the relation on the set of real numbers defined by
+          <me>
+            x\,\cR\,y \iff x-y \text{ is small }
+          </me>.
+          <em>Prove or disprove</em>:
+          <m>\cR</m> is an equivalence relation on <m>\R</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A=\{1,2,3,4,5,6\}</m>.
+          The distinct equivalence classes resulting from an equivalence relation <m>\sim</m> on <m>A</m> are <m>\{1,4,5\}</m>,
+          <m>\{2,6\}</m>, and <m>\{3\}</m>.
+          What is <m>\sim</m>?
+          Give your answer as a subset of <m>A\times A</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <m>\subseteq</m> is a relation on any set of sets.
+          Is <m>\subseteq</m> reflexive, symmetric, transitive?
+          Prove your assertions.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>S</m> be the set of all polynomials of degree at most 3.
+          An element <m>s\in S</m> can then be expressed as
+          <me>
+            s(x)=ax^3+bx^2+cx+d,\qquad\text{ where \(a,b,c,d\in\R\). }
+          </me>
+          A relation <m>\cR</m> on <m>S</m> is defined by
+          <me>
+            p\,\cR\,q\iff p\text{ and \(q\) have a common root. }
+          </me>
+          For example <m>p(x)=(x-1)^2</m> and
+          <m>q(x)=x^2-1</m> have the root 1 in common so that <m>p\,\cR\,q</m>.
+          Determine which of the properties reflexive,
+          symmetric and transitive are possessed by <m>\cR</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A=\{2^m:m\in\Z\}</m>.
+          A relation <m>\sim</m> is defined on the set <m>\Q^+</m> of positive rational numbers by
+          <me>
+            a\sim b\iff \frac ab\in A
+          </me>
+          <ol>
+            <li>
+              <p>
+                Show that <m>\sim</m> is an equivalence relation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Describe the elements in the equivalence class <m>[3]</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          A relation is defined on the set
+          <m>A=\{a+b\sqrt 2:a,b\in\Q,\,a+b\sqrt 2\neq 0\}</m> by <m>x\sim y\iff \frac xy\in\Q</m>.
+          Show that <m>\sim</m> is an equivalence relation and determine the distinct equivalence classes.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\cR</m> and <m>\cS</m> be equivalence relations on a set <m>X</m>.
+          <ol>
+            <li>
+              <p>
+                Show that <m>\cR \cap \cS</m> is an equivalence relation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Does <m>\cR \cup \cS</m> have to be an equivalence relation?
+                Prove or give counterexample.
+              </p>
+            </li>
+            <li>
+              <p>
+                Determine what the equivalence classes of
+                <m>\cR \cap \cS</m> are in terms of the equivalence classes for <m>\cR</m> and <m>\cS</m> individually.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>f : A \to B</m> be a function.
+          Define <m>\sim</m> on <m>A</m> by
+          <m>a \sim b</m> if and only if <m>f(a) = f(b)</m>.
+          <ol>
+            <li>
+              <p>
+                Show <m>\sim</m> is an equivalence relation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Describe the equivalence classes of <m>\sim</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that <m>f</m> is injective if and only if <m>\sim</m> is equality.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>X</m> be a set and <m>\sim</m> an equivalence relation on <m>X</m>.
+          Define <m>\pi : X \to X/\sim</m> by <m>\pi(x) = [x]</m>.
+          Show that <m>\pi</m> is a surjection.
+          Prove that <m>\pi</m> is an injection if and only if <m>\sim</m> is equality.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\cR</m> be a relation on a set <m>X</m>.
+          Show that <m>\cS = \cR \cup \{(x,x) : x \in X\}</m> is the smallest reflexive relation on <m>X</m> containing <m>\cR</m>.
+          That is,
+          <ol>
+            <li>
+              <p>
+                <m>\cS</m> is reflexive.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\cR \subseteq \cS</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>\cT</m> is a reflexive relation on <m>X</m> such that <m>\cR \subseteq \cT</m>,
+                then <m>\cS \subseteq \cT</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        We call <m>\cS</m> the <em>reflexive closure</em> of <m>\cR</m>.
+      </li>
+      <li>
+        <p>
+          Recall the description of the real projective line (<xref ref="ex_projline">page</xref>):
+          if <m>A_m</m> is the line through the origin with gradient <m>m</m>, then
+          <me>
+            \pr(\R^2)=\{A_m:m\in\R\cup\{\infty\}\}
+          </me>.
+          Define a relation <m>\sim</m> on
+          <m>\R^2_*=\R^2\setminus\{(0,0)\}</m> by <m>(a,b)\sim(c,d)\iff ad=bc</m>.
+          <ol>
+            <li>
+              <p>
+                Prove that <m>\sim</m> is an equivalence relation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find the equivalence classes of <m>\sim</m>.
+                How do the equivalence classes differ from the lines <m>A_m</m>?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>X</m> be a set.
+          Suppose we have a function
+          <m>\acl : \cP(X) \to \cP(X)</m> which satisfies the following properties:
+          <ol marker="labelroman">
+            <li>
+              <p>
+                (Reflexivity) <m>A \subseteq \acl(A)</m> for all <m>A \in \cP(X)</m>;
+              </p>
+            </li>
+            <li>
+              <p>
+                (Monotonicity) if <m>A \subseteq B</m>,
+                then <m>\acl(A) \subseteq \acl(B)</m> for all <m>A,B \in \cP(X)</m>;
+              </p>
+            </li>
+            <li>
+              <p>
+                (Idempotence) <m>\acl(\acl(A)) = \acl(A)</m> for all <m>A \in \cP(X)</m>;
+              </p>
+            </li>
+            <li>
+              <p>
+                (Exchange) if <m>a \in \acl(A \cup \{b\}) \setminus \acl(A)</m>,
+                then <m>b \in \acl(A \cup \{a\})</m> for all <m>a,b \in X</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        Define <m>\sim</m> on <m>X \setminus \acl(\emptyset)</m> by
+        <m>a \sim b</m> if and only if <m>a \in \acl(\{b\})</m>.
+        <ol>
+          <li>
+            <p>
+              Show <m>\sim</m> is an equivalence relation.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show <m>a \sim b</m> if and only if <m>\acl(\{a\}) = \acl(\{b\})</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that <m>[a] = \acl(\{a\}) \setminus \acl(\emptyset)</m>.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Suppose that <m>\cR,\cS</m> are relations on some set <m>X</m>.
+          Define the <em>composition</em>
+          <m>\cR\circ \cS</m> to be the relation
+          <me>
+            (a,c)\in \cR\circ \cS\iff \exists b\in X\text{ such that } (a,b)\in \cR\text{ and } (b,c)\in \cS
+          </me>.
+          <ol>
+            <li>
+              <p>
+                If <m>\cR=\{(1,1),(1,2),(2,3),(3,1),(3,3)\}</m> and
+                <m>\cS=\{(1,2),(1,3),(2,1),(3,3)\}</m>, find <m>\cR\circ \cS</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>\cR</m> and <m>\cS</m> are reflexive.
+                Prove that <m>\cR\circ \cS</m> is reflexive.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>\cR</m> and <m>\cS</m> are symmetric.
+                Prove that <m>(x,y)\in \cR\circ \cS\iff (y,x)\in \cS\circ \cR</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Give an example of symmetric relations <m>\cR,\cS</m> such that
+                <m>\cR\circ \cS</m> is <em>not</em> symmetric.
+                Conclude that if <m>\cR,\cS</m> are equivalence relations,
+                then <m>\cR\circ \cS</m> need not be an equivalence relation.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\cR</m> be a relation on a set <m>X</m>.
+          Inductively define <m>\cR^n</m> for <m>n \in \N</m> as follows:
+          <ul>
+            <li>
+              <p>
+                <m>\cR^1 = \cR</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\cR^{n + 1} = \cR \circ \cR^n</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+        Set
+        <me>
+          \cR^+ = \bigcup_{n \in \N} \cR^n
+        </me>.
+        Show that <m>\cR^+</m> is the smallest transitive relation on <m>X</m> containing <m>\cR</m>.
+        That is,
+        <ol>
+          <li>
+            <p>
+              <m>\cR^+</m> is transitive.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\cR \subseteq \cR^+</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              If <m>\cT</m> is a transitive relation on <m>X</m> such that <m>\cR \subseteq \cT</m>,
+              then <m>\cR^+ \subseteq \cT</m>.
+              <hint>
+                <p>
+                  use induction to show <m>\cR^n \subseteq \cT</m> for all <m>n \in \N</m>.
+                </p>
+              </hint>
+            </p>
+          </li>
+        </ol>
+        We call <m>\cR^+</m> the <em>transitive closure</em> of <m>\cR</m>.
+        <ol>
+          <li>
+            <p>
+              Let <m>X = \{a,b,c,d\}</m> and <m>\cR = \{(a,b), (b,c), (c,d)\}</m>.
+              Compute <m>\cR^+</m>.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          (<em>Only for those who have studied Linear Algebra</em>) Let <m>\sim</m> be the relation on the set of
+          <m>2\times 2</m> real matrices given by
+          <m>A\sim B\iff\exists M</m> such that <m>B=MAM^{-1}</m>.
+          <ol>
+            <li>
+              <p>
+                Prove that <m>\sim</m> is an equivalence relation.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the equivalence class of the identity matrix?
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that <m>\left(\begin{matrix}-11\amp 15\\-5\amp 9 \end{matrix} \right)\sim \left(\begin{matrix}4\amp 10\\0\amp -6 \end{matrix} \right)</m> (<em>Hint:
+                think about diagonalizing</em>)
+              </p>
+            </li>
+            <li>
+              <p>
+                (Hard) Suppose that <m>L:\R^2\to\R^2</m> is a linear map and
+                <m>\beta,\gamma</m> are bases of <m>\R^2</m>.
+                Suppose that <m>A=[L]_\beta</m> and
+                <m>B=[L]_\gamma</m> are the matrix representations of <m>L</m> with respect to the two bases.
+                Prove that <m>A\sim B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                (Hard) Suppose that <m>A,B</m> have the same,
+                but distinct, eigenvalues <m>\lambda_1\neq\lambda_2</m>.
+                Prove that <m>A\sim B</m>.
+                <em>Again use diagonalization,
+                the challenge here is to make your proof work even when the eigenvalues are complex numbers.</em>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

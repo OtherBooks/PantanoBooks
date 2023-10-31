@@ -1,0 +1,623 @@
+<section xml:id="sec_set_subsets">
+  <title>Subsets</title>
+  <introduction>
+    <p>
+      In this section we consider the most basic manner in which two sets can be related.
+    </p>
+    <definition xml:id="defn_subset">
+      <statement>
+        <p>
+          If <m>A</m> and <m>B</m> are sets such that every element of <m>A</m> is also an element of <m>B</m>,
+          then we say that <m>A</m> is a <term>subset</term>
+          of <m>B</m> and write <m>A\subseteq B</m>.
+        </p>
+        <p>
+          <m>A</m> is a <term>proper subset</term>
+          of <m>B</m> if it is a subset which is not equal.
+          This can be written <m>A\subsetneq B</m>.<fn>
+          We will religiously stick to this notation.
+          When reading other texts,
+          note that some authors prefer <m>A\subset B</m> for proper subset.
+          Others use <m>\subset</m> for any subset, whether proper or not.
+          </fn>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The concept of subset provides us with an extremely important characterization of equality.
+    </p>
+    <theorem xml:id="thm_setequal">
+      <statement>
+        <p>
+          Two sets are equal if and only if they are each a subset of the other.
+          Equivalently
+          <me>
+            A=B\iff A\subseteq B\text{ and } B\subseteq A
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        Recall that two sets <m>A</m> and <m>B</m> are equal if and only if they have the same elements.
+        But this is if and only if every element of <m>A</m> is also an element of <m>B</m> and vice versa.
+      </p>
+    </proof>
+    <p>
+      You will often need to <em>prove</em> that two sets are equal:
+      showing that each is a subset of the other is a very common way to accomplish this.
+    </p>
+    <sidebyside>
+      Venn diagrams are particularly useful for visualizing subset relations. The graphic on the right depicts three sets <m>A,B,C</m>: it should be clear that the only valid subset relation between the three is <m>A\subseteq B</m>.
+      <image width="73%" source="sets-02-vennsubset"/>
+    </sidebyside>
+    <p>
+      Set-builder notation implicitly uses the concept of subset:
+      the notation <m>X=\{y\in Y:P(y)\}</m> describes a set <m>X</m> as the subset of some other set <m>Y</m>,
+      all of whose elements satisfy the property <m>P(y)</m>.
+      The previous section contained many examples that were subsets of the set of real numbers <m>\R</m>.
+      Here are some other examples of subsets.
+    </p>
+    <example>
+      <statement>
+        <p>
+          \item <m>\N=\{n\in\Z:n>0\}</m>.
+          This is clearly a subset of <m>\Z</m>. \item <m>\{x\in\R:x^2-1=0\}\subseteq \{y\in\R:y^2\in\N\}</m>.
+        </p>
+        <p>
+          To make sense of this relationship,
+          convert to roster notation: we obtain
+          <me>
+            \{-1,1\}\subseteq\{\pm\sqrt 1,\pm\sqrt 2,\pm\sqrt 3,\pm\sqrt 4,\ldots\}
+          </me>.
+        </p>
+        <p>
+          \item If <m>m</m> and <m>n</m> are positive integers,
+          then <m>m\Z\subseteq n\Z\iff n\divides m</m>.
+          Make sure you're comfortable with this!
+          For example,
+          <m>4\Z\subseteq 2\Z</m> since every multiple of 4 is also a multiple of 2.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Here we collect several results relating to subsets.
+    </p>
+    <theorem xml:id="thm_subsettrans">
+      <statement>
+        <p>
+          \hypertarget{thm:subsettranslnk}
+          <ol>
+            <li>
+              <p>
+                If <m>\nm A=0</m>,
+                then <m>A=\emptyset</m> (Uniqueness of the empty set)
+              </p>
+            </li>
+            <li>
+              <p>
+                For any set <m>A</m>, we have <m>\emptyset\subseteq A</m> and
+                <m>A\subseteq A</m> (Trivial and non-proper subsets)
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>A\subseteq B</m> and <m>B\subseteq C</m>,
+                then <m>A\subseteq C</m>(Transititvity of subsets)
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <ol>
+        <li>
+          <p>
+            Let <m>A</m> be a set with cardinality zero, i.e., with no elements.
+            <m>\emptyset</m> has no members,
+            therefore <m>\emptyset\subseteq A</m> is trivial:
+            there is nothing to check to see that all elements of
+            <m>\emptyset</m> are also elements of <m>A</m>!
+            The argument for <m>A\subseteq\emptyset</m> is identical.
+            By <xref ref="thm_setequal">Theorem</xref>
+            we see that <m>A=\emptyset</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>A</m> be any set.
+            <m>\emptyset\subseteq A</m> follows by the argument in 1.
+            To prove that <m>A\subseteq A</m> we must show that all elements of <m>A</m> are also elements of <m>A</m>.
+            But this is completely obvious!
+          </p>
+        </li>
+        <li>
+          <p>
+            Assume that <m>A</m> is a subset of <m>B</m> and that <m>B</m> is a subset of <m>C</m>.
+            We must show that all elements of <m>A</m> are also elements of <m>C</m>.
+            Let <m>a\in A</m>.
+            Since <m>A\subseteq B</m> we know that <m>a\in B</m>.
+            Since <m>B\subseteq C</m> and <m>a\in B</m>,
+            we conclude that <m>a\in C</m>.
+            This shows that every element of <m>A</m> belongs to <m>C</m>.
+            Hence <m>A\subseteq C</m>.\qedhere
+          </p>
+        </li>
+      </ol>
+    </proof>
+    <p>
+      As a final observation,
+      to which we will return in <xref ref="thm_finitecard">Theorem</xref>
+      and in <xref ref="chap-cardinalities">Chapter</xref>,
+      your intuition should tell you that, for finite sets,
+      subsets have smaller cardinality:
+      <me>
+        A\subseteq B\implies\nm A\le\nm B
+      </me>.
+    </p>
+    <p>
+      More generally,
+      consider replacing the terms in Theorem \hyperlink{thm:subsettranslnk}{ <xref ref="thm_subsettrans"></xref>} according to the following table:
+      <me>
+        \begin{array}{|l|l|}\hline \subseteq\amp \le\\\hline \emptyset\amp 0\\\hline \text{ sets } A,B,C\amp \text{ non-negative integers } \\\hline \text{ cardinality } \amp \text{ absolute value } \\\hline \end{array}
+      </me>
+    </p>
+    <p>
+      The results should seem completely natural!
+      Recognizing the similarities between a new concept and a familiar one,
+      essentially spotting patterns,
+      is perhaps the most necessary skill in mathematics.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol>
+      <li>
+        <p>
+          True or False: Every set has a proper subset.
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: <m>\{\R\} \subseteq \{\{\R\}\}</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          How many subsets does the set <m>A = \{0,1\}</m> have?
+          <ol>
+            <li>
+              <p>
+                <m>1</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>2</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>3</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>4</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          <m>A = B</m> if and only if
+          <ol>
+            <li>
+              <p>
+                <m>A \subseteq B</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \subseteq B</m> and if
+                <m>x \notin A</m>, then <m>x \notin B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>B \subseteq A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \subsetneq B</m> and <m>B</m> is finite.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Suppose <m>A \subseteq B \subseteq C</m> and <m>A = C</m>.
+          Show <m>A = B</m> and <m>B = C</m>.
+          <url href="https://youtu.be/_YO7y1ryfy8">Video Solution</url>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let
+          <me>
+            A = \{0, \{0\}, \{1,2\}, \{0,\{1,3\}\}\}
+          </me>
+          Answer True or False for each of the following:
+          <ol>
+            <li>
+              <p>
+                <m>\emptyset \subsetneq A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{0\} \subseteq A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{\{0\}\} \subseteq A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{1,2\} \subseteq A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{\{1,2\}\} \subseteq A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{0, \{0\}, \{1,3\}\} \subseteq A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \subsetneq A</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+    <p>
+      <url href="https://youtu.be/DBVsXTZH2-c">Video Solution</url>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>A,B,C,D</m> be the following sets.
+          <md>
+            <mrow>A=\{-4,1,2,4,10\}</mrow>
+            <mrow>B=\{m\in\Z:\nm{m}\le 12\}</mrow>
+            <mrow>C=\{n\in\Z: 3 \mid (n^2 - 1)\}</mrow>
+            <mrow>D=\{t\in\Z:t^2+3\in [4,20)\}</mrow>
+          </md>
+          Of the 12 possible subset relations <m>A\subseteq B,\ A\subseteq C,\ldots D\subseteq C</m>,
+          which are true and which false?
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Let <m>A=\{x\in\R:x^3+x^2-x-1=0\}</m> and <m>B=\{x\in\R:x^4-5x^2+4=0\}</m>.
+              Are either of the relations
+              <m>A\subseteq B</m> or <m>B\subseteq A</m> true?
+              Explain.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>A = \{ 4n \colon n \in \Z\}</m> and <m>B = \{ k \in \Z \colon 3k+5 \text{ is odd } \}</m>.
+              Prove or disprove: <m>A \subseteq B</m>.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Order the following sets according to which are subsets of which:
+              <me>
+                \R,  \Z,  \N_0,  \N,  \Q,  \C
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              (Hammack's
+              <url href="http://www.people.vcu.edu/~rhammack/BookOfProof/"><em>Book of Proof</em></url>,
+              Section 1.3, Exercise 14) True or False?
+              <m>\R^2 \subseteq \R^3</m>.
+              Explain your answer.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          For which values of <m>x>0</m> is the following claim true?
+          <me>
+            [0,x]\subseteq[0,x^2]
+          </me>
+          Prove your assertion.
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Write down all <em>proper</em> subsets of <m>\{1,2,3\}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              (Hammack's
+              <url href="http://www.people.vcu.edu/~rhammack/BookOfProof/"><em>Book of Proof</em></url>,
+              Section 1.3, Exercise 6) List all subsets of <m>\{\R,\Q,\N\}</m>.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Write down all subsets of <m>\{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A = \{1, 2, \{1,2\}, \{3\}\}</m> and <m>B = \{1,2\}</m>.
+          Answer True or False for each of the following:
+          <ol>
+            <li>
+              <p>
+                <m>B \in A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>B \subseteq A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>3 \in A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{3\} \subseteq A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{3\} \in A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\emptyset \subseteq A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\emptyset \in A</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A = \{0,2,4,6,8,10\}</m>.
+          Write the set <m>\{X \subseteq A : |X| = 2\}</m> in roster notation.
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose <m>A \subseteq B \subseteq C \subseteq A</m>.
+          Show <m>A = B = C</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Fill in the blanks in the following proof of the fact that <m>A \subsetneq B</m> and
+          <m>B \subsetneq C</m> implies <m>A \subsetneq C</m>.
+          <proof>
+            <p>
+              Recall that <m>X \subsetneq Y</m> means <m>X \subseteq Y</m> <em>and</em>
+              \rule{2cm}{0.15mm}. So <m>A \subsetneq B</m> and <m>B \subsetneq C</m> means
+              <m>\rule{2cm}{0.15mm}</m> and <m>\rule{2cm}{0.15mm}</m> which by Theorem 3.5
+              (insert ref here)
+              gives <m>A \subseteq C</m>.
+              All that remains to show is that <m>A \rule{1cm}{0.15mm} C</m>.
+              But if this is not true, then <m>\rule{2cm}{0.15mm}</m>.
+              But this would mean <m>A = B</m> because \rule{4cm}{0.15mm}, contradicting the fact that \rule{3cm}{0.15mm}. Thus we conclude that <m>A \subsetneq C</m>.
+            </p>
+          </proof>
+        </p>
+      </li>
+      <li>
+        <p>
+          For the following proof sketch,
+          determine the result that is being proved,
+          and then turn the sketch into a formal proof.
+          <proof>
+            <p>
+              <m>(\Leftarrow)</m> If <m>m = nk</m> <m>\exists k \in \Z</m>,
+              then <m>\forall x \in m\Z</m>,
+              we have <m>x = mj = (nk)j \in n\Z</m>.
+              Thus <m>m\Z \subseteq n\Z</m>.
+            </p>
+            <p>
+              <m>(\Rightarrow)</m> Suppose <m>m\Z \subseteq n\Z</m>,
+              then <m>m \in n\Z</m>, i.e.
+              <m>n \mid m</m>.
+            </p>
+          </proof>
+        </p>
+      </li>
+      <li xml:id="ex_mirrored">
+        <p>
+          Given <m>A\subseteq\Z</m> and <m>x\in\Z</m>,
+          we say that <m>x</m> is <m>A</m>-mirrored if and only if <m>-x\in A</m>.
+          We also define:
+          <me>
+            M_A:=\{x\in\Z\colon x\text{ is \(A\)-mirrored } \}
+          </me>.
+          <ol>
+            <li>
+              <p>
+                What is the negation of <sq><m>x</m> is <m>A</m>-mirrored.</sq>
+              </p>
+            </li>
+            <li>
+              <p>
+                Find <m>M_B</m> for <m>B=\{0,1,-6,-7,7,100\}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Assume that <m>A \subseteq\Z</m> is closed under addition (i.e., for all
+                <m>x,y\in A</m>, we have <m>x+y\in A</m>).
+                Show that <m>M_A</m> is closed under addition.
+              </p>
+            </li>
+            <li>
+              <p>
+                In your own words, under which conditions is <m>A=M_A</m>?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Define the set <m>[1]</m> by:
+          <me>
+            [1]=\{x\in\Z\colon 5 \mid (x - 1)\}
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Describe the set <m>[1]</m> in roster notation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Compute the set <m>M_{[1]}</m>,
+                as defined in Exercise \thesubsection.
+                <xref ref="ex_mirrored"></xref>
+              </p>
+            </li>
+            <li>
+              <p>
+                Are the sets <m>[1]</m> and <m>M_{[1]}</m> equal?
+                Prove/Disprove.
+              </p>
+            </li>
+            <li>
+              <p>
+                Now consider the set <m>[10]=\{x\in\Z\colon 5 \mid (x - 10)\}</m>.
+                Are the sets <m>[10]</m> and <m>M_{[10]}</m> equal?
+                Prove/Disprove.
+              </p>
+            </li>
+          </ol>
+        </p>
+        \item
+        <ol>
+          <li>
+            <p>
+              Give a formal proof of the fact that <m>A\subseteq B\implies \nm A\le\nm B</m> for finite sets.
+              <em>Resist the temptation to look at <xref ref="thm_finitecard">Theorem</xref>:
+              it is far more technical than you need for this!</em>
+            </p>
+          </li>
+          <li>
+            <p>
+              Explain why <m>\nm A\le \nm B\notimplies A\subseteq B</m>.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Consider the set <m>A = \{a,b,c,d\}</m>.
+          <ol>
+            <li>
+              <p>
+                How many subsets of <m>A</m> are there of cardinality <m>0</m>,
+                <m>1</m>, <m>2</m>, <m>3</m>,
+                and <m>4</m>, respectively.
+                Do you notice any patterns?
+              </p>
+            </li>
+            <li>
+              <p>
+                Completely expand the polynomial <m>(1 + x)^4</m>.
+                What do you notice about the coefficients?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> be a set.
+          We define the <em>power set</em> of <m>A</m>,
+          <m>\cP(A)</m>, to be the set of all subsets of <m>A</m>:
+          <me>
+            \cP(A) = \{X : X \subseteq A\}
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Compute <m>\cP(A)</m> where <m>A = \{1,a,5\}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove or disprove: for any set <m>A</m>, <m>A \in \cP(A)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove or disprove: for any set <m>A</m>,
+                <m>A \subseteq \cP(A)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Give an explicit example of a set <m>A</m> such that
+                <m>A \neq \emptyset</m> and <m>A \subseteq \cP(A)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

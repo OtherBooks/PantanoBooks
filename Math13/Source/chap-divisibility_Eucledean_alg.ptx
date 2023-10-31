@@ -1,0 +1,19 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="chap-divisibility_Eucledean_alg">
+  <title>Divisibility and the Euclidean Algorithm</title>
+  <introduction>
+    <p>
+      In this section we introduce the notion of <em>congruence</em>:
+      a generalization of the idea of separating all integers into <sq>even</sq> and <sq>odd.</sq> At its most basic it involves going back to elementary school when you first learned division and would write something similar to
+      <me>
+        33\div 5=6\mathsf{\,r\,}3\qquad\text{ and read `6 remainder 3.' }
+      </me>
+    </p>
+    <p>
+      The study of congruence is of fundamental importance to Number Theory,
+      and provides some of the most straightforward examples of Groups and Rings.
+      We will cover the basics in this section<mdash/>enough to compute with<mdash/>then return later for more formal observations.
+    </p>
+  </introduction>
+  <xi:include  href="sec_cong.ptx"/>
+  <xi:include  href="sec_gcd_Eucidean_alg.ptx"/>
+</chapter>

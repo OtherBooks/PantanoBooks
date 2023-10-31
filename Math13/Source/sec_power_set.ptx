@@ -1,0 +1,741 @@
+<section xml:id="sec_power_set">
+  <title>Power Sets</title>
+  <introduction>
+    <p>
+      Thusfar we have seen how to build new sets from old using the operations of subset,
+      complement, union, intersection and Cartesian product.
+      There is essentially only one further method whereby we can produce new sets;
+      given a set <m>A</m>,
+      we consider the collection of all of the subsets of <m>A</m> and we insist that this collection is a set.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          The <term>power set</term> of <m>A</m> is the set <m>\cP(A)</m> of all subsets of <m>A</m>.
+          That is,
+          <me>
+            \cP(A)=\{B:B\subseteq A\}
+          </me>.
+        </p>
+        <p>
+          Otherwise said: <m>B\in\cP(A)\iff B\subseteq A</m>.
+        </p>
+      </statement>
+    </definition>
+    <example>
+      <statement>
+        <p>
+          \item Let <m>A=\{1,3,7\}</m>.
+          Then <m>A</m> has the following subsets,
+          listed by how many elements are in each subset.
+          <me>
+            \begin{array}{ll} \text{ 0-elements: } \amp \emptyset\\ \text{ 1-element: } \amp \{1\},\ \{3\},\ \{7\}\\ \text{ 2-elements: } \amp \{1,3\},\ \{1,7\},\ \{3,7\}\\ \text{ 3-elements: } \amp \{1,3,7\} \end{array}
+          </me>
+        </p>
+        <p>
+          Gathering these together, we have the power set:
+          <me>
+            \cP(A)=\Bigl\{\emptyset,\{1\},\{3\},\{7\},\{1,3\},\{1,7\},\{3,7\},\{1,3,7\}\Bigr\}
+          </me>.
+        </p>
+        <p>
+          \item Consider <m>B=\Bigl\{1,\bigl\{\{2\},3\bigr\}\Bigr\}</m>.
+          It is essential that you use different size set brackets to prevent confusion.
+          <m>B</m> has only <em>two</em> elements,
+          namely <m>1</m> and <m>\bigl\{\{2\},3\bigr\}</m>.
+          We can gather the subsets of <m>B</m> in a table.
+          <me>
+            \begin{array}{ll} \text{ 0-elements: } \amp \emptyset\\ \text{ 1-element: } \amp \{1\},\ \Bigl\{\bigl\{\{2\},3\bigr\}\Bigr\}\\ \text{ 2-elements: } \amp \Bigl\{1,\bigl\{\{2\},3\bigr\}\Bigr\} \end{array}
+          </me>
+        </p>
+        <p>
+          In the second line,
+          remember that to make a subset out of a single element you must surround the element with set brackets.
+          Thus <m>1\in B\implies \{1\}\subseteq B</m> and
+          <me>
+            \bigl\{\{2\},3\bigr\}\in B\implies \Bigl\{\bigl\{\{2\},3\bigr\}\Bigr\}\subseteq B
+          </me>.
+        </p>
+        <p>
+          The power set of <m>B</m> is therefore
+          <me>
+            \cP(B)=\biggl\{\emptyset,\ \{1\},\ \Bigl\{\bigl\{\{2\},3\bigr\}\Bigr\},\ \Bigl\{1,\bigl\{\{2\},3\bigr\}\Bigr\}\biggr\}
+          </me>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      \paragraph{Notation}
+    </p>
+    <p>
+      Be absolutely certain that you understand the difference between <m>\in</m> and <m>\subseteq</m>.
+      It is easy to become confused when considering power sets.
+      In the context of the previous examples,
+      here are eight propositions.
+      Which are true and which are false?<fn>
+      Only (a), (d), and (g) are true.
+      Make sure you understand why!
+      </fn>
+      <me>
+        \begin{array}{r@{}l@{\qquad\qquad}r@{}l@{\qquad\qquad}r@{}l@{\qquad\qquad}r@{}l} \text{ (a) } \amp 1\in A \amp \text{ (b) } \amp 1\in\cP(A) \amp \text{ (c) } \amp \{1\}\in A \amp \text{ (d) } \amp \{1\}\in\cP(A)\\ \text{ (e) } \amp 1\subseteq A \amp \text{ (f) } \amp 1\subseteq\cP(A) \amp \text{ (g) } \amp \{1\}\subseteq A \amp \text{ (h) } \amp \{1\}\subseteq\cP(A) \end{array}
+      </me>
+    </p>
+    <p>
+      As a further exercise in being careful with notation,
+      consider the following theorem.
+    </p>
+    <theorem xml:id="thm_powersub">
+      <statement>
+        <p>
+          If <m>A\subseteq B</m>, then <m>\cP(A)\subseteq\cP(B)</m>.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        Suppose that <m>A\subseteq B</m> and let <m>C\in\cP(A)</m>.
+        We must show that <m>C\in\cP(B)</m>.
+      </p>
+      <p>
+        By definition, <m>C\in\cP(A)\implies C\subseteq A</m>.
+        Since subset inclusion is transitive (Theorem \hyperlink{thm:subsettranslnk}{ <xref ref="thm_subsettrans"></xref>}), we have
+        <me>
+          C\subseteq A\subseteq B\implies C\subseteq B
+        </me>.
+      </p>
+      <p>
+        This says that <m>C\in\cP(B)</m>.
+        Therefore <m>\cP(A)\subseteq\cP(B)</m>.
+      </p>
+    </proof>
+    <p>
+      It is very easy to get confused by the proof of this theorem.
+      Exercises \thesubsection.
+      <xref ref="ex_powersub1"></xref> and \thesubsection.
+      <xref ref="ex_powersub2"></xref> discuss things further.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Cardinality and Power Sets</title>
+    <p>
+      Let's investigate how the cardinality of a set and its power set are related.
+      Consider a few basic examples where we list all of the subsets,
+      grouped by cardinality.
+      <me>
+        \begin{array}{|c||c|c|c|c||c|} \hline \text{ Set } A\amp \text{ 0-elements } \amp \text{ 1-element } \amp \text{ 2-elements } \amp \text{ 3-elements } \amp \nm{\cP(A)}\\\hline \emptyset\amp \emptyset\amp \amp \amp \amp 1\\\hline \{a\}\amp \emptyset\amp \{a\}\amp \amp \amp 1+1=2\\\hline \{a,b\}\amp \emptyset\amp \{a\},\{b\}\amp \{a,b\}\amp \amp 1+2+1=4\\\hline \{a,b,c\}\amp \emptyset\amp \{a\},\{b\},\{c\}\amp \{a,b\},\{a,c\},\{b,c\}\amp \{a,b,c\}\amp 1+3+3+1=8\\\hline \end{array}
+      </me>
+    </p>
+    <p>
+      You should have seen this pattern before:
+      we are looking at the first few lines of Pascal's Triangle.<fn>
+      If you know a little about combinations from probability,
+      it should be clear that a set <m>A</m> with <m>n</m> elements has precisely
+      <m>{}^nC_r=\binom nr=\frac{n!}{r!(n-r)!}</m> distinct <m>r</m>-element subsets.
+      </fn> It should be no surprise that if <m>\nm A=4</m>,
+      then <m>\nm{\cP(A)}=1+4+6+4+1=16</m>.
+      The progression <m>1,2,4,8,16,\ldots</m> in the final column immediately suggests the following theorem.
+    </p>
+    <theorem xml:id="thm_powercard">
+      <statement>
+        <p>
+          Suppose that <m>A</m> is a finite set.
+          Then <m>\nm{\cP(A)}=2^{\nm A}</m>.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      Conjuring up a proof may seem daunting given how little we know about <m>A</m>!
+      In fact we have only one thing to work with:
+      the <em>cardinality</em> of <m>A</m>.
+      Indeed you might find it helpful to rephrase the theorem as follows:
+      <me>
+        \forall n\in\N_0,\ \ \nm A=n\implies \nm{\cP(A)}=2^{n}
+      </me>
+    </p>
+    <p>
+      Viewed this way,
+      we see that we want to prove an infinite collection of propositions,
+      indexed by the set <m>\N_0</m>:
+      induction seems like the way forward.
+      What might the induction step look like?
+      The basic idea is that every set with <m>n+1</m> elements is the disjoint union of a set with <m>n</m> elements and a single-element set.
+      The induction step is essentially the observation that any <m>n+1</m>-element set <m>B</m> has <em>twice</em>
+      the number of subsets of some <m>n</m>-element set <m>A</m>.
+      It is instructive to see an example of this before writing the proof.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Let <m>B=\{1,2,3\}</m>.
+          Now choose the element <m>3\in B</m> and delete it to create the smaller set
+          <me>
+            A=\{1,2\}=B\setminus\{3\}
+          </me>.
+        </p>
+        <p>
+          We can split the subsets of <m>B</m> into two groups:
+          those which contain 3 and those which do not.
+          In the following table we list all of the subsets of <m>B</m>.
+          In the first column are those subsets <m>X</m> which do not contain 3.
+          These are exactly the subsets of <m>A</m>.
+          In the second column are the subsets
+          <m>Y=X\cup\{3\}</m> of <m>B</m> which do contain 3.
+          <me>
+            \begin{array}{c|c} X\amp X\cup\{3\}\\\hline \emptyset\amp \{3\}\\ \{1\}\amp \{1,3\}\\ \{2\}\amp \{2,3\}\\ \{1,2\}\amp \{1,2,3\} \end{array}
+          </me>
+        </p>
+        <p>
+          It is clear that <m>B</m> has twice the number of subsets of <m>A</m>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      This method of pairing is exactly mirrored in the proof.
+    </p>
+    <proof>
+      <p>
+        We prove by induction on the cardinality of <m>A</m>.
+        For each <m>n\in\N_0</m>, we consider the proposition
+        <me>
+          \nm A=n\implies\nm{\cP(A)}=2^n.\tag{(\(\ast\))}
+        </me>
+      </p>
+      <p>
+        (<em>Base Case</em>)If <m>n=0</m>,
+        then <m>A=\emptyset</m> (Theorem \hyperlink{thm:subsettranslnk}{ <xref ref="thm_subsettrans"></xref>}).
+        But then <m>\cP(A)=\{\emptyset\}</m>,
+        whence <m>\nm{\cP(A)}=1=2^0</m>.
+      </p>
+      <p>
+        (<em>Induction Step</em>)Fix
+        <m>n\in\N_0</m> and assume that (<m>\ast</m>) is true for this <m>n</m>.
+        That is, we assume that any set with <m>n</m> elements has <m>2^n</m> subsets.
+        Now let <m>B</m> be <em>any</em>
+        set with <m>n+1</m> elements.
+        Choose one of the elements <m>b\in B</m> and define <m>A=B\setminus\{b\}</m>.
+        The subsets of <m>B</m> can then be separated into the following two types:
+        <ol>
+          <li>
+            <p>
+              Subsets <m>X\subseteq B</m> which do not contain <m>b</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Subsets <m>Y\subseteq B</m> which contain <m>b</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        In the first case, <m>X</m> is really a subset of <m>A</m>.
+      </p>
+      <p>
+        In the second case we can write <m>Y=X\cup\{b\}</m>,
+        where <m>X</m> is again a subset of <m>A</m>.
+      </p>
+      <p>
+        Each subset <m>X\subseteq A</m> therefore corresponds to precisely two subsets <m>X</m> and <m>X\cup\{b\}</m> of <m>B</m>.
+        Since <m>\nm{A}=n</m>,
+        the induction hypothesis tells us that there are <m>2^n</m> subsets <m>X\subseteq A</m>, whence
+        <me>
+          \nm{\cP(B)}=2\nm{\cP(A)}=2^{n+1}
+        </me>.
+      </p>
+      <p>
+        By induction, <m>(\ast)</m> is true for all <m>n\in\N_0</m>.
+      </p>
+    </proof>
+    <p>
+      Once you understand the proof,
+      you should compare it to the proof of <xref ref="thm_polygon">Theorem</xref>
+      on the interior angles of a polygon:
+      the idea is very similar.
+      Exercise \thesubsection.
+      <xref ref="ex_binom"></xref> gives an alternative proof of this result.
+    </p>
+    <p>
+      As a final example,
+      we consider the interaction of power sets and Cartesian products.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Suppose that <m>A=\{a\}</m> and <m>B=\{b,c\}</m>.
+          Then
+          <me>
+            A\times B=\{(a,b),(a,c)\}
+          </me>.
+        </p>
+        <p>
+          The power set <m>\cP(A\times B)</m> therefore contains <m>2^2=4</m> elements: indeed
+          <me>
+            \cP(A\times B)=\Big\{\emptyset,\ \{(a,b)\},\ \{(a,c)\},\ \{(a,b),(a,c)\}\Big\}
+          </me>.
+        </p>
+        <p>
+          The power sets of <m>A</m> and <m>B</m> have 2 and 4 elements respectively:
+          <me>
+            \cP(A)=\big\{\emptyset,\{a\}\big\},\qquad\cP(B)=\big\{\emptyset,\{b\},\{c\},\{b,c\}\big\}
+          </me>.
+        </p>
+        <p>
+          The Cartesian product of the power sets therefore has <m>2\times 4=8</m> elements:
+          <md>
+            \cP(A)\times\cP(B) =\Big\{\big(\emptyset,\emptyset\big),\  \big(\emptyset,\{b\}\big),\  \big(\emptyset,\{c\}\big),\  \big(\emptyset,\{b,c\}\big),\\* \big(\{a\},\emptyset\big),\  \big(\{a\},\{b\}\big),\  \big(\{a\},\{c\}\big),\  \big(\{a\},\{b,c\}\big)\Big\}.
+          </md>
+        </p>
+        <p>
+          It should be clear from this example not only that <m>\cP(A\times B)\neq\cP(A)\times\cP(B)</m>,
+          but that the elements of the two sets are completely different.
+          The elements of <m>\cP(A\times B)</m> are
+          <em>sets of ordered pairs,</em>
+          while the elements of <m>\cP(A)\times\cP(B)</m> are
+          <em>ordered pairs of sets.</em>
+        </p>
+      </statement>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Reading Questions</title>
+    <ol>
+      <li>
+        <p>
+          Which of the following are true statements.
+          Select all that apply.
+          <ol>
+            <li>
+              <p>
+                <m>[0,1) \in \cP(\R)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>7 \in \cP(\N)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{(3,5),(2,9)\} \subseteq \cP(\N \times \N)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{4, \pi\} \in \cP(\R)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A = \{(1,2), 3, (4,\{5\})\}</m>.
+          What is <m>|\cP(A)|</m>?
+          <ol>
+            <li>
+              <p>
+                <m>3</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>8</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>16</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>32</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>A = \{\emptyset, 1, \{a\}\}</m>.
+          List the elements of <m>\cP(A)</m>, compute its cardinality.
+          Then answer True or False for the following:
+          <ol>
+            <li>
+              <p>
+                <m>\emptyset \in A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\emptyset \subseteq A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\emptyset \in \cP(A)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\emptyset \subseteq \cP(A)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{\{a\}\} \subseteq \cP(A)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{\{\emptyset, 1\}, \{\emptyset\}, \emptyset\} \subseteq \cP(A)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \in \cP(A)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \subseteq \cP(A)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+        <url href="https://youtu.be/Pprf24H6SLc">Video Solution</url>
+      </li>
+      <li>
+        <p>
+          Prove that <m>A \subseteq B</m> if and only if <m>\cP(A) \subseteq \cP(B)</m>.
+          <url href="https://youtu.be/24tLpM3qdMM">Video Solution</url>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Write the following sets in roster notation:
+          <tabular>
+            {r@{<nbsp/> }l@{ }r@{<nbsp/> }l} (a)&amp; <m>\cP(A)</m> \text{ for } <m>A=\{1,2\}</m>.&amp;(d)&amp; <m>\cP(A)</m> \text{ for } <m>A=\{\emptyset,3,\{4\}\}</m>. (b)&amp;<m>\cP(A)</m> \text{ for } <m>A=\{1,2,3\}</m>.&amp;(e)&amp; <m>\cP(\cP(A))</m> \text{ for } <m>A=\{3,5\}</m>. (c)&amp;<m>\cP(A)</m> \text{ for } <m>A=\bigl\{(1,2),(2,3)\bigr\}</m>.&amp;(f)&amp; <m>\{ X \in \cP(\{1,2,3,4\}) \colon |X| = 1 \}</m>.
+          </tabular>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A=\{1,3\}</m> and <m>B=\{2,4\}</m>.
+          <ol>
+            <li>
+              <p>
+                Draw a picture of the set <m>A\times B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Compute <m>\cP(A\times B)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the cardinality of <m>\cP(A)\times\cP(B)</m>?
+                <em>Don't compute the set!</em>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Determine whether the following statements are true or false (<em>in (b),
+          the symbol <m>\subsetneq</m> means <sq>proper subset</sq></em>).
+          Justify your answers.
+          <ol>
+            <li>
+              <p>
+                If <m>\{7\}\in\cP(A)</m>, then <m>7\in A</m> and <m>\{7\}\notin A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>A,B</m> and <m>C</m> are sets such that <m>A\subsetneq\cP(B)\subsetneq C</m> and <m>\nm A=2</m>.
+                Then <m>\nm C</m> can be 5, but <m>\nm C</m> cannot be 4.
+              </p>
+            </li>
+            <li>
+              <p>
+                If a set <m>B</m> has one more element than a set <m>A</m>,
+                then <m>\cP(B)</m> has at least two more elements than <m>\cP(A)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that the sets <m>A,B,C</m> and <m>D</m> are all subsets of
+                <m>\{1,2,3\}</m> with cardinality two.
+                Then at least two of these sets are equal.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li xml:id="ex_powersub1">
+        <p>
+          Here are three incorrect proofs of <xref ref="thm_powersub">Theorem</xref>.
+          Explain why each fails.
+          <ol>
+            <li>
+              <p>
+                Let <m>x\in\cP(A)</m>.
+                Then <m>x\in A</m>.
+                Since <m>A\subseteq B</m>, we have <m>x\in B</m>.
+                Therefore <m>x\in\cP(B)</m>, and so <m>\cP(A)\subseteq\cP(B)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>A=\{1,2\}</m> and <m>B=\{1,2,3\}</m>.
+                Then <m>\cP(A)=\{\emptyset,\{1\},\{2\},A\}</m>,
+                and <m>\cP(B)=\{\emptyset,\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\},B\}</m>.
+                Thus <m>\cP(A)\subseteq\cP(B)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>x\in A</m>.
+                Since <m>A\subseteq B</m>, we have <m>x\in B</m>.
+                Since <m>x\in A</m> and <m>x\in B</m>,
+                we have <m>\{x\}\in\cP(A)</m>,
+                and <m>\{x\}\in\cP(B)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li xml:id="ex_powersub2">
+        <p>
+          Consider the converse of <xref ref="thm_powersub">Theorem</xref>.
+          Is it true or false?
+          Prove or disprove your conjecture. \item
+          <ol>
+            <li>
+              <p>
+                Prove that <m>\cP(A)\cup\cP(B)\subseteq\cP(A\cup B)</m>.
+                Provide a counter-example to show that we do not expect equality.
+              </p>
+            </li>
+            <li>
+              <p>
+                Does anything change if you replace <m>\cup</m> with <m>\cap</m> in part (a)?
+                Justify your answer.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> and <m>B</m> be sets.
+          Prove or disprove:
+          <m>A \subseteq B \implies \cP(A) \subseteq \cP(B)</m>.
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              For any set <m>A</m>,
+              show there is an injection <m>\iota : A \to \cP(A)</m>.
+              (Explicitly construct a map, and show that it is one-to-one.)
+            </p>
+          </li>
+          <li>
+            <p>
+              Is there any set <m>A</m> such that <m>A \cap \cP(A) \neq \emptyset</m>?
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          If we define an ordered pair <m>(a,b)</m> as <m>\{\{a\}, \{a,b\}\}</m>,
+          show that <m>A \times B \subseteq \cP(\cP(A \cup B))</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the proof of <xref ref="thm_powercard">Theorem</xref>.
+          Let <m>B</m> be a set with <m>n+1</m> elements,
+          let <m>b\in B</m> and let <m>A=B\setminus\{b\}</m>.
+          Prove that the function <m>f:\cP(A)\times\{1,2\}\to\cP(B)</m> defined by
+          <me>
+            f(X,1)=X,\qquad f(X,2)=X\cup\{b\}
+          </me>
+          is a bijection, and that consequently,
+          by <xref ref="thm_finitecard">Theorem</xref>,
+          <m>\nm{\cP(A)\times\{1,2\}}=\nm{\cP(B)}</m>.
+        </p>
+      </li>
+      <li xml:id="ex_binom">
+        <p>
+          We use the following notation for the binomial coefficient:
+          <m>\binom nr=\frac{n!}{r!(n-r)!}</m>.
+          This symbol denotes the number of distinct ways one can choose <m>r</m> objects from a set of <m>n</m> objects.
+          <ol>
+            <li>
+              <p>
+                Use the definition of the binomial coefficient to prove the following:
+                <me>
+                  \text{ If }  1\le r\le n,\ \text{ then } \ \binom{n+1}r=\binom nr+\binom n{r-1}
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove by induction that <m>\forall n\in\N_0,\,\sum\limits_{r=0}^n\binom nr=2^n</m>.
+                <em>Hint: Use part (a) in the induction step.
+                Note that the smallest <m>n</m> for which it applies is <m>n=1\ldots</m></em>
+              </p>
+            </li>
+            <li>
+              <p>
+                Explain why part (b) provides an alternative proof of <xref ref="thm_powercard">Theorem</xref>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <em>If you found this easy, try proving the binomial theorem: <m>\forall n\in\N,\,(x+y)^n=\sum\limits_{r=0}^n\binom nrx^ry^{n-r}</m>.</em>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> and <m>B</m> be nonempty sets.
+          We use the notation <m>A^B</m> to denote the set of all functions from <m>B</m> to <m>A</m>.
+          <ol>
+            <li>
+              <p>
+                If <m>A = \{0,1\}</m> and <m>B = \{a,b,c\}</m>,
+                list all elements of <m>A^B</m>.
+                What is <m>|A^B|</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>A</m> and <m>B</m> are finite sets,
+                show <m>|A^B| = |A|^{|B|}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>B</m> be a set and <m>Y \subseteq B</m>.
+                Define <m>\chi_Y : B \to \{0,1\}</m> by
+                <me>
+                  \chi_Y(x) = \begin{cases}1 \amp  \text{ if }  x \in Y \\ 0 \amp  \text{ if }  x \notin Y. \end{cases}
+                </me>
+                We call <m>\chi_Y</m> the <em>characteristic function</em> of <m>Y</m>.
+                By definition,
+                <m>\chi_Y \in \{0,1\}^B</m> for any <m>Y \subseteq B</m>.
+                Show every element of <m>\{0,1\}^B</m> is the characteristic function of some subset of <m>B</m>.
+                In other words, prove that for all <m>f \in \{0,1\}^B</m>,
+                there exists <m>Y \subseteq B</m> such that <m>f = \chi_Y</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>B</m> be a set.
+                Define <m>\Phi : \cP(B) \to \{0,1\}^B</m> by <m>\Phi(Y) = \chi_Y</m>.
+                Show that <m>\Phi</m> is a bijection.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>B</m> is finite,
+                conclude that <m>|\cP(B)| = |\{0,1\}^B| = 2^{|B|}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A,B,C,D</m> be nonempty sets.
+          Suppose that there is a bijection
+          <m>f : A \to B</m> and a bijection <m>g : C \to D</m>.
+          Show there is a bijection between <m>C^A</m> and <m>D^B</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>X</m> be an infinite set.
+          A collection of sets <m>\mathcal{F} \subseteq \cP(X)</m> is called a <em>filter</em>
+          if the following conditions are satisfied:
+          <ol marker="labelarabic">
+            <li>
+              <p>
+                <m>\emptyset \notin \mathcal{F}</m> and <m>X \in \mathcal{F}</m>,
+              </p>
+            </li>
+            <li>
+              <p>
+                if <m>A \subseteq B \subseteq X</m> and <m>A \in \mathcal{F}</m>,
+                then <m>B \in \mathcal{F}</m>,
+              </p>
+            </li>
+            <li>
+              <p>
+                if <m>A,B \in \mathcal{F}</m>,
+                then <m>A \cap B \in \mathcal{F}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        Filters are meant to capture a notion of largeness for sets.
+        <ol>
+          <li>
+            <p>
+              Show that <m>\{A : X \setminus A \text{ is finite } \}</m> is a filter
+              (this is called the <em>cofinite</em>
+              or <em>Frech&#xe9;t filter</em>).
+            </p>
+          </li>
+          <li>
+            <p>
+              A filter <m>\mathcal{U} \subseteq \cP(X)</m> is called an <em>ultrafilter</em>
+              if it is a filter and for any <m>A \in \cP(X)</m>,
+              we have either <m>A \in \mathcal{U}</m> or <m>X \setminus A \in \mathcal{U}</m>.
+              Show that the cofinite filter is not an ultrafilter.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that a filter <m>\mathcal{F}</m> is an ultrafilter if and only if for any
+              <m>A_1,\ldots,A_n \in \cP(X)</m> such that <m>A_1 \cup \cdots \cup A_n \in \mathcal{F}</m>,
+              there is <m>1 \leq i \leq n</m> such that <m>A_i \in \mathcal{F}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>s \in X</m>,
+              and define <m>\mathcal{U}_s = \{A \in \cP(X) : s \in A\}</m>.
+              Show <m>\mathcal{U}_s</m> is an ultrafilter,
+              called the <em>principal ultrafilter generated by <m>s</m></em>.
+            </p>
+          </li>
+          <li>
+            <p>
+              An ultrafilter <m>\mathcal{U}</m> is <em>nonprincipal</em>
+              if it is not equal to <m>\mathcal{U}_s</m> for any <m>s \in X</m>.
+              Show an ultrafilter <m>\mathcal{U}</m> is nonprincipal if and only if it contains the cofinite filter
+              (as a subset).
+            </p>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </subsection>
+</section>

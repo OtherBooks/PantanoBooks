@@ -1,0 +1,955 @@
+<section xml:id="sec_cong">
+  <title>Remainders and Congruence</title>
+  <introduction>
+    <definition xml:id="defn_div">
+      <statement>
+        <p>
+          Let <m>m</m> and <m>n</m> be integers, with <m>n\neq 0</m>.
+          We say that <term><m>n</m> divides <m>m</m></term>
+          and write <m>n\divides m</m> if <m>m</m> is divisible by <m>n</m>:
+          that is if there exists some integer <m>k</m> such that <m>m=kn</m>.
+          Equivalently, we say that <m>n</m> is a
+          <term>divisor</term> of <m>m</m>,
+          or that <m>m</m> is a <term>multiple</term> of <m>n</m>.
+        </p>
+      </statement>
+    </definition>
+    <paragraphs>
+      <title>Examples</title>
+      <p>
+        Since <m>20=4\cdot 5</m> we may write <m>4\divides 20</m>.
+        Similarly <m>17\divides 51</m>.
+        We may also use the symbol
+        <m>\ \ndivides\</m> for <sq>does not divide.</sq> Thus
+        <m>12\ndivides 8</m> and <m>7\ndivides 9</m>.
+      </p>
+    </paragraphs>
+    <p>
+      When an integer does not divide another,
+      there is a remainder left over.
+    </p>
+    <theorem xml:id="thm_div">
+      <title>The Division Algorithm</title>
+      <statement>
+        <p>
+          Let <m>m</m> be an integer and <m>n</m> a positive integer.
+          Then there exist unique integers <m>q</m>
+          (the <em>quotient</em>)
+          and <m>r</m>
+          (the <em>remainder</em>)
+          which satisfy the following conditions:
+          <ol>
+            <li>
+              <p>
+                <m>0\le r\lt n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>m=qn+r</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      The theorem should be read as saying that <m>n</m> goes <m>q</m> times into <m>m</m> with <m>r</m> left over.
+    </p>
+    <example>
+      <statement>
+        <p>
+          \item 7 goes into 23 three times with 2 left over:
+          an elementary school student would write <sq><m>23\div 7=3</m> remainder 2.</sq> In the language of the Division Algorithm,
+          we have <m>m=23</m> and <m>n=7</m>.
+          We look for the smallest integer <m>r\ge 0</m> so that <m>23-r</m> is divisible by 7:
+          since <m>7\divides 21</m> we choose <m>r=2</m>.
+          The quotient is <m>q=3</m> and we write
+          <me>
+            23=3\cdot 7+2
+          </me>
+        </p>
+        <p>
+          \item Similarly, if <m>m=-11</m> and <m>n=3</m>,
+          then <m>q=-4</m> and <m>r=1</m>, since
+          <me>
+            -11=(-4)\cdot 3+1
+          </me>
+        </p>
+      </statement>
+    </example>
+    <p>
+      <em>For practice,
+      find a formula for all the integers that have remainder <m>4</m> after division by <m>6</m>.</em>
+    </p>
+    <p>
+      The proof of the Division Algorithm relies on the development of induction,
+      to which we will return in <xref ref="sec_ind">Chapter</xref>.
+      For our purposes,
+      the point of the division algorithm is that every integer <m>m</m> has a nicely-defined remainder <m>r</m> when divided by <m>n</m>.
+      This allows us to construct an alternative form of arithmetic.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          Let <m>a</m> and <m>b</m> be integers,
+          and <m>n</m> a positive integer.
+          We say that <term><m>a</m> is congruent to <m>b</m> modulo <m>n</m></term> and write
+          <me>
+            a\equiv b\pmod n
+          </me>
+          if <m>a</m> and <m>b</m> have the <em>same remainder</em>
+          upon dividing by <m>n</m>.
+          The integer <m>n</m> is called the <term>modulus</term>.
+          When the modulus is unambiguous we tend simply to write <m>a\equiv b</m>.
+        </p>
+      </statement>
+    </definition>
+    <paragraphs>
+      <title>Examples</title>
+      <p>
+        We write <m>7\equiv 10\pmod 3</m>,
+        since both 7 and 10 have the same remainder <m>(r=1)</m> on division by <m>3</m>.
+      </p>
+      <p>
+        Since 6 and 10 do not have the same remainder on division by 3, we would write <m>6\not\equiv 10\pmod 3</m>.
+      </p>
+    </paragraphs>
+    <p>
+      Can you find a formula for <em>all</em>
+      the integers that are congruent to 10 modulo 3?
+    </p>
+    <p>
+      For a little practice with the notation,
+      consider the following conjectures,
+      where <m>a</m> is any integer.
+      Are they true or false?
+    </p>
+    <conjecture>
+      <statement>
+        <p>
+          <m>a\equiv 8\pmod 6\implies a\equiv 2\pmod 3</m>.
+        </p>
+      </statement>
+    </conjecture>
+    <conjecture>
+      <statement>
+        <p>
+          <m>a\equiv 2\pmod 3\implies a\equiv 8\pmod 6</m>.
+        </p>
+      </statement>
+    </conjecture>
+    <p>
+      The first conjecture is true.
+      Indeed, if <m>a\equiv 8\pmod 6</m>,
+      we can write <m>a=6k+8</m> for some integer <m>k</m>.
+      Then
+      <me>
+        a=6k+8=6k+6+2=3(2k+2)+2
+      </me>
+      and so <m>a</m> has remainder 2 upon division by 3, showing that <m>a</m> is congruent to 2 modulo 3.
+    </p>
+    <p>
+      On the other hand, the second conjecture is false.
+      All we need is a counterexample.
+      Consider <m>a=5</m>: clearly <m>a</m> is congruent to 2 modulo 3.
+      However <m>a</m> has remainder 5 on division by 6, whereas 8 has remainder 2.
+      Therefore <m>a</m> and 8 do not have the same remainder and are not congruent modulo 6.
+    </p>
+    <p>
+      Reasoning and calculating in the above fashion is tedious.
+      What is useful is to tie the concept of congruence to that of divisibility.
+      The following theorem is crucial,
+      and provides an equivalent definition of congruence.
+    </p>
+    <theorem xml:id="thm_congdiv">
+      <statement>
+        <p>
+          Let <m>a</m> and <m>b</m> be integers and <m>n</m> a positive integer.
+          Then <m>a\equiv b\pmod n\iff n\divides (b-a)</m>.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        There are two separate theorems here,
+        although both rely on the Division Algorithm
+        (<xref ref="thm_div">Theorem</xref>)
+        to divide both <m>a</m> and <m>b</m> by <m>n</m>.
+        Given <m>a,b,n</m>,
+        the Division Algorithm shows that there exist unique quotients <m>q_1,q_2</m> and remainders <m>r_1,r_2</m> which satisfy
+        <me>
+          a=q_1n+r_1,\qquad b=q_2n+r_2,\qquad 0\le r_1,r_2\lt n.\tag{\((\ast)\)}
+        </me>
+      </p>
+      <p>
+        Now we perform both directions of the proof.
+      </p>
+      <p>
+        (<m>\Rightarrow</m>) Suppose that <m>a\equiv b\pmod n</m>.
+        By definition,
+        this means that <m>a</m> and <m>b</m> have the same remainder when divided by <m>n</m>.
+        That is, <m>r_1=r_2</m>.
+        Subtracting <m>a</m> from <m>b</m> gives us
+        <me>
+          b-a=(q_2-q_1)n+(r_2-r_1)=(q_2-q_1)n
+        </me>,
+        which is divisible by <m>n</m>.
+        Therefore <m>n\divides(b-a)</m>.
+      </p>
+      <p>
+        (<m>\Leftarrow</m>) This direction is a more subtle.
+        We assume that <m>b-a</m> is divisible by <m>n</m>.
+        Thus <m>b-a=kn</m> for some integer <m>k</m>.
+        Invoking <m>(\ast)</m>, we see that
+        <md>
+          <mrow>r_2-r_1\amp =(b-q_2n)-(a-q_1n)=(b-a)-(q_2-q_1)n</mrow>
+          <mrow>\amp =(k-q_2+q_1)n</mrow>
+        </md>
+        is also a multiple of <m>n</m>.
+        Now consider the condition on the remainders in <m>(\ast)</m>:
+        since <m>0\le r_1,r_2\lt n</m>, we quickly see that
+        <me>
+          \begin{cases}0\le r_2\lt n\\ -n\lt -r_1\le 0 \end{cases} \implies -n\lt r_2-r_1\lt n
+        </me>.
+      </p>
+      <p>
+        This says that <m>r_2-r_1</m> is a multiple of <m>n</m> lying strictly between <m>\pm n</m>.
+        The only possibility is that <m>r_2-r_1=0</m>.
+        Otherwise said, <m>r_2=r_1</m>,
+        whence <m>a</m> and <m>b</m> have the same remainder,
+        and so <m>a\equiv b\pmod n</m>.
+      </p>
+    </proof>
+    <p>
+      If you are having trouble with the final step, think about an example.
+      Suppose that <m>n=26</m> and that and that
+      <m>x=r_2-r_1</m> is an <em>integer</em>
+      satisfying the two conditions:
+      <me>
+        \begin{cases}x\text{ is divisible by } 26\\ -26\lt x\lt 26 \end{cases}
+      </me>
+    </p>
+    <p>
+      The strict inequalities should make it obvious that <m>x=0</m>.
+    </p>
+    <p>
+      To gain some familiarity with congruence,
+      try using <xref ref="thm_congdiv">Theorem</xref> to show that
+      <me>
+        a\equiv b\pmod n\iff b\equiv a\pmod n
+      </me>.
+    </p>
+    <p>
+      Note that this expression and the theorem both contain a hidden quantifier (<m>\forall a,b\in\Z</m>),
+      as discussed in <xref ref="sec_quant">Section</xref>.
+      Moreover, combining the theorem with <xref ref="defn_div">Definition</xref> leads to the observation that
+      <md>
+        <mrow>a\equiv b\negthickspace\pmod n\amp \iff \exists k\in\Z\text{ such that } b-a=kn</mrow>
+        <mrow>\amp \iff b=a+kn\text{ for some integer } k</mrow>
+      </md>
+    </p>
+  </introduction>
+  <subsection>
+    <title>Congruence and Divisibility</title>
+    <p>
+      The previous two theorems may appear a little abstract,
+      so it's a good idea to recap the relationship between congruence and divisibility.
+      The following observations should be immediate to you.
+    </p>
+    <p>
+      Let <m>a</m> be any integer and let <m>n</m> be a positive integer.
+      Then
+      <ul>
+        <li>
+          <p>
+            <m>a</m> is congruent to <em>exactly one</em>
+            of the integers <m>0,1,2,\ldots,n-1</m> modulo <m>n</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>a</m> is divisible by <m>n</m> if and only if <m>a\equiv 0\pmod n</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>a</m> is <em>not</em> divisible by <m>n</m> if and only if <m>a\equiv 1,\ 2,\ 3,\ldots</m>,
+            or <m>n-1</m> modulo <m>n</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      To test your level of comfort with the definition of congruence,
+      and review some proof techniques,
+      prove the following theorem.
+    </p>
+    <theorem xml:id="thm_congex">
+      <statement>
+        <p>
+          Suppose that <m>n</m> is an integer.
+          Then
+          <me>
+            n^2\not\equiv n\tpmod 3\iff n\equiv 2\tpmod 3
+          </me>.
+        </p>
+        <p>
+          PLACEHOLDER
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      If you don't know how to start,
+      try completing the following table before writing a formal proof:
+    </p>
+    \begin{array}{|c||c|c|}\hline
+    n\amp n^2\amp \text{ Is } n^2\equiv n\tpmod 3\text{?} \\\hline\hline
+    0\amp 0\amp \text{ Yes } \\\hline
+    1\amp \amp \\\hline
+    2\amp \amp \\\hline
+    \end{array}
+    <p>
+      That the congruence sign <m>\equiv</m> appears similar to the equals sign <m>=</m> is no accident.
+      In many ways it behaves exactly the same.
+      In <xref ref="sec_equiv">Section</xref>
+      we shall see that congruence is an important example of an
+      <em>equivalence relation:</em>
+      these generalize the notion of equality.
+      Indeed, two integers are congruent if and only if something about them is equal,
+      namely their remainders.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Modular Arithmetic</title>
+    <p>
+      The arithmetic of remainders is almost exactly the same as the more familiar arithmetic of real numbers,
+      but comes with all manner of fun additional applications,
+      most importantly cryptography and data security:
+      cell-phones and computers perform millions of these calculations every day!
+      Here we spell out the basic rules of congruence arithmetic.<fn>
+      The usual associative, commutative and distributive laws of arithmetic
+      <me>
+        a+(b+c)\equiv (a+b)+c,\qquad a(bc)\equiv (ab)c,\qquad a+b\equiv b+a,\qquad ab\equiv ba,\qquad a(b+c)\equiv ab+ac
+      </me>
+      all follow because <m>x=y\implies x\equiv y\pmod n</m>,
+      regardless of <m>n</m>:
+      equal numbers have the same remainder after all!
+      </fn>
+    </p>
+    <theorem xml:id="thm_congbasic">
+      <statement>
+        <p>
+          Suppose that <m>a,b,c,d</m> are integers,
+          and that all congruences are modulo the same integer <m>n</m>.
+          <ol>
+            <li>
+              <p>
+                <m>a\equiv b</m> and <m>c\equiv d\implies ac\equiv bd</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>a\equiv b</m> and <m>c\equiv d\implies a\pm c\equiv b\pm d</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      What the theorem says is that the operations of <sq>take the remainder</sq> and <sq>add</sq>
+      (or <sq>multiply</sq>)
+      can be performed in any order or combination,
+      the result will be the same.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Consider <m>a=29</m>, <m>b=14</m> and <m>n=6</m>.
+          We could add <m>a</m> and <m>b</m> then take the remainder when dividing by <m>n</m>:
+          <me>
+            29+14=43=6\cdot 7+1\implies 29+14\equiv 1\pmod 6
+          </me>.
+        </p>
+        <p>
+          Alternatively we could take the remainders of <m>a</m> and <m>b</m> modulo <m>n</m> and then add these:
+          <me>
+            5+2=7,\text{ which has the \emph{same remainder} 1 modulo 6.}
+          </me>
+        </p>
+        <p>
+          Either way, we may write the result as a congruence,
+          <me>
+            29+14\equiv 1\pmod 6
+          </me>.
+        </p>
+      </statement>
+    </example>
+    <proof>
+      <p>
+        Suppose that <m>a\equiv b</m> and <m>c\equiv d</m>.
+        By <xref ref="thm_congdiv">Theorem</xref>
+        we have <m>a-b=kn</m> and <m>c-d=ln</m> for some integers <m>k,l</m>.
+        It follows that
+        <md>
+          <mrow>\amp ac=(b+kn)(d+ln)=bd+n(bl+kd+kln)</mrow>
+          <mrow>\implies \amp ac-bd=n(bl+kd+kln)</mrow>
+        </md>
+        which is divisible by <m>n</m>.
+        Hence <m>ac\equiv bd</m>.
+      </p>
+      <p>
+        Try the second argument yourself.
+      </p>
+    </proof>
+    <p>
+      The ability to take remainders <em>before</em>
+      adding and multiplying is remarkably powerful,
+      and allows us to perform some surprising calculations.
+    </p>
+    <example>
+      <statement>
+        <p>
+          \item What is the remainder when <m>39^{23}</m> is divided by 10?
+          At the outset this question appears impossible to answer.
+          Ask your calculator and it will tell you that <m>39^{23}\approx 3.93\times 10^{36}</m>,
+          which is of no assistance;
+          we need to discover the <em>units</em> digit of <m>39^{23}</m>,
+          whereas your calculator reports only a few of the significant digits at the other end of the number.
+        </p>
+        <p>
+          Instead of relying on a calculator,
+          we think about the rules of arithmetic modulo 10.
+          Since <m>39\equiv 9\equiv -1\pmod{10}</m>, we quickly notice that
+          <me>
+            39\cdot 39\equiv (-1)\cdot(-1)\equiv 1\pmod{10}
+          </me>,
+          whence <m>39^2\equiv 1\pmod{10}</m>.
+          Since positive integer exponents signify repeated multiplication,
+          we can repeat the exercise to obtain
+          <md>
+            <mrow>39^{23}\amp \equiv \underbrace{(-1)\cdot(-1)\cdots(-1)}_{\text{ 23 times } }=(-1)^{23}\equiv -1\equiv 9\pmod{10}</mrow>
+          </md>
+        </p>
+        <p>
+          Therefore <m>39^{23}</m> has remainder 9 when divided by 10.
+          Otherwise said, the last digit of <m>39^{23}</m> is a 9.
+          If you ask a computer for all the digits you can check this yourself. \item Now that we understand powers,
+          more complex examples become easy.
+          Here we compute modulo <m>n=6</m>.
+          <me>
+            7^9+14^3\equiv 1^9+2^3\equiv 1+8\equiv 9\equiv 3\pmod 6
+          </me>.
+        </p>
+        <p>
+          Hence <m>7^9+14^3=40356351</m> has remainder 3 when divided by 6. \item Find the remainder when <m>124^{12}\cdot 65^{49}</m> is divided by 11.
+          This time we need to perform multiple calculations to reduce these large numbers to something manageable.
+          Since <m>124=11^2+3</m> and <m>65=11\cdot 6-1</m>, we write
+          <md>
+            <mrow>124^{12}\cdot 65^{49}\amp \equiv 3^{12}\cdot(-1)^{49}\equiv 27^4\cdot(-1)\equiv 5^4\cdot(-1)</mrow>
+            <mrow>\amp \equiv -(25^2)\equiv -(3^2)\equiv 2\pmod{11}</mrow>
+          </md>
+        </p>
+        <p>
+          The remainder is therefore 2.
+          There is no way to do this on a pocket calculator,
+          since the original number <m>124^{12}\cdot 65^{49}\approx 9\times 10^{113}</m> is far too large to work with!
+        </p>
+      </statement>
+    </example>
+    <p>
+      There are two points to stress when performing these calculations:
+      <ol>
+        <li>
+          <p>
+            You are trying to replace each integer with something which has the same remainder and is <em>small</em>:
+            thus <m>124\equiv 3\pmod{11}</m> is more helpful than <m>124\equiv -8\pmod{11}</m>,
+            since powers of 3 are easier to work with than powers of 8.
+          </p>
+        </li>
+        <li>
+          <p>
+            You may only reduce the <em>base</em>
+            of an exponential expression modulo <m>n</m>, not the exponent!
+            It is correct to write <m>17^{23}\equiv 3^{23}\pmod 7</m>,
+            but you <em>cannot</em> claim that this is congruent to <m>3^2</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      \paragraph{Division and Congruence}
+    </p>
+    <p>
+      The primary difference between modular and normal arithmetic is,
+      perhaps unsurprisingly, with regard to <em>division.</em>
+    </p>
+    <theorem xml:id="thm_congdivide">
+      <statement>
+        <p>
+          Suppose <m>a</m> and <m>b</m> are integers and <m>k</m> and <m>n</m> are positive integers.
+          If <m>ka\equiv kb\pmod{kn}</m> then <m>a\equiv b\pmod n</m>.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      The modulus is divided by <m>k</m> as well as the terms,
+      so the meaning of <m>\equiv</m> changes.
+      In Exercise \thesubsection.
+      <xref ref="ex_thmcongdivide"></xref>
+      you will prove this theorem, and observe that,
+      in general, we do not expect <m>a\equiv b\pmod {kn}</m>.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Reading Questions</title>
+    <ol>
+      <li>
+        <p>
+          Which of the following connectives makes the following true for any <m>a,b \in \Z</m> and <m>n \in \N</m>?
+          <me>
+            a \equiv b \pmod n  \rule{1cm}{0.15mm}  a = b
+          </me>.
+          <ol>
+            <li>
+              <p>
+                <m>\Longrightarrow</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\Longleftarrow</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\iff</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\land</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>m \in \Z</m> and <m>n \in \N</m>.
+          Is it possible that there are multiple pairs of integers <m>q</m> and <m>r</m> such that
+          <m>m = qn + r</m> and <m>0 \leq r \lt n</m>?
+          <ol>
+            <li>
+              <p>
+                It is never possible.
+              </p>
+            </li>
+            <li>
+              <p>
+                It is sometimes possible, depending on what <m>m</m> and <m>n</m> are.
+              </p>
+            </li>
+            <li>
+              <p>
+                It is always possible.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Which of the following are true statements for <m>a,b \in \Z</m> and <m>n \in \N</m>?
+          Select all that apply.
+          <ol>
+            <li>
+              <p>
+                <m>a</m> is congruent to exactly one of <m>0,1,\ldots,n-1</m> modulo <m>n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>a</m> can be congruent to more than one of <m>0,1,\ldots,n-1</m> modulo <m>n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>a</m> is divisible by <m>n</m> if and only if <m>a \equiv 0 \pmod n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n \equiv 0 \pmod n</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Use the Division Algorithm to show that any prime number
+          <m>p \geq 5</m> must have remainder <m>1</m> or <m>5</m> upon division by <m>6</m>.
+          Use this to show that <m>p^2 + 2</m> is composite for all such primes <m>p</m>.
+          <url href="https://youtu.be/5kSRSP5FHKw">Video Solution</url>
+        </p>
+      </li>
+      <li>
+        <p>
+          Find the remainder of <m>57^{33} + 42^{100}</m> upon division by <m>6</m>.
+          <url href="https://youtu.be/BQHAWJmsEAU">Video Solution</url>
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that <m>n^2 \equiv 0 \pmod 4</m> or
+          <m>n^2 \equiv 1 \pmod 4</m> for all <m>n \in \Z</m>.
+          <url href="https://youtu.be/st9pXz2agyw">Video Solution</url>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Check explicitly that <m>3^{23}\not\equiv 3^2\pmod 7</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find the remainder when <m>22^9+29^{24}</m> is divided by <m>10</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute the remainder when <m>43^{10}</m> is divided by 13.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find all integers <m>x</m> which satisfy the congruence equation <m>5x\equiv 2\mod 8</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find the remainder when <m>17^{251}\cdot 23^{12}-19^{41}</m> is divided by 5.
+          <em>Hint: <m>17\equiv 2</m> and <m>2^2\equiv -1\pmod 5</m>.</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          Find the remainder when <m>12^{10}+2^{36}\cdot 18^{12}</m> is divided by 141.
+          <em>Hint: what nice number is close to 141?
+          Use a calculator to help with some of the sums.</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          Is the following statement identical to <xref ref="thm_congex">Theorem</xref>?
+          Why/why not?
+          <me>
+            n^2\equiv n\tpmod 3\iff n\equiv 0\tpmod 3\text{ or } n\equiv 1\tpmod 3
+          </me>,
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove the first part of <xref ref="thm_congbasic">Theorem</xref>:
+          that if <m>a \equiv b \pmod n</m> and <m>c \equiv d \pmod n</m>,
+          then <m>a + c \equiv b + d \pmod n</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>a,b,c \in \Z</m> and <m>n \in \N</m>.
+          Prove
+          <ol>
+            <li>
+              <p>
+                <m>a \equiv a \pmod n</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                if <m>a \equiv b \pmod n</m> then <m>b \equiv a \pmod n</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                if <m>a \equiv b \pmod n</m> and
+                <m>b \equiv c \pmod n</m> then <m>a \equiv c \pmod n</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that if <m>a\equiv b\pmod n</m> and
+          <m>c\equiv d\pmod n</m> then <m>3a-c^2\equiv 3b-d^2\pmod n</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find a natural number <m>n</m> and integers <m>a,b</m> such that
+          <m>a^2\equiv b^2\pmod n</m> but <m>a\not\equiv b\pmod n</m>. \item
+          <ol>
+            <li>
+              <p>
+                Let <m>n</m> be a positive integer.
+                Prove that <m>n</m> is congruent to the sum of its digits modulo 9.
+                <em>Hint: first consider an example such as <m>345=3\cdot 10^2+4\cdot 10+5\ldots</m></em>
+              </p>
+            </li>
+            <li>
+              <p>
+                Is the integer 123456789 divisible by 9?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>p</m> be a prime number greater than or equal to 3.
+          Show that if <m>p\equiv 1\pmod 3</m>,
+          then <m>p\equiv 1\pmod 6</m>.
+          <em>Hint: <m>p</m> is odd.</em>
+        </p>
+      </li>
+      <li xml:id="ex_thmcongdivide">
+        <p>
+          Suppose that <m>7x\equiv 28\pmod{42}</m>.
+          By <xref ref="thm_congdivide">Theorem</xref>,
+          it follows that <m>x\equiv 4\pmod{6}</m>.
+          <ol>
+            <li>
+              <p>
+                Check this explicitly using <xref ref="thm_congdiv">Theorem</xref>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>7x\equiv 28\pmod{42}</m>,
+                is it possible that <m>x\equiv 4\pmod{42}</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Is it always the case that <m>7x\equiv 28\pmod{42}\implies x\equiv 4\pmod{42}</m>?
+                Why/why not?
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove <xref ref="thm_congdivide">Theorem</xref>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          If <m>a\divides b</m> and <m>b\divides c</m>,
+          prove that <m>a\divides c</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose <m>a,b,c \in \Z</m> and <m>a \mid b</m> and <m>a \mid c</m>.
+          Prove that for any <m>x,y \in \Z</m>,
+          we have <m>a \mid (bx + cy)</m>.
+        </p>
+      </li>
+      <li xml:id="ex_adivb">
+        <p>
+          Let <m>a,b</m> be positive integers.
+          Prove that <m>a=b\iff a\divides b</m> and <m>b\divides a</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Decide whether each conjecture is true or false and prove/disprove your assertions.
+          <ul>
+            <li>
+              <title>Conjecture 1:</title>
+              <p>
+                <m>a\divides b</m> and <m>a\divides c\implies a\divides bc</m>.
+              </p>
+            </li>
+            <li>
+              <title>Conjecture 2:</title>
+              <p>
+                <m>a\divides c</m> and <m>b\divides c\implies ab\divides c</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+      <li>
+        <p>
+          Fermat's Little Theorem
+          (to distinguish it from his <sq>Last</sq>)
+          states that if <m>p</m> is prime and <m>a\not\equiv 0\mod p</m>,
+          then <m>a^{p-1}\equiv 1\pmod p</m>.
+          <ol>
+            <li>
+              <p>
+                Use Fermat's Little Theorem to prove that <m>b^p\equiv b\pmod p</m> for
+                <em>any</em> integer <m>b</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that if <m>p</m> is prime then <m>p\divides (2^p-2)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find a counterexample to the converse:
+                some non-prime <m>n</m> such that <m>n\divides 2^n-2</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Abraham Lincoln was born on February 12<m>^\text{ th }</m> 1809.
+          On what day of the week was this?
+          More generally, describe how to find the weekday given any date
+          (in the Gregorian calendar).
+        </p>
+      </li>
+      <li>
+        <p>
+          For <m>n \in \N</m>, show
+          <me>
+            \frac{n(n+1)(2n+1)}{6}
+          </me>
+          is an integer.
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider numbers of the form
+          <me>
+            \underbrace{11\cdots 11}_{n \text{ times } }
+          </me>
+          for <m>n \geq 2</m>.
+          <ol>
+            <li>
+              <p>
+                Prove every such number can be written as <m>4k + 3</m> for some <m>k \in \Z</m>. [For example,
+                <m>11 = 4(2)+3</m> and <m>111 = 4(27) + 3</m>.]
+              </p>
+            </li>
+            <li>
+              <p>
+                Use part (a) to show that no such number is a square.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that <m>3 \mid (4^n - 1)</m> for all <m>n \geq 1</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that for any integer <m>n</m>, one of <m>n</m>,
+          <m>n + 2</m>, <m>n + 4</m> is divisible by <m>3</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>n \in \Z</m>.
+          <ol>
+            <li>
+              <p>
+                Find all possible remainders of <m>n^2</m> upon division by <m>7</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find all possible remainders of <m>n^3</m> upon division by <m>7</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use parts (a) and (b) to show that any number which is simultaneously a square and a cube must be of the form <m>7k</m> or <m>7k + 1</m> for some integer <m>k</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>m \in \Z</m> and <m>n \in \N</m>.
+          The Division Algorithm states that there exist unique integers <m>q</m> and <m>r</m> such that
+          <m>m = qn + r</m> and <m>0 \leq r \lt  n</m>.
+          While we will wait until the next chapter to see a full proof,
+          we can give a proof of the <em>uniqueness</em> part now.
+          Fill in the blanks in the following proof of the uniqueness part of the theorem.
+          <proof>
+            <p>
+              Replace absolute values with more intuitive approach.
+              The standard proof technique for uniqueness proofs is to assume there are two objects satisfying the conditions of the statement under question and proceeding to show that these objects are the same.
+              Towards this goal,
+              suppose that there exist two pairs of integers <m>q,r</m> and <m>q',r'</m> satisfying the conclusion of the Division Algorithm:
+              <me>
+                m = qn + r, \qquad m = q'n + r'
+              </me>
+              and <m>0 \leq r,r' \lt  n</m>.
+              We show <m>q = q'</m> and <m>r = r'</m>.
+            </p>
+            <p>
+              Then
+              <me>
+                r - r' = \rule{2.5cm}{0.15mm}
+              </me>.
+            </p>
+            <p>
+              Taking absolute values of both sides, we have
+              <me>
+                \rule{2cm}{0.15mm} = \rule{2.5cm}{0.15mm}
+              </me>.
+            </p>
+            <p>
+              Since <m>0 \leq r' \lt n</m>,
+              we have <m>-n \lt \rule{1cm}{0.15mm} \leq 0</m>.
+              Adding this inequality to <m>0 \leq r \lt n</m>,
+              we get <m>-n \lt \rule{2cm}{0.15mm} \lt n</m>.
+              In other words, <m>|r - r'| \lt n</m>.
+              Hence <m>n|q'-q| \lt n</m> as well.
+              Dividing by <m>n</m>, we have <m>|q' - q| \lt 1</m>.
+              But since <m>|q' - q|</m> is a positive integer,
+              this means that <m>|q' - q| = \rule{1cm}{0.15mm}</m>.
+              Thus <m>q = q'</m>.
+              It then follows that <m>\rule{2cm}{0.15mm}</m> as well.
+            </p>
+          </proof>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>n \in \N</m>.
+          Prove that <m>\sqrt{4n+6}</m> is not an integer.
+          Hint.
+          You may use the following lemma without proof:
+          <m>\forall k \in \Z,\; k^2 \equiv 0 \text{ or } 1 \pmod 4</m>.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

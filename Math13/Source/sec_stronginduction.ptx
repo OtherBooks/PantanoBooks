@@ -1,0 +1,568 @@
+<section xml:id="sec_stronginduction">
+  <title>Strong Induction</title>
+  <introduction>
+    <p>
+      The principle of mathematical induction as stated in <xref ref="thm_ind">Theorem</xref>
+      is sometimes known as <em>weak</em> induction.
+      In weak induction,
+      we require only that one proposition <m>P(n)</m> be true in order to demonstrate the truth of the succeeding proposition <m>P(n+1)</m>.
+      By contrast, the induction step in <em>strong</em>
+      induction additionally requires that more, perhaps <em>all</em>,
+      of the propositions coming before <m>P(n)</m> are also true.
+    </p>
+    <theorem xml:id="thm_indstrong">
+      <title>Principle of Strong Induction</title>
+      <statement>
+        <p>
+          Let <m>m</m> be an integer and suppose that <m>P(n)</m> is a proposition for each <m>n\in\Z_{\ge m}</m>.
+          Also fix an integer <m>l\ge m</m>.
+          Suppose:
+          <ol>
+            <li>
+              <title>(a)</title>
+              <p>
+                <m>P(m),P(m+1),\ldots,P(l)</m> are true.
+              </p>
+            </li>
+            <li>
+              <title>(b)</title>
+              <p>
+                <m>\forall n\ge l,\ (P(m)\wedge P(m+1)\wedge\cdots\wedge P(n))\implies P(n+1)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          Then <m>P(n)</m> is true for all <m>n\in\Z_{\ge m}</m>.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      The statement is a little complicated:
+      we show in the Exercises that it is equivalent to the earlier Principle of Mathematical Induction.
+      What matters is that <m>\Z_{\ge m}</m> is a well-ordered set.
+      In the simplest examples, we have <m>m=1</m> and <m>\Z_{\ge 1}=\N</m>.
+      The challenge in strong induction is identifying how much you need to assume in order to effect the induction step (b),
+      and then how many base cases <m>l-m+1</m> are required.
+    </p>
+    <p>
+      It is much easier to learn strong induction by seeing it in action.
+      Consider the Fibonacci numbers,
+      an excellent source of strong induction examples.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          The <term>Fibonacci numbers</term>
+          are the sequence <m>(f_n)_{n=1}^\infty=(1,1,2,3,5,8,13,21,\ldots)</m> defined by the recurrence relation
+          <me>
+            \begin{cases}f_{n+1}=f_n+f_{n-1}\amp \text{ if } n\ge 2\\ f_1=f_2=1\amp \end{cases}
+          </me>
+        </p>
+      </statement>
+    </definition>
+    <theorem xml:id="thm_fibon">
+      <statement>
+        <p>
+          For all natural numbers <m>n</m> we have <m>f_n\lt 2^n</m>.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        For each natural number <m>n</m>,
+        let <m>P(n)</m> be the proposition <m>f_n\lt 2^n</m>.
+      </p>
+      <p>
+        (<em>Base cases</em> <m>n=1,2</m>)<m>f_1=1\lt 2^1</m> and <m>f_2=1\lt 2^2</m>,
+        whence <m>P(1)</m> and <m>P(2)</m> are true.
+      </p>
+      <p>
+        (<em>Induction step</em>)Fix <m>n\ge 2</m> and suppose that <m>P(1),\ldots,P(n)</m> are true.
+        Then
+        <me>
+          f_{n+1}=f_n+f_{n-1}\lt 2^n+2^{n-1}\lt 2^n+2^n=2^{n+1}
+        </me>
+        which says that <m>P(n+1)</m> is true.
+      </p>
+      <p>
+        By strong induction <m>P(n)</m> is true for all <m>n\in\N</m>,
+        and so <m>f_n\lt 2^n</m>.
+      </p>
+    </proof>
+    <p>
+      In terms of <xref ref="thm_indstrong">Theorem</xref>,
+      we have <m>m=1</m> and <m>l=2</m> with <m>l-m+1=2</m> base cases.
+      The reason we need <m>m=1</m> is because the first claim in the Theorem is about the integer 1, namely <m>f_1\lt 2^1</m>.
+      We need two base cases because the recurrence relation defining the Fibonacci numbers requires the previous <em>two</em>
+      terms of the sequence in order to construct the next.
+    </p>
+    <p>
+      To help us understand strong induction,
+      it is instructive to see why a proof by weak induction would fail in this setting.
+    </p>
+    <proof>
+      <p>
+        We show, by weak induction, that <m>\forall n\in\N,\ f_n\lt 2^n</m>.
+      </p>
+      <p>
+        (<em>Base Case</em> <m>n=1</m>)By definition,
+        <m>f_1=1\lt 2^1</m>, whence the claim is true for <m>n=1</m>.
+      </p>
+      <p>
+        (<em>Induction Step</em>)Fix <m>n\in\N</m> and assume that <m>f_n\lt 2^n</m>.
+        We want to show that <m>f_{n+1}\lt 2^{n+1}</m>.
+        By the recurrence relation, we can write
+        <me>
+          f_{n+1}=f_n+f_{n-1}.\tag{(\(\ast\))}
+        </me>
+      </p>
+      <p>
+        The inductive hypothesis tells us that <m>f_n\lt 2^n</m>,
+        but what can we say about <m>f_{n-1}</m>?
+        Absolutely nothing!
+        We are stuck: weak induction fails to prove the theorem.
+      </p>
+    </proof>
+    <p>
+      The incorrect proof tells us why we need strong induction:
+      the recurrence relation defines each Fibonacci number
+      (except <m>f_1</m> and <m>f_2</m>)
+      in terms of <em>the previous two.</em>
+      To make use of the recurrence,
+      our induction hypothesis must assume something about
+      <em>at least <m>f_n</m> and <m>f_{n-1}</m>.</em>
+      Assuming something about only <m>f_n</m> is insufficient.
+    </p>
+    <p>
+      From <em>Wrong Proof A</em> we learned that we needed to prove <xref ref="thm_fibon">Theorem</xref> by strong induction.
+      Now suppose that we try the following,
+      which looks almost identical to the correct proof.
+    </p>
+    <proof>
+      <p>
+        For each <m>n\in\N</m>,
+        let <m>P(n)</m> be the proposition <m>f_n\lt 2^n</m>.
+        We prove that <m>P(n)</m> is true for all <m>n\in\N</m> by strong induction.
+      </p>
+      <p>
+        (<em>Base Case</em> <m>n=1</m>)By definition,
+        <m>f_1=1\lt 2^1</m>, whence <m>P(1)</m> is true.
+      </p>
+      <p>
+        (<em>Induction Step</em>)Fix <m>n\in\N</m> and assume that <m>P(1),\ldots,P(n)</m> are all true.
+        We want to show that <m>f_{n+1}\lt 2^{n+1}</m>.
+        By the recurrence relation, we can write
+        <me>
+          f_{n+1}=f_n+f_{n-1}\lt 2^n+2^{n-1}\lt 2\cdot 2^n=2^{n+1}.\tag{(\(\dag\))}
+        </me>
+      </p>
+      <p>
+        Hence <m>P(n)</m> is true for all <m>n\ge 1</m>.
+      </p>
+    </proof>
+    <p>
+      Where is the problem with this second argument?
+      The recursive formula <m>f_{n+1}=f_n+f_{n-1}</m> <em>only</em>
+      applies if <m>n\ge 2</m>.
+      If we take <m>n=1</m>, then it reads <m>f_2=f_1+f_0</m>,
+      but <m>f_0</m> is not defined!
+      In the induction step of <em>Wrong Proof B,</em>
+      we are letting <m>n</m> be any integer <m>\ge 1</m>.
+      When <m>n=1</m>,
+      step (<m>\dag</m>) is not justified, and so the proof fails.
+      For (<m>\dag</m>) to be legitimate,
+      we must have <m>n\ge 2</m>.
+      This is why, in our correct proof,
+      we had to prove <m>P(1)</m> <em>and</em> <m>P(2)</m> separately.
+    </p>
+    <p>
+      The moral here is to try the induction step as scratch work.
+      Your attempt will tell you <em>if</em>
+      you need strong induction and,
+      if you do, <em>how many</em> base cases are required.
+    </p>
+    <p>
+      \begin{nopgbreak}
+    </p>
+  </introduction>
+  <subsection>
+    <title>Strong Induction on Well-ordered Sets</title>
+    <p>
+      In the next example the first term is suffixed by <m>n=0</m>.
+      In the language of <xref ref="thm_indstrong">Theorem</xref>,
+      we have <m>m=0</m> and <m>l=1</m> with <m>l-m+1=2</m> base cases.
+      Just like the Fibonacci example,
+      two base cases are required because the defining recurrence relation constructs the next term in the sequence from the two previous terms.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          A sequence of integers <m>(a_n)_{n=0}^\infty</m> is defined by
+          <me>
+            \begin{cases}a_n=5a_{n-1}-6a_{n-2}, n\ge 2,\\ a_0=0,\ a_1=1. \end{cases}
+          </me>
+        </p>
+        <p>
+          Then <m>a_n=3^n-2^n</m> for all <m>n\in\N_0</m>.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      \end{nopgbreak}
+    </p>
+    <proof>
+      <p>
+        We prove by strong induction.
+      </p>
+      <p>
+        (<em>Base cases</em> <m>n=0,1</m>)The formula is true in both cases:
+        <m>a_0=0=3^0-2^0</m> and <m>a_1=1=3^1-2^1</m>.
+      </p>
+      <p>
+        (<em>Induction step</em>)Fix an integer <m>n\ge 1</m> and suppose that
+        <m>a_k=3^k-2^k</m> for all <m>k\le n</m>.
+        Then
+        <md>
+          <mrow>a_{n+1}\amp =5a_n-6a_{n-1}=5(3^n-2^n)-6(3^{n-1}-2^{n-1})</mrow>
+          <mrow>\amp =(15-6)3^{n-1}+(10-6)2^{n-1}=3^{n+1}-2^{n+1}</mrow>
+        </md>.
+      </p>
+      <p>
+        By strong induction <m>a_n=3^n-2^n</m> is true for all <m>n\in\N_0</m>.
+      </p>
+    </proof>
+    <p>
+      <em>Think about why we wrote
+      <m>a_{n+1}=5a_n-6a_{n-1}</m> in the induction step,
+      whereas the statement in the Theorem reads <m>a_n=5a_{n-1}-6a_{n-2}</m>.
+      Does it matter?
+      What does it mean to say that <m>n</m> is a <sq>dummy variable</sq>?</em>
+    </p>
+    <p>
+      In the two previous examples,
+      it might seem that strong induction is something of a logical overkill.
+      In the induction step we are assuming far more than we need.
+      In both examples,
+      establishing the truth of <m>P(n+1)</m> required only the truth of <m>P(n)</m> and <m>P(n-1)</m>.
+      We assumed that the earlier propositions were also true,
+      but we never used them.
+      Depending on the proof, you might need two,
+      three or even all of the propositions prior to <m>P(n+1)</m> to complete the induction step.
+      Once you are used to strong induction you may feel comfortable slimming a proof down so that you only mention precisely what you need.
+      For the present,
+      the way we've stated the principle is maximally safe!
+      For some practice with this, see Exercise \thesubsection.
+      <xref ref="ex_ind3"></xref> where
+      <em>three</em> base cases are needed,
+      and the induction step requires the <em>three</em>
+      previous propositions <m>P(n),P(n-1),P(n-2)</m> in order to prove <m>P(n+1)</m>.
+    </p>
+    <p>
+      To see strong induction in all its glory,
+      where the induction step requires <em>all</em>
+      of the previous propositions,
+      we prove part of the famous Fundamental Theorem of Arithmetic,
+      which states that all natural numbers may be factored (uniquely) into a product of primes:
+      for example <m>3564=2^2\times 3^4\times 11</m>.
+    </p>
+    <p>
+      As you read the proof of the next theorem,
+      think carefully about why <em>only one</em> base case is required.
+    </p>
+    <theorem xml:id="thm_fundarith">
+      <statement>
+        <p>
+          Every natural number <m>n\ge 2</m> is either prime, or a product of primes.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      First recall <xref ref="defn_irreducible">Definition</xref>,
+      that <m>p\in\N_{\ge 2}</m> is <em>prime</em>
+      if its only positive divisors are itself and 1.
+      Otherwise said, if <m>q\in\N_{\ge 2}</m> is not prime,
+      then it is said to be <em>composite:</em>
+      <m>\exists a,b\in\N_{\ge 2}</m> such that <m>q=ab</m>.
+    </p>
+    <proof>
+      <p>
+        We prove by strong induction.
+      </p>
+      <p>
+        (<em>Base case</em> <m>n=2</m>)The only positive divisors of 2 are itself and 1, hence 2 is prime.
+      </p>
+      <p>
+        (<em>Induction step</em>)Fix
+        <m>n\in\N_{\ge 2}</m> and assume that <em>every</em>
+        natural number <m>k</m> satisfying
+        <m>2\le k\le n</m> is either prime or a product of primes.
+        There are two possibilities:
+        <ul>
+          <li>
+            <p>
+              <m>n+1</m> is prime.
+              In this case we are done.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>n+1</m> is composite.
+              Thus <m>n+1=ab</m> for some natural numbers <m>a,b\ge 2</m>.
+              Clearly <m>a,b\le n</m>, and so,
+              by the induction hypothesis, <em>both</em>
+              are prime or the product of primes.
+              Therefore <m>n+1</m> is also the product of primes.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        By strong induction we see that all natural numbers <m>n\ge 2</m> are either prime,
+        or a product of primes.
+      </p>
+    </proof>
+  </subsection>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol>
+      <li>
+        <p>
+          True or False: in a strong induction proof,
+          we may have more than one base case.
+        </p>
+      </li>
+      <li>
+        <p>
+          What are some differences between strong induction and weak induction?
+          Select all that apply.
+          <ol>
+            <li>
+              <p>
+                Strong induction has no induction step, but weak induction does.
+              </p>
+            </li>
+            <li>
+              <p>
+                Both only have one base case.
+              </p>
+            </li>
+            <li>
+              <p>
+                When proving <m>P(n+1)</m>,
+                strong induction allows one to assume all previous propositions are true,
+                whereas weak induction only assumes <m>P(n)</m> is true.
+              </p>
+            </li>
+            <li>
+              <p>
+                Weak induction is equivalent to <m>\N</m> being well-ordered,
+                but strong induction is not equivalent.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False:
+          there is a number which is not a product of primes.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>(f_n)_{n=1}^\infty</m> be the Fibonacci sequence.
+          Prove that <m>f_n</m> is even if and only if <m>n \equiv 0 \pmod 3</m>.
+          <url href="https://youtu.be/QqCvIcfTwDo">Video Solution</url>
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that a composite number <m>a</m> always has a prime factor <m>p</m> such that <m>p \leq \sqrt{a}</m>.
+          <url href="https://youtu.be/csZ-xYraPL0">Video Solution</url>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Define a sequence <m>(b_n)_{n=1}^\infty</m> as follows:
+          <me>
+            \begin{cases}b_n=b_{n-1}+b_{n-2}, n\ge 3,\\ b_1=3,\ b_2=6. \end{cases}
+          </me>
+          Prove: <m>\forall \,n\in\N</m>,
+          <m>b_n</m> is divisible by 3.
+        </p>
+      </li>
+      <li xml:id="ex_ind3">
+        <p>
+          Define a sequence <m>(c_n)_{n=0}^\infty</m> as follows:
+          <me>
+            \begin{cases}c_{n+1}=\frac{49}8c_n-\frac{225}8c_{n-2}, n\ge 2,\\ c_0=0, c_1=2, c_2=16. \end{cases}
+          </me>
+          Prove that <m>c_n=5^n-3^n</m> for all <m>n\in\N_0</m>.
+          <em>Hint: you need three base cases!</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that every <m>n \in \N</m> can be written as
+          <me>
+            n = 2^{k_1} + 2^{k_2} + \cdots + 2^{k_\ell}
+          </me>
+          for some <m>\ell \in \N</m> and
+          <m>k_1, k_2, \ldots k_\ell \geq 0</m> such that all of the <m>k_i</m> are distinct.
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the proof of <xref ref="thm_fundarith">Theorem</xref>.
+          <ol>
+            <li>
+              <p>
+                If the Theorem is written in the form <m>\forall n\in\N_{\ge 2}, P(n)</m>,
+                what is the proposition <m>P(n)</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Explicitly carry out the induction step for the three situations <m>n+1=9</m>,
+                <m>n+1=106</m> and <m>n+1=45</m>.
+                How many different ways can you perform the calculation for <m>n+1=45</m>?
+                Explain why it is only necessary in the induction step to assume that all integers <m>k</m> satisfying
+                <m>2\le k\le\frac{n+1}2</m> are prime or products of primes.
+              </p>
+            </li>
+            <li>
+              <p>
+                Rewrite the proof in the style of <xref ref="thm_fibon">Theorem</xref>,
+                explicitly mentioning the propositions <m>P(n)</m>,
+                and thus making the logical flow of strong induction absolutely clear.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li xml:id="ex_primedef">
+        <p>
+          In this question we use recall an alternative definition of prime.<fn>
+          This is the strict definition of what it means for <m>p</m> to be <em>prime,</em>
+          while <xref ref="defn_irreducible">Definition</xref>
+          is what is meant by <em>irreducible.</em> In the ring of integers,
+          <em>prime</em> and <em>irreducible</em> are synonymous.
+          For the details, take a Number Theory course.
+          </fn>
+          <definition>
+            <statement>
+              <p>
+                <m>p\in\N_{\ge 2}</m> is <em>prime</em>
+                if <m>\forall a,b\in\N,\ p\divides ab\implies p\divides a</m> or <m>p\divides b</m>.
+              </p>
+            </statement>
+          </definition>
+          Let <m>p</m> be prime, let <m>n\in\N</m>,
+          and let <m>\lst an</m> be natural numbers such that <m>p</m> divides the product <m>a_1a_2\cdots a_n</m>.
+          Prove by induction that,
+          <me>
+            \exists i\in\{1,2,\ldots,n\}\text{ such that } p\divides a_i
+          </me>.
+          <em>Hint: you need to cover <em>two</em> base cases.
+          Why?
+          Think about the induction step first and it will help you decide how many base cases you need.</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          The <em>Fundamental Theorem of Arithmetic</em>
+          states that every <m>n \geq 2</m> can be written as a product of prime factors in a unique way
+          (up to reordering of the prime factors).
+          In other words,
+          <ol marker="labelarabic">
+            <li>
+              <p>
+                <m>n = p_1 p_2 \cdots p_k</m> for some primes <m>p_1, p_2, \ldots,
+                p_k</m> and,
+              </p>
+            </li>
+            <li>
+              <p>
+                if <m>n = q_1 q_2 \cdots q_\ell</m> for primes <m>q_1, q_2, \ldots,
+                q_\ell</m>,
+                then <m>k = \ell</m> and <m>p_i = q_i</m> after possibly reordering the prime factors.
+              </p>
+            </li>
+          </ol>
+        </p>
+        We proved (1) in <xref ref="thm_fundarith">Theorem</xref>.
+        Supply a proof of (2).
+        <hint>
+          <p>
+            one way would be to use <xref ref="ex_primedef">Exercise</xref>.
+          </p>
+        </hint>
+      </li>
+      <li>
+        <p>
+          Prove that the <m>n</m>th Fibonacci number <m>f_n</m> is given by the formula
+          <me>
+            f_n=\frac{\phi^n-\hat\phi^n}{\sqrt{5}},\text{ where }  \phi=\frac{1+\sqrt{5}}2\text{ and } \hat\phi=\frac{1-\sqrt{5}}2
+          </me>.
+          <em><m>\phi</m> is the famous Golden ratio.
+          <m>\phi</m> and <m>\hat\phi</m> are the two solutions to the equation <m>x^2=x+1</m>.</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          Show that for every positive integer <m>n</m>,
+          <m>(3+\sqrt{5})^n + (3-\sqrt{5})^n</m> is an even integer.
+          <em>Hints: Prove simultaneously that
+          <m>(3+\sqrt{5})^n-(3-\sqrt{5})^n</m> is an even multiple of <m>\sqrt 5</m>.
+          Subtract the <m>n</m>th expression from the <m>(n+1)</m>th in both cases<ellipsis/></em>
+        </p>
+      </li>
+      <li>
+        <p>
+          (Hard!) Return to the proof of <xref ref="thm_polygon">Theorem</xref>.
+          Can you make a watertight argument using strong induction that also covers the two missing cases?
+          Draw a picture to illustrate each case.
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose that <m>\{P(n):n\ge m\}</m> are a collection of propositions as considered in the Principle of Strong Induction.
+          For each <m>n\ge m</m>, let <m>Q(n)</m> be the proposition
+          <me>
+            Q(n)\iff P(m)\wedge P(m+1)\wedge\cdots\wedge P(n)
+          </me>
+          Prove that the Principle of Strong Induction is equivalent to the Principle of Induction stated as follows: Suppose that
+          <ol>
+            <li>
+              <title>(a)</title>
+              <p>
+                <m>Q(l)</m> is true.
+              </p>
+            </li>
+            <li>
+              <title>(b)</title>
+              <p>
+                <m>\forall n\ge l,\ Q(n)\implies Q(n+1)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        Then <m>Q(n)</m> is true for all <m>n\in\Z_{\ge l}</m>.
+      </li>
+    </ol>
+    <p>
+      \graphicspath{{notes/6setsii/}}
+    </p>
+  </subsection>
+</section>

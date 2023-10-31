@@ -1,0 +1,146 @@
+<section xml:id="sec_what_is_a_proof">
+  <title>Proof</title>
+  <p>
+    How can you convince someone that you're telling the truth?
+    Depending on the situation, there are varying amounts of show and tell.
+    If you're a defense attorney,
+    you tell a story to the jury,
+    backed up with evidence and witness testimony,
+    that instills some reasonable doubt that your client committed the crime.
+    If you're a physicist or chemist,
+    you run experiments and collect statistics that are sufficiently close to your predicted values.
+    If you're an investigative journalist,
+    you piece together excerpts from primary sources and interviews with key people to construct a consistent narrative that's as complete as possible.
+  </p>
+  <p>
+    Critically, the attorney's client doesn't actually need to be innocent <mdash/> the jury just needs to doubt their guilt.
+    The scientist's results might be consistent with her predictions,
+    but it might not be for the reason she purports.
+    The journalist may have neglected to interview an important,
+    but peripheral person of interest or a condemning document may have been destroyed that would otherwise completely upend their story.
+    Even when all three of these characters act with the best intentions,
+    there's still a gap between what they present to the world and the underlying fact of the matter.
+    Of course, there are reasons these disciplines have differing standards of truth.
+    These could be liberal values concerning justice,
+    the physical limitations of our measurements,
+    or the constraints of time, money and access to information.
+  </p>
+  <p>
+    Let's compare and contrast these examples with what it means to convince someone in mathematics.
+    Up to this point,
+    the only convincing you've probably had to do is showing that your calculations are correct.
+    You'd start with some given expression like an integral and then jump from equals sign to equals sign using algebraic manipulations and identities.
+    Eventually, you'd get some number that you'd box and say
+    <q>there's my answer.</q>
+    If asked for justification, you'd point to your chain of equalities and say
+    <q>there it is.</q>
+  </p>
+  <p>
+    But sometimes we want to use reasoning that isn't just algebra.
+    You might have gotten a taste of this in your high school geometry class where you had to write <em>proofs</em>.
+    Rather than give a technical definition of what a proof is,
+    let's look at an example of what a proof can be.
+  </p>
+  <theorem xml:id="thm_pythagorean">
+    <statement>
+      <p>
+        If <m>a\leq b\leq c</m> are the side lengths of a right triangle,
+        then <m>a^2+b^2 = c^2</m>.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Consider a square with side length <m>a+b</m> with four congruent copies of our triangle arranged as in <xref ref="fig_pythag1">Figure</xref>.
+      The total area of the square is <m>(a+b)^2</m>,
+      but if we add up the areas of the four triangles and the square in the middle
+      (try to prove that this is indeed a square!),
+      we get <m>2ab+c^2</m>.
+    </p>
+    <p>
+      Now let's slide the lower-left triangle up and to the right so that it forms a rectangle with the upper-right triangle.
+      Then slide the upper-left triangle down and the lower-right triangle to the left so they form a rectangle as well.
+      If we add up the areas of the two rectangles and the two smaller squares,
+      we get <m>2ab+a^2+b^2</m>.
+    </p>
+    <p>
+      But the area of the whole square hasn't changed, so we must have that
+      <me>
+        2ab+c^2 = 2ab+a^2+b^2
+      </me>.
+    </p>
+    <p>
+      When we subtract <m>2ab</m> from both sides,
+      we arrive at the desired conclusion.
+    </p>
+    <image>
+<latex-image>
+<![CDATA[\begin{tikzpicture}\draw[fill=red!50] (0, 0) to (4, 0) to (0, 2) to (0,0);
+\draw[fill=red!15] (6, 4) to (2, 6) to (6, 6) to (6,4);
+\draw[fill=blue!50] (0, 2) to (2, 6) to (0, 6) to (0,2);
+\draw[fill=blue!15] (4, 0) to (6, 4) to (6, 0) to (4,0);
+\node[] at (1, 5.8) {\(a\)};
+\node[] at (0.2, 4.5) {\(b\)};
+\node[] at (1.5, 4) {\(c\)};
+\node[] at (0.2, 1) {\(a\)};
+\node[] at (1.5, .3) {\(b\)};
+\node[] at (2, 1.5) {\(c\)};
+\node[] at (5, .3) {\(a\)};
+\node[] at (5.7, 1.5) {\(b\)};
+\node[] at (4.5, 2) {\(c\)};
+\node[] at (5.7, 5) {\(a\)};
+\node[] at (4.5, 5.8) {\(b\)};
+\node[] at (4, 4.5) {\(c\)};
+\draw (0, 0) rectangle (6, 6);
+\draw[fill=red!50] (10, 6) to (10, 4) to (14, 4) to (10,6);
+\draw[fill=red!15] (14, 4) to (10, 6) to (14, 6) to (14,4);
+\draw[fill=blue!50] (8, 0) to (10, 4) to (8, 4) to (8,0);
+\draw[fill=blue!15] (8, 0) to (10, 0) to (10, 4) to (8,0);
+\draw (8, 0) rectangle (14, 6);
+\node[] at (9, 3.8) {\(a\)};
+\node[] at (9.7, 1.5) {\(b\)};
+\node[] at (8.5, 2) {\(c\)};
+\node[] at (10.2, 5) {\(a\)};
+\node[] at (11.5, 4.3) {\(b\)};
+\node[] at (12, 5.5) {\(c\)};\end{tikzpicture}]]>
+</latex-image>
+    </image>
+    <p>
+      \captionof{figure}{Square of side length <m>a+b</m>. }
+    </p>
+  </proof>
+  <p>
+    \paragraph{Discussion Questions}
+    <ol>
+      <li>
+        <p>
+          Are you convinced by this proof?
+          If so, why?
+          If not, what feels off?
+        </p>
+      </li>
+      <li>
+        <p>
+          Would this proof work without the picture?
+        </p>
+      </li>
+    </ol>
+  </p>
+  <p>
+    Even though we finished this proof with an equation
+    (the theorem concerns an equation after all),
+    the <em>essence</em> of the proof is in the picture.
+    The picture informed which equations we wrote down.
+    That being said, we shouldn't get too attached to the picture.
+    Are all four angles in our square
+    <em>really</em> right angles?
+    Are the four triangles <em>exactly</em> congruent to each other?
+    If it turned out that one of the line segments we drew wasn't perfectly straight,
+    would we need to scrap the whole argument?
+    What if we want to apply this reasoning to a right triangle with proportions very different from the ones we drew here?
+  </p>
+  <p>
+    The point here is that the picture isn't a proof in and of itself.
+    Rather, it serves to remind us of our assumptions and their consequences.
+  </p>
+</section>

@@ -1,0 +1,1266 @@
+<section xml:id="sec_func1">
+  <title>Introduction to Functions</title>
+  <introduction>
+    <p>
+      You have been using functions for a long time.
+      A formal definition in terms of relations will be given in <xref ref="sec_func2">Section</xref>.
+      For the present, we will just use the following.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          Let <m>A</m> and <m>B</m> be sets.
+          A <term>function from <m>A</m> to <m>B</m></term>
+          is a rule <m>f</m> that assigns one
+          (and only one)
+          element of <m>B</m> to each element of <m>A</m>.
+        </p>
+        <p>
+          The <term>domain</term> of <m>f</m>,
+          written <m>\dom(f)</m>, is the set <m>A</m>.
+          The <term>codomain</term> of <m>f</m> is the set <m>B</m>.
+        </p>
+        <p>
+          If <m>f</m> is a function from <m>A</m> to <m>B</m> we write <m>f:A\to B</m>.
+          If <m>a\in A</m>,
+          we write <m>b=f(a)</m> for the the element of <m>B</m> assigned to <m>a</m> by the function <m>f</m>.
+          We can also write <m>f:a\mapsto b</m>, which is read
+          <q><m>f</m> maps <m>a</m> to <m>b</m></q>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      You can think of the domain of <m>f</m> as the set of all inputs for the function and the codomain is the set of all <em>potential</em>
+      output values the function may take
+      (not all of the values in the codomain are necessarily achieved).
+    </p>
+    <definition>
+      <statement>
+        <p>
+          If <m>f : A \to B</m> is a function and <m>U</m> is a subset of <m>A</m>.
+          Then the <term>image of <m>U</m></term>
+          is the following subset of <m>B</m>,
+          <me>
+            f(U)=\{f(u)\in B:u\in U\}.\vspace{-5pt}
+          </me>
+        </p>
+        <p>
+          The image of <m>A</m> is called the <term>range</term>
+          or <term>image of <m>f</m></term>,
+          <me>
+            f(A)=\range(f)=\operatorname{Im}(f)=\{f(a)\in B:a\in A\}.\vspace{-2pt}
+          </me>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      So the codomain of <m>f</m> is the set of all potential outputs,
+      the range or image of <m>f</m> is the subset of the codomain consisting of all actual outputs of <m>f</m>.
+    </p>
+    <p>
+      <image width="60%" source="sets-16-funcdef"/>
+    </p>
+    <sidebyside>
+      For simple real-valued functions, the domain and range are easily seen in a graph. For instance if <m>f:[-3,2)\to\R</m> is the square function
+      <me>
+        f:x\mapsto x^2
+      </me>,
+      then we have <m>\dom(f)=[-3,2)</m> and <m>\range(f)=[0,9]</m>, as seen in the picture. We could also calculate other images, for example,
+      <me>
+        f\bigl([-1,2)\bigr)=[0,4)
+      </me>.
+      <image width="73%" source="sets-10-rangedom"/>
+    </sidebyside>
+    <p>
+      There is a dual construction to the image,
+      where we start with a subset of the codomain,
+      and look at the set of inputs which get mapped into this set.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          Let <m>f : A \to B</m> be a function and <m>V</m> a subset of <m>B</m>.
+          Then the <term>preimage of <m>V</m></term>
+          (also called the <term>inverse image of <m>V</m></term>
+          is the following subset of <m>A</m>,
+          <me>
+            f^{-1}(V) = \{a \in A : f(a) \in V\}
+          </me>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      <image width="75%" source="sets-20-preimage"/>
+    </p>
+    <p>
+      For most functions we will not be able to sketch a graph.
+      Here are several examples where a graph is either unhelpful,
+      or simply impossible to draw!
+    </p>
+    <example xml:id="ex_functmod1">
+      <statement>
+        <p>
+          \item Define <m>f:\Z\to\{0,1,2\}</m> by <m>f:n\mapsto r</m>,
+          where <m>r</m> is the remainder of <m>n^2</m> upon division by <m>3</m>.
+          Here <m>\dom(f)=\Z</m> and the codomain is
+          <m>\{0,1,2\}</m>, but what is the range?
+          Trying a few examples, we see the following:
+          <me>
+            \begin{array}{c|ccccccccccc} n\amp 0\amp 1\amp 2\amp 3\amp 4\amp 5\amp 6\amp 7\amp 8\amp 9\amp 10\\\hline f(n)\amp 0\amp 1\amp 1\amp 0\amp 1\amp 1\amp 0\amp 1\amp 1\amp 0\amp 1 \end{array}
+          </me>
+        </p>
+        <p>
+          It looks like the range is simply <m>\{0,1\}</m>.
+          In fact, we have already proved this fact in <xref ref="thm_sqmod3">Theorem</xref>.
+          In other words, <m>f(\Z) = \range(f) = \Im(f) = \{0,1\}</m>.
+          Notice that the range is a <em>proper</em> subset of the codomain:
+          nothing gets mapped to <m>2</m>!
+        </p>
+        <p>
+          \item Let <m>A=\{0,1,2,\ldots,9\}</m> and define
+          <m>f:A\to A</m> by in the following way:
+          <me>
+            \begin{array}{c|cccccccccc} n\amp 0\amp 1\amp 2\amp 3\amp 4\amp 5\amp 6\amp 7\amp 8\amp 9\\\hline f(n)\amp 0\amp 3\amp 6\amp 9\amp 2\amp 5\amp 8\amp 1\amp 4\amp 7 \end{array}
+          </me>
+        </p>
+        <p>
+          It should be obvious that <m>f(A) = \range(f) = A</m>.
+          Let <m>U = \{0,1,2,3,4\}</m>.
+          Then
+          <me>
+            f(U) = \{f(u) : u \in U\} = \{f(u) : u \in \{0,1,2,3,4\}\} = \{f(0), f(1), f(2), f(3), f(4)\} = \{0,3,6,9,2\}
+          </me>.
+        </p>
+        <p>
+          Let <m>V = \{0,1,2,3,4\}</m>.
+          Then
+          <me>
+            f^{-1}(V) = \{a \in A : f(a) \in V\} = \{a \in A : f(a) \in \{0,1,2,3,4\}\} = \{0,1,4,7,8\}
+          </me>.
+        </p>
+        <p>
+          \item With the same notation as the previous example,
+          let <m>g:A\to A</m> be given by the following table:
+          <me>
+            \begin{array}{c|cccccccccc} n\amp 0\amp 1\amp 2\amp 3\amp 4\amp 5\amp 6\amp 7\amp 8\amp 9\\\hline g(n)\amp 0\amp 4\amp 8\amp 2\amp 6\amp 0\amp 4\amp 8\amp 2\amp 6 \end{array}
+          </me>
+          with <m>\range(g)=\{0,2,4,6,8\}</m>. \item Let
+          <m>A=\{1,2,3,4,5\}</m> and let <m>B=\{</m>two-element subsets of <m>A\}</m>.
+          We define
+          <me>
+            f:A\to B:a\mapsto\begin{cases}\{a,a+1\}\amp \text{ if } a\neq 5,\\ \{5,1\}\amp \text{ if } a=5. \end{cases}
+          </me>
+        </p>
+        <p>
+          This is tricky to read, since <m>B</m> is a set of sets.
+          You should be able to convince yourself that
+          <me>
+            \range(f)=\big\{\{1,2\},\{2,3\},\{3,4\},\{4,5\},\{5,1\}\big\}
+          </me>
+          and, for example, that
+          <me>
+            f\left(\big\{1,4\big\}\right)=\big\{f(1),f(4)\big\}=\big\{\{1,2\},\{4,5\}\big\}
+          </me>.
+        </p>
+        <p>
+          If <m>V = \{\{1,2\},\{5,1\},\{2,2\},\{3,3\}\}</m>.
+          Then <m>f^{-1}(V) = \{1,5\}</m>.
+        </p>
+      </statement>
+    </example>
+  </introduction>
+  <subsection>
+    <title>Injections, surjections and bijections</title>
+    <definition xml:id="defn_11">
+      <statement>
+        <p>
+          A function <m>f:A\to B</m> is <term>one-to-one</term>,
+          <term>injective</term>,
+          or an <term>injection</term> if it never takes the same value twice.
+          Equivalently,<fn>
+          This is the contrapositive: if <m>f</m> never takes the same value twice,
+          then <m>\forall a_1, a_2\in A</m> we have <m>a_1\neq a_2\implies f(a_1)\neq f(a_2)</m>.
+          </fn>
+          <me>
+            \forall a_1,a_2\in A,\ f(a_1)=f(a_2)\implies a_1=a_2
+          </me>.
+        </p>
+        <p>
+          <m>f:A\to B</m> is <term>onto</term>, <term>surjective</term>,
+          or a <term>surjection</term> if it takes every value in the codomain:
+          i.e., <m>B=\range(f)</m>.
+          Equivalently,<fn>
+          This is the statement <m>B\subseteq\range(f)</m>.
+          The opposite inclusion <m>\range(f)\subseteq B</m> is true for <em>any</em> function.
+          </fn>
+          <me>
+            \forall b\in B,\ \exists a\in A\text{ such that } f(a)=b
+          </me>.
+        </p>
+        <p>
+          <m>f:A\to B</m> is <term>invertible</term>, <term>bijective</term>,
+          or a <term>bijection</term> if it is both injective and surjective.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Since the definitions of injective and surjective are both <sq>for all</sq> statements,
+      to show that a function is <em>not injective</em>
+      or <em>not surjective</em>
+      you will need <em>counterexamples.</em> For instance,
+      consider the quadratic function <m>f:[-3,2)\to\R:x\mapsto x^2</m> seen above.
+      It is straightforward to see that <m>f</m> is neither injective nor surjective.
+      Indeed we have the following counterexamples:
+      <ul>
+        <li>
+          <p>
+            <m>f(-1)=f(1)</m>.
+            If <m>f</m> were injective,
+            the values at 1 and <m>-1</m> would have to be different.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>81\in\R</m>, yet there is no
+            <m>x\in[-3,2)</m> such that <m>f(x)=81</m>.
+            Thus <m>f</m> is not surjective.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      With a small change to either the domain or codomain,
+      we can easily create an injective or a surjective function.
+      For instance we can shrink the domain to obtain two injective functions:
+      <me>
+        g:[0,2)\to\R:x\mapsto x^2\text{ and }  h:[-3,0]\to\R:x\mapsto x^2
+      </me>
+    </p>
+    <p>
+      <image width="40%" source="sets-18-rangedom2"/>  <image width="40%" source="sets-19-rangedom3"/> To see this,
+      note that
+      <me>
+        g(x_1)=g(x_2)\implies x_1^2=x_2^2\implies x_1=\pm x_2\implies x_1=x_2
+      </me>
+      since both must be non-negative.
+      The argument for <m>h</m> is similar.
+    </p>
+    <p>
+      By shrinking the codomain to equal the range we immediately create a surjective function:
+      <me>
+        j:[-3,2)\to [0,9]:x\mapsto x^2
+      </me>
+    </p>
+    <p>
+      Now consider the examples on <xref ref="ex_functmod1">page</xref>.
+      The details are provided for example 1.
+      For the others,
+      make sure you understand why the answer is correct.
+    </p>
+    <example>
+      <statement>
+        <p>
+          \item <m>f:\Z\to\{0,1,2\}:n\mapsto n^2\pmod 3</m> is neither injective nor surjective.
+          <ul>
+            <li>
+              <p>
+                If <m>f</m> were injective, then we could not have <m>f(1)=f(2)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                2 is in the codomain <m>\{0,1,2\}</m> of <m>f</m>,
+                yet <m>2\notin\range(f)</m>, so <m>f</m> is not surjective.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          \item This is a bijection.
+          Indeed <m>f</m> is a <em>permutation,</em>
+          a bijection from a set onto itself.
+          To see injectivity, note that in the table
+          <me>
+            \begin{array}{c|cccccccccc} n\amp 0\amp 1\amp 2\amp 3\amp 4\amp 5\amp 6\amp 7\amp 8\amp 9\\\hline f(n)\amp 0\amp 3\amp 6\amp 9\amp 2\amp 5\amp 8\amp 1\amp 4\amp 7 \end{array}
+          </me>
+          none of the values in the second row appears more than once.
+          For surjectivity,
+          observe that every element in the codomain <m>\{0,1,2,\ldots,9\}</m> appears
+          <em>at least</em> once in the second row.
+          Being bijective means that each element of the codomain appears
+          <em>exactly once.</em> \item Neither injective,
+          nor surjective. \item Injective, but not surjective.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Here is a more complicated example.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Prove that <m>f:\R\setminus\{1\}\to\R\setminus\{2\}</m> defined by <m>f(x)=2+\frac 1{1-x}</m> is bijective.
+        </p>
+        <sidebyside>
+          <ul>
+            <li class="custom-list-style-type">
+              <p>
+                (Injectivity)<nbsp/><nbsp/> Suppose that <m>x_1</m> and <m>x_2</m> are in
+                <m>\R\setminus\{1\}</m>, and <m>f(x_1)=f(x_2)</m>.
+                Then
+                <me>
+                  2+\frac 1{1-x_1}=2+\frac 1{1-x_2}
+                </me>.
+                A little elementary algebra shows that <m>x_1=x_2</m>,
+                whence <m>f</m> is injective.
+              </p>
+            </li>
+            <li class="custom-list-style-type">
+              <p>
+                (Surjectivity)<nbsp/><nbsp/> Let
+                <m>y\in\R\setminus\{2\}</m> and define <m>x=1-\frac 1{y-2}</m>.
+                This makes sense since <m>y\neq 2</m>.
+                Then
+                <me>
+                  f(x)=2+\frac 1{1-(1-\frac 1{y-2})}=y
+                </me>
+                whence <m>f</m> is surjective.
+              </p>
+            </li>
+          </ul>
+          <image width="73%" source="sets-09-bij"/>
+        </sidebyside>
+        <p>
+          The graphic is colored so that you can see how the different parts of the range and domain correspond.
+          The argument for surjectivity is sneaky:
+          how did we know to choose <m>x=1-\frac 1{y-2}</m>?
+          The answer is scratch work: just solve <m>y=2+\frac 1{1-x}</m> for <m>x</m>.
+          Essentially we've shown that <m>f</m> has the inverse function <m>f^{-1}(x)=1-\frac 1{x-2}</m>.
+        </p>
+      </statement>
+    </example>
+    <aside>
+      <p>
+        <term>Inverse Functions</term>
+      </p>
+      <p>
+        The word <em>invertible</em> is a synonym for bijective because bijective functions really have inverses!
+        Indeed, suppose that <m>f:A\to B</m> is bijective.
+        Since <m>f</m> is surjective,
+        we know that <m>B=\range(f)</m> and so every element of <m>B</m> has the form <m>f(a)</m> for some <m>a\in A</m>.
+        Moreover, since <m>f</m> is injective,
+        the <m>a</m> in question is unique.
+        The upshot is that, when <m>f</m> is bijective,
+        we can construct a new <em>function</em>
+        <me>
+          f^{-1}:B\to A:f(a)\mapsto a
+        </me>.
+      </p>
+      <p>
+        This may appear difficult at the moment but we will return to it in <xref ref="sec_relations">Chapter</xref>.
+      </p>
+      <p>
+        Instead, recall that in Calculus you saw that any injective function has an inverse.
+        How does this fit with our definition?
+        Consider, for example, <m>f:[0,2]\to\R:x\mapsto x^4</m>.
+        This is injective but not surjective.
+        To fix this,
+        simply define a new function with the same formula but with codomain equal to the range of <m>f</m>.
+        We obtain the bijective function
+        <me>
+          g:[0,2]\to[0,16]:x\mapsto x^4
+        </me>,
+        with inverse
+        <me>
+          g^{-1}:[0,16]\to[0,2]:x\mapsto \sqrt[4]{x}
+        </me>.
+      </p>
+      <p>
+        In Calculus we didn't nitpick like this and would simply go straight to <m>f^{-1}(x)=\sqrt[4]{x}</m>.
+      </p>
+      <p>
+        In general, if <m>f:A\to B</m> is any injective function,
+        then <m>g:A\to f(A):x\mapsto f(x)</m> is automatically bijective,
+        since we are forcing the codomain of <m>g</m> to match its range.
+      </p>
+    </aside>
+  </subsection>
+  <subsection>
+    <title>Functions and Cardinality</title>
+    <p>
+      Injective and surjective functions are intimately tied to the notion of cardinality.
+      Indeed, in <xref ref="chap-cardinalities">Chapter</xref>,
+      we will use such functions to give a <em>definition</em>
+      of cardinality for infinite sets.
+      For the present we stick to finite sets.
+    </p>
+    <theorem xml:id="thm_finitecard">
+      <statement>
+        <p>
+          Let <m>A</m> and <m>B</m> be finite sets.
+          The following are equivalent:
+          <ol>
+            <li>
+              <p>
+                <m>\nm A\le\nm B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\exists f:A\to B</m> injective.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\exists g:B\to A</m> surjective.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <sidebyside>
+      Read the theorem carefully. It is simply saying that, of the three statements, if <em>any</em> one is true then <em>all</em> are true. Similarly, if one is false then so are the others. It might appear that we require six arguments! Instead we illustrate an important technique: when showing that multiple statements are equivalent, it is enough to prove in a circle. For instance, if we prove the three implications indicated in the picture, then <m>\circimp 13</m> will be true because <em>both</em> \circimp 12 and \circimp 23 are true.
+      <image width="73%" source="sets-14-circlearg"/>
+    </sidebyside>
+    <p>
+      More generally, to show that <m>n</m> statements are equivalent,
+      only <m>n</m> arguments are required.
+    </p>
+    <p>
+      The proof may appear very abstract,
+      but it is motivated by two straightforward pictures.
+      Don't be afraid to use pictures to illustrate your proofs if it's going to make them easier to follow!
+      If <m>\nm A=m</m> and <m>\nm B=n</m>,
+      then the two functions can be displayed pictorially.
+      Refer back to these pictures as you read through the proof.
+      <image width="90%" source="sets-11-finiteinj"/>
+    </p>
+    <p>
+      The function <m>f</m>
+    </p>
+    <p>
+      <image width="90%" source="sets-12-finiteinj"/>
+    </p>
+    <p>
+      The function <m>g</m>
+    </p>
+    <proof>
+      <p>
+        The proof relies crucially on the fact that <m>A,B</m> are finite.
+        Suppose that <m>\nm A=m</m> and <m>\nm B=n</m> throughout and list the elements of <m>A</m> and <m>B</m> as,
+        <me>
+          A=\{a_1,a_2,\ldots,a_m\},\qquad\qquad B=\{b_1,b_2,\ldots,b_n\}
+        </me>.
+      </p>
+      <p>
+        <m>\bigl(\circimp 12\bigr)</m>
+      </p>
+      <p>
+        Assume that <m>m\le n</m>.
+        Define <m>f:A\to B</m> by <m>f(a_k)=b_k</m>.
+        This is injective since the elements <m>b_1,\ldots,b_m</m> are distinct.
+      </p>
+      <p>
+        <m>\bigl(\circimp 23\bigr)</m>
+      </p>
+      <p>
+        Suppose that <m>f:A\to B</m> is injective.
+        Without loss of generality we may assume that the elements of <m>A</m> and <m>B</m> are labeled such that <m>f(a_k)=b_k</m>.
+        Now define <m>g:B\to A</m> by
+        <me>
+          g(b_k)=\begin{cases}a_k\amp \text{ if } k\le m,\\ a_1\amp \text{ if } k>m. \end{cases}
+        </me>
+      </p>
+      <p>
+        Then <m>g</m> is surjective since every element <m>a_k</m> is in the image of <m>g</m>.
+      </p>
+      <p>
+        <m>\bigl(\circimp 31\bigr)</m>
+      </p>
+      <p>
+        Finally suppose that <m>g:B\to A</m> is surjective.
+        Without loss of generality we may assume that
+        <m>a_k=g(b_k)</m> for <m>1\le k\le m</m>.
+        Thus <m>n\ge m</m>.\qedhere
+      </p>
+    </proof>
+    <p>
+      It is worth noting in the proof of <m>\bigl(\circimp 31\bigr)</m> that the elements
+      <m>b_{m+1},\ldots,b_n</m> may be mapped <em>anywhere,</em>
+      not just to <m>a_1</m> as suggested in the picture above.
+    </p>
+    <p>
+      If you read the proof carefully,
+      it should be clear that when <m>m=n</m>,
+      the function <m>f</m> is actually a <em>bijection</em>
+      (with inverse <m>f^{-1}=g</m>).
+    </p>
+    <corollary xml:id="cor_finitecard">
+      <statement>
+        <p>
+          If <m>A,B</m> are finite sets,
+          then <m>\nm A=\nm B\iff\exists f:A\to B</m> bijective.
+        </p>
+      </statement>
+    </corollary>
+    <proof>
+      <p>
+        Suppose that <m>m=n</m>.
+        The argument \textcircled{ 1} $\Rightarrow$ \textcircled{ }2 creates an injective function <m>f:A\to B</m>.
+        However every element <m>b_k\in B</m> is in the image of <m>f</m>,
+        so this function is also surjective.
+        Hence <m>f</m> is a bijection.
+      </p>
+      <p>
+        Conversely, if <m>f:A\to B</m> is a bijection,
+        then it is injective, whence <m>m\le n</m>.
+        It is also surjective, from which <m>n\le m</m>.
+        Therefore <m>m=n</m>.
+      </p>
+    </proof>
+  </subsection>
+  <subsection>
+    <title>Composition of functions</title>
+    <p>
+      Finally, we consider composing function and, more particularly,
+      how injectivity and surjectivity interact with composition.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          Suppose that <m>f:A\to B</m> and <m>g:B\to C</m> are functions.
+          The <term>composition</term>
+          <m>g\circ f:A\to C</m> is the function defined by <m>(g\circ f)(a)=g(f(a))</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Note the order: to compute <m>(g\circ f)(x)</m>,
+      you apply <m>f</m> first, then <m>g</m>.
+    </p>
+    <p>
+      <image width="65%" source="sets-15-setcomp"/>
+    </p>
+    <example>
+      <statement>
+        <p>
+          If <m>f(x)=x^2</m> and <m>g(x)=\frac 1{x-1}</m>, then
+          <me>
+            (g\circ f)(x)=\frac 1{x^2-1},\text{ and } (f\circ g)(x)=\frac 1{(x-1)^2}
+          </me>.
+        </p>
+        <p>
+          You should be extra careful of ranges and domains when composing functions.
+          The domain and range are not always explicitly mentioned,
+          and at times some restriction of the domain is implied.
+          In this example, you might assume that
+          <m>\dom(f)=\R</m> and <m>\dom(g)=\R\setminus\{1\}</m>.
+          This is perfectly good if we are considering <m>f</m> and <m>g</m> separately.
+          However, it should be clear from the formulæ that the implied domains of the compositions are,
+          <me>
+            \dom(g\circ f)=\R\setminus\{\pm 1\},\text{ and } \dom(f\circ g)=\R\setminus\{1\}
+          </me>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Our first two results on composing injective and surjective functions is easy to remember.
+    </p>
+    <theorem xml:id="thm_compinjsurj">
+      <statement>
+        <p>
+          Let <m>f:A\to B</m> and <m>g:B\to C</m> be functions.
+          Then:
+          <ol>
+            <li>
+              <p>
+                If <m>f</m> and <m>g</m> are injective,
+                then <m>g\circ f</m> is injective.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>f</m> and <m>g</m> are surjective,
+                then <m>g\circ f</m> is surjective.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          It follows that the composition of bijective functions is also bijective.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <ol>
+        <li>
+          <p>
+            Suppose that <m>f</m> and <m>g</m> are injective and let
+            <m>a_1,a_2\in A</m> satisfy <m>(g\circ f)(a_1)=(g\circ f)(a_2)</m>.
+            We are required to show that <m>a_1=a_2</m>.
+            However,
+            <md>
+              <mrow>(g\circ f)(a_1)=(g\circ f)(a_2)\amp \implies g\big(f(a_1)\big)=g\big(f(a_2)\big)</mrow>
+              <mrow>\amp \implies f(a_1)=f(a_2)\tag{(since $g$ is injective)}</mrow>
+              <mrow>\amp \implies a_1=a_2\tag{(since $f$ is injective)}</mrow>
+              <mrow>[-25pt]</mrow>
+            </md>
+            \qedhere
+          </p>
+        </li>
+      </ol>
+    </proof>
+    <p>
+      Part 2 is in the Exercises.
+      It is interesting to observe that the converse of this theorem is <em>false.</em>
+      Assuming that a composition is injective or surjective only forces <em>one</em>
+      of the original functions to be so.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          Suppose that <m>f:A\to B</m> and <m>g:B\to C</m> are functions.
+          <ol>
+            <li>
+              <p>
+                If <m>g\circ f</m> is injective,
+                then <m>f</m> is injective.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>g\circ f</m> is surjective,
+                then <m>g</m> is surjective.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      Before showing the proof,
+      consider the following representation of two functions <m>f</m> and <m>g</m> which simultaneously illustrate both parts of the theorem.
+      It should be clear that <m>g\circ f</m> is <em>bijective,</em>
+      <m>f</m> is <em>only injective,</em>
+      and <m>g</m> is <em>only surjective.</em>
+    </p>
+    <p>
+      <image width="65%" source="sets-17-injcomp"/>
+    </p>
+    <p>
+      Here is a formulaic example of the same thing.
+      Make sure you're comfortable with the definitions and draw pictures or graphs to help make sense of what's going on.
+      <md>
+        <mrow>f:[0,2]\to[-4,4]:x\mapsto x^2\tag{(injective only)}</mrow>
+        <mrow>g:[-4,4]\to [0,16]:x\mapsto x^2\tag{(surjective only)}</mrow>
+        <mrow>g\circ f:[0,2]\to[0,16]:x\mapsto x^4\tag{(bijective!)}</mrow>
+      </md>
+    </p>
+    <p>
+      This time we leave part 1 of the proof for the Exercises.
+    </p>
+    <proof>
+      <ol>
+        <li>
+          <p>
+            Let <m>c\in C</m> and assume that <m>g\circ f</m> is surjective.
+            We wish to prove that <m>\exists b\in B</m> such that <m>g(b)=c</m>.
+            Since <m>g\circ f</m> is surjective,
+            <m>\exists a\in A</m> such that <m>(g\circ f)(a)=c</m>.
+            But this says that
+            <me>
+              g(f(a))=c
+            </me>.
+            Hence <m>b=f(a)</m> is an element of <m>B</m> for which <m>g(b)=c</m>.
+            Thus <m>g</m> is surjective.\qedhere
+          </p>
+        </li>
+      </ol>
+    </proof>
+  </subsection>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol>
+      <li>
+        <p>
+          The range of a function <m>f : A \to B</m> is (select all that apply)
+          <ol>
+            <li>
+              <p>
+                a subset of the domain.
+              </p>
+            </li>
+            <li>
+              <p>
+                a subset of the codomain.
+              </p>
+            </li>
+            <li>
+              <p>
+                always equal to the codomain.
+              </p>
+            </li>
+            <li>
+              <p>
+                also called the image of the function.
+              </p>
+            </li>
+            <li>
+              <p>
+                equal to <m>f(A)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose <m>f : A \to B</m> and <m>g : B \to C</m> are functions.
+          If <m>g \circ f</m> is bijective,
+          which of the following <em>must</em> be true?
+          <ol>
+            <li>
+              <p>
+                <m>f</m> is injective.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>g</m> is injective.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f</m> is surjective.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>g</m> is surjective.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: We can always make a function surjective by making its domain smaller.
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: If <m>A \subseteq B</m>,
+          there is an injective function <m>f : A \to B</m>.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Explain why the map <m>g : \{\text{ all lines in the planes } \} \to \R</m> which sends a line <m>\ell</m> to the slope of <m>\ell</m> is not a function.
+              <url href="https://youtu.be/HHX_f3KIVUw">Video Solution</url>
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>L</m> be the set of all non-vertical lines in the plane.
+              The map <m>f : L \to \R</m> defined by
+              <m>\ell \mapsto \text{ slope of } \ell</m> is a well defined function.
+              Find <m>f(Z)</m> where <m>Z</m> is the subset of <m>L</m> consisting of the lines that intersect the line
+              <m>y = 2x + 5</m> at exactly one point.
+              <url href="https://youtu.be/evTJt6VCg1Y">Video Solution</url>
+            </p>
+          </li>
+          <li>
+            <p>
+              Now let <m>U = \{ -2 \}</m>.
+              Describe the inverse image
+              <m>f^{-1}(U)</m> of <m>U</m> under the function <m>f</m> defined in part (b).
+              <url href="https://youtu.be/FTLwdH1NZ-k">Video Solution</url>
+            </p>
+          </li>
+          <li>
+            <p>
+              Is the function <m>f</m> bijective?
+              <url href="https://youtu.be/TklbTQpXrMo">Video Solution</url>
+            </p>
+          </li>
+          <li>
+            <p>
+              Find a subset <m>B</m> of <m>L</m> so that the function <m>f : B \to \R</m> is a bijection.
+              <url href="https://youtu.be/eubplxO4Y_w">Video Solution</url>
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Suppose <m>f : A \to B</m> and <m>g : B \to C</m> are functions.
+          For each of the following,
+          either find an example or explain why no such example exists.
+          <ol>
+            <li>
+              <p>
+                <m>f</m> surjective and <m>g</m> not surjective so that the composition <m>g \circ f</m> is surjective.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f</m> not surjective and <m>g</m> surjective so that the composition <m>g \circ f</m> is surjective.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f</m> surjective and <m>g</m> surjective so that the composition <m>g \circ f</m> is not surjective.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f</m> injective and <m>g</m> not injective so that the composition <m>g \circ f</m> is injective.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f</m> not injective and <m>g</m> injective so that the composition <m>g \circ f</m> is injective.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f</m> injective and <m>g</m> injective so that the composition <m>g \circ f</m> is not injective.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <url href="https://youtu.be/A6m4O8GvGy8">Video Solution (Parts (a)-(c))</url>
+      </li>
+      <li>
+        <p>
+          Suppose <m>f : A \to B</m> is a function.
+          Prove or disprove each of the following statements:
+          <ol>
+            <li>
+              <p>
+                Let <m>X</m> and <m>Y</m> be subsets of <m>A</m>.
+                If <m>X \cap Y = \emptyset</m> then <m>f(X) \cap f(Y) = \emptyset</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>W</m> and <m>Z</m> be subsets of <m>B</m>.
+                If <m>W \cap Z = \emptyset</m> then <m>f^{-1}(W) \cap f^{-1}(Z) = \emptyset</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <url href="https://youtu.be/pVmf28Cg_Y8">Video Solution</url>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          For each of the following functions
+          <m>f:A\to B</m> determine whether <m>f</m> is injective,
+          surjective or bijective.
+          Prove your assertions.
+          <ol>
+            <li>
+              <p>
+                <m>f:[0,3]\to\R</m> where <m>f(x)=2x</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f:[3,12)\to[0,3)</m> where <m>f(x)=\sqrt{x-3}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f:(-4,1]\to(-5,-3]</m> where <m>f(x)=-\sqrt{x^2+9}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose that <m>f:[-3,\infty)\to[-8,\infty)</m> and <m>g:\R\to\R</m> are defined by
+          <me>
+            f(x)=x^2+6x+1,\qquad\qquad g(x)=2x+3
+          </me>.
+          Compute <m>g\circ f</m> and show that <m>g\circ f</m> is injective.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find:
+          <ol>
+            <li>
+              <p>
+                A set <m>A</m> so that the function <m>f:A\to\R:x\mapsto\cos x</m> is injective.
+              </p>
+            </li>
+            <li>
+              <p>
+                A set <m>B</m> so that the function <m>f:\R\to B:x\mapsto\cos x</m> is surjective.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          (<em>If you did <xref ref="sec_quant">Exercise</xref>.
+          <xref ref="ex_decreasing"></xref>
+          you should find this easy</em>) Let <m>X</m> be a subset of <m>\R</m>.
+          A function <m>f:X\to\R</m> is <em>strictly increasing</em> if
+          <me>
+            \forall \,a,\, b \in X, a\lt b \Longrightarrow f(a)\lt f(b)
+          </me>.
+          For example,
+          the function <m>f \colon [0,\,\infty)\to \R, \,x \mapsto x^2</m>  is increasing because
+          <me>
+            \forall a,\,b \in  [0,\,\infty) ,  a\lt b \Longrightarrow f(a) = a^2\lt  b^2=f(b)
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Give another example of a function that is increasing.
+                Draw its graph, and prove that the function is increasing.
+              </p>
+            </li>
+            <li>
+              <p>
+                By negating the above definition,
+                state what it means for a function
+                <em>not to be strictly increasing.</em>
+              </p>
+            </li>
+            <li>
+              <p>
+                Give an example of a function that is
+                <em>not</em> strictly increasing.
+                Draw its graph,
+                and prove that the function is not strictly increasing.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>f,\,g:\R\to\R</m> be strictly increasing.
+                Prove or disprove: The function <m>h=f+g</m> is strictly increasing.
+                Note that the formula for <m>h</m> is <m>h(x)=f(x)+g(x)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>L</m> be the set of all non-vertical lines in the plane.
+          Let <m>f : L \to \R</m> be the function which sends each line to its <m>y</m>-intercept.
+          Is <m>f</m> injective?
+          Is <m>f</m> surjective?
+          Justify your answers.
+        </p>
+      </li>
+      <li>
+        <p>
+          You may assume that <m>g:[2,\infty)\to\R:x\mapsto \sqrt{x^3-8}</m> is an injective function.
+          Find a function <m>f:\R\to\R</m> which is <em>not injective,</em>
+          but for which the composition <m>f\circ g:[2,\infty)\to\R</m>
+          <em>is injective.</em> Justify your answer.
+        </p>
+      </li>
+      <li>
+        <p>
+          A function <m>f:\R\to\R</m> is <em>even</em> if
+          <me>
+            \forall\,x\in\R,\ f(-x)=f(x)
+          </me>.
+          For example,
+          the function <m>f:\R\to\R,\,x\mapsto x^2</m> is even because
+          <me>
+            \forall\, x\in\R,\ f(-x)=(-x)^2= x^2=f(x)
+          </me>.
+          Note that <m>f</m> is even if and only if the graph of <m>f</m> is symmetric with respect to the <m>y</m> axis.
+          <ol>
+            <li>
+              <p>
+                Give an example of a function that is even.
+                Draw its graph, and prove that the function is even.
+              </p>
+            </li>
+            <li>
+              <p>
+                Define what it means for a function
+                <em>not to be even</em>,
+                by negating the definition above.
+              </p>
+            </li>
+            <li>
+              <p>
+                Give an example of a function that is <em>not</em> even.
+                Draw its graph, and prove that the function is not even.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove or disprove: for every <m>f ,\,g\colon \R \to \R</m> even,
+                the composition <m>h= f\circ g</m> is even.
+                Here <m>h</m> is the function mapping <m>x</m> to <m>f(g(x))</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Define <m>f:(-\infty,0]\to\R</m> and <m>g:[0,\infty)\to\R</m> by
+          <me>
+            f(x)=x^2,\qquad g(x)=\begin{cases}\frac{x}{1-x}\amp x\lt 1,\\ 1-x\amp x\ge 1. \end{cases}
+          </me>
+          Does <m>g\circ f</m> map <m>(-\infty,0]</m> onto <m>\R</m>?
+          Justify your answer.
+        </p>
+      </li>
+      <li>
+        <p>
+          Express, using quantifiers, what it means for a function to be
+          <ol>
+            <li>
+              <p>
+                Not injective.
+              </p>
+            </li>
+            <li>
+              <p>
+                Not surjective.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>f : \R \to \R^+</m> be the function defined by <m>f(x) = e^x</m>.
+          Explain why the following
+          <q>proof</q>
+          that <m>f</m> is surjective is incorrect.
+          Then, give a correct proof.
+          <proof>
+            <p>
+              Let <m>e^x \in \R^+</m> be arbitrary.
+              Then <m>f(x) = e^x</m>.
+              So <m>f</m> is surjective.
+            </p>
+          </proof>
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that the composition of two surjective functions is surjective.
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose that <m>g\circ f</m> is injective.
+          Prove that <m>f</m> is injective.
+        </p>
+      </li>
+      <li>
+        <p>
+          In the proof of <xref ref="thm_finitecard">Theorem</xref>
+          we twice invoked <em>without loss of generality.</em>
+          In both cases explain why the phrase applies.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>f : A \to B</m> be a function.
+          Let <m>X_1,X_2 \subseteq A</m>.
+          Prove or disprove the following:
+          <ol>
+            <li>
+              <p>
+                <m>X_1 \subseteq X_2</m> implies <m>f(X_1) \subseteq f(X_2)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f(X_1 \cup X_2) = f(X_1) \cup f(X_2)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f(X_1 \cap X_2) \subseteq f(X_1) \cap f(X_2)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f(X_1) \cap f(X_2) \subseteq f(X_1 \cap X_2)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>f : A \to B</m> be a function.
+          Suppose that <m>f(X_1 \cap X_2) = f(X_1) \cap f(X_2)</m> for <term>all</term>
+          <m>X_1,X_2 \subseteq A</m>.
+          Show <m>f</m> is injective.
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Let <m>A = \{a,b,c\}</m> and <m>B = \{1,2,3,4\}</m> and
+              <m>f : A \to B</m> be the function given by <m>f(a) = f(c) = 1</m> and <m>f(b) = 3</m>.
+              Compute <m>f^{-1}(\{1\})</m>, <m>f^{-1}(\{3\})</m>,
+              <m>f^{-1}(\{1,3\})</m>, and <m>f^{-1}(\{2,4\})</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>g : [-1,\infty) \to \R</m> be <m>g(x) = x^2 + 2x + 1</m>.
+              Compute <m>g^{-1}((0,2))</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>h : \R \to \R</m> be <m>h(x) = \sin x</m>.
+              Find <m>h^{-1}(\{-1,1\})</m>.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Let <m>f : A \to B</m> be a function and <m>Y_1,Y_2 \subseteq B</m>.
+          <ol>
+            <li>
+              <p>
+                Prove <m>f^{-1}(Y_1 \cup Y_2) = f^{-1}(Y_1) \cup f^{-1}(Y_2)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove <m>f^{-1}(Y_1 \cap Y_2) = f^{-1}(Y_1) \cap f^{-1}(Y_2)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>f : A \to B</m> be a function and let <m>X \subseteq A</m>.
+          Fill in the details in the following to give a proof of the following two facts:
+          <ol>
+            <li>
+              <p>
+                <m>X \subseteq f^{-1}(f(X))</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>f</m> is injective, <m>X = f^{-1}(f(X))</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>f : A \to B</m> be a function and let <m>Y \subseteq B</m>.
+          Prove the following two facts:
+          <ol>
+            <li>
+              <p>
+                <m>f(f^{-1}(Y)) \subseteq Y</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>f</m> is surjective, <m>f(f^{-1}(Y)) = Y</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A,B,C</m>, and <m>D</m> be sets and <m>f : A \to B</m>,
+          <m>g : B \to C</m>, and <m>h : C \to D</m> be functions.
+          Show that for all <m>a \in A</m>, we have
+          <me>
+            (f \circ (g \circ h))(a) = ((f \circ g) \circ h)(a)
+          </me>.
+        </p>
+      </li>
+      <li>
+        <p>
+          (Uses calculus) This exercise will give an example of how to use calculus to prove some properties of (certain) functions.
+          Let <m>f : (-\pi/2,\pi/2) \to \R</m> be defined by <m>f(x) = \tan x</m>.
+          Recall that <m>f</m> is differentiable,
+          and hence continuous, on its domain.
+          <ol>
+            <li>
+              <p>
+                Compute <m>\lim_{x \to \frac{\pi}{2}^-} f(x)</m> and <m>\lim_{x \to \frac{-\pi}{2}^+} f(x)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Recall the Intermediate Value Theorem:
+                if <m>g : [a,b] \to \R</m> is a continuous function,
+                then for any <m>y</m> between <m>g(a)</m> and <m>g(b)</m>,
+                there is <m>x \in [a,b]</m> such that <m>g(x) = y</m>.
+                Use the Intermediate Value Theorem and the results of part 1 to prove <m>f</m> is surjective.
+              </p>
+            </li>
+            <li>
+              <p>
+                Why is a strictly increasing function
+                (see Exercise 4.4.4)
+                injective?
+              </p>
+            </li>
+            <li>
+              <p>
+                Compute <m>\frac{d}{dx}f(x)</m> and use this to show <m>f</m> is strictly increasing,
+                and therefore injective by part 3.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Show there is a bijection between <m>\Z</m> and <m>2\Z</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>S</m> be the set of all circles in the plane which are centered at the origin.
+          Find a bijection between <m>S</m> and <m>\R^+</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> and <m>B</m> be <term>finite</term> sets.
+          If <m>A \subsetneq B</m>,
+          is it possible for there to be a bijection between <m>A</m> and <m>B</m>?
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

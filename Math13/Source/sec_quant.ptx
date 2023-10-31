@@ -1,0 +1,1392 @@
+<section xml:id="sec_quant">
+  <title>Propositional Functions and Quantifiers</title>
+  <introduction>
+    <p>
+      While the logic of propositions from Section 2.1 is a fairly straightforward place to start our explorations,
+      it is not powerful enough to express the majority of statements one encounters when actually doing mathematics.
+      For one, it lacks the ability to deal with <em>variables</em>,
+      which are of central importance in mathematics.
+      For example, the expressions
+      <q>17 is a prime number greater than 2</q>,
+      <q>5 is a prime number greater than 2</q>, and
+      <q>32 is a prime number greater than 2</q>
+      are really just three instances of the same thing.
+      Namely
+      <q><m>x</m> is a prime number greater than 2</q>
+      with <m>17</m>, <m>2</m>,
+      and <m>32</m> plugged in for <m>x</m>, respectively.
+      In propositional logic, however,
+      these three would constitute three wholly different propositions,
+      obscuring their relationship.
+    </p>
+    <p>
+      Moreover, propositional logic fails to capture standard patterns of argument which we wish to consider.
+      Consider propositions <m>P</m> and <m>Q</m>.
+      If we know that <m>P \implies Q</m> is true,
+      and we know <m>P</m> is true,
+      then we <em>must</em> conclude that <m>Q</m> is true
+      (if you don't believe this, try to prove it yourself!)
+      Since this holds no matter what propositions <m>P</m> and <m>Q</m> actually are,
+      we call this a <em>valid argument</em>.
+      On the other hand,
+      an argument of the form <m>P</m> is true, <m>Q</m> is true,
+      therefore <m>R</m> is true is not valid as it could be the case that <m>P</m> and <m>Q</m> are true and <m>R</m> false if you choose <m>P</m>,
+      <m>Q</m>,
+      and <m>R</m> to be certain statements!
+      Now consider the following: All prime numbers greater than 2 are odd.
+    </p>
+    <p>
+      17 is a prime number greater than 2.
+    </p>
+    <p>
+      Therefore 17 is odd.
+      This is certainly correct reasoning,
+      however in propositional logic this argument takes the form of:
+      <m>P</m> is true, <m>Q</m> is true,
+      therefore <m>R</m> is true.
+      But this (1) is not valid and (2) does not capture the true form of the argument.
+      A better way to translate this argument would be: All A's are B.
+    </p>
+    <p>
+      <m>x</m> is an A.
+    </p>
+    <p>
+      Therefore <m>x</m> is a B. It turns out this is a valid argument,
+      it does not depend on what <m>A</m> and <m>B</m> actually are.
+      To study this in more depth,
+      we will need to move beyond propositions to
+      <em>propositional functions</em>
+      and <em>quantifiers</em>.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          A <term>propositional function</term>
+          is a family of propositions which depend on one or more variables.
+          The collection of objects allowed to be substituted in for variables in a propositional function is its <term>domain</term>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      For instance if <m>P(x)</m> is a propositional function depending on a single variable <m>x</m>,
+      then for each object <m>a</m> in the domain of <m>P</m>,
+      <m>P(a)</m> is a proposition.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Suppose that <m>x</m> is allowed to be any real number.
+          We could define the propositional function <m>P(x)</m> by <m>x^2>4</m>.
+        </p>
+        <p>
+          In this example <m>P(5)</m> is true,
+          whilst <m>P(-1)</m> is false.
+          More generally, <m>P(x)</m> is true for some values of <m>x</m>
+          (namely <m>x>2</m> or <m>x\lt -2</m>)
+          and false for others
+          (<m>-2\le x\le 2</m>).
+        </p>
+      </statement>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Suppose that <m>x</m> is allowed to be any integer.
+          Define the propositional function <m>P(x)</m> by
+          <q><m>x</m> is a prime number</q>
+          and <m>Q(x)</m> by
+          <q><m>x > 2</m></q>.
+        </p>
+        <p>
+          The expression
+          <q><m>x</m> is a prime number greater than 2</q>
+          can then be translated as <m>P(x) \land Q(x)</m>.
+          Thus <m>P(17) \land Q(17)</m> is true,
+          whilst <m>P(2) \land Q(2)</m> and <m>P(32) \land Q(32)</m> are false.
+        </p>
+      </statement>
+    </example>
+    <p>
+      At the beginning of the section we considered the expression
+      <q>All prime numbers greater than 2 are odd</q>. We saw in the example above how to translate
+      <q><m>x</m> is a prime number greater than 2</q>
+      into logic.
+      To translate the rest of the expression, we need to deal with the
+      <q>all</q>
+      and the
+      <q>is odd</q>
+      parts.
+      Here,
+      <q>all</q>
+      is an example of a <em>quantifier</em>,
+      something that tells us how many things satisfy some propositional function.
+      This one is called the <em>universal quantifier</em> as it says everything
+      (in the domain)
+      satisfies some propositional function.
+    </p>
+    <p>
+      Let's try to translate
+      <q><m>x</m> is odd</q>
+      into logic now.
+      Recall that a number <m>x</m> is odd if it can be written as <m>2k + 1</m>
+      <em>for some</em> integer <m>k</m>.
+      In other words <em>there exists</em>
+      and integer <m>k</m> such that <m>x = 2k + 1</m>.
+      Here we see another type of quantifier,
+      the <em>existential quantifier</em>,
+      which posits the existence of some
+      (at least one)
+      thing that satisfies some propositional function.
+      The English language has all sorts of quantifiers (all, some,
+      many, few,
+      etc.) but in mathematics we primarily deal with just two.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          The <term>universal quantifier</term>
+          is denoted <m>\forall</m>
+          (read
+          <q>for all</q>
+          or
+          <q>for every</q>).
+        </p>
+        <p>
+          Let <m>P(x)</m> be a propositional function.
+          Then
+          <me>
+            \forall x \, P(x) \qquad \text{ (read: for all \(x\), \(P(x)\) is true } )
+          </me>
+          is a proposition which is true if and only if <m>P(x_0)</m> is true for all <m>x_0</m> in the domain of <m>P</m>.
+        </p>
+      </statement>
+    </definition>
+    <definition>
+      <statement>
+        <p>
+          The <term>existential quantifier</term>
+          is denoted <m>\exists</m>
+          (read
+          <q>there exists</q>).
+        </p>
+        <p>
+          Let <m>P(x)</m> be a propositional function.
+          Then
+          <me>
+            \exists x \, P(x)  \qquad \text{ (read: there is an \(x\), such that \(P(x)\) is true } )
+          </me>
+          is a proposition which is true if and only if there exists some <m>x_0</m> in the domain of <m>P</m> such that <m>P(x_0)</m> is true.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      We pause briefly to introduce some notation to help speed things along.
+      We use <m>\N</m> to denote the positive integers,
+      <m>\Z</m> the integers, <m>\R</m> the real numbers,
+      and <m>\in</m> for <sq>is a member of the set</sq>.
+      Thus <m>2\in\Z</m> is read as <sq>2 is a member of the set of integers</sq>,
+      or more concisely, <sq>2 is an integer</sq>.
+      We will properly cover this notation in <xref ref="chap_sets">Chapter</xref>.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Recall the above example where,
+          for each real number <m>x</m>,
+          <m>P(x)</m> is the proposition <m>x^2>4</m>.
+          Consider the quantified propositions:
+          <ul>
+            <li>
+              <p>
+                <m>\forall x \, P(x)</m> is <em>false</em>,
+                since <m>P(x)</m> is not true for all <m>x\in\R</m>.
+                In particular <m>P(-1)</m> is false.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\exists x \, P(x)</m> is <em>true</em>,
+                since there is at least one <m>x\in\R</m> for which <m>P(x)</m> is true,
+                namely <m>x=5</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </example>
+    <definition>
+      <statement>
+        <p>
+          A <term>counterexample</term> to
+          <m>\forall x \, P(x)</m> is a single element <m>x_0</m> in the domain of <m>P</m> such that <m>P(x_0)</m> is false.
+        </p>
+        <p>
+          An <term>example</term> of
+          <m>\exists x \, P(x)</m> is a single element <m>x_0</m> in the domain of <m>P</m> such that <m>P(x_0)</m> is true.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Clearly <m>x_0 = -1</m> is a counterexample to <m>\forall x \, (x^2>4)</m>,
+      while <m>x_0 = 5</m> is an example of <m>\exists x \, (x^2>4)</m>.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Here is a slightly more complicated example with a propositional function with two variables.
+          Let <m>R(x,y)</m> be given by
+          <m>x = 2y + 1</m> where we agree that <m>x</m> and <m>y</m> are to be integers.
+          Then <m>\exists y \, R(x,y)</m> asserts that there exists some integer,
+          let's call it <m>k</m>, such that <m>x = 2k + 1</m>.
+          In other words,
+          <m>\exists y \, R(x,y)</m> asserts that <m>x</m> is odd.
+          Let <m>O(x)</m> be <m>\exists y \, R(x,y)</m>.
+          Note that <m>O(x)</m> is a propositional <em>function</em>.
+          It still depends on <m>x</m>!
+        </p>
+        <p>
+          As a test to see if you are following along,
+          check to make sure the following make sense:
+          <md>
+            <mrow>\amp O(5) \text{ is true }</mrow>
+            <mrow>\amp O(24) \text{ is false }</mrow>
+            <mrow>\amp \forall x \, O(x) \text{ is false }</mrow>
+            <mrow>\amp \exists x \, O(x) \text{ is true } </mrow>
+          </md>.
+        </p>
+        <p>
+          Mathematics is filled with compound expressions of this type,
+          where quantifiers and propositional functions are combined to create more complicated propositional functions.
+        </p>
+      </statement>
+    </example>
+  </introduction>
+  <subsection>
+    <title>Two Common Translations</title>
+    <p>
+      There are two constructions involving quantifiers which are common enough that we point them out here.
+      It can be useful to understand the underlying logical structure of statements of the form
+      <q>all A's are B's</q>
+      and
+      <q>there is an A which is a B</q>. The sentences
+      <q>all primes greater than 2 are odd</q>
+      and
+      <q>there exists an odd prime</q>
+      are somewhat natural examples of these types of statements.
+    </p>
+    <remark>
+      <p>
+        Let <m>P(x)</m> and <m>Q(x)</m> be propositional functions.
+        The statement All A's are B's is really a statement of the following form,
+        where <m>P(x)</m> is the propositional function
+        <q><m>x</m> is an <m>A</m></q>
+        and <m>Q(x)</m> is the propositional function
+        <q><m>x</m> is a B</q>: Everything which satisfies <m>P(x)</m> also satisfies <m>Q(x)</m> which can be written as
+        <me>
+          \forall x \, (P(x) \implies Q(x))
+        </me>.
+      </p>
+      <p>
+        Similarly, the statement There is an A which is a B is really There is something satisfying <m>P(x)</m> which also satisfies <m>Q(x)</m> which can be written as
+        <me>
+          \exists x \, (P(x) \land Q(x))
+        </me>.
+      </p>
+    </remark>
+    <example>
+      <statement>
+        <p>
+          <q>All humans are mortal</q>
+          is written in logic as <m>\forall x \, (P(x) \implies Q(x))</m> where <m>P(x)</m> is
+          <q><m>x</m> is a human</q>
+          and <m>Q(x)</m> is
+          <q><m>x</m> is mortal</q>.
+        </p>
+      </statement>
+    </example>
+    <example>
+      <statement>
+        <p>
+          We let <m>P(x)</m> be
+          <q><m>x</m> is a prime number</q>, <m>Q(x)</m> be <m>x > 2</m>, and <m>O(x)</m> be
+          <q><m>x</m> is odd</q>. Then
+          <q>all primes greater than 2 are odd</q>
+          can be written as
+          <me>
+            \forall x \, [(P(x) \land Q(x)) \implies O(x)]
+          </me>.
+        </p>
+        <p>
+          <q>There is an odd prime</q>
+          can be written as
+          <me>
+            \exists x \, (P(x) \land O(x))
+          </me>.
+        </p>
+      </statement>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Bounded Quantifiers</title>
+    <p>
+      Often we wish to make explicit the domain of a propositional function which we are quantifying,
+      or to restrict our quantifiers to smaller parts of the domain.
+      We can accomplish this by the use of
+      <em>bounded quantifiers</em>.
+      We introduce this via examples.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Consider the statement:
+          <q>every real number is a cube</q>. By what we said above, we could translate this into logic as
+          <me>
+            \forall x \, Q(x)
+          </me>
+          where <m>Q(x)</m> is
+          <q><m>x</m> is a cube</q>
+          and has domain the real numbers<fn>
+          We could also write this as <m>\forall x \, (P(x) \implies Q(x))</m> where <m>P(x)</m> is
+          <q><m>x</m> is a real number</q>.
+          </fn>.
+          If we want to emphasize that we are quantifying over the real numbers,
+          we often write something like
+          <me>
+            \forall x \in \R \, Q(x)
+          </me>.
+        </p>
+        <p>
+          In reality, mathematicians rarely write out specific statements using notation like <m>P(x)</m> or <m>Q(x)</m>
+          (these letters are usually reserved for standing in for abstract propositional functions).
+          In this example,
+          <q><m>x</m> is a cube</q>
+          can be written as <m>\exists y \in \R \, (x = y^3)</m>.
+          So
+          <q>every real number is a cube</q>
+          is
+          <me>
+            \forall x \in \R \, \exists y \in \R \, (x = y^3)
+          </me>.
+        </p>
+      </statement>
+    </example>
+    <example>
+      <statement>
+        <p>
+          While the statement
+          <q>every real number is a square</q>
+          is false, we can make it a true statement by restricting our attention to just
+          <em>positive</em> reals:
+          <q>every <em>positive</em> real number is a square</q>
+          is true.
+          We could write this as
+          <me>
+            \forall x > 0 \, \exists y \in \R  \, (x = y^2)
+          </me>.
+        </p>
+        <p>
+          Here, the condition <m>x > 0</m> in the <m>\forall</m> quantifier restricts the quantifier the smaller domain of just those real numbers which are <m>> 0</m>,
+          i.e., positive real numbers.
+        </p>
+      </statement>
+    </example>
+    <aside>
+      <p>
+        <term>Clarity versus Concision</term>
+      </p>
+      <p>
+        As with all forms of art,
+        different practitioners of mathematics have different tastes.
+        Some write very concisely, keeping words to a minimum.
+        Some write almost entirely in English.
+        Some use a hybrid of quantifiers and English,
+        aiming for a balance between brevity and clarity.
+        For example, consider the famous
+        <em>sum of four squares</em> theorem:
+      </p>
+      <tabular>
+        <row>
+          <cell>English</cell>
+          <cell>Every positive integer may be written as the sum of the squares</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>of four integers</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>[-8pt]
+            Extreme Logic</cell>
+          <cell><m>(\forall n\in\N)(\exists a,b,c,d\in\Z)(n=a^2+b^2+c^2+d^2)</m></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>[-8pt]
+            Hybrid</cell>
+          <cell><m>\forall n\in\N,\, \exists a,b,c,d\in\Z</m> such that <m>n=a^2+b^2+c^2+d^2</m></cell>
+        </row>
+      </tabular>
+      <p>
+        The purpose of writing mathematics is to help the reader understand what you've written <em>without</em>
+        you being there to explain it.
+        Your presentation style has an enormous effect on whether you are successful!
+        A good rule is to write in sentences,
+        replacing words with symbols only when it makes things more readable while simultaneously preserving the flow of the sentence.
+      </p>
+    </aside>
+    <remark>
+      <p>
+        In some sense, we don't really need bounded quantifiers.
+        For example,
+        one can view <m>{\forall x \in \R \, P(x)}</m> as simply shorthand for <m>\forall x \, (x \in \R \implies P(x))</m> and
+        <m>\exists x > 0 \, P(x)</m> as shorthand for <m>\exists x (x > 0 \land P(x))</m>.
+        This pattern holds in general:
+        you can replace a bounded <m>\forall</m> quantifier with an unbounded one by putting the condition at the front of an implication and a bounded <m>\exists</m> quantifier by putting the condition in a conjunction.
+      </p>
+      <p>
+        In practice, however, this can get very messy,
+        especially in statements with many quantifiers!
+        Getting comfortable with bounded quantifiers can help you write cleaner statements.
+      </p>
+    </remark>
+  </subsection>
+  <subsection>
+    <title>Negating Quantified Propositions</title>
+    <p>
+      Perhaps the most important skill to have regarding quantifiers
+      (in this course)
+      is knowing how to negate them.
+    </p>
+    <theorem xml:id="thm_negquant">
+      <statement>
+        <p>
+          For any propositional function <m>P(x)</m>, we have:
+          <ol>
+            <li>
+              <p>
+                <m>\neg(\forall x \, P(x))</m> is logically equivalent to <m>\exists x\, \neg P(x)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\neg(\exists x \, P(x))</m> is logically equivalent to <m>\forall x \, \neg P(x)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      In essence, negation swaps the quantifiers <m>\forall\leftrightarrow\exists</m>.
+      Like with all theorems,
+      if you want to understand it, you should unpack it,
+      write it in English, and come up with some examples.
+      <ol>
+        <li>
+          <p>
+            The negation of <sq><m>P(x)</m> is true for all <m>x</m></sq> is,
+            <sq><m>P(x)</m> is false for some <m>x</m>.</sq>
+          </p>
+        </li>
+        <li>
+          <p>
+            The negation of <sq><m>P(x)</m> is true for some <m>x</m></sq> is,
+            <sq><m>P(x)</m> is always false.</sq>
+          </p>
+        </li>
+      </ol>
+    </p>
+    <paragraphs>
+      <title>Examples</title>
+      <p>
+        Here are two examples,
+        numbered corresponding to the parts of <xref ref="thm_negquant">Theorem</xref>.
+        <ol>
+          <li>
+            <p>
+              The negation of the statement,
+              <sq>Everyone owns a bicycle</sq> is:
+              <ul>
+                <li class="custom-list-style-type">
+                  <p>
+                    Somebody does not own a bicycle.
+                  </p>
+                </li>
+              </ul>
+            </p>
+            It is extremely pedantic, but symbolically we might write:
+            <me>
+              \neg\Big[\forall\text{ people } x,\ x\text{ owns a bicycle } \Big]\iff \exists\text{ a person \(x\) such that \(x\) does not own a bicycle }
+            </me>.
+          </li>
+          <li>
+            <p>
+              Suppose that <m>x</m> is a real number and consider the quantified proposition:
+              <me>
+                \exists x\,\text{ such that } \sin x=4
+              </me>.
+              This has the form <m>\exists x \,P(x)</m>,
+              and therefore has negation <m>\forall x \, \neg P(x)</m>.
+              Explicitly, the negation is:
+              <me>
+                \forall x \text{ we have } \sin x\neq 4
+              </me>.
+              Note how we introduced the words <em>we have</em>
+              to make the sentence read more clearly.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </paragraphs>
+    <p>
+      Once you're comfortable negating simple propositions and quantifiers,
+      negating multiple quantifiers is easy.
+      Just follow the rules, think, and take your time.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Show that the following statement about the real numbers is false.
+          <me>
+            \forall x \, \exists y \, \text{ such that } xy=3
+          </me>.
+        </p>
+        <p>
+          The negation of this expression follows the rules for switching quantifiers and negating the final statement:
+          <me>
+            \exists x,\, \text{ such that } \forall y \, \text{ we have } xy\neq 3
+          </me>.
+        </p>
+        <p>
+          It is easy to see that the negated statement is true:
+        </p>
+        <proof>
+          <p>
+            Let <m>x=0</m>, then, regardless of <m>y</m>,
+            we have <m>xy=0\neq 3</m>.
+          </p>
+        </proof>
+        <p>
+          Because the negation is true,
+          the original statement is false.
+        </p>
+      </statement>
+    </example>
+    <p>
+      <term>Warning!</term> When negating bounded quantifiers,
+      do <term>not</term> change the condition.
+      Here is a couple examples to illustrate.
+      We leave the reason as to why to not change the condition to the exercises.
+    </p>
+    <example>
+      <statement>
+        <ol>
+          <li>
+            <p>
+              The negation of
+              <q>every yellow car has four doors</q>
+              is <term>not</term>
+              <q>there exists a non-yellow car without four doors</q>. The correct negation is
+              <q>there is a yellow car without four doors</q>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Consider the statement
+              <q>every positive real number is a square</q>
+              which we saw we could write as
+              <me>
+                \forall x > 0 \, \exists y \in \R \, (x = y^2)
+              </me>.
+              Note that this is a <em>true</em>
+              statement and so its negation must be false.
+              So something like
+              <me>
+                \exists x \leq 0 \, \forall y \in \R \, (x \neq y^2)
+              </me>
+              could <em>not</em> be the correct negation as this is also a true statement.
+              Instead, simply negate the quantifiers as you normally would,
+              but leave the condition as is:
+              <me>
+                \exists x > 0 \, \forall y \in \R \, (x \neq y^2)
+              </me>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Advice when Negating: Hidden and Excess Quantifiers</title>
+    <p>
+      <xref ref="thm_negquant">Theorem</xref>
+      seems very simple, but it is easy to misuse.
+      Here are some points to consider when negating quantifiers.
+      <ol>
+        <li>
+          <p>
+            Don't forget the <em>meaning</em> of the sentence.
+            Use the logical rules in <xref ref="thm_negquant">Theorem</xref>,
+            but also think it out in words.
+            You should get the same result.
+            Think about the finished sentence and read it aloud:
+            if it <em>sounds</em> like the opposite of what you started with then it probably is!
+          </p>
+        </li>
+        <li>
+          <p>
+            The symbol <m>\nexists</m> for <sq>does not exist</sq> is much abused.
+            Very occasionally its use is appropriate,
+            but it too often demonstrates laziness or a lack of understanding.
+            Avoid using it unless absolutely necessary.
+          </p>
+        </li>
+        <li>
+          <p>
+            Beware of hidden quantifiers!
+            Sometimes a quantifier is not explicitly stated.
+            This is especially the case with the universal quantifier and is very common when a statement contains an implication.
+            Consider the following very easy theorem.
+            <ul>
+              <li class="custom-list-style-type">
+                <p>
+                  If <m>n</m> is an odd integer,
+                  then <m>n^2</m> is odd.(<m>\ast</m>)
+                </p>
+              </li>
+            </ul>
+          </p>
+          This is really a statement about <em>all</em> integers.
+          There is a hidden quantifier that's been suppressed in the interests of readability.
+          Instead, the theorem could have been written
+          <ul>
+            <li class="custom-list-style-type">
+              <p>
+                <m>\forall n\in\Z</m>
+                (<m>n</m> is odd <m>\implies n^2</m> is odd).
+              </p>
+            </li>
+          </ul>
+          In this form we can negate by combining the rules in <xref ref="thm_negconditional">Theorems</xref>
+          and <xref ref="thm_negquant"></xref>.
+          The pattern is
+          <me>
+            \neg\left[\forall n \, (P(n)\implies Q(n))\right]\text{ is equivalent to }  \exists n \, (P(n) \land \neg Q(n))
+          </me>.
+          The negation of (<m>\ast</m>) is therefore,
+          <ul>
+            <li class="custom-list-style-type">
+              <p>
+                <m>\exists n\in\Z</m> such that <m>n</m> is odd and <m>n^2</m> is even.
+              </p>
+            </li>
+          </ul>
+          Given that (<m>\ast</m>) is a theorem,
+          its negation is, of course, false!
+        </li>
+      </ol>
+    </p>
+    <p>
+      Here is a harder example of a hidden quantifier,
+      this time from Linear Algebra.
+      You do not have to know what a vector is to work with this definition.
+      We are purely concerned with how to negate an abstract statement.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          Vectors <m>\vx,\vy,\vz</m> are <term>linearly independent</term> if
+          <me>
+            a\vx+b\vy+c\vz=\V 0\implies a=b=c=0
+          </me>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The implication is a statement about <em>all</em>
+      real numbers <m>a,b,c</m>.
+      We could instead have written
+      <ul>
+        <li class="custom-list-style-type">
+          <p>
+            <m>\forall a,b,c\in\R\text{ we have } a\vx+b\vy+c\vz=\V 0\implies a=b=c=0</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      To negate the definition, we must also negate the hidden quantifier.
+      The result is the definition of what it means for vectors <m>\vx,\vy,\vz</m> to be
+      <em>linearly dependent</em>:
+      <me>
+        \exists a,b,c\text{ not all zero such that } a\vx+b\vy+c\vz=\V 0
+      </me>
+    </p>
+    <p>
+      The final challenge here is recalling how to negate an implication:
+      recall <xref ref="thm_negconditional">Theorem</xref>,
+      and note that the negation of <m>a=b=c=0</m> is that <em>at least one</em>
+      of <m>a,b,c</m> is non-zero.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Putting it all together: the definition of continuity</title>
+    <p>
+      You might have seen the strict definition of continuity in a calculus class.<fn>
+      If not, you will have plenty time to get used to it in an upper-division Analysis course<ellipsis/>
+      </fn> It combines multiple quantifiers,
+      a hidden quantifier and an implication.
+      The purpose of this example isn't to teach you the subtleties of continuity.
+      Just as with the linear independence example,
+      we simply want to be able to read and negate such expressions.
+    </p>
+    <definition xml:id="defn_cont">
+      <statement>
+        <p>
+          Suppose that <m>f</m> is a function whose domain and codomain are sets of real numbers.
+          We say that <m>f</m> is <term>continuous</term> at <m>x=a</m> if,
+          <me>
+            \forall\ve >0\ \exists\delta>0\text{ such that } |x-a|\lt \delta\implies |f(x)-f(a)|\lt \ve.\tag{(\(\ast\))}
+          </me>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The implication is a statement about <em>all</em>
+      real numbers <m>x</m> which satisfy some property,
+      so we once again have a hidden quantifier:
+      <me>
+        \forall\ve>0 \, \exists\delta>0\text{ such that } \underline{\forall x\in\R} \, |x-a|\lt \delta\implies |f(x)-f(a)|\lt \ve
+      </me>.
+    </p>
+    <p>
+      We can now use our rules to state what it means for <m>f</m> to be
+      <em>discontinuous</em> at <m>x=a</m>:
+      <me>
+        \exists\ve>0\text{ such that } \forall\delta>0 \, \exists x\in\R\text{ such that } |x-a|\lt \delta\text{ and } |f(x)-f(a)|\ge\ve
+      </me>.
+    </p>
+    <p>
+      <term>Warning!</term> Remember,
+      the negation of <m>\forall\ve>0</m> is
+      <em>not</em> <m>\exists\ve\le 0</m>.
+      Only the ultimate proposition<fn>
+      In this case the ultimate proposition is <m>|x-a|\lt \delta\implies |f(x)-f(a)|\lt \ve</m>.
+      </fn> is negated!
+    </p>
+    <p>
+      For an example of this definition in use, see the exercises.
+    </p>
+  </subsection>
+  <subsection>
+    <title>The Order of Quantifiers Matters!</title>
+    <p>
+      We conclude this section with an important observation:
+      the order of quantifiers matters critically!
+      Consider, for example, the following propositions:
+      <ol>
+        <li>
+          <p>
+            For every person <m>x</m>,
+            there exists a person <m>y</m> such that <m>y</m> is a friend of <m>x</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            There exists a person <m>y</m> such that,
+            for every person <m>x</m>, <m>y</m> is a friend of <m>x</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      Assuming that <m>x</m> and <m>y</m> always represent people,
+      we can rewrite the sentences as follows:
+      <ol>
+        <li>
+          <p>
+            <m>\forall x \,\exists y</m> such that <m>y</m> is a friend of <m>x</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\exists y</m> such that
+            <m>\forall x</m> we have that <m>y</m> is a friend of <m>x</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      All we've done is to switch the order of the two quantifiers!
+      How does this affect the meaning?
+      Written entirely in English, the statements become:
+      <ol>
+        <li>
+          <p>
+            Everyone has at least one friend.
+          </p>
+        </li>
+        <li>
+          <p>
+            There is someone who is friends with everybody.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      Quite different!
+      The critical observation is that if
+      <m>\exists y</m> comes after <m>x</m>,
+      then <m>y</m> is <em>allowed to depend on <m>x</m>.</em>
+      Each person might have a friend,
+      but that friend is likely to be different depending on the person.
+      If <m>\forall x</m> comes after <m>y</m>,
+      then <m>x</m> cannot depend on <m>y</m>.
+    </p>
+    <p>
+      Play around with the pairs of examples below.
+      What are the meanings?
+      Which ones are true?
+      <ul>
+        <li>
+          <p>
+            <m>\forall\,\text{ days } \,x,\,\exists\text{ a person } y</m> such that <m>y</m> was born on day <m>x</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\exists\text{ a person } y</m> such that,
+            <m>\forall\text{ days } x</m>,
+            <m>y</m> was born on day <m>x</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\forall\,\text{ circles } x,\,\exists\text{ a point } y</m> such that <m>y</m> is the center of <m>x</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\exists\text{ a point } y</m> such that,
+            <m>\forall\text{ circles } x</m>,
+            <m>y</m> is the center of <m>x</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\forall\,x\in\Z \,\exists y\in\Z</m> such that <m>y\le x</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\exists y\in\Z</m> such that,
+            <m>\forall x\in\Z</m> <nbsp/> <m>y\le x</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      What happens in the last two examples if we replace the integers <m>\Z</m> with the positive integers <m>\N</m>?
+    </p>
+  </subsection>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>P(x)</m> be <m>x^2 - 1 = 0</m> with domain all real numbers.
+          Which of the following are true?
+          Select all that apply
+          <ol>
+            <li>
+              <p>
+                <m>P(1)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>P(-1)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>P(3)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>P(x)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\forall x \, P(x)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\exists x \, P(x)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\neg \forall x \, P(x)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          A value <m>x_0</m> for which <m>P(x_0)</m> is <em>false</em>
+          is known as a(n) <fillin/>
+          <ol>
+            <li>
+              <p>
+                example.
+              </p>
+            </li>
+            <li>
+              <p>
+                counterexample.
+              </p>
+            </li>
+            <li>
+              <p>
+                realization.
+              </p>
+            </li>
+            <li>
+              <p>
+                solution.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Which of the following are equivalent to the given expression?
+          <me>
+            \neg \forall x \, \exists y \, P(x,y)
+          </me>
+          <ol>
+            <li>
+              <p>
+                <m>\exists x \, \forall y \, P(x,y)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\neg \exists x \, \forall y \, P(x,y)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\exists x \, \forall y \, \neg P(x,y)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\forall x \, \exists y \, \neg P(x,y)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False:
+          the order of quantifiers in an expression can always be switched without changing the meaning of the expression.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Write each of the following using propositional functions and quantifiers.
+          Make sure to define any propositional functions you are using.
+          <ol>
+            <li>
+              <p>
+                Every class has an instructor.
+              </p>
+            </li>
+            <li>
+              <p>
+                For all real numbers <m>x</m> and <m>y</m>,
+                if <m>x</m> and <m>y</m> are positive,
+                then there exists a positive integer <m>n</m> such that <m>nx > y</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                There exists a real number which is positive,
+                and is less than <m>1/n</m>, for each positive integer <m>n</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <url href="https://youtu.be/6XgjXmTefw8">Video Solution</url>
+      </li>
+      <li>
+        <p>
+          Negate the following.
+          <ol>
+            <li>
+              <p>
+                Every class has an instructor.
+              </p>
+            </li>
+            <li>
+              <p>
+                For all real numbers <m>x</m> and <m>y</m>,
+                if <m>x</m> and <m>y</m> are positive,
+                then there exists a positive integer <m>n</m> such that <m>nx > y</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                There exists a real number which is positive,
+                and is less than <m>1/n</m>, for each positive integer <m>n</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <url href="https://youtu.be/wXZ72O47aV8">Video Solution</url>
+      </li>
+      <li>
+        <p>
+          Here are four propositions.
+          Which are true and which false?
+          Justify your answers.\prelistskip
+          <ol>
+            <li>
+              <p>
+                <m>\forall x\in\R,\ \exists y\in\R</m> such that <m>y^4=4x</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\exists y\in\R</m> such that
+                <m>\forall x\in\R</m> we have <m>y^4=4x</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\forall y\in\R,\ \exists x\in\R</m> such that <m>y^4=4x</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\exists x\in\R</m> such that
+                <m>\forall y\in\R</m> we have <m>y^4=4x</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <url href="https://youtu.be/lfI_1HFK7uc">Video Solution</url>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          For each of the following sentences,
+          rewrite the sentence using quantifiers.
+          Then write the negation (using both words and quantifiers)\prelistskip
+          <ol>
+            <li>
+              <p>
+                All mathematics exams are hard.
+              </p>
+            </li>
+            <li>
+              <p>
+                No football players are from San Diego.
+              </p>
+            </li>
+            <li>
+              <p>
+                There is a odd number that is a perfect square.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose that <m>P(x)</m>,
+          <m>Q(y)</m> and <m>R(x,y,z)</m> are propositional functions.
+          Compute the negation of the following quantified propositions:
+          <ol>
+            <li>
+              <p>
+                <m>\forall x \,\, \exists y \, \,P(x)\wedge Q(y)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\forall x \, \,\exists y \, \,\forall z \, R(x,y,z)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose someone claims that the negation of
+          <m>x^2 > 0 \implies x > 0</m> is <sq><m>x^2 > 0</m> and
+          <m>x \leq 0</m>.</sq> Why is this incorrect?
+          What is the correct negation?
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the propositional function
+          <me>
+            P(x,y,z): (x-3)^2+(y-2)^2+(z-7)^2>0
+          </me>
+          where the domain of each of the variables <m>x,y</m> and <m>z</m> is <m>\R</m>.\prelistskip
+          <ol>
+            <li>
+              <p>
+                Express the quantified statement <m>\forall x\in\R,\forall y\in\R,\forall z\in\R, P(x,y,z)</m> in words.
+              </p>
+            </li>
+            <li>
+              <p>
+                Is the quantified statement in (a) true or false?
+                Explain.
+              </p>
+            </li>
+            <li>
+              <p>
+                Express the negation of the quantified statement in (a) in symbols.
+              </p>
+            </li>
+            <li>
+              <p>
+                Express the negation of the quantified statement in (a) in words.
+              </p>
+            </li>
+            <li>
+              <p>
+                Is the negation of the quantified statement in (a) true or false?
+                Explain.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          The following statements are about positive real numbers.
+          Which one is true?
+          Explain your answer.\prelistskip
+          <ol>
+            <li>
+              <p>
+                <m>\forall x</m><nbsp/> <m>\exists y</m> such that <m>xy\lt y^2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\exists x</m> such that
+                <m>\forall y</m> <nbsp/> <m>xy\lt y^2</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Which of the following statements are true?
+          Explain.\prelistskip
+          <ol>
+            <li>
+              <p>
+                <m>\exists</m> a married person <m>x</m> such that <m>\forall</m> married people <m>y</m>,
+                <m>x</m> is married to <m>y</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\forall</m> married people <m>x</m>,
+                <m>\exists</m> a married person <m>y</m> such that <m>x</m> is married to <m>y</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li xml:id="ex_decreasing">
+        <p>
+          A function <m>f</m> is said to be <em>decreasing</em> if:
+          <me>
+            x\le y\implies f(x)\ge f(y)
+          </me>.
+          <ol>
+            <li>
+              <p>
+                There is a hidden quantifier in the definition: what is it?
+              </p>
+            </li>
+            <li>
+              <p>
+                State what it means for <m>f</m> not to be decreasing.
+              </p>
+            </li>
+            <li>
+              <p>
+                Give an example to demonstrate the fact that
+                <em>not decreasing</em> and <em>increasing</em>
+                do not mean the same thing!
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Are the following True or False?
+          Give some explanation for why you chose your answer.\prelistskip
+          <ol>
+            <li>
+              <p>
+                For every two points <m>A</m> and <m>B</m> in the plane,
+                there exists a circle on which both <m>A</m> and <m>B</m> lie.
+              </p>
+            </li>
+            <li>
+              <p>
+                There exists a circle in the plane on which lie any two points <m>A</m> and <m>B</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          You are given the following definition (<em>you do not have to know what is meant by a field)</em>.
+          Let <m>x</m> be an element of a field <m>\mathbb{F}</m>.
+          An <em>inverse</em> of <m>x</m> is an element <m>y</m> in
+          <m>\mathbb{F}</m> such that <m>xy=1</m>.
+          Consider the following proposition: All non-zero elements in a field have an inverse.
+          <ol>
+            <li>
+              <p>
+                Restate the proposition using both of the quantifiers <m>\forall</m> and <m>\exists</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find the negation of the proposition, again using quantifiers.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the following proposition.
+          <me>
+            \forall m,n\in\R, m>n\implies m^2>n^2.\tag{(\(\dag\))}
+          </me>
+          <ol>
+            <li>
+              <p>
+                What is the negation of (<m>\dag</m>)?
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that (<m>\dag</m>) is <em>false.</em>
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose you rewrite the proposition as follows
+                <me>
+                  \forall m,n\in A, m>n\implies m^2>n^2
+                </me>.
+                What is the largest collection (set) of real numbers <m>A</m> for which the proposition is <em>true</em>?
+                Justify your answer.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>P(x)</m> be a propositional function and <m>n</m> a positive integer.
+          <ol>
+            <li>
+              <p>
+                Define the quantifier <m>\exists^{\geq n}</m> so that the proposition
+                <m>\exists^{\geq n} x \, P(x)</m> is true if and only if there are at least <m>n</m> elements in the domain of <m>P(x)</m> which make <m>P(x)</m> true.
+                Find an expression in which the only quantifiers are <m>\forall</m> and <m>\exists</m> which has the same meaning as <m>\exists^{\geq n} x \, P(x)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Define the quantifier <m>\exists^{= n}</m> so that the proposition
+                <m>\exists^{= n} x \, P(x)</m> is true if and only if there are exactly <m>n</m> elements in the domain of <m>P(x)</m> which make <m>P(x)</m> true.
+                Find an expression in which the only quantifiers are <m>\forall</m> and <m>\exists</m> which has the same meaning as <m>\exists^{= n} x \, P(x)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li xml:id="ex_seqlim">
+        <p>
+          Recall from calculus the definitions of the limit of a sequence <m>(x_n)=(x_1,x_2,x_3,\ldots)</m>.
+          <tabular>
+            \=<sq><m>x_n</m> <em>diverges to <m>\infty</m></em></sq> means: \=<m>\forall M>0,\,\exists N\in\N</m> such that <m>n>N\implies x_n>M</m>. \><sq><m>x_n</m> <em>converges to <m>L</m></em></sq> means: \><m>\forall\ve>0,\,\exists N\in\N</m> such that <m>n>N\implies \nm{x_n-L}\lt \ve</m>.
+          </tabular>
+          Here we assume that all elements of <m>(x_n)</m> are real numbers.
+          <ol>
+            <li>
+              <p>
+                State what it means for a sequence <m>x_n</m> not to diverge to <m>\infty</m>.
+                <em>Beware of the hidden quantifier!</em>
+              </p>
+            </li>
+            <li>
+              <p>
+                State what it means for a sequence <m>x_n</m> not to converge to <m>L</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                State what it means for a sequence <m>x_n</m> not to converge at all.
+              </p>
+            </li>
+            <li>
+              <p>
+                (Hard) Prove, using the definition,
+                that the sequence defined by <m>x_n=n</m> diverges to <m>\infty</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                (Hard) Prove that the sequence defined by <m>x_n=\frac 1n</m> converges to zero.
+              </p>
+            </li>
+          </ol>
+        </p>
+        [You may want to revisit the last two parts after reading the following sections.]
+      </li>
+    </ol>
+  </subsection>
+</section>

@@ -1,0 +1,11 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="chap-set_theory_II">
+  <title>Set Theory, Part II</title>
+  <introduction>
+    <p>
+      In this chapter we return to set theory and consider several more-advanced constructions.
+    </p>
+  </introduction>
+  <xi:include  href="sec_cartesian_product.ptx"/>
+  <xi:include  href="sec_power_set.ptx"/>
+  <xi:include  href="sec_set_collection.ptx"/>
+</chapter>

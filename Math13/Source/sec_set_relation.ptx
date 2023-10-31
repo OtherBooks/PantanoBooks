@@ -1,0 +1,557 @@
+<section xml:id="sec_set_relation">
+  <title>Relations</title>
+  <introduction>
+    <definition>
+      <statement>
+        <p>
+          Let <m>A</m> and <m>B</m> be sets.
+          A <term>(binary) relation</term> <m>\cR</m> from <m>A</m> to <m>B</m> is a set of ordered pairs
+          <me>
+            \cR\subseteq A\times B
+          </me>.
+        </p>
+        <p>
+          A <term>relation on</term> <m>A</m> is a relation from <m>A</m> to itself.
+        </p>
+        <p>
+          If <m>(x,y)\in\cR</m> we can also write <m>x\,\cR\,y</m>,
+          and say <sq><m>x</m> is related to <m>y</m>.</sq> Similarly
+          <m>x\not\!\!\cR\,y</m> means <m>(x,y)\not\in\cR</m>.
+        </p>
+      </statement>
+    </definition>
+    <example>
+      <statement>
+        <p>
+          \item <m>\cR=\{(1,3),(2,2),(2,3),(3,2),(4,1),(5,2)\}</m> is a relation from <m>\N</m> to <m>\N</m>.
+          It is also a relation from <m>\{1,2,3,4,5\}</m> to <m>\{1,2,3\}</m>.
+          Various true statements about this relation include
+          <me>
+            (2,2)\in\cR,\qquad (4,2)\not\in\cR,\qquad 2\not\!\!\cR\,5,\qquad 3\,\cR\,2
+          </me>
+        </p>
+        <p>
+          \item <m>\cR=\Bigl([1,3)\times (3,4]\Bigr)\cup\big\{(2t+1,t^2):t\in [\frac 12,2]\big\}</m> is a relation from <m>\R</m> to <m>\R</m>.
+          Be careful: it is easy to confuse interval notation with the notation for ordered pair! \item The set
+          <m>\cR=\{(a,a):a\in A\}</m> is a relation on <m>A</m>, indeed
+          <me>
+            (x,y)\in \cR\iff x=y
+          </me>
+          defines a relation on <em>any</em> set <m>A</m>.
+          This example is where the term <em>equivalence relation</em>
+          (<xref ref="sec_equiv">Section</xref>)
+          comes from.
+          <m>x\,\cR\,y\iff x=y</m> simply says that <m>\cR</m> is <sq>equals.</sq> \item If <m>A=\{\text{ all humans } \}</m>,
+          we may define <m>\cR\subseteq A\times A</m> by
+          <me>
+            (a_1,a_2)\in \cR\iff a_1,a_2\text{ have a parent-child, or a sibling relationship. }
+          </me>
+        </p>
+        <p>
+          In this example,
+          the mathematical use of the word relation is identical to that in English.
+          For example, I am related to my sister,
+          and my mother is related to me. \item If <m>A</m> is a set,
+          then <m>\subseteq</m> is a relation on the power set <m>\cP(A)</m>.
+        </p>
+        <p>
+          For example, if <m>A=\{1,2,3\}</m> then
+          <m>\{1\}\in\cP(A)</m> and <m>\{1,3\}\in\cP(A)</m>.
+          We'd say that <m>\{1\}</m> is related to <m>\{1,3\}</m> since <m>\{1\}\subseteq\{1,3\}</m>.
+        </p>
+        <p>
+          It should be clear that, under the relation <m>\subseteq</m>,
+          that <m>\{1,3\}</m> is not related to <m>\{1\}</m>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      When <m>\cR</m> is a relation between sets of numbers,
+      we can often <em>graph</em> the relation.
+      Examples 1 and 2 above would be graphed as follows:
+    </p>
+    <sidebyside>
+      <image width="73%" source="relations-01-reln1"/>
+      Example 1.
+      <image width="73%" source="relations-02-reln2"/>
+      Example 2.
+    </sidebyside>
+    <p>
+      Not all relations between sets of numbers can be graphed:
+      for example,
+      graphing the relation <m>\cR=\Q\times\Q</m> is impossible!
+    </p>
+    <sidebyside>
+      To refer to the introduction, the standard ordering <m>\lt</m> on <m>\N</m> is a relation, and we can graph it: for all <m>x,y\in\N</m>, we define
+      <me>
+        x\,\cR\,y\iff x\lt y
+      </me>
+      or equivalently,
+      <me>
+        \cR=\{(x,y)\in\N\times\N:x\lt y\}
+      </me>
+      \vspace{10pt}
+      <image width="73%" source="relations-25-less"/>
+    </sidebyside>
+    <p>
+      We can also think about functions in this language:
+      if <m>f:\R\to\R</m> is a function, then we could define
+      <me>
+        x\,\cR\,y\iff y=f(x)
+      </me>
+      or equivalently
+      <me>
+        \cR=\{(x,y)\in\R^2:y=f(x)\}
+      </me>
+    </p>
+    <p>
+      We will return to this viewpoint on function in the <xref ref="sec_func2">Section</xref>.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Basic results regarding relations</title>
+    <p>
+      With abstract relations, there are only a small number of things we can do.
+    </p>
+    <definition xml:id="defn_relnsym">
+      <statement>
+        <p>
+          If <m>\cR\subseteq A\times B</m> is a relation,
+          then its <term>inverse</term> <m>\cR^{-1}\subseteq B\times A</m> is the set
+          <me>
+            \cR^{-1}=\{(y,x)\in B\times A:(x,y)\in\cR\}
+          </me>.
+        </p>
+        <p>
+          To find the elements of <m>\cR^{-1}</m>,
+          you simply switch the components of each ordered pair in <m>\cR</m>.
+        </p>
+        <p>
+          Suppose <m>A=B</m>.
+          We say that <m>\cR</m> is <term>symmetric</term> if <m>\cR=\cR^{-1}</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The following results should seem natural,
+      even if some of the proofs may not be obvious.
+    </p>
+    <theorem xml:id="thm_relbasic">
+      <statement>
+        <p>
+          Given any relations <m>\cR,\cS\subseteq A\times B</m>:
+          <ol>
+            <li>
+              <p>
+                <m>(\cR^{-1})^{-1}=\cR</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\cR\subseteq \cS\iff \cR^{-1}\subseteq \cS^{-1}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(\cR\cup \cS)^{-1}=\cR^{-1}\cup \cS^{-1}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(\cR\cap \cS)^{-1}=\cR^{-1}\cap \cS^{-1}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>A=B</m>, then <m>\cR\cup \cR^{-1}</m> is symmetric
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>A=B</m>, then <m>\cR\cap \cR^{-1}</m> is symmetric
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        Here are two of the arguments.
+        Try the others yourself.
+        <ol>
+          <li>
+            <title>2</title>
+            <p>
+              Assume that <m>\cR\subseteq\cS</m>,
+              and suppose that <m>(x,y)\in\cR^{-1}</m>.
+              We must prove that <m>(x,y)\in\cS^{-1}</m>.
+              By the definition of inverse,
+              <md>
+                <mrow>(x,y)\in\cR^{-1}\amp \implies (y,x)\in\cR\implies (y,x)\in\cS</mrow>
+                <mrow>\amp \implies (x,y)\in\cS^{-1}</mrow>
+              </md>.
+              Therefore <m>\cR^{-1}\subseteq\cS^{-1}</m>.
+              For the converse, suppose that <m>\cR^{-1}\subseteq\cS^{-1}</m>.
+              Then, by an argument similar to the above,
+              we see that <m>(\cR^{-1})^{-1}\subseteq (\cS^{-1})^{-1}</m>.
+              Now use 1.<nbsp/>to see that
+              <me>
+                \cR^{-1}\subseteq\cS^{-1}\implies\cR\subseteq \cS
+              </me>.
+            </p>
+          </li>
+          <li>
+            <title>5</title>
+            <p>
+              By 3,
+              <me>
+                (\cR\cup \cR^{-1})^{-1}=\cR^{-1}\cup (\cR^{-1})^{-1}=\cR^{-1}\cup \cR=\cR\cup \cR^{-1}
+              </me>,
+              and so <m>\cR\cup \cR^{-1}</m> is symmetric.\qedhere
+            </p>
+          </li>
+        </ol>
+      </p>
+    </proof>
+    <p>
+      <term>Keep your proof skills sharp!</term>Several parts of <xref ref="thm_relbasic">Theorem</xref>
+      look suspiciously similar to earlier results and it is easy to get confused.
+      For example, 3 and 4 look almost like De Morgan's laws,
+      except that <m>\cup</m> and <m>\cap</m> do not switch over.
+      This is why it is important to be able to conjure up examples and
+      <em>prove</em> such statements.
+      There are many facts in mathematics:
+      trying to memorize everything is too difficult!
+      Instead, you will be forever conjecturing and having to justify your guesses.
+      For example, suppose that you forget results 3 and 4:
+      it seems reasonable to conjecture that
+      <me>
+        (\cR\cup \cS)^{-1}=\begin{cases}\cR^{-1}\cup \cS^{-1}\\ \qquad\text{ or } \\ \cR^{-1}\cap \cS^{-1} \end{cases}
+      </me>
+    </p>
+    <p>
+      Now that you have two sensible guesses,
+      you should be able to decide the correct one by thinking about examples and,
+      if necessary, proving your assertion!
+    </p>
+    <example>
+      <statement>
+        <p>
+          Consider Example 1 from before:
+          <m>\cR=\{(1,3),(2,2),(2,3),(3,2),(4,1),(5,2)\}\subseteq\N\times\N</m>.
+          This is not symmetric since,
+          for example, <m>1\,\cR\,3</m> but <m>3\not\!\!\cR\,1</m>.
+          We compute
+          <me>
+            \cR^{-1}=\{(3,1),(2,2),(3,2),(2,3),(1,4),(2,5)\}
+          </me>,
+          and observe that
+          <md>
+            <mrow>\cR\cap \cR^{-1}=\{(2,2), (2,3), (3,2)\}\text{ and }</mrow>
+            <mrow>\cR\cup \cR^{-1}=\{(1,3),(3,1),(2,2),(2,3),(3,2),(4,1),(1,4),(5,2),(2,5)\}</mrow>
+          </md>
+          are both symmetric.
+        </p>
+      </statement>
+    </example>
+    <sidebyside>
+      <image width="73%" source="relations-03-relnint"/>
+      The relation <m>\cR\cap \cR^{-1}</m>
+      <image width="73%" source="relations-04-relnun"/>
+      The relation <m>\cR\cup \cR^{-1}</m>
+    </sidebyside>
+    <p>
+      These pictures should confirm something intuitive:
+      if you are able to graph a symmetric relation,
+      then the graph will have symmetry about the line <m>y=x</m>.
+      Indeed, <m>\cR^{-1}</m> is obtained by reflecting <m>\cR</m> in the line <m>y=x</m>.
+      Recall how to graph an inverse functions from calculus<ellipsis/>
+    </p>
+  </subsection>
+  <subsection>
+    <title>Reading Questions</title>
+    <ol>
+      <li>
+        <p>
+          A relation <m>\cR \subseteq A \times B</m> is \rule{3cm}{0.15mm}
+          <ol>
+            <li>
+              <p>
+                a nonempty subset of <m>A \times B</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                a proper subset of <m>A \times B</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                a function from <m>A</m> to <m>B</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                a subset of <m>A \times B</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          If <m>A \subseteq \R</m>,
+          then the graph of a symmetric relation
+          <m>\cR \subseteq A \times A</m> has what kind of symmetry?
+          <ol>
+            <li>
+              <p>
+                symmetric about the <m>x</m>-axis
+              </p>
+            </li>
+            <li>
+              <p>
+                symmetric about the <m>y</m>-axis
+              </p>
+            </li>
+            <li>
+              <p>
+                symmetric about the line <m>y = x</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                symmetric across the origin
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: if <m>\cR</m> is symmetric,
+          then it must contain an even number of elements.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>L_{a,b,c} = \{(x,y) : ax + by = c\} \subseteq \R^2</m>.
+        </p>
+        <ol>
+          <li>
+            <p>
+              Describe <m>L_{a,b,c}</m> geometrically.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>A = \R^2</m> and <m>B = \{L_{a,b,c} : a,b,c \in \R\}</m>.
+              Define <m>\cR \subseteq A \times B</m> by
+              <m>(x,y) \, \cR \, L_{a,b,c}</m> if and only if <m>ax + by = c</m>.
+              For each of the following, determine if it is true or false.
+            </p>
+            <ol marker="labelroman">
+              <li>
+                <p>
+                  <m>(1,0) \, \cR \, L_{1,1,1}</m>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>(3,-2) \not\!\!\cR \, L_{1,1,1}</m>
+                </p>
+              </li>
+              <li>
+                <p>
+                  if <m>(x,y) \, \cR \, L_{a,b,c}</m> and
+                  <m>(x,y) \, \cR \, L_{d,e,f}</m> for some <m>(x,y)</m> then <m>L_{a,b,c} = L_{d,e,f}</m>
+                </p>
+              </li>
+              <li>
+                <p>
+                  suppose <m>(x,y)\not\!\!\cR \, L_{a,b,c}</m>,
+                  then there exists <m>d,e,f \in \R</m> such that
+                  <m>(x,y) \, \cR \, L_{d,e,f}</m> and <m>L_{a,b,c} \cap L_{d,e,f} = \emptyset</m>
+                </p>
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Let <m>X</m> be a set.
+          Let <m>\cR \subseteq \cP(X) \times \cP(X)</m> be the relation <m>A \, \cR \, B \iff A \subseteq B</m>.
+          <ol>
+            <li>
+              <p>
+                Show that <m>A \, (\cR \cap \cR^{-1}) \, B</m> implies <m>A = B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>X = \{a,b\}</m>, compute
+                <m>\cR^{-1}</m> explicitly as a set of ordered pairs.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>\cR</m> be the relation on <m>\{0,1,2\}</m> defined by
+          <me>
+            0\,\cR\,0\qquad 0\,\cR\,1\qquad 2\,\cR\,1
+          </me>
+          <ol>
+            <li>
+              <p>
+                Write <m>\cR</m> as a set of ordered pairs.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the inverse of <m>\cR</m>?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Let <m>\cR</m> be the relation on <m>\R</m> defined by <m>a\,\cR\,b\iff\nm{a-b}=1</m>.
+              Is this relation symmetric?
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>\sim</m> be the relation on <m>\R</m> defined by
+              <me>
+                a \sim b \Leftrightarrow \exists x \in \Q \setminus \{0\} \text{ such that }  a = x^2 b
+              </me>.
+              Is this relation symmetric?
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Draw pictures of the following relations on the set of real numbers <m>\R</m>.
+          <ol>
+            <li>
+              <p>
+                <m>\cR=\{(x,y):y\le x\text{ and } y\le 2\text{ and } y\le 2-x\}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\cS=\{(x,y):(x-4)^2+(y-1)^2\le 9\}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        Also draw the inverse of each relation.
+      </li>
+      <li>
+        <p>
+          A relation is defined on <m>\N</m> by <m>a\,\cR\,b\!\iff\! \frac ab\in\N</m>.
+          Let <m>c,d\in\N</m>.
+          Under what conditions is it permissable to write <m>c\,\cR^{-1}\,d</m>?
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\cR \subseteq \N^2</m> be the relation <m>m \, \cR \, n</m> iff <m>m \mid n</m>.
+          Compute <m>\cR \cap \cR^{-1}</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\cR\subseteq\{1,2,3,4\}\times\{1,2,3,4\}</m> be the relation
+          <me>
+            \cR=\{(1,3),(1,4),(2,2),(2,4),(3,1),(3,2),(4,4)\}
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Compute <m>\cR^{-1}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Compute the relations <m>\cR\cup \cR^{-1}</m> and <m>\cR\cap \cR^{-1}</m>,
+                and check that they are symmetric.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          For the relation <m>\cR=\{(x,y):x\le y\}</m> defined on <m>\N</m>,
+          what is <m>\cR^{-1}</m>,
+          and what is the intersection <m>\cR\cap\cR^{-1}</m>?
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> be a set with <m>\nm A=4</m>.
+          What is the maximum number of elements that a relation <m>\cR</m> on <m>A</m> can contain such that <m>\cR\cap \cR^{-1}=\emptyset</m>?
+        </p>
+      </li>
+      <li>
+        <p>
+          Give formal proofs of the remaining cases (1, 3, 4 &amp; 6) of <xref ref="thm_relbasic">Theorem</xref>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\cR</m> and <m>\cS</m> be two symmetric relations on a set <m>A</m>.
+          <ol>
+            <li>
+              <p>
+                Show <m>\cR \cap \cS</m> is symmetric.
+              </p>
+            </li>
+            <li>
+              <p>
+                Does <m>\cR \cup \cS</m> have to be symmetric?
+                Give a proof or counterexample.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\cR</m> be a relation on a set <m>A</m> and define <m>\cS=\cR\cup\cR^{-1}</m>.
+          We know that <m>\cS</m> is symmetric.
+          Prove that <m>\cS</m> is the intersection of all <em>symmetric</em>
+          relations on <m>A</m> which contain <m>\cR</m>.
+          Otherwise said: if
+          <me>
+            \mathrm T=\Bigl\{\mathcal T\subseteq A\times A:\mathcal T\text{ symmetric and } \cR\subseteq\mathcal T\bigr\}
+          </me>
+          then
+          <me>
+            \cS=\bigcap\limits_{\mathcal T\in \mathrm T} \mathcal T
+          </me>
+          <m>\cS</m> is known as the <em>symmetric closure</em> of <m>\cR</m>.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pretext xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+  <docinfo>
+<macros>
+\def\prelistskip{\vspace{-6pt}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\arraystretch{1.5}
+\def\arraystretch{1.5}
+\renewcommand{\qedsymbol}{\rule[-8pt]{0.5em}{0.5em}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\itemstart}[1]{\makebox[0pt][l]{#1}\qquad}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\vp{\varphi}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\ip}[1]{\left\langle #1\right\rangle}
+\def\arraystretch{1.3}
+\newcommand{\diff}[2][]{\frac{\D #1}{\D #2}}
+\def\arraystretch{1.3}
+\newcommand{\at}[2]{\left.#1\right|_{#2}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\Id{\operatorname{Id}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\diag{\operatorname{diag}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\V#1{\terminology{#1}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\lst}[2]{{#1}_1,\ldots,{#1}_{#2}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\vect}[2]{\lst{\V{#1}}{#2}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\lincom#1#2#3{{#1}_1\V{#2}_1+\cdots+{#1}_{#3}\V{#2}_{#3}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\notimplies}{
+\mathrel{{\ooalign{\hidewidth$\not$\hidewidth\cr$\implies$}}}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\ve{\varepsilon}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\R{\mathbb{R}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\pr{\mathbb{P}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\C{\mathbb{C}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\Q{\mathbb{Q}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\Z{\mathbb{Z}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\N{\mathbb{N}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\F{\mathbb{F}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\cL{\mathcal{L}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\D{\mathrm{d}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\cP{\mathcal{P}}
+\renewcommand{\arraystretch}{1.35}
+\def\cA{\mathcal{A}}
+\renewcommand{\arraystretch}{1.1}
+\def\cR{\mathcal{R}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\cS{\mathcal{S}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\cT{\mathcal{T}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\fc{\mathfrak{c}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\cU{\mathcal{U}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\vx{{\V x}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\vy{{\V y}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\vz{{\V z}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\id{\operatorname{id}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\lcm{\operatorname{lcm}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\acl{\operatorname{cl}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\cl}[1]{\overline{#1}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\ul}[1]{\underline{#1}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\nm}[1]{\left| #1\right|}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\Nm#1{\nm{\nm{#1}}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\im{\operatorname{\mathrm{Im}}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\dom{\operatorname{\mathrm{dom}}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\range{\operatorname{\mathrm{range}}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\comp}[1]{#1^\mathsf{C}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\quotient}[2]{{}^{\textstyle {#1}}\!\big/_{\textstyle \!{#2}}}
+\def\refl{\makebox[\wd\mybox][l]{\emph{Reflexivity}}}
+\newcommand{\timplies}[2]{\ #1\implies #2\ }
+\def\symm{\makebox[\wd\mybox][l]{\emph{Symmetry}}}
+\def\divides{\!\mid\!}
+\def\trans{\makebox[\wd\mybox][l]{\emph{Transitivity}}}
+\def\ndivides{\!\nmid\!}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\tpmod}[1]{\negthickspace\pmod{#1}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\dsum{\displaystyle\sum}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\twovec}[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\threevec#1#2#3{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\fourvec#1#2#3#4{\begin{pmatrix}#1\\#2\\#3\\#4\end{pmatrix}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\quizhead}[1]{\begin{center}\Large Math 13: Quiz #1\end{center}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\hwhead}[1]{\begin{center}\Large Math 13: Homework #1\end{center}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\circimp}[2]{\mbox{\textcircled{\scriptsize #1} $\Rightarrow$ \textcircled{\scriptsize #2}}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\renewcommand{\arraystretch}{1.3}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\preinitdisp{\setlength{\abovedisplayskip}{-13.8pt}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\def\postinitdisp{\setlength{\abovedisplayskip}{12pt plus 3pt minus 9pt}}
+\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\newcommand{\marks}[1]{\hfill{\scriptsize{(#1)}}
+}
+\newcommand{\dmarks}[1]{\tag{\scriptsize{(#1)}}}
+</macros>
+<latex-image-preamble>
+\usepackage{tikz}
+\usepackage{tkz-graph}
+\usepackage{tkz-euclide}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+\usetikzlibrary{through,intersections,decorations,shadows,fadings}
+\usepackage{pgfplots}
+</latex-image-preamble>
+  </docinfo>
+  <book>
+    <title>Math 13 --- An Introduction to Abstract Mathematics</title>
+    <frontmatter>
+      <titlepage>
+        <author>
+          <personname>Neil Donaldson</personname>
+        </author>
+        <author>
+          <personname>Alessandra Pantano</personname>
+        </author>
+        <author>
+          <personname>Ari Rosenfield</personname>
+        </author>
+      </titlepage>
+    </frontmatter>
+    <xi:include href="./chap-paradigm_shift.ptx"/>
+    <xi:include href="./chap-logic.ptx"/>
+    <xi:include href="./chap-sets.ptx"/>
+    <xi:include href="./chap-divisibility_Eucledean_alg.ptx"/>
+    <xi:include href="./chap-induction.ptx"/>
+    <xi:include href="./chap-set_theory_II.ptx"/>
+    <xi:include href="./chap-relations_partitions.ptx"/>
+    <xi:include href="./chap-cardinalities.ptx"/>
+    <backmatter>
+      <xi:include href="./bibliography.ptx"/>
+    </backmatter>
+  </book>
+</pretext>

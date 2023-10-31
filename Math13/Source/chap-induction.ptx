@@ -1,0 +1,19 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="chap-induction">
+  <title>Mathematical Induction and Well-ordering</title>
+  <introduction>
+    <p>
+      In <xref ref="sec_proof">Section</xref>
+      we discussed three methods of proof:
+      direct, contrapositive, and contradiction.
+      The fourth standard method of proof,
+      <em>induction,</em> has a very different flavor.
+      In practice it formalizes the idea of spotting a pattern.
+      Before we give the formal definition of induction,
+      we consider where induction fits into the investigative process.
+    </p>
+  </introduction>
+  <xi:include  href="sec_recursive_process.ptx"/>
+  <xi:include  href="sec_induction_proof.ptx"/>
+  <xi:include  href="sec_wellorder.ptx"/>
+  <xi:include  href="sec_stronginduction.ptx"/>
+</chapter>

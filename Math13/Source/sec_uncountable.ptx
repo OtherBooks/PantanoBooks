@@ -1,0 +1,745 @@
+<section xml:id="sec_uncountable">
+  <title>Uncountable Sets</title>
+  <introduction>
+    <p>
+      Since <m>\Q</m> seems so large,
+      you might think that there cannot be any sets with strictly larger cardinality.
+      But we haven't yet thought about the real numbers<ellipsis/>
+    </p>
+    <definition>
+      <statement>
+        <p>
+          A set <m>A</m> is <term>uncountable</term>
+          if <m>\nm A>\aleph_0</m>,
+          that is if there exists an injection
+          <m>f:\N\to A</m> but no bijection <m>g:\N\to A</m>.
+        </p>
+      </statement>
+    </definition>
+    <theorem xml:id="thm_Cantordiag">
+      <statement>
+        <p>
+          The interval <m>[0,1]</m> of real numbers is uncountable.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      We denote the cardinality of the interval <m>[0,1]</m> by the symbol <m>\fc</m> for <em>continuum.</em>
+      The theorem may therefore be written <m>\fc>\aleph_0</m>.
+    </p>
+    <proof>
+      <p>
+        First we require an injective function <m>f:\N\to[0,1]</m>.
+        The function defined by <m>f(n)=\frac 1n</m> clearly fits the bill, for
+        <me>
+          f(n)=f(m)\implies \frac 1n=\frac 1m\implies n=m
+        </me>.
+      </p>
+      <p>
+        Now we prove that there exists no bijection
+        <m>g:\N\to[0,1]</m>, arguing by contradiction.
+        Suppose that <m>g</m> is such a bijection and consider the sequence of values
+        <m>g(1),g(2),g(3),\ldots</m> These are real numbers between 0 and 1, hence they may all be expressed as decimals:<fn>
+        A number has two decimal representations if and only if one of them terminates and the other ultimately becomes an infinite sequence of 9's.
+        For the purposes of this proof it does not matter which representation is chosen when there is a choice.
+        We are forced, however, to take <m>1=0.999999\cdots</m>,
+        due to our insistence that all elements be written with zero units.
+        </fn>
+        <me>
+          \begin{array}{c} g(1)=0.b_{11}b_{12}b_{13}b_{14}b_{15}b_{16}\cdots\\ g(2)=0.b_{21}b_{22}b_{23}b_{24}b_{25}b_{26}\cdots\\ g(3)=0.b_{31}b_{32}b_{33}b_{34}b_{35}b_{36}\cdots\\ g(4)=0.b_{41}b_{42}b_{43}b_{44}b_{45}b_{46}\cdots\\ g(5)=0.b_{51}b_{52}b_{53}b_{54}b_{55}b_{56}\cdots\\[-2pt] \vdots\\[-8pt] \end{array} \qquad\text{ where each } b_{ij}\in\{0,\ldots,9\}
+        </me>.
+      </p>
+      <p>
+        Since <m>g</m> is bijective, it is certainly surjective.
+        It follows that all of the values
+        <m>c\in[0,1]</m> appear in the above list of decimals.
+        Now define a new decimal
+        <me>
+          c=0.c_1c_2c_3c_4c_5\cdots\qquad\text{ where }  c_n=\begin{cases}1\amp \text{ if } b_{nn}\neq 1,\\ 2\amp \text{ if } b_{nn}=1. \end{cases}
+        </me>
+      </p>
+      <p>
+        <m>c</m> is a non-terminating decimal whose digits are 1's and 2's, whence it has no other representation.
+        Since <m>c</m> disagrees with <m>g(n)</m> at the <m>n</m>th decimal place,
+        we have <m>c\neq g(n),\ \forall n\in\N</m>.
+        Hence <m>c</m> is <em>not</em> in the above list.
+        However <m>c\in[0,1]</m> and <m>g</m> is surjective,
+        whence <m>c\neq g(n)</m> for some <m>n\in\N</m>: a contradiction.
+        We conclude that <m>\fc\neq\aleph_0</m>.
+      </p>
+      <p>
+        Putting this together with the first part of the proof where <m>\fc\ge\aleph_0</m>,
+        we conclude that <m>\fc>\aleph_0</m>.
+      </p>
+    </proof>
+    <p>
+      The second part of the proof is known as
+      <em>Cantor's diagonal argument,</em>
+      since we are comparing the constructed decimal <m>c</m> with the diagonal of an infinite square of integers.
+      We have proved that the interval <m>[0,1]</m> has a strictly larger cardinality than the set of integers.
+      Since <m>[0,1]\subseteq\R</m>,
+      it follows immediately that the real numbers are also uncountable.
+      Indeed we shall see in a moment that the real numbers also have cardinality <m>\fc</m>,
+      as does any interval
+      (of positive width).
+      More amazingly, the Cantor middle-third set
+      (<xref ref="ex_cantor">page</xref>)
+      also has cardinality <m>\fc</m>,
+      despite seeming vanishingly small.
+    </p>
+  </introduction>
+  <subsection>
+    <title>More advanced ideas</title>
+    <p>
+      Our countable and uncountable examples are merely scratching the surface of a truly weird subject.
+      We conclude these notes with a couple more ideas.
+    </p>
+    <p>
+      The following theorem is very useful for being able to compare cardinalities.
+      It allows us to prove that two sets have the same cardinality <em>without</em>
+      explicitly constructing bijective functions.
+      Injective functions are usually much easier to find.
+    </p>
+    <theorem>
+      <title>Cantor<ndash/>Schr&#xf6;der<ndash/>Bernstein</title>
+      <statement>
+        <p>
+          If <m>\nm A\le\nm B</m> and
+          <m>\nm B\le\nm A</m>, then <m>\nm A=\nm B</m>.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      The theorem seems like it should be obvious, but pause for a moment:
+      it is <em>not</em> a result about <em>numbers!</em>
+      <m>A</m> and <m>B</m> are <em>sets,</em>
+      and so the theorem must be understood in the context of <xref ref="defn_infcard">Definition</xref>.
+      In this language the theorem becomes:
+    </p>
+    <blockquote>
+      Suppose there exist <em>injective</em> functions <m>f:A\to B</m> and <m>g:B\to A</m>.
+      Then there exists a <em>bijective</em> function <m>h:A\to B</m>.
+    </blockquote>
+    <p>
+      The proof is beautiful, though a little long to reproduce here.
+      If you are interested it can be found in any text on set theory.
+      The applications of the theorem are more important to our purposes.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          The interval <m>(0,1)</m> has cardinality <m>\fc</m>.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      It is possible to explicitly define a bijection <m>h:(0,1)\to[0,1]</m>,
+      although it is very messy.
+      Instead we construct two injections.
+    </p>
+    <proof>
+      <p>
+        <m>f:(0,1)\to[0,1]:x\mapsto x</m> is clearly an injection,
+        whence <m>\nm{(0,1)}\le\nm{[0,1]}=\fc</m>.
+        Now define
+        <me>
+          g:[0,1]\to (0,1):x\mapsto \frac 12x+\frac 14
+        </me>.
+      </p>
+      <p>
+        <m>g</m> is certainly injective,
+        and so <m>\fc\le\nm{(0,1)}</m>.
+      </p>
+      <p>
+        By the Cantor<ndash/>Schr&#xf6;der<ndash/>Bernstein Theorem,
+        the sets <m>(0,1)</m> and <m>[0,1]</m> have the same cardinality <m>\fc</m>.
+      </p>
+    </proof>
+    <p>
+      In case you're feeling nervous,
+      note that the function <m>g</m> in the proof isn't surjective:
+      the range of <m>g</m> is the interval <m>[\frac 14,\frac 34]\neq (0,1)</m>.
+      By a similar trick, covered in the Exercises,
+      one can see that <m>\R</m> also has cardinality <m>\fc</m>.
+    </p>
+    <p>
+      For a final punchline, we prove Cantor's Theorem,
+      which says that the power set of any set <m>A</m> always has a strictly larger cardinality than <m>A</m>.
+      In <xref ref="thm_powercard">Theorem</xref>
+      we saw that <m>\nm{\cP(A)}=2^{\nm A}</m> for finite sets <m>A</m>.
+      We therefore already believe that Cantor's Theorem is true for finite sets.
+      The proof that follows also works for infinite sets.
+    </p>
+    <theorem>
+      <title>Cantor</title>
+      <statement>
+        <p>
+          If <m>A</m> is any set, then <m>\nm A\lneq\nm{\cP(A)}</m>.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        If <m>A=\emptyset</m>, the result is trivial.
+        Otherwise, we must show two things:
+        <ul>
+          <li>
+            <p>
+              <m>\exists f:A\to\cP(A)</m> which is injective.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\nexists g:A\to\cP(A)</m> which is bijective.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        For the first,
+        note that <m>f:a\mapsto\{a\}</m> is a suitable injective function.
+      </p>
+      <p>
+        Now suppose for a contradiction that <m>\exists g:A\to\cP(A)</m> which is bijective.
+        That is, <m>g(a)</m> is a subset of <m>A</m> for each <m>a\in A</m>.
+        Consider the set
+        <me>
+          X=\{a\in A:a\not\in g(a)\}
+        </me>.
+      </p>
+      <p>
+        It is important to note that <m>X</m>
+        <em>is a subset of <m>A</m>.</em>
+      </p>
+    </proof>
+    <p>
+      We pause the proof for a moment,
+      as the set <m>X</m> is somewhat tricky to think about.
+      Before proceeding, let us consider an example.
+      Suppose that <m>g:\{1,2\}\to\cP(\{1,2\})</m> is defined by
+      <me>
+        g(1)=\{1,2\},\qquad g(2)=\{1\}
+      </me>.
+    </p>
+    <p>
+      Then <m>1\in g(1)</m> and <m>2\not\in g(2)</m>,
+      whence the above set is <m>X=\{2\}</m>.
+      Since we are trying to prove that no bijection <m>g:A\to\cP(A)</m> exists,
+      it is important to note that the function <m>g</m> in our example is <em>not bijective!</em>
+    </p>
+    <proof>
+      <p>
+        By assumption, <m>g</m> is bijective,
+        hence it is certainly surjective.
+        Because the range of <m>g</m> is the power set <m>\cP(A)</m>,
+        the set <em><m>X</m> lies in the image of <m>g</m>.</em> Otherwise said,
+        there exists <m>b\in A</m> such that <m>g(b)=X</m>.
+        We ask whether <m>b</m> is an element of <m>X</m>.
+        Think carefully about the definition of <m>X</m>, and observe that
+        <md>
+          <mrow>b\in X\amp \iff b\not\in g(b)\tag{(by the definition of $X$)}</mrow>
+          <mrow>\amp \iff b\not\in X\tag{(since $X=g(b)$)}</mrow>
+        </md>
+      </p>
+      <p>
+        Look at what we have concluded:
+        <m>b\in X\iff b\not\in X</m>.
+        This is clearly a contradiction!
+      </p>
+      <p>
+        It follows that there exists no bijection <m>g:A\to\cP(A)</m>,
+        and so <m>\nm A\lneq\nm{\cP(A)}</m>.
+      </p>
+    </proof>
+    <p>
+      The main implication of this is that
+      <em>there is no largest cardinality!</em>
+      We can always construct a larger set simply by taking the power set of what we already have.
+      For example,
+      <m>\cP(\R)</m> has larger cardinality than <m>\R</m>.
+      If you want a set with even larger cardinality,
+      why not take <m>\cP(\cP(\R))</m>?
+      Or <m>\cP(\cP(\cP(\R)))</m>.
+      We can continue this process indefinitely.
+    </p>
+    <p>
+      Cantor's Theorem played a large part in pushing set theory towards axiomatization.
+      Here is a conundrum motivated by the theorem: If a <sq>set</sq> is just a collection of objects,
+      then we may consider the <sq>set of all sets.</sq> Call this <m>A</m>.
+      Now consider the power set of <m>A</m>.
+      Since <m>\cP(A)</m> is a set of sets,
+      it must be a subset of <m>A</m>,
+      whence <m>\nm{\cP(A)}\le\nm A</m>.
+      However, by Cantor's Theorem,
+      we have <m>\nm A\lneq\nm{\cP(A))}</m>.
+      The conclusion is the manifest absurdity
+      <me>
+        \nm{A}\lneq\nm{A}
+      </me>
+    </p>
+    <p>
+      The remedy is a thorough definition of <sq>set</sq> which prevents the collection of all sets from being considered a set.
+      This is where <em>axiomatic set theory</em> begins.
+    </p>
+  </subsection>
+  <subsection>
+    <title>A word on the limits of proof</title>
+    <p>
+      Throughout this course we have learned about some of the basic methods and and concepts used by the mathematician.
+      In particular,
+      we learned about various types of proof and how to use these proofs to demonstrate the truth of statements about mathematical objects.
+      As we finish the course,
+      it makes sense to reflect on the limits of our methods.
+    </p>
+    <p>
+      In the early 20th century,
+      the discovery of various paradoxes and contradictions led to a foundational crises in mathematics.
+      After all, it is difficult to build a house if you have cracks in your foundation!
+      The result was an effort to put all of mathematics on a rigorous axiomatic basis by formulating a list of reasonable axioms from which all of mathematics could be derived,
+      using basic logical reasoning.
+      This axiomatic foundation ideally would satisfy the following conditions:
+      <ol>
+        <li>
+          <p>
+            <em>consistency</em>,
+            i.e. no contradiction would be derivable from the axioms;
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>completeness</em>,
+            i.e. all true mathematical statements would be derivable from the axioms.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      The hope for such a foundation was crushed in 1931,
+      when a young logician by the name of Kurt G&#xf6;del published his famous
+      <em>Incompleteness Theorems</em>
+      which showed that no such axiomatic system could exist.
+      Essentially, G&#xf6;del showed that in any consistent axiomatic system that was strong enough to produce some basic arithmetic,
+      there must be statements which are neither derivable nor refutable from the axioms.
+      Perhaps even worse, no such system can prove its own consistency.
+    </p>
+    <p>
+      While the strongest aims of some of the early 20th century attempts at an axiomatic foundation cannot be accomplished,
+      the research of that time was able to provide a foundation that most modern mathematicians deem adequate for current work.
+      Perhaps the most popular approach is to base all of mathematics on set theory <mdash/> you will see as your studies progress that many of the objects you study can be formalized as sets together with functions and relations between sets.
+      We have seen in <xref ref="sec_relations">Chapter</xref>
+      that functions and relations are just themselves sets.
+      Even numbers like <m>0,1,2</m> or <m>\frac{12}{19}</m> or
+      <m>3.14\ldots</m> can be thought of as sets, if one desires.
+      In turn, set theory is often axiomatized using the \textrm{ZFC} axioms
+      (short for Zermelo-Fraenkel set theory with the Axiom of Choice).
+    </p>
+    <p>
+      While the \textrm{ZFC} axioms are subject to the limitations imposed by G&#xf6;del's theorems,
+      they have proven themselves by being able to formalize most of the mathematics actually used by current mathematicians,
+      and have so far not produced any inconsistencies.
+      Thus most mathematicians feel little need to dwell on the foundational issues of the previous century.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Reading Questions</title>
+    <ol>
+      <li>
+        <p>
+          A set <m>A</m> is <em>uncountable</em>
+          if and only if <fillin/>.
+          <ol>
+            <li>
+              <p>
+                there is a bijection between <m>A</m> and <m>[0,1]</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                there is a surjection from <m>\R</m> onto <m>A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                there is an injection from <m>\N</m> into <m>A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                there exists no injection from <m>A</m> into <m>\N</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Which of the following sets are uncountable.
+          Select all that apply.
+          <ol>
+            <li>
+              <p>
+                <m>(1,2]\cup\{3\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\N\times[1,2]</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\R\setminus\left\{\tfrac 1n:n\in\N\right\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\Q\cap[1,2]</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False:
+          there is no set <m>A</m> such that there is a surjection from <m>\cP(A)</m> onto <m>A</m>.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>\{0,1\}^\N</m> denote the set of all sequences
+          <m>(x_1,x_2,\ldots)</m> such that each <m>x_i</m> is <m>0</m> or <m>1</m>.
+          In other words,
+          <m>A</m> is the set of all functions <m>f : \N \to \{0,1\}</m>.
+          The cardinality of <m>\{0,1\}^\N</m> is often <m>2^{\aleph_0}</m>.
+          Show <m>2^{\aleph_0} = \mathfrak{c}</m>.
+          <hint>
+            <p>
+              use the Cantor-Schr&#xf6;der-Bernstein theorem.
+            </p>
+          </hint>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          You may assume that <m>[0,1]</m> has cardinality <m>\fc</m>.
+          <ol>
+            <li>
+              <p>
+                Construct an explicit bijection
+                <m>f:[0,1]\to [3,8]</m> which proves that the interval <m>[3,8]</m> also has cardinality <m>\fc</m>.
+                <em>Try a linear function mapping the endpoints of <m>[0,1]</m> to the endpoints of <m>[3,8]</m>.</em>
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>a,b\in\R</m> with <m>a\lt b</m>.
+                Generalizing part (a),
+                construct a bijection which proves that the closed interval <m>[a,b]</m> has cardinality <m>\fc</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        \item
+        <ol>
+          <li>
+            <p>
+              Suppose that <m>g:\{1,2,3,4\}\to\cP(\{1,2,3,4\})</m> is defined by
+              <me>
+                g(1)=\{1,2,3\},\qquad g(2)=\{1,4\},\qquad g(3)=\emptyset,\qquad g(4)=\{2,4\}
+              </me>.
+              Compute the set <m>X=\bigl\{a\in\{1,2,3,4\}:a\not\in g(a)\bigr\}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Repeat part (a) for <m>g:\N\to\cP(\N):n\mapsto\{x\in 2\N:x\le n\}</m>.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> be a countably infinite set.
+          For any <m>n \in \N</m>,
+          prove <m>A^n = \underbrace{A \times \cdots \times A}_{n \text{ times } }</m> is countably infinite.
+        </p>
+      </li>
+      <li>
+        <p>
+          The proof of Cantor's Theorem makes use of a construction similar to
+          <em>Russell's Paradox.</em>
+          Let <m>X</m> be the set of all sets which are not members of themselves:
+          explicitly
+          <me>
+            X=\{A:A\not\in A\}
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Assume that <m>X</m> is a set,
+                and use it to deduce a contradiction:
+                ask yourself if <m>X</m> is a member of itself.
+              </p>
+            </li>
+            <li>
+              <p>
+                Russell's paradox is one avatar of an ancient logical conundrum which appears in many guises.
+                For example, suppose that a town has one hairdresser,
+                and suppose that the hairdresser is the person who cuts the hair of all the people,
+                and only those people, who do not cut their own hair.
+                Who then cuts the hairdresser's hair?
+                Can you explain the connection with Russell's paradox/Cantor's Theorem?
+              </p>
+            </li>
+          </ol>
+        </p>
+        <em>The point of Russell's paradox is that we need a definition of <sq>set</sq> which prevents objects like <m>X</m> from being considered sets.</em>
+      </li>
+      <li>
+        <p>
+          Let <m>A = \{0,1\}^\N</m> denote the set of all sequences
+          <m>(x_1,x_2,\ldots)</m> such that each <m>x_i</m> is <m>0</m> or <m>1</m>.
+          In other words,
+          <m>A</m> is the set of all functions <m>f : \N \to \{0,1\}</m>.
+          Use a diagonal argument similar to the proof of <xref ref="thm_Cantordiag">Theorem</xref>
+          to show <m>A</m> is uncountable.
+        </p>
+      </li>
+      <li>
+        <p>
+          Recall the Cantor set as described in the notes,
+          where we proved that <m>\mathcal C</m> is the set of all numbers in <m>[0,1]</m> possessing a ternary expansion consisting only of zeros and twos.
+          Modeling your answer on the proof that the interval <m>[0,1]</m> is uncountable,
+          prove that <m>\mathcal C</m> is uncountable.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\mathbb I=\R\setminus\Q</m> be the set of irrational numbers.
+          <ol>
+            <li>
+              <p>
+                Prove that <m>\nm{\mathbb I}\le\fc</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>x\in\Q\implies x+\sqrt 2\in\mathbb I</m>.
+                Hence conclude that <m>\aleph_0\le\nm{\mathbb I}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Appeal to <xref ref="subsec_cant">Exercise</xref>.
+                <xref ref="ex_cardunion"></xref> to argue that the irrational numbers are uncountable.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <em>It is true, though we haven't show it,
+        that <m>\nm{\mathbb I}=\fc</m>.
+        Doing so is more difficult!</em>
+      </li>
+      <li>
+        <p>
+          A real number <m>x \in \R</m> is called transcendental if it is not algebraic,
+          i.e. not the root of any polynomial with integer coefficients.
+          Show there are uncountably many transcendental numbers.
+          <hint>
+            <p>
+              see <xref ref="ex_algcard">Exercise</xref>
+              in <xref ref="chap-cardinalities">Section</xref>.
+            </p>
+          </hint>
+          \item
+          <ol>
+            <li>
+              <p>
+                Prove that <m>f:\N\times\N\to\N</m> defined by <m>f(m,n)=2^m3^n</m> is injective.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use part (a) and the Cantor<ndash/>Schr&#xf6;der<ndash/>Bernstein Theorem to conclude that <m>\nm{\N\times\N}=\aleph_0</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Extend your argument to conclude that, for any <m>k\in\N</m>,
+                <me>
+                  \underbrace{\nm{\N\times\cdots\times\N}}_{k\text{ times } }=\aleph_0
+                </me>
+              </p>
+            </li>
+            <li>
+              <p>
+                Use part (b) to provide an alternative proof that <m>\nm{\Q^+}=\aleph_0</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        \item
+        <ol>
+          <li>
+            <p>
+              Show that <m>\nm{(0,1)}\le\nm{\R\setminus\N}\le\nm{\R}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Construct a bijection <m>f:(0,1)\to (-\frac\pi 2,\frac\pi 2)</m>. (<em>Try a linear function</em>)
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that <m>g:(-\frac\pi 2,\frac\pi 2)\to\R:x\mapsto\tan x</m> is a bijection.
+            </p>
+          </li>
+          <li>
+            <p>
+              Use the Cantor<ndash/>Schr&#xf6;der<ndash/>Bernstein Theorem to conclude that <m>\nm{\R\setminus\N}=\nm{\R}=\fc</m>.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Show that the complex numbers <m>\C</m> have the cardinality of the continuum <m>|\C| = \mathfrak{c}</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Give an example of an uncountable <m>I</m> and
+          <m>\{A_n : n \in I\}</m> such that each <m>A_n</m> is countably infinite,
+          and the following three conditions hold:
+          <ol marker="labelroman">
+            <li>
+              <p>
+                if <m>m \neq n</m>, then <m>A_m \neq A_n</m>,
+              </p>
+            </li>
+            <li>
+              <p>
+                for all <m>m,n</m>, either
+                <m>A_m \subseteq A_n</m> or <m>A_m \supseteq A_n</m>,
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\bigcup_{n \in I} A_n</m> is countably infinite.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          (Hard!) Let <m>x\in[0,1]</m>.
+          The <em>binary expansion</em> of <m>x</m> is the sequence <m>b_n</m> of zeros and ones such that
+          <me>
+            x=\sum_{n=1}^\infty \frac{b_n}{2^n}
+          </me>.
+          Given the choice,<fn>
+          The binary expansion of <m>x</m> is unique unless <m>x</m> has a terminanting expansion,
+          in which case the the other expansion involves an infinite sequence of ones: e.g.
+          <m>[0.011111\cdots]_2=[0.1]_2</m> in binary.
+          </fn> we choose the terminating binary expansion of <m>x</m>.
+          With such a caveat,
+          you are given that the binary expansion of <m>x\in[0,1]</m> is unique.
+          Define a function <m>f:[0,1]\to\cP(\N)</m> by
+          <me>
+            f(x)=\{n\in\N:b_n=1\text{ in the binary expansion of \(x\) } \}
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Prove that <m>f</m> is an injection, and that,
+                consequently, <m>\fc\le\nm{\cP(\N)}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that the function <m>g:\cP(\N)\to\mathcal C</m>
+                (the Cantor set)
+                defined by
+                <me>
+                  g(X)=\sum\limits_{n\in X}^\infty\frac{2}{3^n}
+                </me>
+                is a <em>bijection.</em>
+              </p>
+            </li>
+            <li>
+              <p>
+                Use Cantor<ndash/>Schr&#xf6;der<ndash/>Bernstein to conclude that <m>\nm{\cP(\N)}=\nm{\mathcal C}=\fc</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> and <m>B</m> be sets.
+          <ol>
+            <li>
+              <p>
+                Define <m>|A| \cdot |B|</m> to be <m>|A \times B|</m>.
+                Note that when <m>A</m> and <m>B</m> are finite,
+                this definition agrees with our usual notion of multiplication (i.e. if <m>|A| = m</m> and <m>|B| = n</m>,
+                then <m>|A| \cdot |B| = m \cdot n</m>).
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that if <m>A</m> and <m>B</m> are nonempty and at least one of them is infinite,
+                then <m>|A| \cdot |B| = \max\{|A|, |B|\}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> and <m>B</m> be sets.
+          <ol>
+            <li>
+              <p>
+                Show <m>\max\{|A|, |B|\} \leq |A \cup B|</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Define <m>|A| + |B|</m> to be <m>|(A \times \{0\}) \cup (B \times \{1\})|</m>.
+                Show that when <m>A</m> and <m>B</m> are finite,
+                this definition agrees with our usual notion of addition (i.e. if <m>|A| = m</m> and <m>|B| = n</m>,
+                then <m>|A| + |B| = m + n</m>).
+              </p>
+            </li>
+            <li>
+              <p>
+                Show <m>|A \cup B| \leq |A| + |B|</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If at least one of <m>A</m> or <m>B</m> is infinite,
+                show <m>|A| + |B| \leq \max\{|A|,|B|\}</m>.
+                Conclude that <m>|A| + |B| = \max\{|A|,|B|\}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

@@ -1,0 +1,791 @@
+<section xml:id="sec_induction_proof">
+  <title>Proof by Induction</title>
+  <introduction>
+    <p>
+      The previous section motivated the need for induction and helped us see where induction fits into a logical investigation.
+      In this section we formally lay out several induction proofs.
+    </p>
+    <p>
+      Induction is the mathematical equivalent of a domino rally;
+      toppling the <m>n</m>th domino causes the <m>(n+1)</m>th domino to fall,
+      hence to knock all the dominos over it is enough merely to topple the first.
+      Instead of dominoes,
+      in mathematics we consider a sequence of <em>propositions:</em>
+      <m>P(1),\ P(2),\ P(3)</m>, etc.
+      Induction demonstrates the truth of <em>every</em>
+      proposition <m>P(n)</m> by doing two things:
+      <ol>
+        <li>
+          <p>
+            Proving that <m>P(1)</m> is true(<em>Base Case</em>)
+          </p>
+        </li>
+        <li>
+          <p>
+            Proving that <m>\forall n\in\N \, \ P(n)\implies P(n+1)</m> is true(<em>Induction Step</em>)
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      You could think of the base case as knocking over the first domino,
+      and the induction step as the <m>n</m>th domino knocking over the <m>(n+1)</m>th,
+      <em>for all <m>n</m>.</em> Both of the examples in the previous section followed this pattern.<fn>
+      In the cut-and-stack example,
+      the initial proposition would be labelled <m>P(0)</m> rather than <m>P(1)</m>.
+      </fn> Unpacking the induction step gives an infinite chain of implications:
+      <me>
+        P(1)\implies P(2)\implies P(3)\implies P(4)\implies P(5)\implies \cdots
+      </me>.
+    </p>
+    <p>
+      The base case says that <m>P(1)</m> is true,
+      and so <em>all</em> of the remaining propositions <m>P(2),\ P(3),\ P(4),\ P(5),\ldots</m> are also true.
+    </p>
+    <p>
+      All induction proofs have the same formal structure:
+    </p>
+    <p>
+      <ndash/><ndash/>THIS NEEDS TO BE FIXED<ndash/><ndash/><ndash/><ndash/>
+    </p>
+    <p>
+      (<em>Induction Step</em>)
+    </p>
+    <p>
+      (<em>Set-up</em>)Define the propositional function <m>P(n)</m>,
+      set-up notation and orient the reader as to what you are about to prove.
+    </p>
+    <p>
+      (<em>Base Case</em>)
+    </p>
+    <p>
+      Prove that <m>P(1)</m> is true.
+    </p>
+    <p>
+      (<em>Induction Step</em>)
+    </p>
+    <p>
+      Let <m>n\in\N</m> be fixed and assume that <m>P(n)</m> is true.
+      This assumption is the <term>induction hypothesis</term>.
+      Perform calculations or other reasoning to conclude that <m>P(n+1)</m> is true.
+    </p>
+    <p>
+      (<em>Conclusion</em>)
+    </p>
+    <p>
+      Remind the reader what it is that you have proved.
+    </p>
+    <p>
+      <ndash/><ndash/><ndash/><ndash/><ndash/><ndash/><ndash/>-
+    </p>
+    <p>
+      As you read more mathematics,
+      you will find that the induction step is typically the most involved part of the proof.
+      The <em>set-up</em> stage is often no more than a sentence:
+      <sq>We prove by induction,</sq> and the explicit definition of <m>P(n)</m> is commonly omitted.
+      These are the only shortcuts that it is sensible to take until you are extremely comfortable with induction.
+      Practice making it completely clear what you are doing at each juncture.
+    </p>
+    <p>
+      Here is a straightforward theorem,
+      where we write the proof in the above language.
+    </p>
+    <theorem xml:id="thm_ind1">
+      <statement>
+        <p>
+          The sum of the first <m>n</m> positive integers is given by the formula
+          <me>
+            \sum_{i=1}^ni=\frac 12n(n+1)
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        (<em>Set-up</em>)We prove by induction.
+        For each <m>n\in\N</m>, let <m>P(n)</m> be the proposition
+        <me>
+          \sum_{i=1}^ni=\frac 12n(n+1)
+        </me>.
+      </p>
+      <p>
+        (<em>Base Case</em>)Clearly \smash[t]{<m>\sum\limits_{i=1}^1i=1=\frac 121(1+1)</m>,} and so <m>P(1)</m> is true.
+      </p>
+      <p>
+        (<em>Induction Step</em>)Assume that <m>P(n)</m> is true for some fixed <m>n\ge 1</m>.
+        We compute the sum of the first <m>n+1</m> positive integers using our induction hypothesis <m>P(n)</m> to simplify:
+        <md>
+          <mrow>\sum_{i=1}^{n+1}i\amp =(n+1)+\sum_{i=1}^ni=(n+1)+\frac 12n(n+1)\tag{(by assumption of $P(n)$)}</mrow>
+          <mrow>\amp =\left(1+\frac 12n\right)(n+1)=\frac 12(n+2)(n+1)</mrow>
+          <mrow>\amp =\frac 12(n+1)\bigl[(n+1)+1\bigr]</mrow>
+        </md>.
+      </p>
+      <p>
+        This last says that <m>P(n+1)</m> is true.
+      </p>
+      <p>
+        (<em>Conclusion</em>)By mathematical induction,
+        we conclude that <m>P(n)</m> is true for all <m>n\in\N</m>.
+        That is
+        <md>
+          <mrow>\forall n\in\N, \sum\limits_{i=1}^ni=\frac 12n(n+1)</mrow>
+        </md>.
+      </p>
+    </proof>
+    <p>
+      Note how we grouped <m>\frac 12(n+1)\bigl[(n+1)+1\bigr]</m> so that it is obviously the right hand side of <m>P(n+1)</m>.
+    </p>
+    <p>
+      Here is another example in the same vein, but done a little faster.
+    </p>
+    <theorem xml:id="thm_ind2">
+      <statement>
+        <p>
+          Prove that <m>n(n+1)(2n+1)</m> is divisible by 6 for all natural numbers <m>n</m>.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        We prove by induction.
+        For each <m>n\in\N</m>, let <m>P(n)</m> be the proposition
+        <me>
+          \text{ \(n(n+1)(2n+1)\) is divisible by 6. }
+        </me>
+      </p>
+      <p>
+        (<em>Base Case</em>)Clearly
+        <m>1\cdot (1+1)\cdot (2\cdot 1+1)=6</m> is divisible by 6, hence <m>P(1)</m> is true.
+      </p>
+      <p>
+        (<em>Induction Step</em>)Assume that <m>P(n)</m> is true for some fixed <m>n\in\N</m>.
+        Then
+        <me>
+          n(n+1)(2n+1)=6k
+        </me>
+        for some <m>k\in\Z</m>.
+        But now we have
+        <md>
+          <mrow>(n+1)(n+2)\bigl[2(n+1)+1\bigr]-n(n+1)(2n+1)\amp =(n+1)\bigl[(n+2)(2n+3)-n(2n+1)\bigr]</mrow>
+          <mrow>\amp =(n+1)(2n^2+7n+6-2n^2-n)</mrow>
+          <mrow>\amp =6(n+1)^2</mrow>
+        </md>.
+      </p>
+      <p>
+        By the induction hypothesis, we have that
+        <me>
+          (n+1)(n+2)\bigl[2(n+1)+1\bigr]=n(n+1)(2n+1)+6(n+1)^2=6(k+(n+1)^2)
+        </me>
+        is divisible by 6.
+        Thus <m>P(n+1)</m> is true.
+        By mathematical induction, <m>P(n)</m> is true for all <m>n\in\N</m>.
+      </p>
+    </proof>
+    <p>
+      <xref ref="thm_ind2">Theorem</xref> is also true for <m>n=0</m>,
+      and indeed for <em>all</em> integers <m>n</m>.
+      As we shall see in the next section,
+      induction works perfectly well with any base case (say <m>n=0</m>):
+      you are not tied to <m>n=1</m>.
+      We could even modify the argument to prove the same result when <m>n</m> is a negative integer!
+    </p>
+    <p>
+      After reading the proof, you are possibly thinking,
+      <sq>How would I know to do that calculation?</sq> The answer is that you wouldn't, at least not without
+      <em>experience reading proofs.</em>
+      It is better to think on how much scratch work was done before the originator stumbled on exactly this argument.
+      Read more proofs and practice writing them,
+      and you'll soon find that strategies like these will suggest themselves!
+    </p>
+    <p>
+      Here is another example, written in a more advanced style:
+      we don't explicitly name the propositions <m>P(n)</m>,
+      and the reader is expected to be familiar enough with induction to realize when we are covering the base case and the induction step.
+      If you find reading this proof a challenge,
+      you should rewrite it in the same style as we used previously.
+      Some assistance in this regard is given below.
+    </p>
+    <theorem xml:id="thm_ind3">
+      <statement>
+        <p>
+          For all <m>n\in\N</m>, <m>2+5+8+\cdots+(3n-1)=\frac 12n(3n+1)</m>.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        For <m>n=1</m> we have <m>2=2</m>,
+        hence the proposition holds.
+        Now suppose that the proposition holds for some fixed <m>n\in\N</m>.
+        Then
+        <md>
+          <mrow>2+5+\cdots+[3(n+1)-1]\amp =\left[2+5+\cdots+(3n-1)\right]+3n+2</mrow>
+          <mrow>\amp =\frac 12n(3n+1)+3n+2=\frac 12(3n^2+7n+4)</mrow>
+          <mrow>\amp =\frac 12(n+1)(3n+4)=\frac 12(n+1)\bigl[3(n+1)+1\bigr]</mrow>
+        </md>
+        which says that the proposition holds for <m>n+1</m>.
+        By mathematical induction the proposition holds for all <m>n\in\N</m>.
+      </p>
+    </proof>
+    <p>
+      This last example has a different flavor than the ones we have seen so far.
+      The example concerns a <m>2^n \times 2^n</m> board of squares.
+      By an <term>L-shaped tromino</term>,
+      we mean three squares arranged in an
+      <q>L</q>
+      shape
+      (though possibly flipped or rotated).
+      For example, the following are examples of L-shaped trominoes:
+      <image width="73%" source="induction-08-bluetromino"/> <image width="73%" source="induction-07-greentromino"/> <image width="73%" source="induction-09-yellowtromino"/> <image width="73%" source="induction-10-redtromino"/>
+    </p>
+    <p>
+      The result is that if one takes any
+      <m>2^n \times 2^n</m> board and removes any one square,
+      the rest of the board may be tiled by L-shaped triominoes.
+      Here is an example of the <m>4 \times 4</m> case:
+      <image width="73%" source="induction-11-tilingexample"/>
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          Let <m>n \in \N</m>.
+          Then any <m>2^n \times 2^n</m> board of squares may be tiled by L-shaped trominoes after removing any square.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        We proceed by induction on <m>n</m>.
+        For <m>n = 1</m>, we look at a <m>2 \times 2</m> board.
+        It should be clear that no matter which of the four squares we choose to exclude,
+        the remaining three squares form an L-shaped tromino
+        (if you are unsure, try to draw the board).
+      </p>
+      <p>
+        Now fix <m>n \in \N</m> and suppose that given a
+        <m>2^n \times 2^n</m> board and <em>any</em>
+        choice of one of the squares to exclude,
+        we can tile the rest of the board with trominoes.
+        Now take a <m>2^{n+1} \times 2^{n+1}</m> board and pick an arbitrary square to remove.
+        Divide the board into four quadrants <m>Q_1,Q_2,Q_3,Q_4</m>,
+        where each of which are boards of size <m>2^n \times 2^n</m>.
+        The removed square must lie in one of these quadrants,
+        without loss of generality say it is in quadrant <m>Q_1</m>.
+        By the induction hypothesis,
+        it is possible to tile <m>Q_1</m> minus the removed square by trominoes.
+        Now consider the other three quadrants and choose one corner of each.
+        Again by the induction hypothesis,
+        it is possible to tile each of these quandrants with the chosen corner removed by trominoes.
+        Finally, rotate the three remaining quadrants so that their chosen corners lie adjacent in the center of the board.
+        These removed corners now form an L-shaped tromino,
+        and can thus be covered by one more tromino.
+      </p>
+    </proof>
+    <p>
+      \paragraph{Scratch work is your friend!}
+    </p>
+    <p>
+      Once you are comfortable with the structure of an induction proof,
+      the challenge is often in finding a clear argument for the induction step.
+      Don't dive straight into the proof!
+      First try some scratch calculations.
+      Be creative,
+      since the same approach will not work for all proofs.
+    </p>
+    <p>
+      One of the benefits of explicitly stating <m>P(n)</m> is that it helps you to isolate what you know and to identify your goal.
+      When stuck, write down both expressions <m>P(n)</m> and <m>P(n+1)</m> and you will often see how to proceed.
+      Consider, for example, the proof of <xref ref="thm_ind3">Theorem</xref>.
+      We have:
+      <md>
+        <mrow>\begin{array}{@{}l@{}l} P(n):\amp \displaystyle 2+5+8+\cdots+(3n-1)=\frac 12n(3n+1).\\[-1pt] P(n+1): \amp \displaystyle 2+5+8+\cdots+[3(n+1)-1]=\frac 12(n+1)\bigl[3(n+1)+1\bigr] \end{array}</mrow>
+      </md>
+    </p>
+    <p>
+      Simply by writing these down,
+      we know that our goal is to somehow convert the left hand side of <m>P(n+1)</m> into the right hand side,
+      using <m>P(n)</m>.
+      In this situation it is clear how to proceed,
+      for almost all of the left hand side of <m>P(n+1)</m> can be substituted for that of <m>P(n)</m>.
+    </p>
+    <p>
+      As a final comment on scratch work,
+      remember that such is <em>very unlikely</em> to constitute a proof.
+      Here is a typical attempt at a proof of <xref ref="thm_ind3">Theorem</xref>
+      by someone who is new to induction.
+    </p>
+    <proof>
+      <md>
+        <mrow>P(n+1)=\amp \amp \underbrace{2+5+\cdots+(3n-1)}_{=\frac 12n(3n+1)\text{ by } P(n)}+[3(n+1)-1]\amp =\frac 12(n+1)\bigl[3(n+1)+1\bigr]</mrow>
+        <mrow>[-15pt]
+        \amp \amp \amp =\frac 12(n+1)(3n+4)</mrow>
+        <mrow>\implies\amp \amp \frac 32n^2+\frac 12n+3n+3-1\amp =\frac 12(3n^2+7n+4)</mrow>
+        <mrow>\implies\amp \amp \frac 32n^2+\frac 72n+2\amp =\frac 32n^2+\frac 72n+2</mrow>
+      </md>
+    </proof>
+    <p>
+      Such an approach is likely to score very poorly in an exam!
+      Here are some of the reasons why.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <m>P(n+1)</m> is the <em>goal,</em>
+          the conclusion of the induction step.
+          You cannot prove <m>\timplies{P(n)}{P(n+1)}</m> by
+          <em>starting</em> with <m>P(n+1)</m>!
+        </p>
+      </li>
+      <li>
+        <p>
+          <m>P(n+1)</m> is a <em>proposition</em>
+          and <m>2 + 5 + \cdots + (3n - 1) + [3(n+1) - 1]</m> is a <em>number</em>,
+          thus it makes no sense to write that they are equal!
+          Use words or another symbol to disambiguate the two.
+        </p>
+      </li>
+      <li>
+        <p>
+          More subtly:
+          the false proof's argument says that something we don't know (<m>P(n)\wedge P(n+1)</m>) implies something true
+          (the trivial final line).
+          Since the implications <m>\timplies TT</m> and <m>\timplies FT</m> are both true
+          (<xref ref="defn_implies">Definition</xref>),
+          this tells us <em>nothing</em> about whether <m>P(n+1)</m> is true.
+        </p>
+      </li>
+      <li>
+        <p>
+          Reversing the arrows and turning the false proof upside down would be a start.
+          However there is no explanation as to <em>why</em>
+          the calculation is being done.
+          The induction step is only part of an induction proof and it needs to be placed and explained in context.
+          More concretely:
+        </p>
+        <ul>
+          <li>
+            <p>
+              There is no set-up.
+              <m>P(n)</m> has not been defined,
+              neither indeed has <m>n</m>.
+              You cannot use the expression <m>P(n)</m>
+              (or any other symbols)
+              in a proof unless it has been properly defined.
+            </p>
+          </li>
+          <li>
+            <p>
+              The base case is missing.
+            </p>
+          </li>
+          <li>
+            <p>
+              There is no conclusion.
+              Indeed the word <em>induction</em> isn't mentioned:
+              is the reader supposed to guess that we're doing induction?!
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      For all this negativity, there are some good things here.
+      If you remove the <m>\Longrightarrow</m> symbols,
+      you are left with an excellent piece of scratch work.
+      By simplifying both sides of your goal you can more easily see how to calculate.
+    </p>
+    <p>
+      Your scratch work may make perfect sense to you,
+      but if a reader cannot follow it without your assistance,
+      then it isn't a proof.
+      The moral of the story is to do your scratch work for the induction step <em>then</em>
+      lay out the structure of the proof (set-up, base case,
+      etc.) before incorporating your calculation into a coherent and convincing argument.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Reading Questions</title>
+    <ol>
+      <li>
+        <p>
+          In an induction proof of the fact that <m>P(n)</m> is true for all <m>n \in \N</m>,
+          the base case consists of proving that
+          <ol>
+            <li>
+              <p>
+                <m>P(1)</m> is false.
+              </p>
+            </li>
+            <li>
+              <title>(a)</title>
+              <p>
+                <m>P(1)</m> is true.
+              </p>
+            </li>
+            <li>
+              <p>
+                for all <m>n</m>, <m>P(n) \implies P(n+1)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>P(1) \implies P(2)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          In an induction proof of the fact that <m>P(n)</m> is true for all <m>n \in \N</m>,
+          the induction hypothesis is the assumption that
+          <ol>
+            <li>
+              <title>(a)</title>
+              <p>
+                <m>P(1)</m> is true.
+              </p>
+            </li>
+            <li>
+              <p>
+                for all <m>n</m>, <m>P(n) \implies P(n+1)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>P(n)</m> is true for some fixed <m>n \in \N</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>P(n)</m> is true for all <m>n \in \N</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: in our formal proofs, it is acceptable to write
+          <me>
+            P(n) = \sum_{i=1}^n i = \frac{1}{2} n(n+1)
+          </me>
+          as shorthand for
+          <q><m>P(n)</m> is the proposition <m>\sum_{i=1}^n i = \frac{1}{2} n(n+1)</m></q>.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Prove by induction that <m>\forall n\in\N</m> we have <m>3 \mid (2^n+2^{n+1})</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Give a direct proof that <m>3 \mid (2^n+2^{n+1})</m> for all integers <m>n\ge 1</m>
+              <em>and</em> for <m>n=0</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Look carefully at your proof for part (a).
+              If you had started with the base case <m>n=0</m> instead of <m>n=1</m>,
+              would your proof still be valid?
+              <url href="https://youtu.be/Z4qxw2YTLzI">Video Solution</url>
+            </p>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      \item
+      <ol>
+        <li>
+          <p>
+            Complete Gauss' direct proof of <xref ref="thm_ind1">Theorem</xref>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Give a direct proof of <xref ref="thm_ind2">Theorem</xref>.
+          </p>
+        </li>
+        <li>
+          <p>
+            In <xref ref="thm_ind2">Theorem</xref>,
+            what is the proposition <m>P(n+1)</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            In the Induction Step of <xref ref="thm_ind2">Theorem</xref>,
+            explain why it would be incorrect to write
+            <md>
+              <mrow>P(n+1)-P(n)\amp =(n+1)\bigl[(n+2)(2n+3)-n(2n+1)\bigr]</mrow>
+              <mrow>\amp =(n+1)(2n^2+7n+6-2n^2-n)</mrow>
+              <mrow>\amp =6(n+1)^2</mrow>
+            </md>.
+          </p>
+        </li>
+      </ol>
+      <li>
+        <p>
+          Prove by induction that for each natural number <m>n</m>,
+          we have <m>\dsum_{j=0}^n2^j=2^{n+1}-1</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the following Theorem: If <m>n</m> is a natural number, then
+          <me>
+            \sum\limits_{k=1}^nk^3=\frac 14n^2(n+1)^2
+          </me>
+          <ol>
+            <li>
+              <p>
+                What explicitly is the meaning of <m>\sum\limits_{k=1}^4k^3</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                What would be meant by the expression <m>\sum\limits_{k=1}^nn^3</m>,
+                and why is it different to <m>\sum\limits_{k=1}^nk^3</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                If the Theorem is written in the form <m>\forall n\in\N,\ P(n)</m>,
+                what is the proposition <m>P(n)</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Give as many reasons as you can as to why the following <sq>proof</sq> of the induction step is incorrect.
+                <md>
+                  <mrow>P(n+1)\amp =\sum\limits_{k=1}^{n+1}k^3=\frac 14(n+1)^2((n+1)+1)^2</mrow>
+                  <mrow>\amp =\sum\limits_{k=1}^nk^3+(n+1)^3=\frac 14(n+1)^2(n+2)^2</mrow>
+                  <mrow>\amp =\frac 14n^2(n+1)^2+(n+1)^3=\frac 14(n+1)^2(n+2)^2</mrow>
+                  <mrow>\amp =\frac 14(n+1)^2\left[n^2+4(n+1)\right]=\frac 14(n+1)^2(n+2)^2</mrow>
+                  <mrow>\amp =\frac 14(n+1)^2(n+2)^2=\frac 14(n+1)^2(n+2)^2</mrow>
+                </md>
+              </p>
+            </li>
+            <li>
+              <p>
+                Give a correct proof of the Theorem by induction.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Show by induction that for every <m>n\in\N</m> we have:
+          <m>n\equiv 5\pmod 3</m> or
+          <m>n\equiv 6\pmod 3</m> or <m>n\equiv 7\pmod 3</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove by induction that, for all <m>n\in\N</m>,
+          <me>
+            1\cdot 2+2\cdot 3+3\cdot 4+\cdots +n(n+1)=\frac 13n(n+1)(n+2)
+          </me>
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Show, by induction, that for all <m>n\in\N</m>,
+              the number 4 divides the integer <m>11^n-7^n</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              More generally, use induction to prove that
+              <m>(a-b)\mid (a^n-b^n)</m> for any positive integers <m>a,b,n</m>.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Prove that for all <m>k \in \N</m>,
+          we have that <m>8^k - 1</m> is a multiple of <m>7</m>. \item
+          <ol>
+            <li>
+              <p>
+                Find a formula for the sum of the first <m>n</m> odd natural numbers.
+                Prove your assertion by induction.
+              </p>
+            </li>
+            <li>
+              <p>
+                Give an alternative direct proof of your formula from part (a).
+                You may use results such as <m>\sum\limits_{i=1}^ni=\frac 12n(n+1)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          We mimic the previous question for the sum of the squares of the first <m>n</m> natural numbers.
+          <ol>
+            <li>
+              <p>
+                Use the fact that <m>\sum\limits_{i=1}^ni^2=\frac 16n(n+1)(2n+1)</m> to compute directly an expression for the sum of the squares of the first <m>n</m>
+                <em>odd</em> natural numbers.
+                <em>Hint: <m>\sum\limits_{i=1}^n(2i-1)^2=\sum\limits_{i=1}^{2n}i^2-\sum\limits_{i=1}^n(2i)^2</m><ellipsis/></em>
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove the truth of your formula by induction.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Find the error in the following
+          <q>proof</q>
+          by induction of the statement
+          <q>all cats have the same color fur</q>.
+          <proof>
+            <p>
+              We let <m>P(n)</m> be the proposition
+              <q>any set of <m>n</m> cats have the same color fur</q>. The result will follow if we prove that <m>P(n)</m> holds for all <m>n \in \N</m>.
+              We proceed by induction on <m>n</m>.
+            </p>
+            <p>
+              It is clear that the base case <m>n = 1</m> holds as any cat has the same color fur as itself.
+              For the induction step, fix
+              <m>n \in \N</m> and assume <m>P(n)</m> holds.
+              Take any set <m>S = \{C_1,C_2,\ldots,C_{n+1}\}</m> of <m>n + 1</m> cats.
+              Select one cat, say <m>C_1</m>, and put it aside.
+              Now we have a set <m>S \setminus \{C_1\}</m> of <m>n</m> cats and by the induction hypothesis they must all have the same color fur.
+              Now put <m>C_1</m> back select a different cat <m>C_2</m>.
+              Again by the induction hypothesis,
+              all cats in <m>S \setminus \{C_2\}</m> must have the same color fur.
+              But combining this with the previous sentence means that all cats in <m>S</m> must have the same color fur.
+              Since <m>S</m> was an arbitrary set of <m>n + 1</m> cats,
+              this shows <m>P(n+1)</m> holds.
+              We conclude that <m>P(n)</m> is true for all <m>n \in \N</m> by induction.
+            </p>
+          </proof>
+        </p>
+      </li>
+      <li>
+        <p>
+          Using only the product rule and the fact that <m>\frac{d}{dx} x = 1</m>,
+          prove the power rule from calculus:
+          for all <m>n \geq 1</m>,
+          <me>
+            \frac{d}{dx} (x^n) = nx^{n-1}
+          </me>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Recall that a polynomial is a function
+          <m>\R \to \R</m> of the form <m>p(x) = a_d x^d + a_{d-1} x^{d-1} + \cdots + a_2 x^2 + a_1 x + a_0</m>.
+          The numbers <m>a_i</m> are called the
+          <em>coefficients</em> and the <em>degree</em>
+          of <m>p</m> is the largest <m>d</m> such that the coefficient <m>a_d \neq 0</m>.
+          <ol>
+            <li>
+              <p>
+                Prove that for all <m>n \in \N</m>,
+                <me>
+                  \frac{d^n}{dx^n} e^{x^2} = p(x) e^{x^2}
+                </me>
+                where <m>p(x)</m> is a polynomial.
+              </p>
+            </li>
+            <li>
+              <p>
+                Strengthen the result in part (a) by proving that for all <m>n \in \N</m>,
+                <me>
+                  \frac{d^n}{dx^n} e^{x^2} = p(x) e^{x^2} = p_n(x) e^{x^2}
+                </me>
+                where <m>p_n(x)</m> is a polynomial of degree <m>n</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          (Hard) Let <m>p(x)</m> be a polynomial of degree <m>d \geq 1</m>.
+          Show <m>p</m> has at most <m>d</m> roots.
+          <hint>
+            <p>
+              induct on the degree <m>d</m>.
+            </p>
+          </hint>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>a,b \in \Z</m> .
+          <ol>
+            <li>
+              <p>
+                Prove that for all <m>n \in \N</m>,
+                if <m>a</m> and <m>b</m> are relatively prime,
+                then <m>a^{2^n}</m> and <m>b^{2^n}</m> are relatively prime.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use part (a) to show that for all <m>k \in \N</m>,
+                if <m>a</m> and <m>b</m> are relatively prime,
+                then <m>a^k</m> and <m>b^k</m> are relatively prime.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the following scratch work.
+          Determine what result is being proved,
+          then convert the scratch work into a formal proof of that result.
+          <md>
+            <mrow>(1 + x)^{n+1} \amp = (1 + x)^n(1 + x)</mrow>
+            <mrow>\amp \geq (1 + nx)(1 + x)</mrow>
+            <mrow>\amp = 1 + x + nx + nx^2</mrow>
+            <mrow>\amp = 1 + (n+1)x + nx^2</mrow>
+            <mrow>\amp \geq 1 + (n+1)x</mrow>
+          </md>
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that for any <m>n \geq 1</m>,
+          <me>
+            \sum_{i=1}^n \frac{1}{i^2} \lt  2
+          </me>.
+          <hint>
+            <p>
+              prove the stronger fact that
+              <m>\sum_{i=1}^n \frac{1}{i^2} \lt 2 - \frac{1}{n}</m> for all <m>n \geq 1</m>.
+            </p>
+          </hint>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

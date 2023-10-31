@@ -1,0 +1,970 @@
+<section xml:id="sec__planning_and_writing">
+  <title>Planning and Writing a Proof</title>
+  <introduction>
+    <p>
+      Your main responsibility for the rest of this course is to write proofs.
+      If you look back at any of the conjectures on <xref ref="conjectures-true-or-false">page</xref>,
+      there might be a question on your mind <mdash/> <em>how do I prove
+      (or disprove)
+      this?</em> If you read a proof
+      (or disproof)
+      written by someone else,
+      you might have the related question <mdash/>
+      <em>how did they ever come up with this proof?</em>
+    </p>
+    <p>
+      The source of a proof is often less magical than it appears:
+      usually the original author of the proof experimented until they found something that worked.
+      Most of that experimentation gets hidden in the final written proof.
+      The proof itself should be written in the way that is easiest to read.
+    </p>
+    <p>
+      In order to bridge the gap between what goes into thinking about a proof and what the proof actually looks like,
+      we recommend splitting the proof writing process into the following four steps.
+      <ol>
+        <li>
+          <title>Interpret</title>
+          <p>
+            Make sense of the statement.
+            What is the proposition saying?
+            Can you rephrase the claim in a way that is more clear to you?
+            What are you trying to prove and what are you assuming?
+            The most important part of this step is identifying the
+            <em>logical structure</em>
+            of the statement you're trying to prove.
+            At this stage,
+            you might ignore the particular details of the statement and instead focus on its logical meaning.
+            Depending on the statement,
+            it might be helpful to rephrase the statement as an if-then statement.
+          </p>
+        </li>
+        <li>
+          <title>Brainstorm</title>
+          <p>
+            Now that you understand what the statement is saying,
+            convince <em>yourself</em> that the statement is true.
+            First, look up the relevant definitions.
+            Next, think of some instances where the conditions of this proposition are met.
+            Try out some examples,
+            and ask yourself what makes the claim work in those instances.
+            Looking carefully at examples may help build intuition about <em>why</em>
+            the claim is true and suggest a strategy to prove it.
+            You'll also want to review other theorems that relate to these definitions.
+            What theorems involve the same definitions?
+            Do you know any theorems that relate your assumptions to the conclusion?
+            Have you seen a proof for a similar statement before?
+            This stage is a little like packing for a trip.
+            Imagine laying out all the stuff you might want to bring,
+            looking to get an overview of what you have available.
+            Even if you don't end up bringing that fourth pair of shoes,
+            maybe it was helpful to remind yourself of all the options.
+          </p>
+        </li>
+        <li>
+          <title>Sketch</title>
+          <p>
+            This is the phase where you build the skeleton of your proof.
+            Think again about what you are assuming and what you are are you trying to prove.
+            What should the <em>first</em> step of the proof be?
+            What about the <em>last</em> step?
+            Write down some informal arguments for yourself to connect the first and last steps of your proof,
+            feeling free to use shorthand.
+            If you get stuck, try a different approach.
+            Scribble out some drawings and draw as many arrows as you want to connect your ideas.
+            This <em>sketch</em> step is where most of the thinking happens and it will most likely be the longest step in the proof-writing process.
+            This is also the step where you will be doing most of your calculations.
+            You can be as messy as you want in this step because <em>you</em>
+            should be the only one who ever reads this.
+            Once you've learned a variety of different proof methods,
+            this is a good stage at which to experiment with them and try to find which proof method will work best.
+          </p>
+        </li>
+        <li>
+          <title>Prove</title>
+          <p>
+            Once you have proven the statement to yourself,
+            it's time to prove the statement to the world.
+            Now is when you go back through your proof sketch and translate it into a linear story,
+            written in complete sentences.
+            Here you should carefully word your explanations and you should avoid using shorthand.
+            The result should be a clear,
+            formal proof like the ones you read in a mathematics textbook,
+            where symbols like <m>\Longrightarrow</m> or
+            <m>\therefore</m> are replaced by words like
+            <q>hence</q>
+            or
+            <q>therefore</q>. Although you are providing a mathematical argument,
+            your proof should read like prose.
+          </p>
+        </li>
+        <li>
+          <title>Review</title>
+          <p>
+            Finally, you should <em>review</em> your proof.
+            Assume that the reader is looking at the problem for the first time and has not read your sketch.
+            Read your own proof with some skepticism and consider its readability and flow.
+            Get read of unnecessary claims and revise the wording if necessary.
+            During this review step, try also reading your proof out loud.
+            If you find yourself adding extra words that aren't written down,
+            then include those words in the proof.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      Let's use this framework to prove the following theorem.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          A positive integer <m>n</m> is divisible by 5 when its last digit is 5.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      First, we need to make sense of the statement of the theorem.
+    </p>
+    <proof>
+      <p>
+        What is the logical structure of this statement we are trying to prove?
+        In this case,
+        it has deliberately been written in a less-than-straightforward way.
+        Don't just read the words in the statement,
+        but read it slowly and carefully enough that you understand what it is asserting.
+        Once you understand what this sentence means,
+        it is possible to translate it into an if-then statement.
+        <ul>
+          <li>
+            <p>
+              <em>Equivalent statement</em>: Let <m>n</m> be a positive integer.
+              If the last digit of <m>n</m> is 5, then <m>n</m> is divisible by 5.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </proof>
+    <p>
+      Not every statement can be rewritten as an if-then statement,
+      but many can, including this statement we are trying to prove.
+      Before moving on,
+      be sure you agree that our statement really means the same thing as what we wrote above.
+      Understanding the English meaning of the statement was essential to writing it as an if-then statement.
+    </p>
+    <p>
+      It's hopeless to try to memorize all the possibilities
+      (in general,
+      this course will involve less memorization than your earlier math classes).
+      Instead of memorizing that a statement with the logical structure
+      <q>P when Q</q>
+      is the same as
+      <q>if Q then P</q>, you should instead think about the natural English meaning of the sentences,
+      and make sure they are equivalent. (It might be helpful to try an example sentence that doesn't involve math;
+      can you think of one in this case, using the structure
+      <q>P when Q</q>?)
+    </p>
+    <p>
+      Now we move on to the brainstorm phase,
+      where we gather examples and definitions related to our theorem.
+    </p>
+    <proof>
+      <p>
+        A key practice is to write out the relevant definitions.
+        We are already comfortable with the notion of <em>divisibility</em>,
+        but the precise notion of <em>digits</em>
+        is probably less familiar.
+        <ul>
+          <li>
+            <p>
+              Definition of
+              <q>divisible by 5</q>: An integer <m>n</m> is <em>divisible</em>
+              by <m>5</m> if there exists an integer <m>k</m> such that <m>n = 5k</m>.
+              That is, <m>n</m> is a multiple of <m>5</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Meaning of
+              <q>digit</q>: Each digit of <m>n</m> is a number between 0 and 9, representing how many 1's, 10's, 100's, etc. are
+              <q>in</q>
+              <m>n</m>.
+              (For example,
+              the number 671 has six hundreds, seven tens, and a one.
+              That is, <m>671 = 6\cdot 100 + 7\cdot 10 + 1</m>.)
+              More formally,
+              if <m>n</m> is a <m>k</m>-digit number and its digits are <m>n_0, n_1, \ldots,
+              n_{k-1}</m>, then
+              <men xml:id="digit_sum">
+                n = n_{k-1}\cdot 10^{k-1} + n_{k-2}\cdot 10^{k-2} + \cdots + n_1\cdot 10 + n_0
+              </men>.
+              Thus,
+              <q>last digit 5</q>
+              means <m>n_0 = 5</m>.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        Do we believe this statement is true?
+        Let's try out some examples.
+        <ul>
+          <li>
+            <p>
+              <m>15 = 3 \cdot 5</m> is divisible by 5.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>245 = 49 \cdot 5</m> is divisible by 5.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        The theorem claims that <em>every</em>
+        positive integer ending in <m>5</m> is a multiple of <m>5</m>, or,
+        as we rephrased it,
+        <em>if</em> a positive integer ends in <m>5</m>,
+        <em>then</em> it is divisible by <m>5</m>.
+        How important is that assumption,
+        that the last digit is <m>5</m>?
+        Here are some more examples.
+        <ul>
+          <li>
+            <p>
+              <m>13</m> is not divisible by <m>5</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>20 = 4 \cdot 5</m> is divisible by <m>5</m>.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        From these examples,
+        we notice that not all positive integers are divisible by <m>5</m> (okay,
+        we probably already knew that),
+        and that some positive integers which do not end in <m>5</m> are divisible by <m>5</m> (e.g., <m>20</m>).
+      </p>
+    </proof>
+    <p>
+      The brainstorming phase is also a good time to write out relevant theorems.
+      In this case, I don't think we know any theorems that will help us,
+      but as we learn more theorems,
+      we will have more options available to us.
+    </p>
+    <p>
+      For example,
+      imagine we knew a theorem that said, ``A number is divisible by <m>5</m> if and only if its last digit is <m>0</m> or <m>5</m>." That theorem would instantly imply what we're trying to prove
+      (and more). (<term>Warning!</term>
+      If you stumble upon a one-sentence proof like this on an exam,
+      probably your instructor doesn't want you using that theorem,
+      and at the very least you should ask to confirm whether or not it's okay to use.)
+    </p>
+    <p>
+      As another example,
+      imagine we knew a theorem that said, ``If the last digit of a positive integer is <m>6</m>,
+      then that positive integer is divisible by <m>2</m>." This theorem itself wouldn't help us prove our result,
+      but its proof would very likely be helpful.
+    </p>
+    <p>
+      Next we have the <em>sketch</em> portion of the proof.
+      Let's revisit our examples and experiment to try to discover
+      <em>why</em> this statement is true.
+      We will make use of our description above of what it means to have last digit equal to <m>5</m>.
+    </p>
+    <p>
+      Our final proof needs to be written in complete sentences,
+      but since the sketch portion is just for us, we can be less formal.
+      Here is how a sketch of this proof might look.
+    </p>
+    <proof>
+      <p>
+        Our examples:
+        <ul>
+          <li>
+            <p>
+              <m>15 = 1 \cdot 10 + 5 = 1 \cdot \underbrace{2 \cdot 5}_{10} + 5 = 5\cdot (2 + 1)</m> <nbsp/><nbsp/> (a multiple of <m>5</m>).
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>245 = 2 \cdot 10^2 + 4 \cdot 10^1 + 5= 2 \cdot 10 \cdot \underbrace{2 \cdot 5}_{10} + 4 \cdot \underbrace{2 \cdot 5}_{10} + 5 = 5 \cdot (40 + 8 + 1)</m> <nbsp/><nbsp/> (a multiple of <m>5</m>).
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        (Commentary, not part of the sketch.
+      </p>
+      <p>
+        The key idea here is that we can pull out a 5 from each power of 10 and from the last digit
+        (which is a 5).
+        This will be our general strategy.
+      </p>
+      <p>
+        We now explore the general case,
+        using the strategy suggested by the previous examples.
+        At this stage, we focus on outlining the main ideas,
+        and do not bother about writing down a formal proof.
+        The bullet points here aren't essential;
+        they are just there to make it a little easier for you to read.
+      </p>
+      <p>
+        End of commentary, back to the sketch.)
+        <ul>
+          <li>
+            <p>
+              <m>n = n_{k-1}\cdot 10^{k-1} + n_{k-2}\cdot 10^{k-2} + \cdots + n_1\cdot 10 + 5 \text{ \;\;\;(last digit 5) }</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>10</m>, <m>10^2</m>, <m>10^3</m>, ... are all multiples of <m>5</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>n_1</m>, <m>n_2</m>, <m>n_3</m>, ... are not multiples of <m>5</m>
+              (in general),
+              but this is irrelevant to us.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>n_{k-1}\cdot 10^{k-1} + n_{k-2}\cdot 10^{k-2} + \cdots + n_1\cdot 10</m> is a multiple of 5.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>n</m> is a multiple of <m>5</m> because
+              <me>
+                n = \underbrace{n_{k-1}\cdot 10^{k-1} + n_{k-2}\cdot 10^{k-2} + \cdots + n_1\cdot 10}_{\text{ \(5 \cdot\) (an integer) } } + \underbrace{5}_{5 \cdot 1} \text{ \;\;(last digit 5) }
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              So <m>5</m> divides <m>n</m>.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </proof>
+    <p>
+      The authors had a difficult time writing this
+      <q>sketch</q>
+      portion, because, on one hand,
+      we want to explain what we're thinking.
+      On the other hand,
+      we want to show you what a sketch looks like in real life.
+      The sketch is usually quite messy,
+      and is nearly impossible for anyone else to follow.
+      In fact, a common struggle for professional mathematicians is returning to a sketch they wrote weeks or months ago,
+      and trying to figure out what their scratchwork meant.
+    </p>
+    <p>
+      Next, let's turn this sketch into a formal proof that a classmate would be able to follow.
+      There is a certain writing style used in most formal mathematical proofs.
+      We will use that style in the following,
+      and you will get more used to it in the more proofs you read
+      (and write).
+    </p>
+    <proof>
+      <p>
+        We need to show that if the positive integer <m>n</m> has last digit 5, then <m>n</m> is divisible by 5.
+        Write <m>n</m> in its base-10 expansion:
+        <md>
+          <mrow>n \amp = n_{k-1}\cdot 10^{k-1} + n_{k-2}\cdot 10^{k-2} + \cdots + n_1\cdot 10 + n_0</mrow>
+          <mrow>\amp = n_{k-1}\cdot 10^{k-1} + n_{k-2}\cdot 10^{k-2} + \cdots + n_1\cdot 10 + 5</mrow>
+        </md>.
+      </p>
+      <p>
+        Note that for all <m>j \geq 1</m>,
+        <m>10^j</m> is a multiple of 5.
+        Hence, for all <m>j=1,\dots, k-1</m>,
+        there exists an integer <m>a_j</m> such that we can write <m>10^j = a_j \cdot 5</m>.
+        Thus, we get:
+        <md>
+          <mrow>n \amp = n_{k-1}\cdot (a_{k-1} \cdot 5) + n_{k-2}\cdot (a_{k-2} \cdot 5) + \cdots + n_1\cdot (a_{1} \cdot 5) + 5</mrow>
+          <intertext>(by associativity of multiplication)</intertext>
+          <mrow>\amp = (n_{k-1}\cdot a_{k-1} )\cdot 5 + (n_{k-2}\cdot a_{k-2}) \cdot 5 + \cdots +( n_1\cdot a_{1}) \cdot 5 + 1\cdot 5</mrow>
+          <intertext>(by distributivity)</intertext>
+          <mrow>\amp = (n_{k-1}\cdot a_{k-1} + n_{k-2}\cdot a_{k-2} + \cdots + n_1\cdot a_1 +1 ) \cdot 5</mrow>
+        </md>.
+      </p>
+      <p>
+        Because the quantity <m>n_{k-1}\cdot a_{k-1} + n_{k-2}\cdot a_{k-2} + \cdots + n_1\cdot a_1 +1</m> is an integer,
+        this shows that <m>n</m> is a multiple of 5.
+        Hence, <m>n</m> is divisible by 5.
+        This completes the proof.
+      </p>
+    </proof>
+    <p>
+      Finally, we review the proof and try to make it more readable.
+      At the beginning of your career as a proof writer,
+      you will be required to justify every claim in your proof
+      (hence, for example, the reference to associativity above).
+      You may think we are being too picky,
+      but this initial requirement is just an attempt to get you in the habit of explaining your claims.
+      As you gain more practice with proof writing,
+      you will be expected to include fewer details in your proof and will even be allowed to skip some simple steps that most readers may consider
+      <q>trivial</q>
+      (because they believe they are true without feeling the need for an explanation).
+      Thus, a more experienced proof-writer may review the proof above and present a more compact version,
+      like the one offered below.
+    </p>
+    <proof>
+      <p>
+        We need to show that if the positive integer <m>n</m> has last digit 5, then <m>n</m> is divisible by 5.
+        Write <m>n</m> in its base-10 expansion:
+        <md>
+          <mrow>n \amp = n_{k-1}\cdot 10^{k-1} + n_{k-2}\cdot 10^{k-2} + \cdots + n_1\cdot 10 + n_0</mrow>
+          <mrow>\amp = n_{k-1}\cdot 10^{k-1} + n_{k-2}\cdot 10^{k-2} + \cdots + n_1\cdot 10 + 5</mrow>
+        </md>.
+      </p>
+      <p>
+        Since <m>10^j</m> is a multiple of 5 for all <m>j \geq 1</m>,
+        the sum of the first <m>k-1</m> terms on the right-hand side is divisible by 5 (i.e., the terms from
+        <m>n_{k-1}\cdot 10^{k-1}</m> to <m>n_1\cdot 10</m>).
+        Of course, 5 is also divisible by 5.
+        Thus, their sum <m>n</m> is also divisible by <m>5</m>.
+        This completes the proof.
+      </p>
+    </proof>
+    <p>
+      Some comments:
+      <ol>
+        <li>
+          <p>
+            Whether in the longer version of the proof,
+            or the shorter version of the proof,
+            we didn't fully justify that the sum of <m>k-1</m> terms which are divisible by <m>5</m> is divisible by <m>5</m>.
+            In fact, at this stage, we may not even have one of the necessary tools
+            (mathematical induction)
+            to make that claim 100% rigorous.
+            In this proof, we are asking the reader to accept that it is
+            <q>obvious</q>.
+          </p>
+        </li>
+        <li>
+          <p>
+            If you ask 5 mathematicians to prove this statement,
+            you will get 5 different proofs
+            (like our two versions above),
+            possibly vastly different.
+            Some aspects will be consistent
+            (for example, the use of complete sentences,
+            and the fact that <m>10</m> is divisible by <m>5</m>),
+            but the proofs themselves could look quite different.
+          </p>
+        </li>
+        <li>
+          <p>
+            Don't expect to immediately be able to write a proof in the style of our proof;
+            instead, focus on correctness, clarity,
+            using complete sentences, and including all necessary steps.
+            The writing style of your proofs will develop as you read and write more proofs.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      Here is another example, illustrating the <em>interpreting</em>,
+      <em>brainstorming</em> and <em>sketching</em>
+      portions of our proof-writing process.
+      We won't fully prove this proposition,
+      but we will illustrate some first steps in the proof-discovery process.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Consider the following proposition:
+        </p>
+        <p>
+          <em>Every function <m>f: \R \rightarrow \R</m> represented by a degree<nbsp/><m>2</m> polynomial is non-constant.</em>
+          <ol>
+            <li>
+              <p>
+                <nbsp/> [Interpret] We rewrite this statement as an if-then statement.
+                The result is quite similar to the original statement
+                (and of course, is identical in meaning,
+                the whole point is to not change the meaning).
+                Answer: If a function <m>f: \R \rightarrow \R</m> is represented by a degree<nbsp/><m>2</m> polynomial,
+                then <m>f</m> is non-constant.
+              </p>
+            </li>
+            <li>
+              <p>
+                <nbsp/> [Brainstorm] What are the most important definitions to recall for this problem?
+                Write down those definitions carefully.
+                Answer:
+                <q>Degree<nbsp/>2 polynomial</q>
+                and
+                <q>non-constant function</q>. A <em>degree<nbsp/>2 polynomial</em>
+                is a polynomial which can be written in the form
+                <m>n_2 x^2 + n_1 x + n_0</m>, where <m>n_2 \neq 0</m>.
+                A function <m>f</m> is <em>non-constant</em>
+                if there exist inputs <m>a</m> and <m>b</m> such that <m>f(a) \neq f(b)</m>.
+                Thus the theorem says that if
+                <m>f(x) = n_2 x^2 + n_1 x + n_0</m> with <m>n_2 \neq 0</m>,
+                then we can find two values <m>a</m> and <m>b</m>
+                (with <m>a\neq b</m>)
+                such that <m>f(a) \neq f(b)</m>.
+                Make a few examples to convince yourself that the statement is true.
+                <ul>
+                  <li>
+                    <p>
+                      <m>f(x) = x^2 + 1</m> is a degree 2 polynomial.
+                      It is not constant because <m>f(0)=1</m> but <m>f(1)=2</m>. (A less formal justification that it's non-constant:
+                      the graph of <m>f(x)</m> is not a horizontal line.)
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <m>f(x) = x^2 - x</m> is a degree 2 polynomial.
+                      It is not constant because <m>f(0)=0</m> but <m>f(-1)=2</m>.
+                    </p>
+                  </li>
+                </ul>
+              </p>
+              Plan: Following the same strategy used in the previous examples,
+              we can try to plug in some small values of <m>x</m>.
+              Hopefully, the corresponding outputs will be distinct.
+              (If not, we will try some more inputs.)
+            </li>
+            <li>
+              <p>
+                <nbsp/> [Sketch] Let's try plugging in <m>0</m>, <m>1</m>,
+                and <m>-1</m> to our general polynomial <m>n_2 x^2 + n_1 x + n_0</m>.
+                We get:
+                <ul>
+                  <li>
+                    <p>
+                      <m>f(0) = n_0</m>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <m>f(1) = n_2 + n_1 + n_0</m>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <m>f(-1) = n_2 - n_1 + n_0</m>.
+                    </p>
+                  </li>
+                </ul>
+              </p>
+              Can we find two values that have different outputs?
+              Answer: If <m>f(1) \neq f(0)</m>, we are done.
+              Otherwise, if <m>f(1) = f(0)</m>, consider <m>f(-1)</m>.
+              We will show that <m>f(-1) \neq f(1)</m>,
+              because if <m>f(-1) = f(1)=f(0)</m>,
+              then <m>f</m> cannot have degree <m>2</m>.
+              Here are the details: suppose <m>f(1) = f(0)</m>,
+              then <m>n_2 + n_1 = 0</m>.
+              If <m>f(-1) = f(1)</m>, then <m>n_1 = -n_1</m>, so <m>n_1 = 0</m>.
+              So if <m>f(0) = f(1) = f(-1)</m>, then <m>n_2 = 0</m>,
+              but that means <m>f</m> is not a degree<nbsp/><m>2</m> polynomial.
+              Since we assumed <m>f</m> is a degree<nbsp/><m>2</m> polynomial,
+              we know that <m>f(0) = f(1) = f(-1)</m> is impossible,
+              so <m>f</m> is not a constant polynomial.
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </example>
+    <p>
+      We are not quite ready to write out a formal proof using the suggested strategy,
+      because that strategy is secretly using the proof technique
+      <q>proof by contradiction</q>
+      which we will cover soon.
+      Instead, let's practice reviewing
+      <q>proofs</q>
+      by evaluating some alternative arguments to prove our proposition
+      (which may, or may not, be logically correct).
+    </p>
+    <example>
+      <statement>
+        <p>
+          Consider the same statement as above.
+        </p>
+        <p>
+          <em>Every function <m>f: \R \rightarrow \R</m> represented by a degree<nbsp/><m>2</m> polynomial is non-constant.</em>
+          Are the following arguments valid proofs?
+          If not, why not?
+          <ul>
+            <li>
+              <p>
+                <nbsp/>
+                <q>Proof</q>: Consider the degree<nbsp/>2 polynomial <m>f(x) = 3x^2 - 5x + 7</m>.
+                This is not a constant polynomial,
+                because <m>f(0) = 7</m> and <m>f(1) = 5</m>.
+                Is it a valid proof?
+                Answer.
+                This is not a valid proof, because it is providing a single example.
+                A complete proof needs to work for <em>every</em>
+                degree<nbsp/>2 polynomial, not just one.
+              </p>
+            </li>
+            <li>
+              <p>
+                <nbsp/>
+                <q>Proof</q>: A degree<nbsp/>2 polynomial is a parabola
+                (concave up, if the leading coefficient is positive,
+                and concave down, if the leading coefficient is negative).
+                In either case,
+                the graph is not a horizontal line, so it is non-constant.
+                Is it a valid proof?
+                Answer.
+                There is nothing <em>incorrect</em> with this proof,
+                but it also feels incomplete.
+                Everything involving concave up or concave down seems like it would need to be justified
+                (what is even the definition of these terms?)
+                and justifying them would probably be more difficult than proving the original statement.
+              </p>
+            </li>
+            <li>
+              <p>
+                <nbsp/>
+                <q>Proof</q>: Let <m>f(x) = ax^2 + bx + c</m> be represented by a degree 2 polynomial
+                (thus <m>a\neq 0</m>),
+                and assume it is constant.
+                Because <m>f</m> is constant,
+                then its derivative is zero, so <m>2ax + b = 0</m> for all <m>x</m>.
+                But this is only possible if <m>a = b = 0</m>.
+                Given that <m>a = 0</m>, <m>f</m> is not a degree<nbsp/>2 polynomial.
+                Is it a valid proof?
+                Answer.
+                Assuming we are allowed to use properties of derivatives in our proof,
+                then this is a correct and complete proof.
+                (Ask your professor if you're unsure what tools you are allowed to use in a proof.)
+                You may be surprised by the approach we took in this proof:
+                the way we proved that <m>f</m> is <em>not</em>
+                constant is by showing that it cannot be otherwise;
+                indeed, if we assumed that <m>f</m> were constant,
+                we would reach some nonsense.
+                As we will see shortly, this is an example of a
+                <q>proof by contradiction</q>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <nbsp/>
+                <q>Proof</q>: The only constant polynomials are degree<nbsp/>zero,
+                and because <m>0 \neq 2</m>,
+                a degree<nbsp/>two polynomial cannot be a constant function.
+                Is it a valid proof?
+                Answer.
+                Again, there is nothing incorrect in what's written here, but the
+                <q>proof</q>
+                is essentially stating as obvious something that immediately implies what we are trying to prove.
+                Not only the statement
+                <q>The only constant polynomials are degree zero</q>
+                is not trivial, and hence requires a proof,
+                but it is actually a more elaborate
+                (and general)
+                result than the proposition we are trying to prove.
+                This last argument is definitely not a complete proof in our context.
+                (If your proof seems too easy,
+                for example if it's a midterm and you're given a whole page but only need one sentence,
+                you should worry that you might be assuming too much.)
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </example>
+  </introduction>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol>
+      <li>
+        <p>
+          At which of the following parts of the proof-writing process is it acceptable to use shorthand?
+          Select all that apply.
+          <ol>
+            <li>
+              <p>
+                It is never acceptable to use shorthand when writing a proof.
+              </p>
+            </li>
+            <li>
+              <p>
+                It is always acceptable to use shorthand when writing a proof.
+              </p>
+            </li>
+            <li>
+              <p>
+                The sketching phase.
+              </p>
+            </li>
+            <li>
+              <p>
+                The proof phase.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: Your proof sketch is for your eyes only.
+        </p>
+      </li>
+      <li>
+        <p>
+          Most of the hard work happens during the <fillin/> phase.
+          <ol>
+            <li>
+              <p>
+                Brainstorming
+              </p>
+            </li>
+            <li>
+              <p>
+                Sketching
+              </p>
+            </li>
+            <li>
+              <p>
+                Proof
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Use the steps discussed in this section to prove the following theorem.
+          <theorem>
+            <statement>
+              <p>
+                If the sum of two primes is again prime,
+                then one of the primes must be 2.
+              </p>
+            </statement>
+          </theorem>
+          <url href="https://youtu.be/9aPN3vldvy4">Video Solution</url>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Take the sketch for the following theorem and turn it into a well-written proof.
+          <theorem>
+            <statement>
+              <p>
+                If <m>n</m> is an integer greater than 2, then <m>n^2 - 1</m> is composite.
+              </p>
+            </statement>
+          </theorem>
+          <proof>
+            <p>
+              <m>n^2 - 1 = (n-1)(n+1)</m>
+            </p>
+          </proof>
+        </p>
+      </li>
+      <li>
+        <p>
+          Critique the following proof.
+          That is, fix any mathematical errors and suggest ways to make the proof more clear.
+          Prove or disprove:
+          an integer is composite if and only if it has two distinct prime factors.
+          <proof>
+            <p>
+              The claim is false.
+              An integer is composite if it is not prime.
+              For example,
+              the number 6 is composite because <m>6 = 2\cdot 3</m>.
+              But <m>4 = 2\cdot 2</m>.
+            </p>
+          </proof>
+        </p>
+      </li>
+      <li>
+        <p>
+          What is wrong with the following proof?
+          Explain why this error could be prevented by planning out a proof before writing it.
+          <theorem>
+            <statement>
+              <p>
+                If <m>n\geq 3</m> is an integer, then <m>n^2 > 2n + 1</m>.
+              </p>
+            </statement>
+          </theorem>
+          <proof>
+            <p>
+              Let <m>n^2 > 2n+1</m>.
+              Then <m>0 \lt n^2 - 2n - 1 = (n-1)^2 - 2</m>,
+              which is only true when <m>n \geq 3</m>.
+            </p>
+          </proof>
+        </p>
+      </li>
+      <li>
+        <p>
+          We usually prove statements like
+          <q><m>P</m> if and only if <m>Q</m></q>
+          in two steps.
+          First we prove that <m>P</m> implies <m>Q</m> and then we prove that <m>Q</m> implies <m>P</m>.
+          Explain why we can also do this;
+          first prove that <m>P</m> implies <m>Q</m> and then prove that <m>\neg P</m> implies <m>\neg Q</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the following definition.
+          <term>Definition</term>: For integers <m>n, a</m>,
+          and a positive integer <m>d</m>,
+          we write <m>n\equiv a\pmod d</m> if <m>n</m> is the sum of <m>a</m> and an integer multiple of <m>d</m>.
+          Now consider the statement:
+          <em>If <m>n\equiv 1 \pmod 2</m> and <m>m\equiv 1\pmod4</m>,
+          then <m>n^2-m</m> is divisible by 4.</em>
+          Below is a sketch of a proof of this statement.
+          Unfortunately, it is incorrect.
+          Find the mistake(s) in the sketch and explain your reasoning.
+          <term>Sketch</term>:
+          <m>n=1+2k, \ m=1+4k, \\ 1+4k+4k^2-(1+4k)</m>, <m>n^2-m=4k^2</m>,
+          <m>4</m> divides <m>4(k^2)</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the following claim:  <term>Claim</term>:
+          <em>There are infinitely many prime numbers.</em>  The claim is true,
+          but the proof given below contains one extraneous statement.
+          Such a statement is a sentence that,
+          if deleted, does not change the validity of the proof.
+          Find the extraneous statement and briefly justify why it does not change the proof.
+          <proof>
+            <p>
+              Assume there are exactly <m>n</m> prime numbers
+              <m>2\le p_1, ..., p_n</m> and consider the integer
+              <me>
+                N = p_1\cdots p_n+1
+              </me>.
+            </p>
+            <p>
+              <m>N</m> is an odd number since <m>p_1=2</m> and <m>N=2(p_2\cdots p_n)+1</m>.
+              Certainly <m>N</m> is divisible by some prime <m>p_j</m> in the list since we are assuming that the list <m>p_1,...,p_n</m> contains all primes.
+              Thus
+              <me>
+                N-p_1p_2\cdots p_n=1
+              </me>
+              is divisible by that <m>p_j</m>.
+              This is a contradiction since 1 is not divisible by an integer <m>p_j\ge2</m>.
+            </p>
+          </proof>
+        </p>
+      </li>
+      <li>
+        <p>
+          We give three attempts to prove the following statement: For any positive real numbers <m>a</m> and <m>b</m>,
+          <m>\frac{a+b}{2}\geq \sqrt{ab}</m>.
+          Below, three attempts of a proof are given.
+          <em>Attempt 1:</em> Assuming that <m>\frac{a+b}{2}\geq \sqrt{ab}</m>,
+          we can multiply both sides by 2, which is positive, to get
+          <me>
+            a+b\geq 2\sqrt{ab}
+          </me>
+          Squaring, we get
+          <md>
+            <mrow>(a+b)^2 \amp \geq 4ab</mrow>
+            <mrow>a^2+2ab+b^2 \amp \geq 4ab</mrow>
+            <mrow>a^2-2ab+b^2 \amp \geq 0</mrow>
+            <mrow>(a-b)^2 \amp \geq 0</mrow>
+          </md>
+          Since we have arrived at a true statement,
+          the initial assumption must be true.
+          Thus, <m>\frac{a+b}{2}\geq \sqrt{ab}</m> as desired.
+          <em>Attempt 2:</em> For all positive numbers <m>a</m> and <m>b</m>,
+          we have <m>(\sqrt{a}-\sqrt{b})^2\geq 0</m>.
+          Thus, <m>a-2\sqrt{a}\sqrt{b}+b\geq 0</m>,
+          which is equivalent to <m>a+b\geq 2\sqrt{ab}</m>.
+          Dividing by 2, which is positive,
+          we obtain <m>\frac{a+b}{2}\geq \sqrt{ab}</m>, as desired.
+          <em>Attempt 3:</em> Let <m>a = 18</m> and <m>b=2</m>.
+          Then <m>\frac{a+b}{2} = 10</m> and <m>\sqrt{ab} = 6</m>.
+          <m>10\geq 6</m> so this is true.
+          <ol marker="labelalph">
+            <li>
+              <p>
+                Decide which of the proof attempts below is best;
+                describe as completely as possible why the attempt you chose is best.
+              </p>
+            </li>
+            <li>
+              <p>
+                What are your criticisms of the other proof attempts?
+                Be as specific and thorough as possible.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Given below is the proof of a statement.
+          Determine which statement the proof is trying to show.
+          <proof>
+            <p>
+              Let <m>m</m> and <m>n</m> be integers.
+              Assume that <m>m-n</m> is odd,
+              say <m>m-n=2t+1</m> for some integer <m>t</m>.
+              We consider two cases:
+            </p>
+            <p>
+              If <m>n</m> is odd, then <m>n=2s+1</m> for some integer <m>s</m>.
+              Thus
+              <me>
+                m=(m-n)+n=(2t+1)+(2s+1)=2(t+s+1)
+              </me>.
+            </p>
+            <p>
+              Because <m>t+s+1</m> is an integer,
+              this shows that <m>m</m> is even.
+            </p>
+            <p>
+              If <m>n</m> is even, then <m>n=2s</m> for some integer <m>s</m>.
+              Thus
+              <me>
+                m=(m-n)+n=(2t+1)+2(s)=2(t+s)+1
+              </me>.
+            </p>
+            <p>
+              Because <m>t+s</m> is an integer,
+              this shows that <m>m</m> is odd.
+            </p>
+            <p>
+              Hence <m>m</m> and <m>n</m> have opposite parity.
+            </p>
+          </proof>
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the following definition.
+          <term>Definition</term>: Let <m>f</m> real-valued function on the set of real numbers.
+          If <m>f(z)=0</m>, then we call <m>z</m> a
+          <term>zero</term> of <m>f</m>.
+          Suppose <m>f</m> is a function and <m>S</m> is your favorite subset of the real numbers.
+          If we want to prove that the set of all zeros of <m>f</m> is contained in a set <m>S</m>,
+          what can we assume and what do we want to show?
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

@@ -1,0 +1,1023 @@
+<section xml:id="sec_wellorder">
+  <title>Well-ordering and the Principle of Mathematical Induction</title>
+  <introduction>
+    <p>
+      Before seeing more examples,
+      it is worth thinking more carefully about the logic behind induction.
+      The fact that induction really works depends on a fundamental property of the natural numbers.
+    </p>
+    <definition xml:id="defn_wellorder">
+      <statement>
+        <p>
+          A set of real numbers <m>A</m> is <term>well-ordered</term>
+          if every non-empty subset of <m>A</m> has a minimum element.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The definition is delicate: to test if a set <m>A</m> is well-ordered,
+      we need to check <em>all</em> of its non-empty subsets.
+      The definition could be written as follows:
+      <me>
+        \forall B\subseteq A\text{ such that } B\neq\emptyset,\ \text{ we have that \(\min(B)\) exists. }
+      </me>
+    </p>
+    <p>
+      Consequently, to show that a set <m>A</m> is
+      <em>not</em> well-ordered,
+      we need only exhibit a non-empty subset <m>B</m> which has <em>no minimum.</em>
+    </p>
+    <example>
+      <statement>
+        <p>
+          \item <m>A=\{4,-7,\pi,19,\ln 2\}</m> is a well-ordered set.
+          There are 31 non-empty subsets of <m>A</m>,
+          each of which has a minimum element.
+          Can you justify this fact <em>without</em>
+          listing the subsets? \item The interval <m>[3,10)</m> is not well-ordered.
+          Indeed <m>(3,4)</m> is a non-empty subset which has no minimum element
+          (see the exercises). \item The integers <m>\Z</m> are not well-ordered.
+          For instance, <m>\Z</m> is a non-empty subset of itself,
+          and there is no minimum integer.
+        </p>
+      </statement>
+    </example>
+    <p>
+      More generally,
+      every finite set of numbers is well-ordered, while intervals are not.
+      Are there any <em>infinite</em>
+      sets which are also well-ordered?
+      The answer is <em>yes.</em> Indeed it is part of the standard definition (Peano's Axioms) of the natural numbers that <m>\N</m> is such a set.
+    </p>
+    <axiom>
+      <statement>
+        <p>
+          <m>\N</m> is well-ordered.
+        </p>
+      </statement>
+    </axiom>
+    <p>
+      Any set that <sq>looks like</sq> <m>\N</m> is automatically well-ordered.<fn>
+      When the elements are written in increasing order,
+      the set has the form <m>B=\{b_1,b_2,b_3,b_4,\ldots\}</m>.
+      </fn> For example
+      <me>
+        B=\left\{0,\frac 12,\frac 23,\frac 34,\frac 45,\ldots\right\}=\left\{\frac n{n+1}:n\in\N\right\}
+      </me>
+    </p>
+    <p>
+      Armed with this axiom, we can justify the method of proof by induction.
+    </p>
+    <theorem xml:id="thm_ind">
+      <title>Principle of Mathematical Induction</title>
+      <statement>
+        <p>
+          Let <m>P(n)</m> be a proposition for each <m>n\in\N</m>.
+          Suppose:
+          <ol>
+            <li>
+              <title>(a)</title>
+              <p>
+                <m>P(1)</m> is true.
+              </p>
+            </li>
+            <li>
+              <title>(b)</title>
+              <p>
+                <m>\forall n\in\N \, P(n)\implies P(n+1)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          Then <m>P(n)</m> is true for all <m>n\in\N</m>.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        We argue by contradiction.
+        Assume that conditions (a) and (b) hold and that
+        <m>\exists n\in\N</m> such that <m>P(n)</m> is
+        <em>false.</em> Then the set
+        <me>
+          S:=\{k\in\N:P(k)\text{ is false } \}
+        </me>
+        is a non-empty subset of the well-ordered set <m>\N</m>.
+        It follows that <m>S</m> has a minimum element
+        <me>
+          m:=\min(S)
+        </me>
+      </p>
+      <p>
+        Note that <m>P(m)</m> is <em>false.</em>
+      </p>
+      <p>
+        By condition (a), <m>P(1)</m> is true, and so <m>m\neq 1</m>.
+        Therefore <m>m\ge 2</m> from which we see that <m>m-1\in\N</m>.
+      </p>
+      <p>
+        Since <m>m=\min(S)</m> it follows that
+        <m>m-1\not\in S</m> and so <m>P(m-1)</m> must be <em>true.</em>
+      </p>
+      <p>
+        However, by condition (b),
+        we see that <m>P(m-1)\implies P(m)</m>,
+        whence <m>P(m)</m> is <em>true.</em>
+      </p>
+      <p>
+        This is a contradiction.
+        In addition to properties (a) and (b),
+        our only assumption was that <em>at least one</em>
+        proposition <m>P(n)</m> was false,
+        therefore this is what we have contradicted.
+        We conclude that conclude that <m>P(n)</m> is true for all <m>n\in\N</m>.
+      </p>
+    </proof>
+  </introduction>
+  <subsection>
+    <title>Different Base Cases for Induction</title>
+    <p>
+      An induction argument need not begin with the case <m>n=1</m>.
+      By proving <xref ref="thm_ind">Theorem</xref>
+      it should be clear where we used the well-ordering of <m>\N</m> in order to justify induction.
+      Now fix an integer <m>m</m> (positive,
+      negative or zero) and consider the set
+      <me>
+        \Z_{\ge m}=\{n\in\Z:n\ge m\}=\{m,m+1,m+2,m+3,\ldots\}
+      </me>.
+    </p>
+    <p>
+      This set is well-ordered,
+      whence the following modification of the induction principle is immediate.
+    </p>
+    <corollary>
+      <statement>
+        <p>
+          Let <m>m\in\Z</m> be some fixed integer.
+          Let <m>P(n)</m> be a proposition for each integer <m>n\ge m</m>.
+          Suppose:
+          <ol>
+            <li>
+              <title>(a)</title>
+              <p>
+                <m>P(m)</m> is true.
+              </p>
+            </li>
+            <li>
+              <title>(b)</title>
+              <p>
+                <m>\forall n\ge m \, P(n)\implies P(n+1)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          Then <m>P(n)</m> is true for all <m>n\ge m</m>.
+        </p>
+      </statement>
+    </corollary>
+    <p>
+      We are simply changing the base case.
+      The induction concept is exactly the same as before:
+      <me>
+        P(m)\implies P(m+1)\implies P(m+2)\implies P(m+3)\implies\cdots
+      </me>
+    </p>
+    <p>
+      As long as you explicitly prove the first claim in the sequence,
+      and you show the induction step,
+      then all the propositions are true.
+    </p>
+    <p>
+      Here is an example where the induction argument begins with <m>m=4</m>.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          For all integers <m>n\ge 4</m>, we have <m>3^n>n^3</m>.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        (<em>Base Case</em>)If <m>n=4</m>,
+        we have <m>3^n=81>64=n^3</m>.
+        The proposition is therefore true for <m>n=4</m>.
+      </p>
+      <p>
+        (<em>Induction Step</em>)Fix
+        <m>n\in\Z_{\ge 4}</m> and suppose that <m>3^n>n^3</m>.
+        Then
+        <me>
+          3^{n+1}=3\cdot 3^n>3n^3
+        </me>.
+      </p>
+      <p>
+        To finish the proof,
+        we want to see that this right hand side is at least <m>(n+1)^3</m>.
+        Now
+        <me>
+          3n^3\ge(n+1)^3\iff 3\ge\left(1+\frac 1n\right)^3
+        </me>
+      </p>
+      <p>
+        This is true for <m>n=3</m> and,
+        since the right hand side is decreasing as <m>n</m> increases,
+        it is certainly true when <m>n\ge 4</m>.
+        We therefore conclude, for <m>n\ge 4</m>, that
+        <me>
+          3^n>n^3\implies 3^{n+1}>(n+1)^3
+        </me>
+        which is the induction step.
+        By induction,
+        we have shown that <m>3^n>n^3</m> whenever <m>n\in\Z_{\ge 4}</m>.
+      </p>
+    </proof>
+    <p>
+      Our next example is reminiscent of sequences and series from elementary calculus.
+      If you follow a textbook derivation of such a formula,
+      you'll probably see liberal use of ellipsis dots
+      (<m>\ldots</m>).
+      When you see these,
+      it is often because the author is hiding an induction argument.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          For all integers <m>n\ge 3</m>, we have
+          <me>
+            \sum\limits_{i=3}^n\frac 1{i(i-2)}=\frac 34-\frac{2n-1}{2n(n-1)}.\tag{(\(\ast\))}
+          </me>
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        (<em>Base Case</em>)When <m>n=3</m>, (<m>\ast</m>) reads <m>\sum\limits_{i=3}^3\frac 1{i(i-2)}=\frac 34-\frac 5{12}</m>.
+        Both sides equal <m>\frac 13</m>,
+        whence <m>(\ast)</m> is true.
+      </p>
+      <p>
+        (<em>Induction Step</em>)Assume that (<m>\ast</m>) is true for some fixed <m>n\ge 3</m>.
+        Then
+        <md>
+          <mrow>\sum_{i=3}^{n+1}\frac 1{i(i-2)}\amp =\sum_{i=3}^{n}\frac 1{i(i-2)}+\frac 1{(n+1)(n-1)}</mrow>
+          <mrow>\amp =\frac 34-\frac{2n-1}{2n(n-1)}+\frac 1{(n+1)(n-1)}\tag{(\emph{by the induction hypothesis})}</mrow>
+          <mrow>\amp =\frac 34-\left[\frac{(2n-1)(n+1)-2n}{2(n+1)n(n-1)}\right]=\frac 34-\left[\frac{1+n-2n^2}{2(n+1)n(n-1)}\right]</mrow>
+          <mrow>\amp =\frac 34+\frac{(2n+1)(1-n)}{2(n+1)n(n-1)}=\frac 34-\frac{2n+1}{2(n+1)n}</mrow>
+        </md>
+        which is exactly (<m>\ast</m>) when <m>n</m> is replaced by <m>n+1</m>.
+      </p>
+      <p>
+        By induction (<m>\ast</m>) holds for all integers <m>n\ge 3</m>.
+      </p>
+    </proof>
+    <p>
+      A calculus discussion would finish by taking the limit as
+      <m>n\to\infty</m> to conclude that <m>\sum\limits_{i=3}^\infty\frac 1{i(i-2)}=\frac 34</m>.
+    </p>
+    <p>
+      Our final example involves a little abstraction.
+    </p>
+    <theorem xml:id="thm_polygon">
+      <statement>
+        <p>
+          The interior angles of an <m>n</m>-gon (<m>n</m>-sided polygon) sum to <m>180(n-2)</m> degrees.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      We will take the initial case (<m>n=3</m>) that the angles of a triangle sum to 180\textdegree<nbsp/>as given
+      (can you prove it?)
+      and merely prove the induction step.
+      The main logical difficulty is that we must consider <em>all</em>
+      <m>n</m>-gons simultaneously.
+      If we were to write the induction step in the form
+      <me>
+        \forall n\in\Z_{\ge 3},\ P(n)\implies P(n+1)
+      </me>,
+      then the proposition <m>P(n)</m> would be
+      <me>
+        P(n): \forall n\text{ -gons } \cP_n,\text{ the sum of the interior angles of \(\cP_n\) is \(180(n-2)\)\textdegree. }
+      </me>
+    </p>
+    <p>
+      To prove our induction step for a
+      <em>fixed</em> integer <m>n</m>,
+      we must show that <em>all</em> <m>(n+1)</m>-gons have the correct sum of interior angles.
+      We therefore assume that we are given some <m>(n+1)</m>-gon
+      <m>\cP_{n+1}</m> and proceed to compute its interior angles in terms of a related <m>n</m>-gon.
+    </p>
+    <proof>
+      <p>
+        Fix an integer <m>n\ge 3</m>,
+        and suppose that <em>all</em> <m>n</m>-gons have interior angles summing to <m>180(n-2)</m>\textdegree.
+        Suppose we are given an <m>(n+1)</m>-gon <m>\cP_{n+1}</m>.
+        Select any vertex <m>A</m> and label the adjacent vertices <m>B</m> and <m>C</m>.
+        Delete <m>A</m>,
+        and join <m>B</m> and <m>C</m> with a straight edge.
+        The result is an <m>n</m>-gon <m>\cP_n</m>.
+        There are two cases to consider.\footnotemark[\value{footnote}]
+        <me>
+          -5pt]  \begin{minipage}{0.64\textwidth} Case 1: The deleted point \(A\) is \emph{outside} \(\mathcal{P}_n\). The sum of the interior angles of \(\mathcal{P}_{n+1}\) exceeds those of \(P_n\) by \(\alpha+\beta+\gamma=180\)\textdegree. Therefore \(\mathcal{P}_{n+1}\) has interior angles summing to \(180(n-2)\text{ \textdegree } +180\text{ \textdegree } =180[(n+1)-2]\)\textdegree.\\[-5pt]  Case 2: The deleted point \(A\) is \emph{inside} \(\mathcal{P}_n\). To obtain the sum of the interior angles of \(\mathcal{P}_{n+1}\), we take the sum of the interior angles of \(\mathcal{P}_n\) and do three things:
+          <ul>
+            <li>
+              <p>
+                <em>Subtract</em> \(\beta\)
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Subtract</em> \(\gamma\)
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Add the reflex angle \(360\)\textdegree\(-\alpha\) at \(A\)</em>
+              </p>
+            </li>
+          </ul>
+          We are therefore adding an additional \[-\beta-\gamma+(360\text{ \textdegree } -\alpha)=360\text{ \textdegree } -(\alpha+\beta+\gamma)=180\text{ \textdegree }
+        </me>
+      </p>
+      <p>
+        \end{minipage}
+      </p>
+      <sidebyside>
+        <image width="73%" source="induction-05-polygon"/>
+        Case 1: <m>A</m> outside <m>\mathcal{P}_n</m>
+        <image width="73%" source="induction-06-polygon"/>
+        Case 2: <m>A</m> inside <m>\mathcal{P}_n</m>
+      </sidebyside>
+      <p>
+        <m>\mathcal{P}_{n+1}</m> again has interior angles summing to <m>180[(n+1)-2]</m>\textdegree.
+      </p>
+    </proof>
+  </subsection>
+  <subsection>
+    <title>Optional: Density of the Rationals</title>
+    <p>
+      In our last example,
+      we offer a more direct application of <m>\N</m> being well-ordered.
+      One of the key properties of the rational numbers <m>\Q</m> is their density in the real line.
+      Intuitively,
+      the idea is that no matter how close you "zoom in" on the real line,
+      you can always locate a rational number.
+      We formalize this with the following definition.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          We say a set <m>A \subseteq \R</m> is <term>dense</term>
+          (in <m>\R</m>)
+          if for any real numbers <m>x</m> and <m>y</m> such that <m>x \lt y</m>,
+          there is <m>a \in A</m> such that <m>x \lt a \lt y</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      So if you take two real numbers,
+      you can always find an element from <m>A</m> in between them,
+      no matter how close the two real numbers are from each other.
+      Our goal will be to prove that the rational numbers <m>\Q</m> are dense in <m>\R</m>.
+      For this, we will use the well-orderedness of <m>\N</m> along with the following:
+    </p>
+    <axiom>
+      <statement>
+        <p>
+          The real numbers <m>\R</m> have the
+          <term>Archimedean property</term>, that is,
+          for any real numbers <m>x,y > 0</m>,
+          there is <m>n \in \N</m> such that <m>nx > y</m>.
+        </p>
+      </statement>
+    </axiom>
+    <p>
+      It is not really necessary to take this as an axiom as the Archimedean property of <m>\R</m> can be proved from more basic principles.
+      However, this requires some knowledge about how to construct the real numbers which lies beyond the scope of this course.
+      Back to our goal,
+      we need the following lemma which states that if two real numbers differ by more than <m>1</m>,
+      then there must be an integer between them.
+    </p>
+    <lemma xml:id="lemm_rationaldensityprep">
+      <statement>
+        <p>
+          Suppose we have <m>x,y \in \R</m> with <m>y - x > 1</m>.
+          Then there exists <m>k \in \Z</m> such that <m>x \lt k \lt y</m>.
+        </p>
+      </statement>
+    </lemma>
+    <proof>
+      <p>
+        The idea is to take <m>k</m> to be the least integer greater than <m>x</m>.
+        We will show such an integer exists using the fact that <m>\N</m> is well-ordered.
+        Let <m>A = \{n \in \Z : n > x\}</m>.
+        Then <m>A \neq \emptyset</m> by the Archimedean property
+        (why?).
+        Let <m>m \in \Z</m> be a number such that <m>m \lt  x</m>
+        (this is another application of the Archimedean property),
+        and thus <m>m \lt  n</m> for all <m>n \in A</m>,
+        by definition of <m>A</m>.
+        Let
+        <me>
+          S = \{n - m + 1 : n \in A\}
+        </me>.
+      </p>
+      <p>
+        So <m>S \subseteq \N</m> and since <m>A \neq \emptyset</m>,
+        we have <m>S \neq \emptyset</m>.
+        Since <m>\N</m> is well-ordered,
+        <m>S</m> has a minimum element <m>s</m>.
+        Then <m>k = s + m - 1</m> is the minimum element of <m>A</m>
+        (why?).
+      </p>
+      <p>
+        By definition <m>x \lt k</m>.
+        But by minimality of <m>k</m>,
+        <m>k - 1 \notin A</m>, i.e., <m>x \geq k - 1</m>.
+        Thus <m>x \lt k \leq x + 1</m>.
+        Finally, since <m>y - x > 1</m>,
+        we have <m>x + 1 \lt y</m>.
+        All together, <m>x \lt k \leq x + 1 \lt y</m>.
+        So <m>k</m> is as required.
+      </p>
+    </proof>
+    <p>
+      Now we can prove our main result.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          The rational numbers <m>\Q</m> are dense in <m>\R</m>.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        Let <m>x,y \in \R</m> with <m>x \lt y</m> be arbitrary.
+        We need to find <m>r \in \Q</m> with <m>x \lt r \lt y</m>.
+        Then <m>y - x > 0</m>.
+        By the Archimedean property,
+        there is <m>n \in \N</m> such that <m>n(y - x) > 1</m>.
+        Since <m>ny - nx > 1</m>,
+        we can apply <xref ref="lemm_rationaldensityprep">Lemma</xref>
+        to get <m>k \in \Z</m> such that <m>nx \lt k \lt ny</m>.
+        As <m>n \geq 1 > 0</m>, dividing yields <m>x \lt \frac{k}{n} \lt y</m>.
+        Take <m>r = \frac{k}{n} \in \Q</m>.
+      </p>
+    </proof>
+    <aside>
+      <p>
+        <term>Well-ordering more generally</term>
+      </p>
+      <p>
+        Well-ordering is a fundamental concept whose implications are far beyond what we're discussing here.
+        Informally speaking, <em>well-ordering</em>
+        a set <m>A</m> involves listing the elements of <m>A</m> in some order so that every non-empty subset of <m>A</m> has a first element
+        <em>with respect to that order.</em>
+      </p>
+      <p>
+        Consider, for example, the set of negative integers <m>\Z^-</m>.
+        For the purposes of these notes we will always consider the standard ordering:
+        <me>
+          \cdots\lt -4\lt -3\lt -2\lt -1
+        </me>.
+      </p>
+      <p>
+        Written in the standard order,
+        <m>\Z^-=\{\ldots,-4,-3,-2,-1\}</m> is
+        <em>not</em> a well-ordered set.
+        In a more advanced discussion,
+        one could consider alternative orderings,
+        and the definition of well-ordered would change accordingly.
+        If we choose the ordering <m>\prec</m> where
+        <me>
+          -1 \prec -2 \prec -3 \prec \cdots,\tag{\(\ast\)}
+        </me>
+        then <m>\Z^-</m> would be well-ordered using <m>\prec</m> as the order:
+        if <m>B\subseteq\Z^-</m> is non-empty and has its elements listed in the same order as <m>(\ast)</m>,
+        then <m>B</m> has a minimum element
+        (with respect to <m>\prec</m>).
+        With a little thinking,
+        we could modify the proof of the principle of mathematical induction to allow us to prove theorems of the form <m>\forall n\in\Z^-,\ P(n)</m>,
+        by induction.
+        The base case is <m>n=-1</m> and the induction step justifies the chain
+        <me>
+          P(-1)\implies P(-2)\implies P(-3)\implies\cdots
+        </me>
+      </p>
+      <p>
+        An extremely important theorem in advanced set theory states that it is possible to well-order <em>every</em> set.
+        With a slight modification of the process,
+        this massively increases the applicability of induction.
+        In these notes we keep things simple:
+        well-ordering is always in the sense of <xref ref="defn_wellorder">Definition</xref>,
+        where we list the elements of a set in the usual increasing order.
+        For a more esoteric example of a well-ordered set,
+        see the final Exercise below.
+      </p>
+    </aside>
+  </subsection>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol>
+      <li>
+        <p>
+          Which of the following statements are true?
+          Select all that apply.
+          <ol>
+            <li>
+              <p>
+                Every well-ordered set of real numbers has a minimum element.
+              </p>
+            </li>
+            <li>
+              <p>
+                If a set of real numbers has a minimum element, then it is well-ordered.
+              </p>
+            </li>
+            <li>
+              <p>
+                Any finite set of real numbers is well-ordered.
+              </p>
+            </li>
+            <li>
+              <p>
+                Induction proofs must have a base case of <m>0</m> or <m>1</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          The fact that <m>\N</m> is well-ordered is considered a(n)
+          <ol>
+            <li>
+              <p>
+                theorem
+              </p>
+            </li>
+            <li>
+              <p>
+                opinion
+              </p>
+            </li>
+            <li>
+              <p>
+                axiom
+              </p>
+            </li>
+            <li>
+              <p>
+                proof
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: a finite set can be dense in <m>\R</m>.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Prove that <m>n! > 2^n</m> for all <m>n \geq 4</m>.
+          <url href="https://youtu.be/xt3AgzI59LU">Video Solution</url>
+        </p>
+      </li>
+      <li>
+        <p>
+          Fill in the details in the proof of <xref ref="lemm_rationaldensityprep">Lemma</xref>.
+          <url href="https://youtu.be/n5v-6WAnj9M">Video Solution</url>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Prove by contradiction that the interval <m>(3,4)</m> has no minimum element. \item
+          <ol>
+            <li>
+              <p>
+                Suppose that <m>n\ge 3</m>.
+                Prove that <m>\left(\frac{n+1}n\right)^2\lt 2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Hence or otherwise, prove that
+                <m>n^2\lt 2^n</m> for all natural numbers <m>n\ge 5</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the following result.
+          For every natural number <m>n\ge 2</m>,
+          <me>
+            \left(1-\frac{1}{4}\right) \left(1-\frac{1}{9}\right) \left(1-\frac{1}{16}\right) \cdots \left(1-\frac{1}{n^2}\right) = \frac{n+1}{2n}
+          </me>
+          <ol>
+            <li>
+              <p>
+                If the statement is written in the form <m>\forall n\in\N_{\ge 2},\ P(n)</m>,
+                what is the proposition <m>P(n)</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\Pi</m>-notation is used for products in the same way as <m>\Sigma</m>-notation for sums:
+                for example
+                <me>
+                  \prod_{k=1}^5(k+1)^k=2^1\cdot 3^2\cdot 4^3\cdot 5^4\cdot 6^5
+                </me>
+                Rewrite the statement using <m>\Pi</m>-notation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove the result by induction
+                (you may use whatever notation you wish).
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Show that for any <m>n \geq 3</m>,
+          there is a set <m>A</m> consisting of <m>n</m> natural numbers such that the sum of the numbers in <m>A</m> is divisible by every element of <m>A</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Recall the geometric series formula from calculus:
+          if <m>r\neq 1</m> is constant, and <m>n\in\N_0</m>, then
+          <me>
+            \sum_{k=0}^nr^k=\frac{1-r^{n+1}}{1-r}\tag{\((\ast)\)}
+          </me>
+          <ol>
+            <li>
+              <p>
+                Here is an incorrect proof by induction.
+                Explain why it is incorrect.
+                <proof>
+                  <p>
+                    Let <m>P(n)=\sum\limits_{k=0}^nr^k=\frac{1-r^{n+1}}{1-r}</m>.
+                  </p>
+                  <p>
+                    (<em>Base Case</em> <m>n=0</m>)<m>P(0)=\sum\limits_{k=0}^0r^k=r^0=1=\frac{1-r^{0+1}}{1-r}</m> is true.
+                  </p>
+                  <p>
+                    (<em>Induction Step</em>)Fix
+                    <m>n\in\N_0</m> and assume that <m>P(n)</m> is true.
+                    Then
+                    <md>
+                      <mrow>P(n+1)\amp =\sum_{k=0}^{n+1}r^k=\sum_{k=0}^nr^k+r^{n+1}=\frac{1-r^{n+1}}{1-r}+r^{n+1}</mrow>
+                      <mrow>\amp =\frac{1-r^{n+1}}{1-r}+\frac{r^{n+1}-r^{n+2}}{1-r}=\frac{1-r^{n+2}}{1-r}\text{ , \ is true. }</mrow>
+                    </md>
+                  </p>
+                  <p>
+                    By induction, <m>(\ast)</m> is true for all <m>n\in\N_0</m>.
+                  </p>
+                </proof>
+              </p>
+            </li>
+            <li>
+              <p>
+                Give a correct proof of <m>(\ast)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Here is an argument attempting to justify <m>\sum\limits_{i=1}^ni=\frac 12n(n+1)+7</m>.
+          What is wrong with it?
+          <proof>
+            <p>
+              Assume that the statement is true for some fixed <m>n</m>.
+              Then
+              <me>
+                \sum_{i=1}^{n+1}i=\sum_{i=1}^ni+(n+1)=\frac 12n(n+1)+7+(n+1)=\frac 12(n+1)[(n+1)+1]+7
+              </me>,
+              hence the statement is true for <m>n+1</m> and,
+              by induction, for all <m>n\in\N</m>.
+            </p>
+          </proof>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>P(n)</m> and <m>Q(n)</m> be propositions for each <m>n\in\N</m>.
+          <ol>
+            <li>
+              <p>
+                Assume that <m>m</m> is the smallest natural number such that <m>P(m)</m> is false.
+                Let
+                <me>
+                  A=\{n\in\N:n\lt m\}
+                </me>.
+                What can you say about the elements in the set <m>A</m>,
+                with respect to the property <m>P</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Assume that <m>a</m> is the smallest natural number such that <m>P(a)\vee Q(a)</m> is false.
+                Let
+                <me>
+                  B=\{n\in\N:n\lt a\}
+                </me>.
+                What can you say about the elements in the set <m>B</m>,
+                with respect to the properties <m>P</m> and <m>Q</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Assume that <m>u</m> is the smallest natural number such that <m>P(u)\wedge Q(u)</m> is false.
+                Let
+                <me>
+                  C=\{n\in\N:n\lt u\}
+                </me>.
+                What can you say about the elements in the set <m>C</m>,
+                with respect to the properties <m>P</m> and <m>Q</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Assume that <m>P(1)</m> is true,
+                but that <sq><m>\forall n\in\N,\ P(n)</m></sq> is false.
+                Show that there exists a natural number <m>k</m> such that the implication <m>P(k)\implies P(k+1)</m> is false.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that if <m>A\subseteq\R</m> is a <em>finite</em> set,
+          then <m>A</m> is well-ordered.
+        </p>
+      </li>
+      <li>
+        <p>
+          Show <m>\Q</m> is not well-ordered.
+        </p>
+      </li>
+      <li>
+        <p>
+          In this question we use the fact that <m>\N_0</m> is well-ordered to prove the Division Algorithm
+          (<xref ref="thm_div">Theorem</xref>).
+          Theorem:<nbsp/><nbsp/> If <m>m\in\Z</m> and <m>n\in\N</m>,
+          then <m>\exists</m> unique
+          <m>q,r\in\Z</m> such that <m>m=qn+r</m> and
+          <m>0\le r\lt n</m>} Let <m>m\in\Z</m> and <m>n\in\N</m> be given,
+          and define <m>S=\{k\in\N_0:k=m-qn\text{ for some } q\in\Z\}</m>.
+          <ol>
+            <li>
+              <p>
+                Show that <m>S</m> is a <em>non-empty</em> subset of <m>\N_0</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\N_0</m> is well-ordered.
+                By part (a), <m>S</m> has a minimal element <m>r</m>.
+                Prove that <m>0\le r\lt n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that there are two pairs of integers <m>(q_1,r_1)</m> and
+                <m>(q_2,r_2)</m> which satisfy <m>m=q_in+r_i</m>.
+                Prove that <m>r_1=r_2</m> and, consequently,
+                that the division algorithm is true.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          In the text,
+          we show that the principle of mathematical induction can be proved using the axiom that <m>\N</m> is well-ordered.
+          In fact we show in this exercise that one can go the other way.
+          That is, one can take the principle of mathematical induction as an axiom,
+          and derive that <m>\N</m> is well-ordered.
+          <ol>
+            <li>
+              <p>
+                Assume that the principle of mathematical induction is true.
+                We aim to show that <m>\N</m> is well-ordered.
+                Write out what this means.
+              </p>
+            </li>
+            <li>
+              <p>
+                Explain why it is enough to show that if
+                <m>A \subseteq \N</m> has no minimum element,
+                then <m>A = \emptyset</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>B = \{n \in \N : 1,2,\ldots,n \notin S\}</m>.
+                Use induction to show <m>B = \N</m>.
+                Conclude that <m>A = \emptyset</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          We consider Peano's five axioms for the natural numbers:
+        </p>
+        <ul>
+          <li>
+            <title>Initial element:</title>
+            <p>
+              <nbsp/><nbsp/> <m>1\in\N</m>
+            </p>
+          </li>
+          <li>
+            <title>Successor elements:</title>
+            <p>
+              <nbsp/><nbsp/> There is a <em>successor function</em> <m>f:\N\to\N</m>.
+              For each <m>n\in\N</m>,
+              the successor <m>f(n)</m> is also a natural number.
+            </p>
+          </li>
+          <li>
+            <title>No predecessor of the initial element:</title>
+            <p>
+              <nbsp/><nbsp/> <m>\forall n\in\N</m>, <m>f(n)=1</m> is false.
+            </p>
+          </li>
+          <li>
+            <title>Unique predecessor:</title>
+            <p>
+              <nbsp/><nbsp/> <m>f</m> is injective:
+              <m>f(n)=f(m)\implies m=n</m>.
+            </p>
+          </li>
+          <li>
+            <title>Induction:</title>
+            <p>
+              <nbsp/><nbsp/> If <m>A\subseteq\N</m> has the following properties:
+            </p>
+            <ul>
+              <li>
+                <p>
+                  <m>1\in A</m>,
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>\forall a\in A</m>, <m>f(a)\in A</m>,
+                </p>
+              </li>
+            </ul>
+            then <m>A=\N</m>.
+          </li>
+        </ul>
+        The successor function <m>f</m> is simply <sq>plus one</sq> in disguise:
+        <m>f(n)=n+1</m>.
+        Moreover, if you think carefully about the proof of <xref ref="thm_ind">Theorem</xref>,
+        you should be convinced that the <em>induction</em>
+        axiom is equivalent to the axiom that <m>\N</m> is well-ordered,
+        at least in the presence of the other four axioms.
+        <ol>
+          <li>
+            <p>
+              Suppose you replace <m>\N</m> with <m>\Z</m> in each of the above axioms.
+              Which axioms are still true and which are false?
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>(m,n)</m> represent an ordered pair of natural numbers.
+              Let <m>T</m> be the set of all pairs
+              <me>
+                T=\{(m,n):m,n\in\N\}
+              </me>.
+              Let <m>f:T\to T</m> be the function <m>f(m,n)=(m+1,n)</m>.
+              Letting the pair <m>(1,1)</m> play the role of <sq>1</sq> in Peano's axioms,
+              and <m>f</m> be the successor function,
+              decide which of the above axioms are satisfied by the set <m>T</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              (Hard!) With the same set <m>T</m> as in part (b),
+              take the successor function <m>f:T\to T</m> to be
+              <me>
+                f(m,n)=\begin{cases}(m-1,n+1)\amp \text{ if } m\ge 2,\\ (m+n,1)\amp \text{ if } m=1. \end{cases}
+              </me>
+              Which of the above axioms are satisfied by <m>T</m> and <m>f</m>?
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          (<em>Ignore this question if you haven't studied matrices</em>) Suppose that <m>A=\begin{smatrix}7\amp 12\\-2\amp -3\end{smatrix}</m>.
+          We prove that
+          <me>
+            \forall n\in\Z, A^n=\begin{pmatrix}-2\amp -6\\1\amp 3 \end{pmatrix} +3^n\begin{pmatrix}3\amp 6\\-1\amp -2 \end{pmatrix} .\tag{(\(\dag\))}
+          </me>
+          Here <m>A^{-n}=(A^n)^{-1}</m> is the inverse of <m>A^n</m>,
+          and we follow the convention that
+          <m>A^0=\begin{smatrix} 1\amp 0\\0\amp 1 \end{smatrix}</m> is the identity matrix.
+          <ol>
+            <li>
+              <p>
+                Prove by induction that <m>(\dag)</m> holds <m>\forall n\in\N_0</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Modify your argument in part (a) to prove that <m>(\dag)</m> holds
+                <m>\forall n\in\Z^-_0</m>. (<em>Use the fact that,
+                when written in reverse order,
+                <m>\Z_0^-=\{0,-1,-2,-3,-4,\ldots\}</m> is a well-ordered set.)</em>
+              </p>
+            </li>
+            <li>
+              <p>
+                Using what you know about matrix inverses,
+                give a direct proof that <m>(\dag)</m> holds
+                <m>\forall n\in\Z^-_0</m>. (<em>If <m>C</m> and <m>D</m> are
+                <m>2\times 2</m> matrices such that <m>CD=\begin{smatrix} 1\amp 0\\0\amp 1 \end{smatrix}</m>,
+                then <m>D=C^{-1}</m>.</em>)
+              </p>
+            </li>
+            <li>
+              <p>
+                Diagonalize the matrix <m>A</m> and thereby give a direct proof of <m>(\dag)</m> for all integers <m>n</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          (Hard!) You might assume from our earlier discussion that all well-ordered sets must look like the natural numbers.
+          To disabuse you of this error, consider the set
+          <me>
+            B=\left\{0,\frac 12,\frac 23,\frac 34,\frac 45,\ldots,1,\frac 32,\frac 53,\frac 74,\frac 95,\ldots\right\}=\left\{\frac n{n+1}:n\in\N\right\}\cup\left\{\frac{2n-1}{n}:n\in\N\right\}
+          </me>
+          Prove that <m>B</m> is well-ordered.<fn>
+          The principle of mathematical induction does not apply to propositions indexed by this set.
+          The reason is that <sq>1</sq> is not a successor element in <m>B</m>:
+          there is no element <m>b\in B</m> such that 1 is <sq>the element after <m>b</m>.</sq> Happily,
+          there is a more general notion of
+          <em>transfinite induction</em>
+          which extends induction to propositions indexed by well-ordered sets like <m>B</m>.
+          Transfinite induction proofs require an additional step in order to deal with
+          <em>limit elements</em> like <m>1\in B</m>.
+          </fn>  <em>Hint: If <m>C\subseteq B</m> is non-empty,
+          consider the cases where <m>\exists c\lt 1</m> and when all <m>c\ge 1</m> separately.</em>
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              If <m>r \in \Q</m> and <m>r \neq 0</m> and <m>\alpha \in \R \setminus \Q</m>,
+              show <m>\alpha r \in \R \setminus \Q</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Use part (a), along with the density of <m>\Q</m>,
+              to show that the irrational numbers
+              <m>\R \setminus \Q</m> is also dense in <m>\R</m>.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Show that if <m>x \geq 0</m> and
+          <m>x \lt 1/n</m> for all <m>n \in \N</m>, then <m>x = 0</m>.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

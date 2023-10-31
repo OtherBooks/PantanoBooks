@@ -1,0 +1,847 @@
+<section xml:id="sec_partitions">
+  <title>Partitions</title>
+  <introduction>
+    <p>
+      Recall the important observation about our equivalence relation examples:
+      every element of the original set of objects ends up in
+      <em>exactly one equivalence class.</em> For instance,
+      every integer is either even or odd but not both.
+      The equivalence classes <em>partition</em>
+      the original set in the same way that cutting a cake partitions the crumbs:
+      each crumb ends up in exactly one slice.
+      We shall prove in a moment that equivalence relations
+      <em>always</em> do this.
+      Before doing so we reverse the discussion.
+    </p>
+    <definition xml:id="defn_partition">
+      <statement>
+        <p>
+          Let <m>X</m> be a set and <m>\{A_n:n\in I\}</m> be a collection of non-empty subsets <m>A_n\subseteq X</m>.
+          We say that <m>X</m> is <term>partitioned by</term>
+          the collection of subsets if
+          <ol>
+            <li>
+              <p>
+                <m>X=\bigcup\limits_{n\in I}A_n</m>.(the <m>A_n</m> together make up <m>X</m>)
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>A_m\neq A_n</m>,
+                then <m>A_m\cap A_n=\emptyset</m>.(<em>distinct</em>
+                <m>A_n</m> are pairwise disjoint<fn>
+                Recall that two sets <m>A,B</m> are
+                <em>disjoint</em> if <m>A\cap B=\emptyset</m>:
+                see <xref ref="defn_unionint">Definition</xref>.
+                In this definition we <em>don't</em>
+                require the sets <m>A_n</m> all to be different,
+                some could be identical to each other.
+                </fn>)
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          We describe the collection <m>\cA</m> as a
+          <term>partition</term> of <m>X</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The conditions can be viewed as saying that every element of <m>X</m> lies in (1.) <em>at least one</em>
+      subset <m>A_n</m> and (2.) <em>at most one</em> subset <m>A_n</m>:
+      otherwise said, every element of <m>X</m> lies in
+      <em>exactly one</em> subset.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Partition the set <m>X=\{1,2,3,4,5\}</m> into subsets
+          <me>
+            A_1=\{1,3\},\qquad A_2=\{2,4\},\qquad A_3=\{5\}
+          </me>.
+        </p>
+        <p>
+          Now consider the relation <m>\cR</m> on <m>X</m>, defined by
+          <me>
+            \cR=\{(1,1),(1,3),(3,1),(3,3),(2,2),(2,4),(4,2),(4,4),(5,5)\}
+          </me>.
+        </p>
+        <p>
+          What does <m>\cR</m> have to do with the partition?
+          It should be clear that <m>\cR</m> could be defined by insisting that
+          <me>
+            x\,\cR\,y\iff \text{\(x\) and \(y\) are in the \emph{same} subset \(A_n\).}
+          </me>
+        </p>
+        <p>
+          Run through your mental checklist:
+          is <m>\cR</m> reflexive? symmetric? transitive?
+          Indeed <m>\cR</m> is an equivalence relation!
+          Moreover, the equivalence classes of <m>\cR</m> are precisely the sets <m>A_1,A_2</m> and <m>A_3</m>.
+          For instance, 1 is related to itself and 3, but isn't related to anything else.
+          Indeed
+          <me>
+            [1]=[3]=\{1,3\}=A_1,\qquad [2]=[4]=\{2,4\}=A_2,\qquad [5]=\{5\}=A_5
+          </me>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      The example suggests that partitioning a set defines a natural equivalence relation.
+      Combining this with our observations in the previous section and you should be starting to believe that
+      <em>partitions and equivalence relations are essentially the same thing.</em>
+      Before we prove this important fact,
+      here are some further examples of partitions.
+    </p>
+    <example xml:id="ex_cong">
+      <statement>
+        <p>
+          \item The integers can be partitioned according to their remainder modulo 3: define
+          <me>
+            A_r=\{z\in\Z:z\equiv r\tpmod 3\}
+          </me>.
+        </p>
+        <p>
+          Then <m>\Z=A_0\cup A_1\cup A_2</m>.
+          This is certainly a partition:
+          <ul>
+            <li>
+              <p>
+                Every integer <m>z</m> has remainder of 0, 1 or 2 after division by 3, and so every integer is in some set <m>A_r</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                No integer has two distinct remainders modulo 3, so the sets <m>A_0,A_1,A_2</m> are disjoint.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          \item More generally, if <m>n\in\N</m>,
+          then the set of integers <m>\Z</m> is partitioned into <m>n</m> sets <m>A_0,\ldots,A_{n-1}</m> where
+          <me>
+            A_r=\{z\in\Z:z\equiv r\pmod n\}
+          </me>
+          is the set of integers with remainder <m>r</m> upon dividing by <m>n</m>.
+          We are appealing to the Division Algorithm
+          (<xref ref="thm_div">Theorem</xref>)
+          which tells us that every integer <m>z</m> has a
+          <em>unique remainder</em>
+          <m>r\in\{0,1,\ldots,n-1\}</m>. \item The set of real numbers <m>\R</m> is partitioned into the sets of rational and irrational numbers:
+          <m>\R=\Q\cup(\R\setminus\Q)</m>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Finally, here is an example of a relation which doesn't produce a partition.
+    </p>
+    <example xml:id="ex_partnot">
+      <statement>
+        <p>
+          Let <m>X=\{1,2,3,4\}</m> and define a relation <m>\cR</m> on <m>X</m> by
+          <me>
+            \cR=\{(1,3),(1,4),(2,2),(2,3),(3,1),(3,2),(4,3),(4,4)\}
+          </me>.
+        </p>
+        <p>
+          Also define the subsets
+          <me>
+            A_n=\{x\in X:(n,x)\in\cR\}
+          </me>.
+        </p>
+        <p>
+          Thus <m>A_n</m> is the set of all elements of <m>X</m> which are related to <m>n</m>.
+          We quickly see that
+          <me>
+            A_1=\{3,4\}, A_2=\{2,3\}, A_3=\{1,2\}, A_4=\{3,4\}
+          </me>.
+        </p>
+        <p>
+          The collection of sets <m>A_n</m> is as follows:
+          <me>
+            \{A_n\}_{n\in X}=\bigl\{A_1,A_2,A_3,A_4\bigr\}=\Bigl\{\{3,4\},\{2,3\},\{1,2\}\Bigr\}
+          </me>,
+          where we only have <em>three</em>
+          sets in the collection since <m>A_4=A_1</m>.
+          This collection is not a partition because, for instance,
+          <m>2\in \{2,3\}\cap\{1,2\}</m>.
+          In the language of <xref ref="defn_partition">Definition</xref>, we have
+          <me>
+            \{2,3\}\neq\{1,2\}\text{ but }  \{2,3\}\cap\{1,2\}\neq\emptyset
+          </me>.
+        </p>
+        <p>
+          More importantly, you should convince yourself that <m>\cR</m> is
+          <em>not</em> an equivalence relation.
+        </p>
+      </statement>
+    </example>
+  </introduction>
+  <subsection>
+    <title>Equivalence Relations and Partitions</title>
+    <p>
+      Before we present the fundamental result of the chapter,
+      we prove a helpful lemma.
+    </p>
+    <lemma xml:id="lemm_preequiv">
+      <statement>
+        <p>
+          Suppose that <m>\sim</m> is an equivalence relation.
+          Then <m>x\sim y\iff [x]=[y]</m>.
+        </p>
+      </statement>
+    </lemma>
+    <proof>
+      <ul>
+        <li>
+          <title><m>(\Leftarrow)</m></title>
+          <p>
+            <nbsp/><nbsp/> By reflexivity, <m>x\in[x]</m>.
+            If <m>[x]=[y]</m>, then we have <m>x\in[y]</m>.
+            Finally, recalling <xref ref="defn_equivrel">Definition</xref>,
+            we see that that this is the same as saying <m>x\sim y</m>.
+          </p>
+        </li>
+        <li>
+          <title><m>(\Rightarrow)</m></title>
+          <p>
+            <nbsp/><nbsp/> Suppose that <m>x\sim y</m>.
+            We begin by showing the inclusion <m>[x]\subseteq [y]</m>.
+            Let <m>z\in[x]</m>, then
+            <me>
+              z\sim x\ \text{ and } \ x\sim y\implies z\sim y\implies z\in[y].\tag{(Transitivity)}
+            </me>
+            Therefore <m>[x]\subseteq[y]</m>.
+            By symmetry, we also have <m>y\sim x</m>:
+            repeating the argument yields <m>[y]\subseteq [x]</m>,
+            and thus <m>[x]=[y]</m>.\qedhere
+          </p>
+        </li>
+      </ul>
+    </proof>
+    <theorem xml:id="thm_equivpart">
+      <statement>
+        <p>
+          Let <m>X</m> be any set.
+          <ol>
+            <li>
+              <p>
+                If <m>\sim</m> is an equivalence relation on <m>X</m>,
+                then <m>X</m> is partitioned by the equivalence classes of <m>\sim</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>\{A_n:n\in I\}</m> is a partition of <m>X</m>,
+                then the relation <m>\sim</m> on <m>X</m> defined by
+                <me>
+                  x\sim y\iff \exists n\in I\text{ such that \(x\in A_n\) and } y\in A_n
+                </me>
+                is an equivalence relation.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      <image width="70%" source="relations-08-part"/>
+    </p>
+    <p>
+      Each element of <m>X</m> ends up in exactly one subset.
+      In the language of the Theorem, we have
+    </p>
+    <p>
+      <m>A_1=[a]</m>,<m>A_2=[b]=[c]</m>,<m>b\sim c</m>,<m>a\nsim b</m>,
+      <m>a\nsim c</m>.
+    </p>
+    <p>
+      Some things to consider while reading the proof:
+      <ul>
+        <li>
+          <p>
+            Think about the picture!
+            The result is nothing more than the notion of partitioning a cake by cutting it into slices.
+            The slices are the equivalence classes of the obvious relation:
+            two crumbs are related if and only if they lie in the same slice.
+            The algebra that follows merely confirms that the picture is telling a legitimate story.
+          </p>
+        </li>
+        <li>
+          <p>
+            In part 1.<nbsp/>of the proof,
+            look for where the reflexive,
+            symmetric and transitive assumptions about <m>\sim</m> are used.
+            Why do we need <m>\sim</m> to be an equivalence relation?
+            Why does the proof fail if any of the three assumptions are dropped?
+          </p>
+        </li>
+        <li>
+          <p>
+            Similarly, in part 2., look for where we use both parts of the definition of partition.
+            Why are both assumptions required?
+          </p>
+        </li>
+      </ul>
+    </p>
+    <proof>
+      <ol>
+        <li>
+          <p>
+            Assume that <m>\sim</m> is an equivalence relation on <m>X</m>.
+            To prove that the equivalence classes of <m>\sim</m> partition <m>X</m>,
+            we must show two things:
+            <ol>
+              <li>
+                <p>
+                  That every element of <m>X</m> is in some equivalence class.
+                </p>
+              </li>
+              <li>
+                <p>
+                  That the distinct equivalence classes are pairwise disjoint:
+                  if <m>[x]\neq[y]</m>, then <m>[x]\cap[y]=\emptyset</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+          For (a), we only need reflexivity:
+          <m>\forall x\in X</m> we have <m>x\sim x</m>.
+          Otherwise said, <m>x\in[x]</m>,
+          whence every element of <m>X</m> is in the equivalence class defined by itself.
+          For (b), we prove by the contrapositive method and show that <m>[x]\cap [y]\neq\emptyset\implies [x]=[y]</m>.
+          Assume that <m>[x]\cap [y]\neq\emptyset</m>.
+          Then <m>\exists z\in [x]\cap [y]</m>.
+          This gives
+          <md>
+            <mrow>z\sim x\ \text{ and } \ z\sim y\amp \implies x\sim z\ \text{ and } \ z\sim y\tag{(Symmetry)}</mrow>
+            <mrow>* \amp \implies x\sim y\tag{(Transitivity)}</mrow>
+            <mrow>* \amp \implies [x]=[y]\tag{(<xref ref="lemm_preequiv">Lemma</xref>)}</mrow>
+          </md>
+          We have proved (b) and therefore part 1.<nbsp/>of the theorem.
+        </li>
+        <li>
+          <p>
+            Now suppose that <m>\{A_n:n\in I\}</m> is a partition of <m>X</m> and define <m>\sim</m> by
+            <me>
+              x\sim y\iff \exists n\in I\text{ such that \(x\in A_n\) and \(y\in A_n\). }
+            </me>
+            We must prove the reflexivity,
+            symmetry and transitivity of <m>\sim</m>.  \makebox[\wd\mybox][l]{<em>Reflexivity</em>}  Every <m>x\in X</m> is in some <m>A_n</m>.
+            Thus <m>x\sim x</m> for all <m>x\in X</m>.  \makebox[\wd\mybox][l]{<em>Symmetry</em>}  If <m>x\sim y</m>,
+            then <m>\exists n\in I</m> such that <m>x,y\in A_n</m>.
+            But then <m>y,x\in A_n</m> and so <m>y\sim x</m>.  \makebox[\wd\mybox][l]{<em>Transitivity</em>}  Let <m>x\sim y</m> and <m>y\sim z</m>.
+            Then <m>\exists p,q\in I</m> such that
+            <m>x,y\in A_p</m> and <m>y,z\in A_q</m>.
+            Since <m>\{A_n:n\in I\}</m> is a partition and <m>y\in A_p\cap A_q</m>,
+            we necessarily have <m>A_p=A_q</m>.
+            Thus <m>x,z\in A_p</m> and so <m>x\sim z</m>.
+            We have shown <m>\sim</m> is an equivalence relation,
+            and the proof is complete.\qedhere
+          </p>
+        </li>
+      </ol>
+    </proof>
+    <p>
+      Reading the proof carefully,
+      you should see that reflexivity in part 2.<nbsp/>comes from the fact that <m>X=\bigcup\limits_{n\in I}A_n</m>,
+      while transitivity is due to the pairwise disjointness of the pieces of the partition.
+      Symmetry is essentially free because the definition of <m>\sim</m> is symmetric in <m>x</m> and <m>y</m>.
+    </p>
+    <p>
+      The ability to partition sets and view the resulting subsets as individual objects is crucial to advanced mathematics.
+      The importance of the Theorem comes from the fact that equivalence relations provide a straightforward <em>algebraic</em>
+      method of working with partitions.
+    </p>
+  </subsection>
+  <subsection xml:id="page_cylinder">
+    <title>Geometric Examples</title>
+    <p>
+      The language of equivalence relations and partitions is used heavily in geometry and topology to describe complex shapes.
+      We finish this section with several examples.
+      Since examples of partitions are especially easy to visualize with curves in the plane,
+      we first return to the example on <xref ref="ex_equivcircle">page</xref>
+      and describe things in our new language.
+    </p>
+    <example>
+      <statement>
+        <p>
+          For each real number <m>r\ge 0</m>, define the set
+        </p>
+        <sidebyside>
+          <me>
+            A_r=\bigl\{(x,y)\in\R^2:x^2+y^2=r^2\bigr\}
+          </me>.
+          This is simply the circle of radius <m>r</m> centered at the origin. We check that <m>\{A_r:r\in\R^+_0\}</m> is a partition of <m>\R^2</m>.
+          <ul>
+            <li>
+              <p>
+                Every point of the plane lies on some circle.
+                Precisely, <m>(x,y)\in A_{\sqrt{x^2+y^2}}</m> since
+                <m>\sqrt{x^2+y^2}</m> is the distance of <m>(x,y)</m> from the origin.
+                Thus \smash{<m>\R^2=\bigcup\limits_{r\in\R^+_0}A_r</m>.}
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>r_1\neq r_2</m>,
+                then the concentric circles <m>A_{r_1}</m> and <m>A_{r_2}</m> do not intersect.
+                Thus <m>A_{r_1}\cap A_{r_2}=\emptyset</m>.
+              </p>
+            </li>
+          </ul>
+          <image width="73%" source="relations-09-circles"/>
+        </sidebyside>
+        <p>
+          Now define a relation <m>\sim</m> on <m>\R^2</m> via
+          <me>
+            (x,y)\sim(v,w)\iff \exists r\ge 0\text{ such that \((x,y),(v,w)\) both lie on the circle \(A_r\) }
+          </me>.
+        </p>
+        <p>
+          By <xref ref="thm_equivpart">Theorem</xref>
+          this is an equivalence relation.
+          We can also check explicitly:
+          dropping any mention of the radius <m>r</m>, we see that
+          <me>
+            (x,y)\sim(v,w)\iff x^2+y^2=v^2+w^2
+          </me>.
+        </p>
+        <p>
+          This is exactly the equivalence relation described on <xref ref="ex_equivcircle">page</xref>.
+          The equivalence classes are precisely the sets <m>A_r</m>.
+          Indeed for a given point <m>(v,w)</m>,
+          <me>
+            [(v,w)]=\{(x,y)\in\R^2:x^2+y^2=v^2+w^2\}=A_{\sqrt{v^2+w^2}}
+          </me>
+          is just the circle of radius <m>\sqrt{v^2+w^2}</m>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      \paragraph{The M&#xf6;bius Strip}
+    </p>
+    <p>
+      Take a rectangle, for example <m>X=[0,6]\times[0,1]</m>,
+      and partition into the following subsets.
+      <ul>
+        <li>
+          <p>
+            If a point does not lie on the left or right edge of the rectangle,
+            place it in a subset by itself:
+            <m>\{(x,y)\}</m> for <m>x\neq 0,6</m>,
+          </p>
+        </li>
+        <li>
+          <p>
+            If a point does lie on the left or right edge of the rectangle,
+            place it in a subset with one point from the other edge:
+            <m>\{(0,y),(6,1-y)\}</m> for any <m>y</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      The rectangle is drawn below,
+      where the points on the left and right edges are colored red.
+      The arrows indicate how the edges are paired up.
+      For example the point <m>(0,0.8)</m>
+      (high on the left near the tip of the arrow)
+      is paired with <m>(6,0.2)</m>
+      (low on the right edge of the rectangle).
+    </p>
+    <p>
+      These subsets clearly partition the rectangle <m>X</m>.
+      The partitions define an equivalence relation <m>\sim</m> on <m>X</m> in accordance with <xref ref="thm_equivpart">Theorem</xref>.
+      Note that there are infinitely many equivalence classes.
+      The question is how we should interpret the quotient set <m>\quotient X\sim</m>?
+    </p>
+    <p>
+      This is easier to visualize than you might think.
+      Since each point on the left edge of the rectangle lies in an equivalence class with a point on the right edge,
+      we imagine gluing the two edges together in such a way that the corresponding points touch.
+      In the picture, we imagine holding <m>X</m> like a strip of paper,
+      giving it a twist, and then gluing the edges together.
+      This is the classic construction of a M&#xf6;bius strip.
+      The advantage of the quotient set calculation is that it is very easy to work with points in the original rectangle.
+      As long as you permanently assume that equivalent points of the rectangle correspond to the same point of the M&#xf6;bius strip you can easily work only in the rectangle.
+    </p>
+    <tabular>
+      <row>
+        <cell><image width="92.5%" source="relations-10-mobius"/></cell>
+      </row>
+      <row>
+        <cell>Rectangle</cell>
+      </row>
+    </tabular>
+    <tabular>
+      <row>
+        <cell><image width="92.5%" source="relations-11-mobius"/></cell>
+      </row>
+      <row>
+        <cell>Half twist</cell>
+      </row>
+    </tabular>
+    <tabular>
+      <row>
+        <cell><image width="65%" source="relations-12-mobius"/></cell>
+      </row>
+      <row>
+        <cell>Glue arrows to obtain M&#xf6;bius strip</cell>
+      </row>
+    </tabular>
+    <p>
+      \paragraph{The Cylinder} We could construct a cylinder similarly to the M&#xf6;bius strip,
+      by identifying edges of the rectangle but
+      <em>without</em> applying the half-twist.
+      Instead we do something a little different.
+    </p>
+    <p>
+      Let <m>X=\R^2</m> with equivalence relation <m>\sim</m> defined by
+      <me>
+        (a,b)\sim (c,d)\iff a-c\in\Z\textit{{and}} b=d
+      </me>.
+    </p>
+    <p>
+      The equivalence classes are horizontal strings of points with the same <m>y</m> co-ordinate.
+      If we imagine wrapping <m>\R^2</m> repeatedly around a cylinder of circumference 1, all of the points in a given equivalence class will now line up.
+      The set of equivalence classes
+      <m>\quotient{\R^2}\sim</m> can therefore be visualized as a cylinder.
+    </p>
+    <p>
+      Alternatively,
+      you may imagine piercing a roll of toilet paper and unrolling it.
+      The single puncture now becomes a row of (almost!<fn>
+      Unfortunately for the analogy,
+      toilet paper has purposeful thickness!
+      </fn>) equally spaced holes.
+    </p>
+    <p>
+      In the picture, the left hand side is
+      (part of)
+      the plane <m>\R^2</m>,
+      displayed so that points in each equivalence class have the same height and color.
+      The three horizontal dots all lie in the same equivalence class.
+      When we roll up the plane,
+      all three points end up at the same point on the cylinder.
+    </p>
+    <p>
+      <image width="80%" source="relations-13-cylinder"/>
+    </p>
+    <p>
+      More complex shapes can be created by other partitions/relations.
+      If you want a challenge in visualization,
+      consider why the equivalence relation
+      <me>
+        (a,b)\sim (c,d)\iff a-c\in\Z\textit{{and}} b-d\in\Z
+      </me>
+      on <m>\R^2</m> defines a torus
+      (the surface of a ring-doughnut).
+    </p>
+  </subsection>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol>
+      <li>
+        <p>
+          Which of the following statements are true?
+          Select all that apply.
+          <ol>
+            <li>
+              <p>
+                If <m>X</m> is partitioned into the equivalence classes of some equivalence relation <m>\sim</m>,
+                then each element of <m>X</m> lies in some equivalence class <m>[x]</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>X</m> is partitioned into subsets and that <m>x,y,z\in X</m>.
+                If <m>x,y</m> lie in the same subset,
+                and <m>y,z</m> lie in the same subset of the partition,
+                then it is possible for <m>x</m> and <m>z</m> to lie in different subsets.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{\emptyset, \{a\}, \{b,c\}\}</m> is a partition of <m>\{a,b,c\}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Every subset in a partition of a set must have the same size.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Which of the following describe the relationship between partitions and equivalence relations?
+          Select all that apply.
+          <ol>
+            <li>
+              <p>
+                Equivalence relations have nothing to do with partitions in general.
+              </p>
+            </li>
+            <li>
+              <p>
+                For any set <m>X</m> and equivalence relation <m>\sim</m> on <m>X</m>,
+                the quotient set <m>X/\sim</m> is a partition of <m>X</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                There exists an infinite set <m>X</m> and a partition
+                <m>\mathcal{A}</m> of <m>X</m> such that for any equivalence relation <m>\sim</m> on <m>X</m>,
+                there is <m>A \in \mathcal{A}</m> for which
+                <m>A \neq [x]</m> for any <m>x \in X</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Given any partition <m>\mathcal{A}</m> of <m>X</m>,
+                there is an equivalence relation whose equivalence classes are exactly the subsets of <m>X</m> in <m>\mathcal{A}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>X</m> be a nonempty set.
+          Then <m>\{X\}</m> and <m>\{\{x\} : x \in X\}</m> are both partitions of <m>X</m>.
+          For both partitions,
+          determine the equivalence relation whose equivalence classes form the subsets of the partition.
+        </p>
+      </li>
+      <li>
+        <p>
+          For each of the collections,
+          determine whether the collections partition <m>\R^2</m>.
+          Justify your answers, and sketch several of the sets <m>A_n</m>.
+          <ol>
+            <li>
+              <p>
+                <m>A_n=\big\{(x,y)\in\R^2:y=2x+n\big\}</m>, for <m>n \in \Z</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A_n=\big\{(x,y)\in\R^2:y=x^2+n\big\}</m>, for <m>n \in \R</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A_n=\big\{(x,y)\in\R^2: y=\cos(x-n)\big\}</m>, for <m>n \in \R</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          For each of the collections <m>\{A_n:n\in\R\}</m>,
+          determine whether the collections partition <m>\R^2</m>.
+          Justify your answers, and sketch several of the sets <m>A_n</m>.
+          <ol>
+            <li>
+              <p>
+                <m>A_n=\big\{(x,y)\in\R^2:y=2x+n\big\}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A_n=\big\{(x,y)\in\R^2:y=(x-n)^2\big\}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A_n=\big\{(x,y)\in\R^2:xy=n\big\}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A_n=\big\{(x,y)\in\R^2:y^4-y^2=x-n\big\}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>X</m> be the set of all humans.
+          If <m>x\in X</m>, we define the set
+          <me>
+            A_x=\{\text{people who had the same breakfast \emph{or} lunch as \(x\)} \}
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Does the collection <m>\{A_x:x\in X\}</m> partition <m>X</m>?
+                Explain your answer.
+              </p>
+            </li>
+            <li>
+              <p>
+                Is your answer different if the <em>or</em>
+                in the definition of <m>A_x</m> is changed to <em>and</em>?
+              </p>
+            </li>
+          </ol>
+        </p>
+        <em>If Jane and Tom had both had the same breakfast and lunch,
+        then <m>A_{\text{ Jane } }=A_{\text{ Tom } }</m> so there are likely many fewer <em>distinct</em>
+        sets <m>A_x</m> than there are humans!</em>
+      </li>
+      <li>
+        <p>
+          Let <m>X=\{1,2,3\}</m>.
+          Define the relation <m>\cR=\big\{(1,1),(1,2),(1,3),(2,1),(2,2),(3,1),(3,3)\big\}</m> on <m>X</m>.
+          <ol>
+            <li>
+              <p>
+                Which of the properties reflexive, symmetric,
+                transitive are satisfied by <m>\cR</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Compute the sets <m>A_1,A_2,A_3</m> where <m>A_n=\{x\in X:x\,\cR\,n\}</m>.
+                Show that <m>\{A_1,A_2,A_3\}</m> do not form a partition of <m>X</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Repeat parts (a) and (b) for the relations <m>\cS</m> and <m>\mathcal T</m> on <m>X</m>, where
+                <md>
+                  <mrow>\cS=\{(1,1),(1,3),(3,1),(3,3)\}</mrow>
+                  <mrow>\mathcal T=\{(1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,3)\}</mrow>
+                </md>
+              </p>
+            </li>
+          </ol>
+        </p>
+        <em>Some of the sets <m>A_1,A_2,A_3</m> might be the same in each of your examples.
+        If, for example, <m>A_1=A_3</m>,
+        then the collection <m>\{A_1,A_2,A_3\}</m> only contains two sets:
+        <m>\{A_1,A_2\}</m>.
+        Is this a partition?
+        Compare with the example on <xref ref="ex_partnot">page</xref>.</em>
+      </li>
+      <li>
+        <p>
+          For each of the following,
+          give an example of an infinite set <m>X</m> and an equivalence relation <m>\sim</m> on <m>X</m> such that
+          <ol>
+            <li>
+              <p>
+                <m>\sim</m> has finitely many equivalence classes.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sim</m> has infinitely many classes,
+                each of which have finitely many elements.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sim</m> has infinitely many classes,
+                each of which have infinitely many elements.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\sim</m> has a class of size <m>n</m> for each <m>n \in \N</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> and <m>B</m> be nonempty sets and <m>f : A \to B</m> be a function.
+          <ol>
+            <li>
+              <p>
+                Show that <m>\{f^{-1}(\{b\}) : b \in \range(f)\}</m> forms a partition of <m>A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Determine the equivalence relation <m>\sim</m> associated to this partition
+                (in the sense of Theorem 7.13).
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Using the equivalence relation description of the M&#xf6;bius strip,
+          prove that you may cut a M&#xf6;bius strip round the middle and yet still end up with a single loop.
+          <em>Where would you cut the defining rectangle and how can you tell that you still have one piece?</em>
+          \begin{minipage}{0.7\textwidth}
+        </p>
+      </li>
+      <li>
+        <p>
+          (Hard!) A <em>Klein bottle</em>
+          can be visualized as follows.
+          Define an equivalence relation <m>\sim</m> on the unit square <m>X=[0,1]\times[0,1]</m> so that:
+          <ul>
+            <li>
+              <p>
+                <m>(0,y)\sim (1,y)</m> for <m>0\le y\le 1</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(x,0)\sim(1-x,1)</m> for <m>0\le x\le 1</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+        The result is the picture:
+        the blue edges are identified in the same direction and the red edges in the opposite.
+        Attempting to visualize this in 3D requires a willingness to stretch and distort the square,
+        but results in the green bottle.
+        The original red and blue arrows have become curves on the bottle.
+        If you are using Acrobat Reader,
+        click on the bottle and move it around.
+        <ol>
+          <li>
+            <p>
+              Suppose you cut the Klein bottle along the horizontal dashed line of the defining square.
+              What is the resulting object?
+              What happens to the green bottle?
+            </p>
+          </li>
+          <li>
+            <p>
+              Now cut the square along the vertical dashed line.
+              What do you get this time?
+            </p>
+          </li>
+        </ol>
+        Can you visualize where the two dashed lines are on the green bottle? \end{minipage}
+        <sidebyside>
+          <image width="95%" source="relations-hw01-kleinsquare"/> \includemedia[width=0.99\textwidth, transparent=false, activate=onclick, add3Djscript=asylabels.js, 3Dmenu, 3Dcoo=7.8239054679870605 -2.621169090270996 -71.13204956054688, 3Dc2c=-0.4364800751209259 0.7419548630714417 0.5089088082313538, 3Droo=219.44206346507434, 3Droll=-1.9382490979948275, 3Dlights=Headlamp]{<image width="73%" source="relations-hw02-klein+0_0"/> }{relations-hw02-klein+0.prc}
+        </sidebyside>
+      </li>
+    </ol>
+  </subsection>
+</section>

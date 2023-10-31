@@ -1,0 +1,21 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="chap-sets">
+  <title>Sets and Functions</title>
+  <introduction>
+    <p>
+      Sets are the fundamental building blocks of mathematics.
+      In the sub-discipline of Set Theory,
+      mathematicians define all basic notions,
+      including number, addition, function,
+      etc., purely in terms of sets.
+      In such a system it can take over 100 pages of discussion to
+      <em>prove</em> that <m>1+1=2</m>!
+      We will not be anything like so rigorous.
+      Indeed, before one can accept that such formality has its place in mathematics,
+      a level of familiarity with sets and their basic operations is necessary.
+    </p>
+  </introduction>
+  <xi:include  href="sec_set_notation.ptx"/>
+  <xi:include  href="sec_set_subsets.ptx"/>
+  <xi:include  href="sec_union_intersection_complement.ptx"/>
+  <xi:include  href="sec_func1.ptx"/>
+</chapter>

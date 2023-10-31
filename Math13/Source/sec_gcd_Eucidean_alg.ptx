@@ -1,0 +1,763 @@
+<section xml:id="sec_gcd_Eucidean_alg">
+  <title>Greatest Common Divisors and the Euclidean Algorithm</title>
+  <introduction>
+    <p>
+      At its most basic, Number Theory involves finding
+      <em>integer</em> solutions to equations.
+      Here are two simple-sounding questions:
+      <ol>
+        <li>
+          <p>
+            The equation <m>9x-21y=6</m> represents a straight line in the plane.
+            Are there any <em>integer points</em> on this line?
+            That is, can you find integers <m>x,y</m> satisfying <m>9x-21y=6</m>?
+          </p>
+        </li>
+        <li>
+          <p>
+            What about on the line <m>4x+6y=1</m>?
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      Before you do anything else, try sketching both lines
+      (lined graph paper will help)
+      and try to decide if there are any integer points.
+      If there are integer points, how many are there?
+      Can you find them all?
+    </p>
+    <p>
+      In this section we will see how to answer these questions in general:
+      for which lines <m>ax+by=c</m> with <m>a,b,c\in\Z</m>,
+      are there integer solutions, and how can we find them all?
+      The method introduces the appropriately named
+      <em>Euclidean algorithm,</em>
+      a famous procedure dating at least as far back as Euclid's
+      <em>Elements</em> (c. 300 BCE.).
+    </p>
+    <definition>
+      <statement>
+        <p>
+          Let <m>m</m> and <m>n</m> be integers, not both zero.
+          Their <term>greatest common divisor</term>
+          <m>\gcd(m,n)</m> is the largest (positive) divisor of both <m>m</m> and <m>n</m>.
+          We say that <m>m</m> and <m>n</m> are
+          <term>relatively prime</term>
+          (or <term>coprime</term>)
+          if <m>\gcd(m,n)=1</m>.
+        </p>
+      </statement>
+    </definition>
+    <example>
+      <statement>
+        <p>
+          Let <m>m=60</m> and <m>n=90</m>.
+          The positive divisors of the two integers are listed in the table:
+          <me>
+            \begin{array}{c|cccccccccccc} m\amp 1\amp 2\amp 3\amp 4\amp 5\amp 6\amp 10\amp 12\amp 15\amp 20\amp \underline{30}\amp 60\\\hline n\amp 1\amp 2\amp 3\amp 5\amp 6\amp 9\amp 10\amp 15\amp 18\amp \underline{30}\amp 45\amp 90 \end{array}
+          </me>
+        </p>
+        <p>
+          The greatest common divisor is the largest number common to both rows:
+          clearly <m>\gcd(60,90)=30</m>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Finding the greatest common divisor of two integers by listing all the positive divisors of both numbers is extremely inefficient,
+      especially when the integers are large.
+      This is where Euclid rides to the rescue.
+    </p>
+    <p>
+      <term>Euclidean Algorithm.</term>
+      To find <m>\gcd(m,n)</m> for two positive integers <m>m>n</m>:
+      <ul>
+        <li>
+          <title>(i)</title>
+          <p>
+            Use the Division Algorithm
+            (<xref ref="thm_div">Theorem</xref>)
+            to write <m>m=q_1n+r_1</m> with <m>0\le r_1\lt n</m>.
+          </p>
+        </li>
+        <li>
+          <title>(ii)</title>
+          <p>
+            If <m>r_1=0</m>,
+            then <m>n</m> divides <m>m</m> and so <m>\gcd(m,n)=n</m>.
+            Otherwise, repeat: If <m>r_1>0</m>,
+            divide <m>n</m> by <m>r_1</m> to obtain
+            <m>n=q_2r_1+r_2</m> with <m>0\le r_2\lt r_1</m>.
+          </p>
+        </li>
+        <li>
+          <title>(iii)</title>
+          <p>
+            If <m>r_2=0</m>, then <m>\gcd(m,n)=r_1</m>.
+            Otherwise, repeat: If <m>r_2>0</m>,
+            divide <m>r_1</m> by <m>r_2</m> to obtain
+            <m>r_1=q_3r_2+r_3</m> with <m>0\le r_3\lt r_2</m>.
+          </p>
+        </li>
+        <li>
+          <title>(iv)</title>
+          <p>
+            Repeat the process,
+            obtaining a decreasing sequence of non-negative integers
+            <me>
+              r_1>r_2>r_3>\ldots\geq 0
+            </me>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <theorem xml:id="thm_euclidalg">
+      <statement>
+        <p>
+          The Algorithm eventually produces a remainder of zero:
+          there exists <m>p</m> such that <m>r_{p+1}=0</m>.
+          The greatest common divisor of <m>m</m> and <m>n</m> is then the last non-zero remainder:
+          <m>\gcd(m,n)=r_p</m>.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      The proof is in the exercises.
+      If <m>m</m> and <m>n</m> are not both positive,
+      take absolute values first and apply the algorithm.
+      For instance <m>\gcd(-6,45)=3</m>.
+    </p>
+    <example>
+      <statement>
+        <p>
+          We compute <m>\gcd(1260,750)</m> using the Euclidean Algorithm.
+          Since each line of the algorithm is a single case of the Division Algorithm <m>m=qn+r</m>,
+          you might find it easier to create a table and observe each remainder moving diagonally left and down at each successive step.
+        </p>
+        <sidebyside>
+          \vspace{10pt}
+          <ul>
+            <li class="custom-list-style-type">
+              <p>
+                <m>\textcolor{orange}{1260}=1\times \textcolor{blue}{750}+\textcolor{brown}{510}</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type">
+              <p>
+                <m>\textcolor{blue}{750}=1\times \textcolor{brown}{510}+\textcolor{red}{240}</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type">
+              <p>
+                <m>\textcolor{brown}{510}=2\times \textcolor{red}{240}+\textcolor{Green}{30}</m>
+              </p>
+            </li>
+            <li class="custom-list-style-type">
+              <p>
+                <m>\textcolor{red}{240}=8\times \textcolor{Green}{30}+0</m>
+              </p>
+            </li>
+          </ul>
+          <m>\begin{array}{c|c|c|c}
+          m\amp q\amp n\amp r\\\hline
+          \textcolor{orange}{1260}\amp 1\amp \textcolor{blue}{750}\amp \textcolor{brown}{510}\\
+          \textcolor{blue}{750}\amp 1\amp \textcolor{brown}{510}\amp \textcolor{red}{240}\\
+          \textcolor{brown}{510}\amp 2\amp \textcolor{red}{240}\amp \textcolor{Green}{30}\\
+          \textcolor{red}{240}\amp 8\amp \textcolor{Green}{30}\amp 0
+          \end{array}</m>
+        </sidebyside>
+        <p>
+          <xref ref="thm_euclidalg">Theorem</xref>
+          says that <m>\gcd(\textcolor{orange}{1260},\textcolor{blue}{750})=\textcolor{Green}{30}</m>,
+          the last non-zero remainder.
+        </p>
+      </statement>
+    </example>
+    <p>
+      As you can see, the Euclidean Algorithm is very efficient.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Reversing the Algorithm: Integer Points on Lines</title>
+    <p>
+      To apply the Euclidean Algorithm to the problem of finding integer points on lines,
+      we must reverse it.
+      We start with the penultimate line of the algorithm and substitute the remainders from the previous lines one at a time:
+      the result is an expression of the form
+      <m>\gcd(m,n)=mx+ny</m> for some integers <m>x,y</m>.
+      This is easiest to demonstrate by continuing our example.
+    </p>
+    <example>
+      <title>continued</title>
+      <statement>
+        <p>
+          We find integers <m>x,y</m> such that <m>1260x+750y=30</m>.
+        </p>
+        <p>
+          Solve for 30
+          (the gcd of <m>1260</m> and <m>750</m>)
+          using the third step of the algorithm:
+          <me>
+            \textcolor{Green}{30}=\textcolor{brown}{510}-2\times\textcolor{red}{240}
+          </me>.
+        </p>
+        <p>
+          Now use the second line of the algorithm to solve for 240 and substitute:
+          <me>
+            \textcolor{Green}{30}=\textcolor{brown}{510}-2\times (\textcolor{blue}{750}-\textcolor{brown}{510})=3\times \textcolor{brown}{510}-2\times \textcolor{blue}{750}
+          </me>.
+        </p>
+        <p>
+          Finally, substitute for 510 using the first line:
+          <me>
+            \textcolor{Green}{30}=3\times (\textcolor{orange}{1260}-\textcolor{blue}{750})-2\times \textcolor{blue}{750}=3\times \textcolor{orange}{1260}-5\times \textcolor{blue}{750}
+          </me>.
+        </p>
+        <p>
+          Rearranging this,
+          we see that the integers <m>x=3</m> and <m>y=-5</m> satisfy the equation <m>1260x+750y=30</m>.
+          Otherwise said,
+          the integer point <m>(3,-5)</m> lies on the line with equation <m>1260x+750y=30</m>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Note how the process for finding an integer point <m>(x,y)</m> is twofold:
+      first we compute <m>\gcd(m,n)</m> using the Euclidean Algorithm,
+      then we perform a series of back-substitutions to recover <m>x</m> and <m>y</m>.
+    </p>
+    <p>
+      This process of reversing the algorithm works in general,
+      and we have the following corollary of <xref ref="thm_euclidalg">Theorem</xref>.
+    </p>
+    <corollary xml:id="cor_euclid">
+      <title>B&#xe9;zout's Identity</title>
+      <statement>
+        <p>
+          Given integers <m>m,n</m>,
+          not both zero, there exist integers <m>x,y</m> such that
+          <me>
+            \gcd(m,n)=mx+ny
+          </me>.
+        </p>
+      </statement>
+    </corollary>
+    <p>
+      We are now in a position to solve our motivating problem:
+      finding all integer points on the line <m>ax+by=c</m> where <m>a,b,c</m> are integers.
+      Again we appeal first to our example.
+    </p>
+    <example>
+      <title>take III</title>
+      <statement>
+        <p>
+          We have already found a single integer solution
+          <m>(x,y)=(3,-5)</m> to the equation <m>1260x+750y=30</m>.
+          Notice that the equation is equivalent to dividing through by the greatest common divisor <m>30=\gcd(1260,750)</m>:
+          <me>
+            42x+25y=1
+          </me>
+        </p>
+        <p>
+          Since 42 and 25 have no common factors,
+          it seems that the only way to alter <m>x</m> and <m>y</m> while keeping the equation in balance is to increase <m>x</m> by a multiple of 25 and decrease <m>y</m> by the same multiple of 42.
+          For example <m>(x,y)=(3+25,-5-42)=(28,-47)</m> is another solution.
+          Indeed, all integer solutions are given by
+          <me>
+            (x,y)=(3,-5)+(25,-42)t,\text{ where \(t\) is any integer. }
+          </me>
+        </p>
+      </statement>
+    </example>
+    <p>
+      In general, we have the following result.
+    </p>
+    <theorem xml:id="thm_diophanine">
+      <statement>
+        <p>
+          Let <m>a,b,c</m> be integers where <m>a,b</m> are non-zero,
+          and let <m>d=\gcd(a,b)</m>.
+          Then the equation <m>ax+by=c</m> has an integer solution <m>(x,y)</m> if and only if <m>\,d\divides c</m>.
+        </p>
+        <p>
+          In such a case, suppose that
+          <m>(x_0,y_0)</m> is some fixed solution.
+          Then all integer solutions are given by
+          <me>
+            x=x_0+\frac bdt,\qquad y=y_0-\frac adt,\tag{(\(\ast\))}
+          </me>
+          where <m>t</m> is any integer.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      The general approach is to use the Euclidean Algorithm to find the initial solution <m>(x_0,y_0)</m>,
+      then to apply (<m>\ast</m>) to obtain all solutions.<fn>
+      The astute observer should recognize the similarity between this and the complementary function/particular integral method for linear differential equations:
+      <m>(x_0,y_0)</m> is a <sq>particular solution</sq> to the full equation <m>ax+by=c</m>,
+      while <m>(\frac bdt,-\frac adt)</m> comprises all solutions to the <sq>homogeneous equation</sq> <m>ax+by=0</m>.
+      </fn> The proof is again in the exercises.
+    </p>
+    <p>
+      Warning!
+      If <m>c\neq\gcd(a,b)</m>,
+      you will need to modify the integers obtained in B&#xe9;zout's Identity in order to find the initial solution <m>(x_0,y_0)</m>.
+      For example,
+      since <m>1260\times 3+750\times(-5)=30</m> we multiply by 3 to see that
+      <m>(x_0,y_0)=(9,-15)</m> is an initial solution to <m>1260x+750y=90</m>.
+      All integer points on this line therefore have the form
+      <me>
+        (x,y)=(9+25t,-15-42t), \text{ where } t\in\Z
+      </me>
+    </p>
+    <example>
+      <statement>
+        <p>
+          \item Consider the line <m>570x-123y=7</m>.
+          We calculate the greatest common divisor using the Euclidean algorithm:
+          note that the negative sign is irrelevant.
+          <me>
+            \left.\begin{array}{l} 570=4\times 123+78\\ 123=1\times 78+45\\ 78=1\times 45+33\\ 45=1\times 33+12\\ 33=2\times 12+9\\ 12=1\times 9+3\\ 9=3\times 3+0 \end{array} \right\}\implies\gcd(570,123)=3
+          </me>.
+        </p>
+        <p>
+          Since <m>\,3\nmid 7</m>,
+          we conclude that the line <m>570 x-123 y=7</m> contains no integer points. \item Applied to the line with equation <m>570x-123y=-6</m>,
+          we reverse the algorithm to obtain
+          <md>
+            <mrow>3\amp =12-9=12-(33-2\times 12)</mrow>
+            <mrow>\amp =3\times 12-33=3(45-33)-33</mrow>
+            <mrow>\amp =3\times 45-4\times 33=3\times 45-4(78-45)</mrow>
+            <mrow>\amp =7\times 45-4\times 78=7(123-78)-4\times 78</mrow>
+            <mrow>\amp =7\times 123-11\times 78=7\times 123-11(570-4\times 123)</mrow>
+            <mrow>\amp =570\times (-11)-123\times (-51)</mrow>
+          </md>
+        </p>
+        <p>
+          Multiplying by <m>-2</m> so that our solution conforms to the desired equation,
+          it follows that <m>(x_0,y_0)=(22,102)</m> is an initial solution.
+          The general solution is then
+          <me>
+            (x,y)=(22,102)+\left(-\frac{123}3,-\frac{570}3\right)t=(22-41t,102-190t)
+          </me>
+        </p>
+      </statement>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol>
+      <li>
+        <p>
+          True or False: <m>\gcd(-21, -12) = -3</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose that <m>a \neq 0</m>.
+          Then <m>\gcd(a,0)</m> is equal to which number?
+          <ol>
+            <li>
+              <p>
+                <m>0</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>1</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>a</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>|a|</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          The sequence of remainders produced by the Euclidean Algorithm when computing
+          <m>\gcd(m,n)</m> (select all that apply)
+          <ol>
+            <li>
+              <p>
+                is decreasing
+              </p>
+            </li>
+            <li>
+              <p>
+                is increasing
+              </p>
+            </li>
+            <li>
+              <p>
+                has all non-negative terms
+              </p>
+            </li>
+            <li>
+              <p>
+                is infinite
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: If <m>a</m> and <m>b</m> are relatively prime then the equation <m>ax+by=1</m> has an integer solution <m>(x,y)</m>.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Use the Euclidean Algorithm to compute <m>\gcd(260,816)</m>.
+          Then find integers <m>x,y</m> such that <m>260x + 816y = \gcd(260,816)</m>.
+          <url href="https://youtu.be/L-p2fBqYgi0">Video Solution</url>
+        </p>
+      </li>
+      <li>
+        <p>
+          Find solutions to the congruence <m>5x \equiv 1 \pmod 6</m>.
+          <url href="https://youtu.be/pCvM5FMgM0c">Video Solution</url>
+        </p>
+      </li>
+      <li>
+        <p>
+          Find all integer points on the line <m>225x + 120y = 15</m>.
+          <url href="https://youtu.be/WYNwDsiaD7M">Video Solution</url>
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose <m>a,b,c \in \Z</m> are such that <m>a</m> and <m>b</m> are relatively prime,
+          <m>a \mid c</m>, and <m>b \mid c</m>.
+          Show <m>ab \mid c</m>. [Sketch proof and redo].
+          <url href="https://youtu.be/s5OA-h5GJh0">Video Solution</url>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li xml:id="qn_gcdea">
+        <p>
+          Use the Euclidean Algorithm to compute the greatest common divisors indicated.
+          <ol>
+            <li>
+              <p>
+                <m>\gcd(20,12)</m> (b)<nbsp/>
+                <m>\gcd(100,36)</m> (c)<nbsp/> <m>\gcd(207,496)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          For each part of Question \thesubsection.
+          <xref ref="qn_gcdea"></xref>,
+          find integers <m>x,y</m> which satisfy B&#xe9;zout's Identity <m>\gcd(m,n)=mx+ny</m>. \item
+        </p>
+        <ol>
+          <li>
+            <p>
+              Answer our motivating problems from the beginning of the section using the above process.
+            </p>
+            <ol>
+              <li>
+                <title>(i)</title>
+                <p>
+                  Find all integer points on the line <m>9x-21y=6</m>.
+                </p>
+              </li>
+              <li>
+                <title>(ii)</title>
+                <p>
+                  Show that there are no integer points on the line <m>4x+6y=1</m>.
+                </p>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <p>
+              Can you give an elementary proof as to why there are no integer points on the line <m>4x+6y=1</m>?
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Find all the integer points on the following lines, or show that none exist.
+          <ol>
+            <li>
+              <p>
+                <m>16x-33y=2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>122x+36y=3</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>303x+204y=6</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>324x-204y=-12</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Show that there exists no integer <m>x</m> such that <m>3x\equiv 5\pmod 6</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find all solutions <m>x</m> to the congruence equation <m>12x\equiv 1\pmod{17}</m>
+        </p>
+      </li>
+      <li>
+        <p>
+          Five people each take the same number of candies from a jar.
+          Then a group of seven people does the same:
+          in so doing they empty the jar.
+          If the jar originally contained 239 candies.
+          Can you be sure how much candies each person took?
+        </p>
+      </li>
+      <li>
+        <p>
+          Here we sketch a proof that the Euclidean Algorithm
+          (<xref ref="thm_euclidalg">Theorem</xref>)
+          terminates with <m>r_p=\gcd(m,n)</m>.
+          Note that you <em>cannot</em> use B&#xe9;zout's Identity in to prove any of what follows,
+          since it is a corollary of the algorithm.
+          <ol>
+            <li>
+              <p>
+                Suppose you have a decreasing sequence
+                <me>
+                  m>n>r_1>r_2>\cdots\geq 0\tag{(\(\ast\))}
+                </me>
+                of positive integers.
+                Explain why the sequence can only have
+                <em>finitely many</em> terms.
+                This shows that the Euclidean Algorithm eventually terminates with some <m>r_{p+1}=0</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>m=qn+r</m> for some integers <m>m,n,q,r</m>.
+                Prove that <m>\gcd(m,n)\divides r</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Explain why <m>\gcd(m,n)\divides r_p</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Explain why <m>r_p</m> divides all of the integers in the sequence (<m>\ast</m>),
+                in particular that <m>r_p\divides m</m> and <m>r_p\divides n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Explain why <m>r_p\le\gcd(m,n)</m>.
+                Why does this force us to conclude that <m>r_p=\gcd(m,n)</m>?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose that <m>d\divides m</m> and <m>d\divides n</m>.
+          Prove that <m>d\divides\gcd(m,n)</m>.
+        </p>
+      </li>
+      <li xml:id="ex_gcd1">
+        <p>
+          Prove the following:
+          <me>
+            \gcd(m,n)=1\iff\exists x,y\in\Z\text{ such that } mx+ny=1
+          </me>.
+          <em>One direction can be done by applying B&#xe9;zout's Identity,
+          but the other direction requires an argument.</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>a,b,c \in \Z</m>.
+          <ol>
+            <li>
+              <p>
+                Suppose <m>a \mid bc</m> and <m>\gcd(a,b) = 1</m>.
+                Show <m>a \mid c</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use part (a) to show that if <m>p</m> is a prime and <m>p \mid ab</m>,
+                then either <m>p \mid a</m> or <m>p \mid b</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that if <m>n > 1</m> is a number with the property that for any <m>a,b</m>,
+                <m>n \mid ab</m> implies <m>n \mid a</m> or <m>n \mid b</m>,
+                then <m>n</m> is a prime number.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Show that if <m>a</m> is relatively prime to <m>b</m>,
+          and <m>a</m> is relatively prime to <m>c</m>,
+          then <m>a</m> is relatively prime to <m>bc</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          In this question we prove the <xref ref="thm_diophanine">Theorem</xref>
+          on integer solutions to linear equations.
+          Let <m>a,b,c\in\Z</m>.
+          Suppose that <m>(x_0,y_0)</m> and
+          <m>(x_1,y_1)</m> are two integer solutions to the linear Diophantine equation <m>ax+by=c</m>.
+          <ol>
+            <li>
+              <p>
+                Show that <m>(x_0-x_1,y_0-y_1)</m> satisfies the equation <m>ax+by=0</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>\gcd(a,b)=d</m>.
+                Prove that <m>\gcd(\frac ad,\frac bd)=1</m>. (<em>Use Question \thesubsection.
+                <xref ref="ex_gcd1"></xref>)</em>
+              </p>
+            </li>
+            <li>
+              <p>
+                Find all integer solutions <m>(x,y)</m> to <m>ax+by=0</m> (<em>Don't use the Theorem,
+                it's what you're trying to prove!
+                Think about part (b) and divide through by <m>d</m> first.</em>).
+              </p>
+            </li>
+            <li>
+              <p>
+                Use (a) and (b) to conclude that <m>(x,y)</m> is an integer solution to <m>ax+by=c</m> if and only if
+                <me>
+                  x=x_0+\frac bdt\qquad y=y_0-\frac adt,\qquad \text{ where } t\in\Z
+                </me>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Show that <m>\gcd(5n+2,12n+5)=1</m> for every integer <m>n</m>.
+          <em>There are two ways to approach this:
+          you can try to use the Euclidean algorithm abstractly,
+          or you can use the result of Exercise \thesubsection.
+          <xref ref="ex_gcd1"></xref>.</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          Use the Euclidean Algorithm to show that for any <m>k \in \N</m>,
+          we have <m>\gcd(ka,kb) = k \gcd(a,b)</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>n</m> be a positive integer.
+          Complete the table
+          <me>
+            \begin{array}{|l||c|c|c|c|c|c|} \hline n\amp 1\amp 2\amp 3\amp 4\amp 5\amp 6\\\hline \gcd(2n,n+1)\amp \amp \amp \amp \amp \amp \\\hline \end{array}
+          </me>
+          Now make a conjecture for the value of <m>\gcd(2n,n+1)</m> and prove it.
+        </p>
+      </li>
+      <li>
+        <p>
+          For nonzero integers <m>a</m> and <m>b</m>,
+          the <term>least common multiple</term>
+          <m>\lcm(a,b)</m> is defined to be the least positive integer <m>m</m> which is a multiple of both <m>a</m> and <m>b</m>.
+          <ol>
+            <li>
+              <p>
+                If <m>m = \lcm(a,b)</m>,
+                <m>a \mid c</m>, and <m>b \mid c</m>, show <m>m \mid c</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>a</m> and <m>b</m> are both positive,
+                show <m>\gcd(a,b) \lcm(a,b) = ab</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          The set of remainders <m>\Z_n=\{0,1,2,\ldots,n-1\}</m> is called a <em>ring</em>
+          when equipped with addition and multiplication modulo <m>n</m>.
+          For example <m>5+6\equiv 3\pmod{8}</m>.
+          We say that <m>b\in\Z_n</m> is an
+          <em>inverse</em> of <m>a\in\Z_n</m> if
+          <me>
+            ab\equiv 1\pmod n
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Show that 2 has no inverse modulo 6.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that if <m>n=n_1n_2</m> is composite (<m>\exists</m> integers
+                <m>n_1,n_2\ge 2</m>) then there exist elements of the ring <m>\Z_n</m> which have no inverses.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>a</m> has an inverse modulo <m>n</m> if and only if <m>\gcd(a,n)=1</m>.
+                Conclude that the only sets <m>\Z_n</m> for which all non-zero elements have inverses are those for which <m>n</m> is prime.
+                <em>You will find Exercise \thesubsection.
+                <xref ref="ex_gcd1"></xref> helpful.</em>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+    <p>
+      \graphicspath{{notes/5induction/}}
+    </p>
+  </subsection>
+</section>

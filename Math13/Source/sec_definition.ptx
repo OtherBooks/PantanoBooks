@@ -1,0 +1,287 @@
+<section xml:id="sec_definition">
+  <title>Definition</title>
+  <introduction>
+    <p>
+      Mathematicians spend a lot of time proving theorems <mdash/> stating truths and providing justification.
+      True statements about what?
+      Well <xref ref="thm_pythagorean">Theorem</xref>
+      seems to be a statement about right triangles.
+      What are those?
+      Whatever it is,
+      it had better satisfy the following <em>definition</em>,
+      a set of unambiguous and clear conditions.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          A right triangle is a triangle,
+          two of whose sides meet at a right angle.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      It seems like we've cheated a bit here.
+      This doesn't make any sense until we've also defined
+      <q>triangle</q>,
+      <q>right angle</q>, and
+      <q>side</q>
+      as well.
+      How deep does the rabbit hole go?
+      Well a triangle is a polygon with three sides and a right angle is exactly half of a straight angle.
+      Now it looks like we have to define
+      <q>polygon</q>
+      and
+      <q>straight angle.</q>
+      We can keep defining objects in terms of other ideas,
+      but at some point we have to stop and say
+      <q>you know what I mean.<fn>
+      The ancient Greek geometer Euclid left some pretty fundamental terms like
+      <q>point</q>
+      and
+      <q>line</q>
+      undefined by modern standards.
+      Instead of saying
+      <q>you know what I mean,</q>
+      a point was
+      <q>that which has no part</q>
+      and a line was
+      <q>a length without width.</q>
+      </fn></q>
+    </p>
+    <p>
+      In a way, definitions serve as the foundation upon which we construct buildings <mdash/> theorems in this analogy.
+      Let's walk through some other examples,
+      this time from number theory.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          An integer is even if it is divisible by two.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      For now we'll take
+      <q>the integers</q>
+      to be the set of positive and negative whole numbers and zero <m>\Z = \{\ldots, -2, -1, 0, 1, 2, \ldots \}</m>.
+      If we really wanted to,
+      we could come up with definitions for <m>0</m>, <m>1</m>,
+      and so on, but we'll take these for granted here.<fn>
+      The use of <m>\Z</m> for the set of integers comes from the German word for
+      <q>number</q>,
+      <q>zahlen</q>. The branch of math that would be concerned with defining the integers in terms of more primitive objects would be mathematical logic and set theory.
+      </fn> Assuming we know what
+      <q>integer</q>
+      and
+      <q>two</q>
+      are, it looks like we need to define
+      <q>divisible.</q>
+      This shouldn't give us too much trouble,
+      assuming that we know how to do basic arithmetic like addition and multiplication of integers.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          An integer <m>a</m> is divisible by the integer <m>b</m> if <m>a = bc</m> for some integer <m>c</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      So for example, <m>2</m> itself is even since <m>2 = 2\cdot 1</m>.
+      So is <m>-50 = 2\cdot (-25)</m>.
+    </p>
+    <p>
+      Only once we have our definitions straight can we start proving things.
+      For example, consider the following theorem:
+    </p>
+    <theorem xml:id="thm_even_sum">
+      <statement>
+        <p>
+          The sum of any two even integers is even.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      The proof of this theorem flows straight from the definition.
+    </p>
+    <proof>
+      <p>
+        Let <m>x</m> and <m>y</m> be <em>any</em> two even integers.
+        We want to show that <m>x+y</m> is an even integer.
+      </p>
+      <p>
+        By definition,
+        an integer is even if it can be written in the form <m>2k</m> for some integer <m>k</m>.
+        Thus there exist integers <m>n</m>,
+        <m>m</m> such that <m>x=2m</m> and <m>y=2n</m>.
+        We compute:
+        <me>
+          x+y = 2m+2n = 2(m+n).\tag{(\(\ast\))}
+        </me>
+      </p>
+      <p>
+        Because <m>m+n</m> is an integer,
+        this shows that <m>x+y</m> is an even integer.
+      </p>
+    </proof>
+    <p>
+      There are several important observations:
+      <ul>
+        <li>
+          <p>
+            <sq>Any</sq> in the statement of the theorem means the proof must work <em>regardless</em>
+            of what even integers you choose.
+            It is not good enough to simply select,
+            for example, 4 and 16, then write <m>4+16=20</m>.
+            This is an <em>example,</em> or test,
+            of the theorem, not a mathematical proof.
+          </p>
+        </li>
+        <li>
+          <p>
+            According to the definition,
+            <m>2m</m> and <m>2n</m> together represent
+            <em>all possible pairs</em> of even numbers.
+          </p>
+        </li>
+        <li>
+          <p>
+            The proof makes direct reference to the definition.
+            The vast majority of the proofs in this course are of this type.
+            If you know the definition of every word in the statement of a theorem,
+            you will often discover a proof simply by writing down the definitions.
+          </p>
+        </li>
+        <li>
+          <p>
+            The theorem itself did not mention any <em>variables.</em>
+            The proof required a calculation for which these were essential.
+            In this case the variables <m>m</m> and <m>n</m> come for free
+            <em>once you write the definition of evenness!</em>
+            A great mistake is to think that the proof is nothing more than the calculation
+            (<m>\ast</m>).
+            This is the easy bit,
+            and it means nothing without the surrounding sentences.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      The important link between theorems and definitions is much of what learning higher-level mathematics is about.
+      We prove theorems
+      (and solve homework problems)
+      because they make us use and understand the subtleties of definitions.
+      One does not <em>know</em> mathematics, one <em>does</em> it.
+      Mathematics is a <em>practice;</em>
+      an art as much as it is a science.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Consider the following definitions.
+          <definition>
+            <statement>
+              <p>
+                A function from a set <m>A</m> to a set <m>B</m> is called
+                <q>strictly increasing</q>
+                if for all <m>x_1 \lt x_2</m> in the domain <m>A</m>, <m>f(x_1)\lt f(x_2)</m>.
+              </p>
+            </statement>
+          </definition>
+          <definition>
+            <statement>
+              <p>
+                A function from a set <m>A</m> to a set <m>B</m> is called
+                <q>strictly decreasing</q>
+                if for all <m>x_1 \lt x_2</m> in the domain <m>A</m>, <m>f(x_1)>f(x_2)</m>.
+              </p>
+            </statement>
+          </definition>
+          Give an example of a function which is neither strictly increasing nor strictly decreasing.
+          Explain your answer.
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the following definition.
+          <definition>
+            <statement>
+              <p>
+                A sequence <m>\{a_n\}</m>
+                <q>goes to <m>\infty</m></q>
+                if for all number <m>M</m>,
+                there exist a natural number <m>N</m>,
+                such that <m>a_n > M</m> for all <m>n>N</m>.
+              </p>
+            </statement>
+          </definition>
+          Test your understanding of the definition by creating some examples and some non-examples.
+          Why do your non-examples fail the definition?
+        </p>
+      </li>
+      <li>
+        <p>
+          Let's say an integer to be
+          <q>nearly a square</q>
+          if it is of the form:
+          <me>
+            2=2\cdot 1,  6= 3\cdot 2,  12=4\cdot 3,  20=5\cdot 4,  30=6\cdot 5, 42=7\cdot 6,\dots
+          </me>
+          Give a (formal) definition for a "nearly a square" integer.
+        </p>
+      </li>
+      <li>
+        <p>
+          The following are <em>incorrect</em>
+          ways of writing the definition of an <term>odd integer</term>.
+          Explain why each fails to properly define an odd integer <m>n</m>.
+          An integer <m>n</m> is odd if
+          <ol marker="labelalph">
+            <li>
+              <p>
+                <m>n=2k+1</m> for every integer <m>k</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>n=2k+1</m> for some number <m>k</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                there is some integer <m>k</m> such that <m>k=2n+1</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the following definition.
+          <term>Definition</term>: Let <m>n, m</m> be integers.
+          We say <m>n</m> is
+          <q>divisible by <m>m</m></q>
+          if <m>n=mk</m> for some integer <m>k</m>.
+          Explore using some examples.
+          Then, for each of the following statements,
+          explain why the statement is true or false.
+          <ol marker="labelroman">
+            <li>
+              <p>
+                If the last digit of an integer is divisible by 4, then the integer is divisible by 4.
+              </p>
+            </li>
+            <li>
+              <p>
+                If the last digit of an integer is divisible by 2, then the integer is divisible by 2.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

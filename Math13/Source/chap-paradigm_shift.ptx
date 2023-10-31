@@ -1,0 +1,7 @@
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="chap-paradigm_shift">
+  <title>A Paradigm Shift</title>
+  <xi:include  href="sec_what_is_a_proof.ptx"/>
+  <xi:include  href="sec_definition.ptx"/>
+  <xi:include  href="sec_theorem_conjecture.ptx"/>
+  <xi:include  href="sec__planning_and_writing.ptx"/>
+</chapter>

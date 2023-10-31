@@ -1,0 +1,1208 @@
+<section xml:id="sec_more_proof_methods">
+  <title>More Methods of Proof</title>
+  <subsection>
+    <title>Definition-Pushing</title>
+    <p>
+      The next example concerns divisibility.
+      Before you can prove a theorem,
+      it is critical that you know the <em>meaning</em>
+      of all of the words in its statement.
+      We therefore state the definition of divisibility.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          Let <m>n</m> and <m>p</m> be integers.
+          We say that <m>n</m> is <term>divisible by</term> <m>p</m>
+          (or <m>p</m> <term>divides</term> <m>n</m>)
+          if <m>n = pk</m> for some integer <m>k</m>.
+          If <m>n</m> is divisible by <m>p</m>, we write <m>p \mid n</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      Now we can present a theorem.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          If <m>n\in\Z</m> is divisible by <m>p\in\N</m>,
+          then <m>n^2</m> is divisible by <m>p^2</m>.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        We prove directly.
+        Let <m>n</m> be divisible by <m>p</m>.
+        Then <m>n=pk</m> for some <m>k\in\Z</m>.
+        Then <m>n^2=p^2k^2</m>, and so <m>n^2</m> is divisible by <m>p^2</m>.
+      </p>
+    </proof>
+    <p>
+      This is an example of a <em>definition-pushing</em> proof.
+      If you simply state the the definition of everything important in the theorem,
+      the proof will often be staring you in the face.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Proof by Cases</title>
+    <p>
+      The next proof is also in the definition-pushing vein.
+      However, it requires that we consider several cases.
+      The relevant definition here is that of <em>remainder.</em>
+    </p>
+    <definition>
+      <statement>
+        <p>
+          An integer <m>n</m> is said to have remainder <m>r=0,1</m>,
+          or 2 upon division by 3 if we can write <m>n=3k+r</m> for some integer <m>k</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      With a little thought,
+      it should be clear that every integer is of the form <m>3k</m>,
+      <m>3k+1</m> or <m>3k+2</m>.
+      This is analogous to how all integers are either even (<m>2k</m>) or odd <m>(2k+1)</m>.
+      We will consider remainders more carefully in <xref ref="sec_gcd">Chapter</xref>.
+    </p>
+    <theorem xml:id="thm_sqmod3">
+      <statement>
+        <p>
+          If <m>n</m> is an integer,
+          then <m>n^2</m> has remainder 0 or 1 upon dividing by 3.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        We again prove directly.
+        There are three cases:
+        <m>n</m> has remainder 0, 1 or 2 upon dividing by 3.
+        <ol>
+          <li>
+            <title>(a)</title>
+            <p>
+              If <m>n</m> has remainder 0, then <m>n=3m</m> for some <m>m\in\Z</m> and so <m>n^2=9m^2=3(3m^2)</m> has remainder 0.
+            </p>
+          </li>
+          <li>
+            <title>(b)</title>
+            <p>
+              If <m>n</m> has remainder 1, then <m>n=3m+1</m> for some <m>m\in\Z</m> and so
+              <me>
+                n^2=9m^2+6m+1=3(3m^2+2m)+1\text{ has remainder 1. }
+              </me>
+            </p>
+          </li>
+          <li>
+            <title>(c)</title>
+            <p>
+              If <m>n</m> has remainder 2, then <m>n=3m+2</m> for some <m>m\in\Z</m> and so
+              <me>
+                n^2=9m^2+12m+4=3(3m^2+4m+1)+1\text{ has remainder 1. }
+              </me>
+            </p>
+          </li>
+        </ol>
+      </p>
+      <p>
+        Thus <m>n^2</m> has remainder 0 or 1.
+      </p>
+    </proof>
+  </subsection>
+  <subsection>
+    <title>Proving Universal Statements</title>
+    <p>
+      You have already seen many examples of proving universal statements in <xref ref="sec_proof">Section</xref>,
+      albeit where the universal quantifier was hidden.
+      For example,
+      <xref ref="thm__x_odd_if_3x_5_is_odd">Theorem</xref>
+      could be written explicitly with the universal quantifier:
+      <m>\forall x \in \Z</m>, if <m>x</m> is odd,
+      then <m>3x + 5</m> is odd.
+      Proving this version with the explicit universal quantifier would go much the same way as with the version with the hidden quantifier.
+    </p>
+    <p>
+      Sometimes theorems are not written explicitly in the form <m>\forall x \, (P(x) \implies Q(x))</m>.
+      Here is one example, called the
+      <em>Arithmetic Mean - Geometric Mean Inequality</em>,
+      or <em>AM-GM</em> for short.
+    </p>
+    <theorem xml:id="thm_amgm">
+      <statement>
+        <p>
+          For all positive real numbers <m>x</m> and <m>y</m>, we have
+          <me>
+            \frac{x+y}{2}\ge\sqrt{xy}
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      This theorem is written in the form
+      <m>\forall x, y > 0, \, P(x,y)</m> where <m>P(x,y)</m> is the statement <m>\frac{x + y}{2} \geq \sqrt{xy}</m>.
+      It may seem unclear how to approach proving such a theorem as our proof methods so far have mostly focused on proving
+      <em>conditional</em> statements.
+      So one way to start would be to rewrite this theorem as a conditional.
+      From <xref ref="sec_quant">Section</xref>,
+      we know that <m>\forall x,y > 0, \, P(x,y)</m> is equivalent to <m>\forall x,y \, ((x > 0 \land y > 0) \implies P(x,y))</m>.
+      So we are essentially proving:
+      <me>
+        \text{If \(x,y>0\), then \(\frac{x+y}{2}\ge\sqrt{xy}\).}
+      </me>
+    </p>
+    <p>
+      First we give a direct proof:
+      note how the implication signs are stacked to make the argument clearer.
+    </p>
+    <proof>
+      <p>
+        Clearly <m>(x-y)^2\ge 0</m> with equality if and only if <m>x=y</m>.
+        Now multiply out:
+        <md>
+          <mrow>x^2-2xy+y^2\ge 0\amp \iff (x^2+2xy+y^2)- 4xy  \ge 0</mrow>
+          <mrow>\amp \iff x^2+2xy+y^2\ge 4xy</mrow>
+          <mrow>\amp \iff (x+y)^2\ge 4xy</mrow>
+          <mrow>\amp \iff x+y\ge 2\sqrt{xy}\tag{($\ast$)}</mrow>
+          <mrow>\amp \iff \frac{x+y}{2}\ge \sqrt{xy}</mrow>
+        </md>.
+      </p>
+      <p>
+        The square-root in <m>(\ast)</m> is well-defined because <m>x+y</m> is positive,
+        which is true because we assumed <m>x</m> and <m>y</m> are positive.<fn>
+        Moreover, the inequality is preserved since the function
+        <m>f(t)=t^2</m> is <em>increasing</em>
+        when <m>t</m> is positive.
+        </fn>
+      </p>
+    </proof>
+    <p>
+      The following contradiction proof incorporates exactly the same calculation,
+      but is laid out in a different order.
+      This is not always possible, and you have to take great care when trying it.
+      You will likely agree that the direct proof is easier to follow.
+      Note that for contradiction we assume that
+      <me>
+        \neg \forall x,y > 0, \, \frac{x + y}{2} \geq \sqrt{xy}
+      </me>
+      is true.
+      Pushing the negation through,
+      our contradiction assumption becomes
+      <me>
+        \exists x,y > 0, \, \frac{x + y}{2} \lt  \sqrt{xy}
+      </me>.
+    </p>
+    <proof>
+      <p>
+        Suppose that <m>\frac{x+y}{2}\lt \sqrt{xy}</m> for some <m>x,y > 0</m>.
+        Since <m>x+y\ge 0</m>, this is true if and only if <m>(x+y)^2\lt 4xy</m>.
+        Now multiply out and rearrange:
+        <md>
+          <mrow>(x+y)^2\lt 4xy\amp \iff x^2+2xy+y^2\lt 4xy</mrow>
+          <mrow>\amp \iff x^2-2xy+y^2\lt 0</mrow>
+          <mrow>\amp \iff (x-y)^2\lt 0</mrow>
+        </md>.
+      </p>
+      <p>
+        Since squares of real numbers are non-negative, this is a contradiction.
+        Thus <m>\frac{x+y}{2}\ge \sqrt{xy}</m>.
+      </p>
+    </proof>
+  </subsection>
+  <subsection>
+    <title>Proving Existential Statements</title>
+    <p>
+      Now we look at proving existential statements of the form <m>\exists x \, P(x)</m>.
+      The most simple approach is to come up with some object <m>x_0</m> such that <m>P(x_0)</m> is true.
+      Such an <m>x_0</m> is called an <em>example</em>
+      or <em>witness</em> of <m>P(x)</m>.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          Let <m>m</m> and <m>n</m> be two fixed integers with <m>m \lt n</m>.
+          Then there exists a rational number <m>r</m> such that <m>m \lt r \lt n</m>.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        Let <m>r = \frac{m + n}{2}</m> be the arithmetic mean of <m>m</m> and <m>n</m>.
+        Then <m>r</m> is a rational number as it is of the form <m>p/q</m> for an integer <m>p</m> and nonzero integer <m>q</m>.
+        Since <m>m \lt n</m>, we have
+        <m>2m \lt m + n \lt 2n</m> and dividing by <m>2</m> yields <m>m \lt r \lt n</m>.
+      </p>
+    </proof>
+    <p>
+      This is an example of a <em>constructive</em>
+      proof as we explicitly construct the number which makes the proposition true.
+      Later we will we give an example of a
+      <em>non-constructive</em>
+      proof of an existential statement where we show that an example must exist,
+      even though we do not know what it is explicitly.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Disproving Universal Statements</title>
+    <p>
+      What does it take to show that some universal statement is false?
+      If a statement has the form <m>\forall x\, P(x)</m>,
+      then by <xref ref="thm_negquant">Theorem</xref>,
+      its negation is <m>\exists x\, \neg P(x)</m>.
+      In other words, <em>dis</em>proving the universal statement
+      <m>\forall x\, P(x)</m> is the same as <em>proving</em>
+      the existential statement <m>\exists x\, \neg P(x)</m>.
+      This amounts to providing a <em>counterexample</em>,
+      i.e., finding some <m>x_0</m> such that <m>P(x_0)</m> is false.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Disprove the following statement.
+          If all four sides of a quadrilateral have the same length,
+          then the quadrilateral must be a square.
+        </p>
+      </statement>
+    </example>
+    <proof>
+      <p>
+        All four sides of a square certainly have the same length,
+        but remember that all four angles in a square must be congruent as well.
+        Disproving this statement then amounts to finding some quadrilateral with four congruent sides,
+        but without four congruent angles.
+      </p>
+      <p>
+        We can easily construct such a figure in the following way.
+        Start with any non-right isosceles triangle <m>\triangle ABC</m> where the sides
+        <m>\overline{AB}</m> and <m>\overline{AC}</m> are congruent.
+        Now place an identical copy of <m>\triangle ABC</m>,
+        call it <m>\triangle A'B'C'</m>,
+        on top of <m>\triangle ABC</m> and reflect it through the side <m>\overline{BC}</m>.
+        We're left with the quadrilateral <m>ABA'C</m>.
+        The sides <m>\overline{AB}</m> and
+        <m>\overline{AC}</m> are congruent to each other since we started with an isosceles triangle,
+        and these are both congruent to <m>\overline{BA'}</m> and
+        <m>\overline{A'C}</m> since these were obtained by copying
+        <m>\overline{AB}</m> and <m>\overline{AC}</m>.
+        Finally, this figure is <em>not</em>
+        a square because angle <m>\angle BAC</m> not a right angle.
+        You might remember this figure as a <em>rhombus</em>.
+      </p>
+      <image>
+<latex-image>
+<![CDATA[\begin{tikzpicture}\draw[fill=red!50] (0, 0) to (4, 0) to (3.27660817716, 2.2943057454 ) to (0,0);
+\draw[fill=red!15] (4, 0) to (3.27660817716, 2.2943057454 ) to (7.27660817716, 2.2943057454 ) to (4,0);
+\node[] at (-0.2, -0.2) {\(A\)};
+\node[] at (3.27660817716, 2.4943057454) {\(B\)};
+\node[] at (4.2, -0.2) {\(C\)};
+\node[] at (7.47660817716, 2.4943057454) {\(A'\)};\end{tikzpicture}]]>
+</latex-image>
+      </image>
+      <p>
+        \captionof{figure}{Quadrilateral made of two congruent,
+        non-right, isosceles triangles. }
+      </p>
+    </proof>
+  </subsection>
+  <subsection>
+    <title>Disproving Existential Statements: Non-existence Proofs</title>
+    <p>
+      When a theorem claims that something does not exist,
+      it is generally a good idea to try a contrapositive or a contradiction proof.
+      This is since <sq>does not exist</sq> is already a
+      <em>negative</em> statement.
+      A contradiction or contrapositive proof of a theorem
+      <m>\timplies PQ</m> already involves the negated statement <m>\neg Q</m>.
+      If <m>Q</m> states that something does not exist,
+      then <m>\neg Q</m> states that it does,
+      which often gives you something to play with!
+      To see this in action, consider the following result.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          The equation <m>x^{17}+12x^3+13x+3=0</m> has no positive
+          (real number)
+          solutions.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      First we interpret the theorem as an implication:
+      throughout we assume that <m>x</m> is a real number.
+      <me>
+        \text{For all \(x\), if \(x^{17}+12x^3+13x+3=0\), then \(x\leq 0\).}
+      </me>
+    </p>
+    <p>
+      The theorem is now in the form <m>\forall x (\timplies{P(x)}{Q(x)})</m>, with:
+      <me>
+        P(x): x^{17}+12x^3+13x+3=0,\qquad\qquad\qquad Q(x): x\le 0
+      </me>.
+    </p>
+    <p>
+      The negation of <m>Q(x)</m> is simply <sq><m>x>0</m>.</sq> To prove the theorem by contradiction,
+      we assume <m>\exists x \, (P(x) \land \neg Q(x))</m>,
+      and deduce a contradiction.
+    </p>
+    <proof>
+      <p>
+        Assume that a real number <m>x</m> satisfies
+        <m>x^{17}+12x^3+13x+3=0</m>, and that <m>x>0</m>.
+        Because all terms on the left hand side are positive,
+        we have <m>x^{17}+12x^3+13x+3>0</m>.
+        A contradiction.
+      </p>
+    </proof>
+    <p>
+      Note how quickly the proof is written:
+      it assumes that any reader is familiar with the underlying logic of a contradiction proof without it needing to be spelled out.
+      The discussion we undertook before writing the proof would be considered scratch work:
+      you shouldn't include it a final write-up.
+    </p>
+    <p>
+      If you want to extend the above result,
+      and you can recall the Intermediate and Mean Value Theorems from Calculus,
+      you should be able to prove that there is exactly one
+      (necessarily negative!)
+      solution to the above polynomial equation.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Combining and Subdividing Theorems</title>
+    <p>
+      Sometimes it is useful to break a proof into pieces,
+      akin to viewing a computer program as a collection of subroutines that you combine for some greater purpose.
+      Usually the intention is to make the proof of a difficult result more readable,
+      but you may also wish to emphasize the importance of certain aspects of your work.
+      Mathematics does this by using <em>lemmas</em>
+      and <em>corollaries.</em>
+      <ul>
+        <li class="custom-list-style-type">
+          <p>
+            <em>Lemma:</em> a theorem whose importance you want to downplay.
+            Often the result is individually unimportant,
+            but becomes more useful when referenced in the proof of a larger theorem.
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            <em>Corollary:</em> a theorem which follows quickly from another result.
+            Corollaries can be used to draw attention to a particular aspect or a special case of a theorem.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      In many mathematical papers the word <em>theorem</em>
+      is reserved only for the most important results,
+      everything else being presented as a lemma or corollary.
+      The choice of what to call a result is entirely one of presentation.
+      If you want your paper to be more readable,
+      or to highlight what you think is important,
+      then lemmas and corollaries are your friends![2]
+    </p>
+    <p>
+      Here is a famous example of a lemma at work.
+    </p>
+    <lemma xml:id="lemm_root2prep">
+      <statement>
+        <p>
+          Suppose that <m>n\in\Z</m>.
+          Then <m>n^2</m> is even <m>\iff n</m> is even.
+        </p>
+      </statement>
+    </lemma>
+    <p>
+      Prove this yourself:
+      the (<m>\Rightarrow</m>) direction is easiest using the contrapositive method,
+      while the (<m>\Leftarrow</m>) direction works well directly.
+    </p>
+    <theorem xml:id="thm_root2">
+      <statement>
+        <p>
+          <m>\sqrt 2</m> is irrational.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      This is tricky for a few reasons.
+      The theorem does not appear to be of the form <m>\timplies P{Q,}</m>,
+      nor does it seem to be any of the forms covered in this section.
+      However, let us look a little closer at what is being claimed.
+      Remember <em>irrational</em> simply means <em>not rational</em>,
+      i.e., not of the form <m>m,n</m> for <m>m \in \Z</m> and <m>n \in \N</m>.
+      Thus saying that <m>\sqrt{2}</m> is irrational is equivalent to saying that there are no
+      <m>m,n \in \N</m> such that <m>\sqrt{2} = \frac{m}{n}</m>.
+      Phrased like this,
+      we can see that the theorem statement is really a non-existence statement,
+      and so it makes sense to try a proof by contradiction.
+    </p>
+    <proof>
+      <ul>
+        <li class="custom-list-style-type">
+          <p>
+            Suppose that <m>\sqrt 2=\frac mn</m> for some <m>m,n\in\N</m>.
+            Without loss of generality,
+            we may assume that <m>m,n</m> have no common factors.
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            Then <m>m^2=2n^2</m> which says that <m>m^2</m> is even.
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            By <xref ref="lemm_root2prep">Lemma</xref>
+            we have that <m>m</m> is even.
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            Thus <m>m=2k</m> for some <m>k\in\Z</m>.
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            But now, <m>n^2=2k^2</m>, from which
+            (<xref ref="lemm_root2prep">Lemma</xref> again)
+            we see that <m>n</m> is even.
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            Now <m>m</m> and <m>n</m> have a common factor of 2.
+            This is a contradiction.\qedhere
+          </p>
+        </li>
+      </ul>
+    </proof>
+    <p>
+      First observe how <xref ref="lemm_root2prep">Lemma</xref>
+      was used to make the proof easier to read.
+      Without the lemma,
+      the essential shape of the proof would have been less clear.
+    </p>
+    <p>
+      Now try to make sense of the proof.
+      In the first line we invoke the definition of <em>rational,</em>
+      being the <em>ratio</em> of two integers.
+      The main challenge comes immediately afterwards.
+      Once we assume that <m>\sqrt 2=\frac mn</m>,
+      we can immediately insist that <m>m,n</m> have no common factors.
+      Indeed this is no significant restriction
+      <em>once we assume that <m>m,n</m> exist,</em> that is
+      <em>once we assume that <m>\sqrt 2</m> is rational.</em>
+      It is important to realize that the <sq>no common factors</sq> assumption is <em>not</em>
+      the assumption being contradicted.
+      Because of this subtlety,
+      we include the phrase <sq>without loss of generality</sq> so that the reader is forced to think carefully,
+      and does not jump to the wrong conclusion.
+    </p>
+    <p>
+      It might seem difficult to completely understand,
+      but if we hadn't made the observation,
+      our calculation could have continued forever, telling us nothing!
+      <me>
+        m^2=2n^2\implies n^2=2k^2\implies k^2=2l^2\implies\cdots
+      </me>
+    </p>
+    <p>
+      If you find this approach difficult,
+      you may prefer an alternative proof given in the exercises.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Non-constructive Proofs</title>
+    <p>
+      We saw earlier that we usually prove an existential statement by coming up with an explicit object and showing that it has the desired properties.
+      Here is an example that shows that this can be a bit subtle.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          There are irrational numbers <m>a</m> and <m>b</m> such that <m>a^b</m> is a rational number.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        By <xref ref="thm_root2">Theorem</xref>,
+        we know that <m>\sqrt{2}</m> is irrational.
+        Consider the number <m>(\sqrt{2})^{\sqrt 2}</m>.
+        There are two possibilities.
+        If <m>(\sqrt{2})^{\sqrt 2}</m> is rational,
+        then we can take <m>a = b = \sqrt 2</m> in the theorem statement and we're done.
+        On the other hand,
+        if <m>(\sqrt{2})^{\sqrt 2}</m> is irrational, then we have
+        <me>
+          \left(\sqrt{2}^{\sqrt 2}\right)^{\sqrt 2} = (\sqrt 2)^{\sqrt 2\cdot \sqrt 2} = (\sqrt 2)^2 = 2
+        </me>.
+      </p>
+      <p>
+        In this case, we can take <m>a = (\sqrt 2)^{\sqrt 2}</m> and
+        <m>b = \sqrt 2</m> in the theorem statement.
+        In both cases we have found irrational numbers <m>a</m> and <m>b</m> where <m>a^b</m> is rational.
+      </p>
+    </proof>
+    <p>
+      The critical, and perhaps unsatisfying,
+      part of this proof is that we have <em>not</em>
+      said whether or not <m>(\sqrt 2)^{\sqrt 2}</m> is rational.
+      We then say that this proof is <em>non-constructive</em>
+      since it does not actually contain explicit
+      (and unconditional)
+      irrational <m>a</m> and <m>b</m> with <m>a^b</m> rational.
+      Instead, we have shown that the theorem is true <em>whether or not</em>
+      <m>(\sqrt 2)^{\sqrt 2}</m> is rational.
+    </p>
+  </subsection>
+  <subsection>
+    <title>Prime Numbers</title>
+    <p>
+      Here is another famous result,
+      dating back at least to the Ancient Greeks (Euclid's
+      <em>Elements</em>, Proposition IX.20).
+      As ever, we need a solid definition before we try to prove anything.
+    </p>
+    <definition xml:id="defn_irreducible">
+      <statement>
+        <p>
+          An integer <m>\ge 2</m> is <em>prime</em>
+          if the only positive integers it is divisible by are itself and 1.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The first few primes are <m>2,3,5,7,11,13,17,19,\ldots</m> It follows<fn>
+      This is not completely obvious:
+      we will prove it much later in <xref ref="thm_fundarith">Theorem</xref>.
+      </fn> from the definition that all positive integers <m>\ge 2</m> are either primes or <em>composites</em>
+      (products of primes).
+      In particular,
+      every integer <m>\ge 2</m> is divisible by at least one prime.
+      We may now state Euclid's result.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          There are infinitely many prime numbers.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        We prove by contradiction.
+        Assume there are exactly <m>n</m> prime numbers
+        <m>\lst p n</m> and consider the integer
+        <me>
+          \Pi:=p_1\cdots p_n+1
+        </me>.
+      </p>
+      <p>
+        Certainly <m>\Pi</m> is divisible by some prime:
+        since we are assuming that the list <m>\lst pn</m> contains
+        <em>all</em> the primes,
+        <m>\Pi</m> must be divisible by some prime <m>p_i</m> in the list.
+        However, the product <m>p_1\cdots p_n</m> is clearly divisible by <m>p_i</m>,
+        whence so is the difference<fn>
+        Is this obvious?
+        Can you prove it?!
+        </fn>
+        <me>
+          \Pi-p_1\cdots p_n=1
+        </me>.
+      </p>
+      <p>
+        We conclude that 1 is divisible by the prime <m>p_i</m>,
+        contradicting<fn>
+        Euclid's original argument was not strictly by contradiction.
+        Instead he asserted that, given any list of primes <m>p_1,\ldots,p_n</m>,
+        the number <m>\Pi</m> must be divisible by a new prime not in his list.
+        </fn> the fact that <m>p_i\ge 2</m>.
+      </p>
+    </proof>
+  </subsection>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol>
+      <li>
+        <p>
+          When proving a non-existence statement,
+          i.e., proving that something <em>does not</em> exist,
+          proof by contradiction is often useful because \rule{5cm}{0.15mm}.
+          <ol>
+            <li>
+              <p>
+                contradiction is more powerful than a direct proof.
+              </p>
+            </li>
+            <li>
+              <p>
+                direct and contrapositive proofs are too complicated.
+              </p>
+            </li>
+            <li>
+              <p>
+                it allows one to assume such an object exists,
+                hence giving an object that can be manipulated.
+              </p>
+            </li>
+            <li>
+              <p>
+                it allows one to assume such an object does not exist,
+                which is exactly what the problem is asking for.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: When proving a universal statement like <m>\forall x\, P(x)</m>,
+          it suffices to give an explicit example of an <m>x</m> for which <m>P(x)</m> holds.
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: When proving an existential statement like <m>\exists x\, P(x)</m>,
+          it suffices to give an explicit example of an <m>x</m> for which <m>P(x)</m> holds.
+        </p>
+      </li>
+      <li>
+        <p>
+          In the proof that <m>\sqrt{2}</m> is irrational,
+          we started by assuming that
+          <m>\sqrt{2} = \frac{m}{n}</m> for integers <m>m</m> and <m>n</m>
+          <em>with no common factors</em>.
+          Why is this justified?
+          <ol>
+            <li>
+              <p>
+                Because no pair of two integers ever has a common factor.
+              </p>
+            </li>
+            <li>
+              <p>
+                Because any rational number <m>\frac{m}{n}</m> can be seen,
+                by canceling the common factors of <m>m</m> and <m>n</m>,
+                to be equal to a rational <m>\frac{m'}{n'}</m> where <m>m'</m> and <m>n'</m> have no common factors.
+              </p>
+            </li>
+            <li>
+              <p>
+                It is not justified, we have lost generality by making this assumption.
+              </p>
+            </li>
+            <li>
+              <p>
+                Because <m>\sqrt{2}</m> is irrational.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Prove or disprove the following conjectures:\prelistskip
+          <ol>
+            <li>
+              <p>
+                The sum of any 3 consecutive integers is divisible by 3.
+              </p>
+            </li>
+            <li>
+              <p>
+                The sum of any 4 consecutive integers is divisible by 4.
+              </p>
+            </li>
+            <li>
+              <p>
+                The product of any 3 consecutive integers is divisible by 6.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <url href="https://youtu.be/R5zpsZoR16w">Video Solution</url>
+      </li>
+      <li>
+        <p>
+          Critique the following proof.
+          If the proof adequately demonstrates why the statement is true,
+          explain why.
+          Otherwise, identify any errors and explain how to correct them.
+          <theorem>
+            <statement>
+              <p>
+                If <m>x</m> is a positive real number,
+                then <m>x > 1</m> if and only if <m>1/x \lt 1</m>.
+              </p>
+            </statement>
+          </theorem>
+          <proof>
+            <p>
+              Suppose <m>1/x \lt 1</m>.
+              Since <m>x</m> is positive,
+              multiplying both sides of this inequality by <m>x</m> does not reverse the inequality and we obtain <m>1 \lt x</m>.
+            </p>
+          </proof>
+          <url href="https://youtu.be/R_W3wwJRlmQ">Video Solution</url>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Prove or disprove the following conjectures.\prelistskip
+          <ol>
+            <li>
+              <p>
+                There is an even integer which can be expressed as the sum of three even integers.
+              </p>
+            </li>
+            <li>
+              <p>
+                Every even integer can be expressed as the sum of three even integers.
+              </p>
+            </li>
+            <li>
+              <p>
+                There is an odd integer which can be expressed as the sum of two odd integers.
+              </p>
+            </li>
+            <li>
+              <p>
+                Every odd integer can be expressed as the sum of three odd integers.
+              </p>
+            </li>
+            <li class="custom-list-style-type">
+              <p>
+                <em>To get a feel about whether a claim is true or false,
+                try out some examples.
+                If you believe a claim is false,
+                provide a specific counterexample.
+                If you believe a claim is true, give a formal proof.</em>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>P</m> be the proposition:
+          <sq>Every positive integer is divisible by thirteen.</sq>\prelistskip
+          <ol>
+            <li>
+              <p>
+                Write <m>P</m> using quantifiers.
+              </p>
+            </li>
+            <li>
+              <p>
+                What is the negation of <m>P</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Is <m>P</m> true or false?
+                Prove your assertion.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Prove or disprove: There exist integers <m>m</m> and <m>n</m> such that <m>2m-3n=15</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove or disprove: There exist integers <m>m</m> and <m>n</m> such that <m>6m-3n=11</m>.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Prove or disprove: There exist a line <m>L</m> in <m>\R^2</m> such that,
+          for all points <m>A, B \in \R^2</m>,
+          we have <m>A, B</m> lie on <m>L</m>.
+        </p>
+      </li>
+      <li xml:id="ex_rationalsdenseinthemselves">
+        <p>
+          Prove that between any two distinct rational numbers there exists another rational number.
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the statement: For any non-zero rational number <m>r</m> and any irrational number <m>t</m>,
+          <m>rt</m> is irrational.
+          <ol>
+            <li>
+              <p>
+                Translate this statement into logic using quantifiers and propositional functions.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove the statement.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>p</m> be an odd integer.
+          Prove that <m>x^2-x-p=0</m> has no
+          <em>integer</em> solutions.
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove: For every positive integer <m>n</m>,
+          <m>n^2+n+3</m> is an odd integer greater than or equal to 5.
+          <em>There are two claims here:
+          <m>n^2+n+3</m> is odd, and <m>n^2+n+3\ge 5</m>.</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          In this question,
+          you should use the following definition of the rational numbers.
+          <definition>
+            <statement>
+              <p>
+                A real number <m>x</m> is <em>rational</em>
+                if it may be written in the form
+                <m>x=\frac pq</m> where <m>p</m> is an integer and <m>q</m> is a positive integer.
+                <m>x</m> is <em>irrational</em> if it is not rational.
+              </p>
+            </statement>
+          </definition>
+          Prove or disprove the following conjectures.
+          <conjecture>
+            <title>1</title>
+            <statement>
+              <p>
+                If <m>x</m> and <m>y</m> are real numbers such that <m>3x+5y</m> is irrational,
+                then at least one of <m>x</m> and <m>y</m> is irrational.
+              </p>
+            </statement>
+          </conjecture>
+          <conjecture>
+            <title>2</title>
+            <statement>
+              <p>
+                If <m>x</m> and <m>y</m> are rational numbers,
+                then <m>3x+4xy+2y</m> is rational.
+              </p>
+            </statement>
+          </conjecture>
+          <conjecture>
+            <title>3</title>
+            <statement>
+              <p>
+                If <m>x</m> and <m>y</m> are irrational numbers,
+                then <m>3x+4xy+2y</m> is irrational.
+              </p>
+            </statement>
+          </conjecture>
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>(Snake-like integers)</em> Let's say that an integer <m>y</m> is <em>Snake-like</em>
+          if and only if there is some integer <m>k</m> such that <m>y=(6k)^2+9</m>.
+          <ol>
+            <li>
+              <p>
+                Give three examples and three non-examples of Snake-like integers.
+              </p>
+            </li>
+            <li>
+              <p>
+                Given <m>y\in\Z</m>, compute the negation of the statement,
+                <sq><m>y</m> is Snake-like.</sq>
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that every Snake-like integer is a multiple of <m>9</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that the statements, <sq><m>n</m> is Snake-like,</sq> and,
+                <sq><m>n</m> is a multiple of nine,</sq> are not equivalent.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that it is never the case that
+          <m>x^2 = 2y^2</m> for integers <m>x</m> and <m>y</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Here is an alternative argument that <m>\sqrt 2</m> is irrational.
+          Suppose that <m>\sqrt 2=\frac mn</m> where <m>m,n\in\N</m>.
+          This time we don't assume that <m>m,n</m> have no common factors.
+          <ol>
+            <li>
+              <p>
+                <m>m,n</m> satisfy the equation <m>m^2=2n^2</m>.
+                Prove that there exist positive integers <m>m_1,n_1</m> which satisfy the following three conditions:
+                <me>
+                  m_1^2=2n_1^2,\qquad\qquad m_1\lt m,\qquad\qquad n_1\lt n
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that there exist two sequences of decreasing positive integers
+                <m>m>m_1>m_2>\cdots</m> and <m>n>n_1>n_2>\cdots</m> which satisfy
+                <m>m_i^2=2n_i^2</m> for all <m>i\in\N</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Is it possible to have an infinite sequence of decreasing
+                <em>positive</em> integers?
+                Why not?
+                Show that we obtain a contradiction and thus conclude that <m>\sqrt 2\not\in\Q</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        This is an example of the <em>method of infinite descent,</em>
+        which is very important in number theory.
+      </li>
+      <li>
+        <p>
+          The real numbers have the <em>Archimedean property</em>,
+          that is, for any positive real numbers <m>x</m> and <m>y</m>,
+          there exists a positive integer <m>n</m> such that <m>nx > y</m>.
+          Use this fact to show that there do not exist any positive real numbers which are less than <m>1/n</m> for all positive integers <m>n</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the following proof of the fact that every real number is less than some positive integer:
+          <proof>
+            <p>
+              Consider a real number <m>x</m>.
+              For example, <m>x = 19.7</m>.
+              Then <m>x \lt 20</m> and <m>20</m> is a positive integer.
+            </p>
+          </proof>
+          What is wrong with this proof?
+          Give a correct proof.
+          <hint>
+            <p>
+              use the previous exercise.
+            </p>
+          </hint>
+        </p>
+      </li>
+      <li>
+        <p>
+          Here is an extension of <xref ref="ex_rationalsdenseinthemselves">question</xref>.
+          Let <m>\lceil x\rceil</m>, the <em>ceiling</em> of <m>x</m>,
+          denote the smallest integer greater than or equal to <m>x</m>.
+          E.g.<nbsp/><m>\lceil 3.2\rceil=4</m>,
+          <m>\lceil 7\rceil=7</m> and <m>\lceil -8.4\rceil=-8</m>.
+          <ol>
+            <li>
+              <p>
+                Suppose that <m>x</m> and <m>y</m> are real numbers with <m>x\lt y</m>.
+                Use the ceiling function to show that there exists a positive integer <m>n</m> for which <m>n(y-x)>1</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove or disprove: <m>\forall x,y\in\R</m> with <m>x\lt y</m>,
+                <m>\exists m,n\in\Z</m> for which <m>nx\lt m\lt ny</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use parts (a) and (b) to prove that between any two real numbers there exists a rational number.
+              </p>
+            </li>
+            <li>
+              <p>
+                (Hard) Is it true that between any two real numbers there exists an
+                <em>irrational</em> number?
+                If so, prove it.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose that <m>x,y,z</m> are real numbers such that <m>x + y + z = 1</m>.
+          Prove
+          <me>
+            (1 - x)(1 - y)(1 - z) \geq 8 xyz
+          </me>.
+          <hint>
+            <p>
+              find a way to apply the AM-GM inequality.
+            </p>
+          </hint>
+        </p>
+      </li>
+      <li>
+        <p>
+          You are given the following facts.
+          <ol>
+            <li>
+              <p>
+                All polynomials are continuous.
+              </p>
+            </li>
+            <li>
+              <p>
+                (Intermediate Value Theorem) If <m>f</m> is continuous on <m>[a,b]</m> and <m>L</m> lies between <m>f(a)</m> and <m>f(b)</m>,
+                then <m>f(x)=L</m> for some <m>x\in(a,b)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>f'(x)>0</m> on an interval,
+                then <m>f</m> is an increasing function.
+              </p>
+            </li>
+          </ol>
+        </p>
+        Use these facts to give a formal proof that <m>x^{17}+12x^3+13x+3=0</m> has
+        <em>exactly one solution</em> <m>x</m>,
+        and that <m>x</m> lies in the interval <m>(-1,0)</m>.
+      </li>
+      <li>
+        <p>
+          (Hard) This question uses <xref ref="defn_cont">Definition</xref>.
+          <ol>
+            <li>
+              <p>
+                Prove, directly from the definition,
+                that <m>f(x)=x^2</m> is continuous at <m>x=0</m>.
+                <em>If you are given <m>\epsilon>0</m>,
+                what should <m>\delta</m> be?</em>
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>g(x)=\begin{cases}1+x\amp \text{ if } x\ge 0,\\ x\amp \text{ if } x\lt 0, \end{cases}</m><nbsp/><nbsp/> is discontinuous at <m>x=0</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                (Very hard) Let <m>h(x)=\begin{cases}x\amp \text{ if \(x\) is rational, } \\ 0\amp \text{ if \(x\) is irrational. } \end{cases}</m><nbsp/><nbsp/> Prove that <m>f</m> is continuous
+                <em>only</em> at <m>x=0</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          (Hard) In this question we prove Rolle's Theorem from calculus:
+          <blockquote>
+            Suppose <m>f</m> is continuous on <m>[a,b]</m>, differentiable on <m>(a,b)</m>, and <m>f(a)=f(b)=0</m>, then <m>\exists c\in(a,b)</m> such that <m>f'(c)=0</m>.
+          </blockquote>
+          As you work through the question,
+          think about where the hypotheses are used and why we need them.
+          <ol>
+            <li>
+              <p>
+                Recall the Extreme Value Theorem.
+                The function <m>f</m> is continuous on <m>[a,b]</m>,
+                so <m>f</m> is bounded and attains its bounds.
+                Otherwise said,
+                <me>
+                  \exists m,M\in[a,b]\text{ such that }  \forall x\in[a,b]\text{ we have } f(m)\le f(x)\le f(M)
+                </me>.
+                Suppose that <m>f(m)=f(M)</m>.
+                Why is the conclusion of Rolle's Theorem obvious in this case?
+              </p>
+            </li>
+            <li>
+              <p>
+                Now suppose that <m>f(m)\neq f(M)</m>.
+                Argue that <em>at least one</em>
+                of the following cases holds:
+                <me>
+                  f(M)>0\text{ or }  f(m)\lt 0
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Without loss of generality, we may assume that <m>f(M)>0</m>.
+                By considering the function <m>-f</m>, explain why.
+              </p>
+            </li>
+            <li>
+              <p>
+                Assume <m>f(M)>0</m>.
+                Then <m>M\neq a</m> and <m>M\neq b</m>.
+                Consider the difference quotient,
+                <me>
+                  \frac{f(M+h)-f(M)}h
+                </me>.
+                Show that if <m>0\lt \nm h\lt \min\{M-a,b-M\}</m> then the difference quotient is well-defined
+                (exists and makes sense).
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>0\lt h\lt b-M</m>.
+                Show that
+                <me>
+                  \frac{f(M+h)-f(M)}h\le 0
+                </me>.
+                How do we know that <m>L^+:={\displaystyle\lim_{h\to 0^+}}\frac{f(M+h)-f(M)}h</m> exists?
+                What can you conclude about <m>L^+</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Repeat part (d) for <m>L^-:={\displaystyle\lim_{h\to 0^-}}\frac{f(M+h)-f(M)}h</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Conclude that <m>L^+=L^-=0</m>.
+                Why have we completed the proof?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+    <p>
+      \graphicspath{{notes/4sets/}}
+    </p>
+  </subsection>
+</section>

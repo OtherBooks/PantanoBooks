@@ -1,0 +1,309 @@
+<section xml:id="sec_recursive_process">
+  <title>Investigating Recursive Processes</title>
+  <introduction>
+    <p>
+      In applications of mathematics,
+      one often has a simple recurrence relation but no general formula.
+      For instance,
+      a process might be described by an expression of the form
+      <me>
+        x_{n+1}=f(x_n)
+      </me>,
+      where some initial value <m>x_1</m> is given.
+      While investigating such recurrences,
+      you might hypothesize a <em>general formula</em>
+      <me>
+        x_n=g(n)
+      </me>.
+    </p>
+    <p>
+      Induction is a method of proof that allows us to <em>prove</em>
+      the correctness of such general formulæ. Here is a simple example of the process.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Stacking Paper</title>
+    <p>
+      Consider the operation whereby you take a stack of paper,
+      cut all sheets in half, then stack both halves together.
+      <image width="70%" source="induction-02-paper"/> If a single sheet of paper has thickness <m>0.1</m><nbsp/>mm,
+      how many times would you have to repeat the process until the stack of paper reached to the sun?
+      (<m>\approx 150</m> million kilometers).
+    </p>
+    <p>
+      The example is describing a recurrence relation.
+      If <m>h_n</m> is the height of the stack after <m>n</m> operations,
+      then we have a sequence <m>(h_n)_{n=0}^\infty</m> satisfying
+      <me>
+        \begin{cases}h_{n+1}=2h_n\\ h_0=0.1\,\text{ mm. } \end{cases}
+      </me>
+    </p>
+    <p>
+      It is easy to compute the first few terms of the sequence:
+      <me>
+        \begin{array}{c|cccccccccc} n\amp 0\amp 1\amp 2\amp 3\amp 4\amp 5\amp 6\amp 7\amp 8\amp \cdots\\\hline h_n\text{ (mm) } \amp 0.1\amp 0.2\amp 0.4\amp 0.8\amp 1.6\amp 3.2\amp 6.4\amp 12.8\amp 25.6\amp \cdots \end{array}
+      </me>
+    </p>
+    <p>
+      It is not hard to hypothesize that,
+      after <m>n</m> such operations,
+      the stack of paper will have height
+      <me>
+        h_n=2^n\times 0.1\text{ mm. }
+      </me>
+    </p>
+    <p>
+      All we have done is to spot a pattern.
+      We can reassure ourselves by checking that the first few terms of the sequence satisfy the formula:
+      certainly <m>h_0=2^0\times 0.1</m><nbsp/>mm and <m>h_1=2^1\times 0.1</m><nbsp/>mm, etc.
+      Unfortunately the sequence has <em>infinitely many</em> terms,
+      so we need a trick which confirms
+      <em>all of them at once.</em> Unless we can <em>prove</em>
+      that our formula is correct <em>for all</em>
+      <m>n\in\N_0</m> it will remain just a guess.
+      This is where induction steps in.
+    </p>
+    <p>
+      The trick is called the <em>induction step</em>.
+      We <em>assume</em> that we have already confirmed the formula for some fixed,
+      but unspecified, value of <m>n</m> and then use what we know
+      (the recurrence relation <m>h_{n+1}=2h_n</m>)
+      to confirm the formula for the <em>next value <m>n+1</m>.</em> Here it goes:
+    </p>
+    <p>
+      {<em>Induction Step</em>}Suppose that <m>h_n=2^n\times 0.1</m> mm,
+      for some fixed <m>n\in\N_0</m>.
+      Then
+      <me>
+        h_{n+1}=2h_n=2(2^n\times 0.1)=2^{n+1}\times 0.1\ \text{ mm. }
+      </me>
+    </p>
+    <p>
+      This is exactly the expression we hoped to find for the (<m>n+1</m>)th term of the sequence.
+      Think about what the induction step is doing.
+      By leaving <m>n</m> unspecified,
+      we have proved an <em>infinite collection of implications at once!</em>
+      Each implication has the form
+      <me>
+        h_n=2^n\times 0.1\implies h_{n+1}=2^{n+1}\times 0.1
+      </me>.
+    </p>
+    <p>
+      Since the implications have been proved for all <m>n\in\N_0</m>,
+      we can string them together:
+      <me>
+        h_0=2^0\times 0.1\implies h_{1}=2^{1}\times 0.1\implies h_{2}=2^{2}\times 0.1\implies h_{3}=2^{3}\times 0.1\implies \cdots
+      </me>
+    </p>
+    <p>
+      We have already checked that the first formula
+      <m>h_0=2^0\times 0.1</m> in the implication chain is true.
+      By the induction step,
+      the <em>entire infinite collection of formulæ must be true.</em>
+      We have therefore <em>proved</em> that
+      <me>
+        h_n=2^n\times 0.1\text{ mm\,\(=2^n\times 10^{-4}\)\,m,}  \forall n\ge 0
+      </me>.
+    </p>
+    <p>
+      Now that we've proved the formula for every <m>h_n</m>,
+      finishing the original problem is easy:
+      we need to find <m>n\in\N_0</m> such that
+      <me>
+        h_n=2^n\times 10^{-4}\ge 150\times 10^9\,\mathrm{m}\iff 2^n\ge 15\times 10^{14}
+      </me>.
+    </p>
+    <p>
+      Since logorithms are increasing functions,
+      they preserve inequalities and we may easily solve to see that
+      <me>
+        n\ge\log_2(15\times 10^{14})=\log_215+14\log_210\approx 50.4
+      </me>.
+    </p>
+    <p>
+      Thus 51 iterations of the cut-and-stack process are sufficient for the pile of paper to reach the sun!
+    </p>
+    <p>
+      We will formalize the discussion of induction in the next section so that you will never have to write as much as we've just done.
+      However, it is important to remember how induction fits into a practical investigation.
+      It is the missing piece of logic that turns a <em>guess</em>
+      into a justified formula.
+      Before we do so,
+      here is a famous and slightly more complicated problem.
+    </p>
+  </subsection>
+  <subsection>
+    <title>The Tower of Hanoi</title>
+    <p>
+      The <em>Tower of Hanoi</em> is a game involving circular disks of decreasing radii stacked on three pegs.
+      A <sq>move</sq> consists of transferring the top disk in any stack onto a larger disk or an empty peg.
+      If we start with <m>n</m> disks on the first peg,
+      how many moves are required to transfer all the disks to one of the other pegs?
+    </p>
+    <p>
+      The challenge here is that we have no formula to play with,
+      only the variable <m>n</m> for the number of disks.
+      The first thing to do is to play the game.
+      If the variable <m>r_n</m> represents the number of moves required when there are <m>n</m> disks,
+      then it should be immediately clear that <m>r_1=1</m>:
+      one disk only requires one move!
+      The picture below shows that <m>r_2=3</m>.
+      <image width="73%" source="induction-03-hanoi2"/>
+    </p>
+    <p>
+      With more disks you can keep experimenting and find that <m>r_3=7</m>, etc.
+      At this point you may be ready to hypothesize a general formula.
+    </p>
+    <conjecture xml:id="conj_hanoi">
+      <statement>
+        <p>
+          The Tower of Hanoi with <m>n</m> disks requires <m>r_n=2^n-1</m> moves.
+        </p>
+      </statement>
+    </conjecture>
+    <p>
+      Certainly the conjecture is true for <m>n=1</m>, 2 and 3.
+      To see that it is true in general,
+      we need to think about how to move a stack of <m>n+1</m> disks.
+      Since the largest disk can only be moved onto an empty peg,
+      it follows that the <m>n</m> smaller disks must already be stacked on a single peg <em>before</em>
+      the (<m>n+1</m>)th disk can move.
+      From the starting position this requires <m>r_n</m> moves.
+    </p>
+    <p>
+      <image width="90%" source="induction-04-hanoirn"/>
+    </p>
+    <p>
+      The largest disk can now be moved to the final peg,
+      before the original <m>n</m> disks are moved on top of it.
+      In total this requires <m>r_n+1+r_n</m> moves,
+      as illustrated in the picture.
+      We therefore have a recurrence relation for <m>r_n</m>:
+      <me>
+        \begin{cases}r_{n+1}=2r_n+1\\ r_1=1. \end{cases}
+      </me>
+    </p>
+    <p>
+      We are now in a position to prove our conjecture.
+      We know that the conjecture is true for <m>n=1</m> and we assume that the formula
+      <m>r_n=2^n-1</m> is true for some fixed but unspecified <m>n</m>.
+      Now we use the recurrence relation to prove that <m>r_{n+1}=2^{n+1}-1</m>.
+    </p>
+    <p>
+      {<em>Induction Step</em>}Suppose that
+      <m>r_n=2^n-1</m> for some fixed <m>n\in\N</m>.
+      Then
+      <md>
+        <mrow>r_{n+1}\amp =2r_n+1=2(2^n-1)+1\tag{(since we are \emph{assuming} $r_n=2^n-1$)}</mrow>
+        <mrow>\amp =2^{n+1}-2+1=2^{n+1}-1</mrow>
+      </md>
+    </p>
+    <p>
+      Exactly as in the paper-stacking example,
+      we have simultaneously proved an
+      <em>infinite collection of implications</em>:
+      <me>
+        r_1=2^1-1\implies r_2=2^2-1\implies r_3=2^3-1\implies r_4=2^4-1\implies \cdots
+      </me>
+    </p>
+    <p>
+      Since the first of these statements is true,
+      it follows that <em>all of the others are true.</em>
+      Hence <xref ref="conj_hanoi">Conjecture</xref>
+      is true, and becomes a theorem.
+    </p>
+    <p>
+      As an illustration of how ridiculously time-consuming the Tower becomes,
+      the following table gives the time taken to complete the Tower if you were able to move one disk per second.
+    </p>
+    <sidebyside>
+      <tabular>
+        <row>
+          <cell>Disks</cell>
+          <cell>Time</cell>
+        </row>
+        <row>
+          <cell>5</cell>
+          <cell>31sec</cell>
+        </row>
+        <row>
+          <cell>10</cell>
+          <cell>17min 3sec</cell>
+        </row>
+        <row>
+          <cell>15</cell>
+          <cell>9hr 6min 7sec</cell>
+        </row>
+        <row>
+          <cell>20</cell>
+          <cell>12days 3hrs 16min 15sec</cell>
+        </row>
+        <row>
+          <cell>25</cell>
+          <cell><m>\sim</m> 1yr 23days</cell>
+        </row>
+        <row>
+          <cell>30</cell>
+          <cell><m>\sim</m> 34yrs 9days</cell>
+        </row>
+      </tabular>
+      \animategraphics[width=\textwidth]{2}{induction-01-hanoi}{0}{31}
+      Animation of five disks (click)
+    </sidebyside>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          A room contains <m>n</m> people.
+          Everybody wants to shake everyone else's hand
+          (but not their own).
+          <ol>
+            <li>
+              <p>
+                Suppose that <m>n</m> people require <m>h_n</m> handshakes.
+                If an <m>(n+1)</m>th person enters the room,
+                how many <em>additional</em> handshakes are required?
+                Obtain a recurrence relation for <m>h_{n+1}</m> in terms of <m>h_n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Hypothesize a general formula for <m>h_n</m>,
+                and prove it using the method in this section.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Skippy the Kangaroo is playing jump rope,
+          but he tires as the day goes on.
+          The heights <m>h_n</m> (inches) of successive jumps are related by the recurrence
+          <me>
+            h_{n+1}=\frac 8{9} h_n+1
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Suppose that Skippy's initial jump has height <m>h_1=100</m>in.
+                Show that Skippy fails to jump above 10in for the first time on the 40th jump.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find the <em>total</em> height jumped by Skippy in the first <m>n</m> jumps.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <em>You may find it useful to define
+        <m>H_n=h_n-9</m> and think about the recurrence for <m>H_n</m>.
+        Now guess and prove a general formula for <m>H_n</m>.
+        Finally, remind yourself about geometric series.</em>)
+      </li>
+    </ol>
+  </subsection>
+</section>

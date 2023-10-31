@@ -1,0 +1,926 @@
+<section xml:id="sec_union_intersection_complement">
+  <title>Unions, Intersections, and Complements</title>
+  <introduction>
+    <p>
+      In this section we construct new sets from old,
+      modeled precisely on the logical concepts of <em>and,
+      or,</em> and <em>not.</em> For the duration of this section,
+      suppose that <m>\cU</m> is some <em>universal set,</em>
+      of which every set mentioned subsequently is a subset.<fn>
+      This is necessary so that the definitions to come made using set-builder notation really define sets.
+      </fn>
+    </p>
+    <sidebyside>
+      First we consider the set construction modeled on <em>not.</em>
+      <definition>
+        <statement>
+          <p>
+            Let <m>A\subseteq\cU</m> be a set.
+            The <term>complement</term> of <m>A</m> is the set
+            <me>
+              \comp A=\{x\in\cU:x\notin A\}
+            </me>.
+          </p>
+          <p>
+            This can also be written <m>\cU\setminus A,\ \cU-A,\ A'</m>,
+            or <m>\cl A</m>.
+          </p>
+          <p>
+            The Venn diagram is drawn on the right:
+            <m>A</m> is represented by a circular region,
+            while the rectangle represents the universal set <m>\cU</m>.
+            The complement <m>\comp A</m> is the blue shaded region.
+          </p>
+          <p>
+            If <m>B\subseteq\cU</m> is some other set,
+            then the <term>complement of <m>A</m> relative <m>B</m></term> is
+            <me>
+              B\setminus A=\{x\in B:x\notin A\}
+            </me>.
+          </p>
+          <p>
+            The set <m>B\setminus A</m> is also called
+            <term><m>B</m> minus <m>A</m>.</term> For its Venn diagram,
+            we represent <m>A</m> and <m>B</m> as overlapping circular regions.
+            The complement <m>B\setminus A</m> is the green shaded region.
+          </p>
+          <p>
+            Note that <m>\comp A=\cU\setminus A</m>,
+            so that the two definitions correspond.
+          </p>
+        </statement>
+      </definition>
+      <image width="73%" source="sets-05-venncomp"/>
+      <m>\comp A</m>: everything not in <m>A</m>
+      <image width="73%" source="sets-06-vennrelcomp"/>
+      <m>B\setminus A</m>: everything in <m>B</m> but not in <m>A</m>
+    </sidebyside>
+    <example>
+      <statement>
+        <p>
+          Let <m>\cU=\{1,2,3,4,5\}</m>,
+          <m>A=\{1,2,3\}</m>, and <m>B=\{2,3,4\}</m>.
+          Then
+          <me>
+            \comp A=\{4,5\},\qquad \comp B=\{1,5\},\qquad B\setminus A=\{4\},\qquad A\setminus B=\{1\}
+          </me>.
+        </p>
+      </statement>
+    </example>
+    <sidebyside>
+      Now we construct sets based on <em>or</em> and <em>and.</em>
+      <definition xml:id="defn_unionint">
+        <statement>
+          <p>
+            The <term>union</term> of <m>A</m> and <m>B</m> is the set
+            <me>
+              A\cup B=\{x\in\cU:x\in A\text{ or } x\in B\}
+            </me>.
+          </p>
+          <p>
+            The <term>intersection</term> of <m>A</m> and <m>B</m> is the set
+            <me>
+              A\cap B=\{x\in\cU:x\in A\text{ and } x\in B\}
+            </me>.
+          </p>
+          <p>
+            We say that <m>A</m> and <m>B</m> are <term>disjoint</term>
+            if <m>A\cap B=\emptyset</m>.
+          </p>
+        </statement>
+      </definition>
+      <image width="73%" source="sets-04-vennunion"/>
+    </sidebyside>
+    <p>
+      In the Venn diagram,
+      the sets <m>A</m> and <m>B</m> are again depicted as overlapping circles.
+      Although it doesn't constitute a proof,
+      the diagram makes it clear that
+      <me>
+        A=(A\setminus B)\cup (A\cap B)\text{ and }  B=(B\setminus A)\cup(A\cap B)
+      </me>.
+    </p>
+    <p>
+      <sq>Or</sq> is used in the logical sense:
+      <m>A\cup B</m> is the collection of all elements that lie in <m>A</m>,
+      in <m>B</m>,
+      or in both.
+      Now observe the notational pattern:
+      <m>\cup</m> looks very similar to the logic symbol <m>\vee</m> from <xref ref="sec_logic">Chapter</xref>.
+      The symbols <m>\cap</m> and <m>\wedge</m> are also similar.
+      This should help you remember which symbol to use when!
+    </p>
+    <example>
+      <statement>
+        <p>
+          \item Let <m>\cU=\{</m>fish, dog, cat, hamster<m>\}</m>,
+          <m>A=\{</m>fish, cat<m>\}</m>,
+          and <m>B=\{</m>dog, cat<m>\}</m>.
+          Then,
+          <me>
+            A\cup B=\{\text{ fish, dog, cat } \},\qquad A\cap B=\{\text{ cat } \}
+          </me>.
+        </p>
+        <p>
+          \item Using interval notation,
+          let <m>\cU=[-4,5]</m>, <m>A=[-3,2]</m>, and <m>B=[-4,1)</m>.
+          Then
+          <me>
+            \comp A=[-4,-3)\cup (2,5],\qquad \comp B=[1,5],\qquad B\setminus A=[-4,-3),\qquad A\setminus B=[1,2]
+          </me>.
+        </p>
+        <p>
+          <image width="70%" source="sets-13-intervalex"/> \item Let <m>A=(-\infty,3)</m> and
+          <m>B=[-2,\infty)</m> in interval notation.
+          Then <m>A\cup B=\R</m> and <m>A\cap B=[-2,3)</m>.
+        </p>
+      </statement>
+    </example>
+    <p>
+      We didn't mention the universal set in the final example,
+      though it seems reasonable to assume that <m>\cU=\R</m>.
+      In practice <m>\mathcal U</m> is rarely made explicit,
+      and is often assumed to be the smallest suitable uncomplicated set.
+      When dealing with sets of real numbers this typically means <m>\cU=\R</m>.
+      In other situations <m>\cU=\Z</m> or
+      <m>\cU=\{0,1,2,3,\ldots,n-1\}</m> might be more appropriate.
+    </p>
+    <p>
+      The next theorem comprises the basic rules of set algebra.
+    </p>
+    <theorem xml:id="thm_setbasic">
+      <statement>
+        <p>
+          Let <m>A,B,C</m> be sets.
+          Then:
+          <ol>
+            <li>
+              <p>
+                <m>\emptyset\cup A=A</m> and <m>\emptyset\cap A=\emptyset</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A\cap B\subseteq A\subseteq A\cup B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A\cup B=B\cup A</m> and <m>A\cap B=B\cap A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A\cup (B\cup C)=(A\cup B)\cup C</m> and <m>A\cap (B\cap C)=(A\cap B)\cap C</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A\cup A=A\cap A=A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A\subseteq B\implies A\cup C\subseteq B\cup C</m> and <m>A\cap C\subseteq B\cap C</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      You should be able to prove each of these properties directly from <xref ref="defn_subset">Definitions</xref>
+      and <xref ref="defn_unionint"></xref>.
+      Don't memorize the proofs: with a little practice working with sets,
+      each of these results should feel completely obvious.
+      It is more important that you are able to <em>vizualize</em>
+      the laws using Venn diagrams.
+      A Venn diagram does not constitute a formal proof,
+      though it is extremely helpful for clarification.
+      Here we prove only second result:
+      think about how the Venn diagram in <xref ref="defn_unionint">Definition</xref> illustrates the result.
+      Some of the other proofs are in the Exercises.
+    </p>
+    <proof>
+      <p>
+        There are two results here:
+        <m>A\cap B\subseteq A</m> and <m>A\subseteq A\cup B</m>.
+        We show each separately, along with some of our reasoning.
+        <ul>
+          <li class="custom-list-style-type">
+            <p>
+              Suppose that <m>x\in A\cap B</m>.(Must show <m>x\in A\cap B\Rightarrow x\in A</m>)
+            </p>
+          </li>
+          <li class="custom-list-style-type">
+            <p>
+              Then <m>x\in A</m> and <m>x\in B</m>.(Definition of intersection)
+            </p>
+          </li>
+          <li class="custom-list-style-type">
+            <p>
+              But then <m>x\in A</m>, whence
+              <m>A\cap B\subseteq A</m>(Definition of subset)
+            </p>
+          </li>
+          <li class="custom-list-style-type">
+            <p>
+              Now let <m>y\in A</m>.(Must show <m>y\in A\Rightarrow y\in A\cup B</m>)
+            </p>
+          </li>
+          <li class="custom-list-style-type">
+            <p>
+              Then <sq><m>y\in A</m> or <m>y\in B</m></sq> is true,
+              from which we conclude that <m>y\in A\cup B</m>.
+            </p>
+          </li>
+          <li class="custom-list-style-type">
+            <p>
+              Thus <m>A\subseteq A\cup B</m>.\qedhere
+            </p>
+          </li>
+        </ul>
+      </p>
+    </proof>
+    <p>
+      The following theorem describes how complements interact with other set operations.
+    </p>
+    <sidebyside>
+      <theorem xml:id="thm_setcomp">
+        <statement>
+          <p>
+            Let <m>A,B</m> be sets.
+            Then:
+            <ol>
+              <li>
+                <p>
+                  <m>\comp{(A\cap B)}=\comp A\cup \comp B</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>\comp{(A\cup B)}=\comp A\cap \comp B</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>\comp{(\comp A)}=A</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>A\setminus B=A\cap\comp B</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>A\subseteq B\iff \comp B\subseteq \comp A</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </theorem>
+      <image width="73%" source="sets-08-venndemorgan"/>
+      <m>\comp{(A\cap B)}=\comp A\cup \comp B</m>
+    </sidebyside>
+    <p>
+      Again: don't memorize these laws!
+      Draw Venn diagrams to help with visualization.
+    </p>
+    <proof>
+      <p>
+        We start by trying to show that the left hand side is a subset of the right hand side.
+        <md>
+          <mrow>x\in\comp{(A\cap B)}\amp \implies x\notin A\cap B</mrow>
+          <mrow>\amp \implies x\text{ is not a member of \emph{both} \(A\) and \(B\)}</mrow>
+          <mrow>\amp \implies x\text{ is not in \emph{at least one} of \(A\) and \(B\)}</mrow>
+          <mrow>\amp \implies x\notin A\text{ or } x\notin B</mrow>
+          <mrow>\amp \implies x\in\comp A\text{ or } x\in\comp B</mrow>
+          <mrow>\amp \implies x\in\comp A\cup\comp B</mrow>
+        </md>
+      </p>
+      <p>
+        With a little thinking, we realize that all of the
+        <m>\Longrightarrow</m> arrows may be replaced with if and only if arrows
+        <m>\Longleftrightarrow</m> without compromising the argument.
+        We've therefore shown that the sets <m>\comp{(A\cap B)}</m> and
+        <m>\comp A\cup \comp B</m> have the same elements, and are thus equal.
+      </p>
+    </proof>
+    <p>
+      We were lucky with our proof.
+      Showing that both sides are subsets of each other would have been tedious,
+      but we found a quicker proof by carefully laying out one direction.
+      This happens more often than you might expect.
+      Just be careful:
+      you can't always make conditional connectives biconditional.
+    </p>
+    <p>
+      Parts 1.<nbsp/>and 2. of the theorem are known as
+      <em>De Morgan's laws</em>,
+      just as the equivalent statements in logic:
+      <xref ref="thm_demorgan">Theorem</xref>.
+      Indeed, we could rephrase our proof in that language.
+    </p>
+    <proof>
+      <md>
+        <mrow>x\in\comp{(A\cap B)}\amp \iff \neg[x\in A\cap B]</mrow>
+        <mrow>\amp \iff \neg[x\in A\ \text{ and } \  x\in B]</mrow>
+        <mrow>\amp \iff \neg[x\in A]\ \text{ or } \ \neg[x\in B]\tag{(De Morgan's first law)}</mrow>
+        <mrow>\amp \iff x\in\comp A\ \text{ or } \ x\in\comp B</mrow>
+        <mrow>\amp \iff x\in\comp A\cup\comp B</mrow>
+      </md>
+    </proof>
+    <p>
+      Finally, we have two results which describe the interaction of unions and intersections.
+    </p>
+    <sidebyside>
+      <theorem xml:id="thm_setdist">
+        <title>Distributive laws</title>
+        <statement>
+          <p>
+            For any sets <m>A,B,C</m>:
+            <ol>
+              <li>
+                <p>
+                  <m>A\cap(B\cup C)=(A\cap B)\cup(A\cap C)</m>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <m>A\cup(B\cap C)=(A\cup B)\cap(A\cup C)</m>
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </theorem>
+      We prove only the second result. The method is the standard approach: show that each side is a subset of the other. We do both directions this time, though with a little work and the cost of some clarity, you might be able to slim down the proof. The Venn diagram on the right illustrates the second result: simply add the colored regions.
+      <image width="73%" source="sets-07-venndist"/>
+    </sidebyside>
+    <proof>
+      <ul>
+        <li>
+          <title>(<m>\subseteq</m>)</title>
+          <p>
+            Let <m>x\in A\cup (B\cap C)</m>.
+            Then <m>x\in A</m> or <m>x\in B\cap C</m>.
+            There are two cases:
+            <ul>
+              <li>
+                <title>(a)</title>
+                <p>
+                  If <m>x\in A</m>, then <m>x\in A\cup B</m> and
+                  <m>x\in A\cup C</m> by <xref ref="thm_setbasic">Theorem</xref>, part 2.
+                </p>
+              </li>
+              <li>
+                <title>(b)</title>
+                <p>
+                  If <m>x\in B\cap C</m>, then <m>x\in B</m> and <m>x\in C</m>.
+                  It follows that <m>x\in A\cup B</m> and <m>x\in A\cup C</m>,
+                  again by <xref ref="thm_setbasic">Theorem</xref>.
+                </p>
+              </li>
+            </ul>
+          </p>
+          In both cases <m>x\in (A\cup B)\cap(A\cup C)</m>.
+        </li>
+        <li>
+          <title>(<m>\supseteq</m>)</title>
+          <p>
+            Let <m>y\in (A\cup B)\cap(A\cup C)</m>.
+            Then <m>y\in A\cup B</m> and <m>y\in A\cup C</m>.
+            There are again two cases:
+            <ul>
+              <li>
+                <title>(a)</title>
+                <p>
+                  If <m>y\in A</m>, then we are done,
+                  for then <m>y\in A\cup (B\cap C)</m>.
+                </p>
+              </li>
+              <li>
+                <title>(b)</title>
+                <p>
+                  If <m>y\notin A</m>, then <m>y\in B</m> and <m>y\in C</m>.
+                  Hence <m>y\in B\cap C</m>.
+                  In particular <m>y\in A\cup (B\cap C)</m>.
+                </p>
+              </li>
+            </ul>
+          </p>
+          In both cases <m>y\in A\cup (B\cap C)</m>.\qedhere
+        </li>
+      </ul>
+    </proof>
+  </introduction>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>\cU = \Z</m>, <m>A = 2\Z</m>, <m>B = \{1,3,5\}</m>.
+          Which of the following statements are true?
+          <ol>
+            <li>
+              <p>
+                <m>B \subseteq \comp{A}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A</m> and <m>B</m> are not disjoint.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \cup B = \Z</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\Z \setminus B</m> is finite.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\comp{A} = 2\Z + 1</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False: if <m>A</m> and <m>B</m> are sets,
+          then <m>B \subseteq A \cup B</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          For sets <m>A</m> and <m>B</m>,
+          the result that <m>\comp{(A \cup B)} = \comp{A} \cap \comp{B}</m> is most similar to which of the following laws of logic?
+          <ol>
+            <li>
+              <p>
+                Law of double negation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Law of absorption.
+              </p>
+            </li>
+            <li>
+              <p>
+                De Morgan's laws.
+              </p>
+            </li>
+            <li>
+              <p>
+                Law of associativity.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          For sets <m>A</m> and <m>B</m>,
+          which of the following are true?
+          <ol>
+            <li>
+              <p>
+                <m>A \cap B \subseteq A \setminus B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>B = (A \cap B) \cup (B \setminus A)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \cup B = (A \setminus B) \cup (A \cap B) \cup (B \setminus A)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \setminus B = B \setminus A</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>a,b,c,d \in \R</m>.
+          Show
+          <me>
+            (a,b) \cap (c,d) = (\max\{a,c\}, \min\{b,d\})
+          </me>
+          where we take the convention that
+          <m>(\alpha, \beta) = \emptyset</m> if <m>\beta \lt  \alpha</m>.
+          <url href="https://youtu.be/zBbGQv8ghsY">Video Solution</url>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\cU</m> be a universal set and <m>A</m> and <m>B</m> sets.
+          Prove that <m>\comp{(A \setminus B)} = \comp{A} \cup B</m>.
+          <url href="https://youtu.be/kZ6nheFBrM8">Video Solution</url>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> be a set.
+          Prove that if <m>A \cup B \subseteq B</m> for every set <m>B</m>,
+          then <m>A = \emptyset</m>.
+          <url href="https://youtu.be/CfzvERcv4xc">Video Solution</url>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Describe each of the following sets in as simple a manner as you can: e.g.,
+          <me>
+            \{x\in\R:(x^2>4\text{ and }  x^3\lt 27)\text{ or }  x^2=15\}=(-\infty,-2)\cup (2,3)\cup\{\sqrt{15}\}
+          </me>.
+          <ol>
+            <li>
+              <p>
+                <m>\{x\in\R:x^2\neq x\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{x\in\R:x^3-2x^2-3x\le 0\text{ or } x^2=4\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{x^2\in\R:x \neq 1\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\{z\in\Z:z^2\text{ is even and \(z^3\) is odd } \}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Let <m>A</m> and <m>B</m> be sets.
+              Use logical connectives to rewrite the following propositions
+              <ol>
+                <li>
+                  <p>
+                    <m>x \in A\cap B</m>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <m>x \in A\cup B</m>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <m>x \in A\setminus B`</m>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <m>x \in (A\cup B)\setminus (A\cap B)</m>
+                  </p>
+                </li>
+              </ol>
+            </p>
+            in terms of the statements
+            <m>P \colon `x \in A'</m> and <m>Q \colon `x \in B'</m>.
+          </li>
+          <li>
+            <p>
+              For <m>A=\{1,3,5,7,9,11\}</m> and <m>B=\{1,4,7,10,13\}</m>,
+              compute the following sets:
+              <ol>
+                <li>
+                  <p>
+                    <m>A\cap B</m>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <m>A\cup B</m>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <m>A\setminus B</m>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <m>(A\cup B)\setminus (A\cap B)</m>.
+                  </p>
+                </li>
+              </ol>
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Let <m>A\subseteq\R</m>, and let <m>x\in\R</m>.
+          We say that the point <m>x</m> is <em>far away</em>
+          from the set <m>A</m> if and only if:
+          <me>
+            \exists d>0\colon\text{ No element of \(A\) belongs to the set \([x-d,x]\) }
+          </me>.
+          Equivalently, <m>A\cap[x-d,x]=\emptyset</m>.
+          If this does not happen,
+          we say that <m>x</m> is <em>close to</em> <m>A</m>.
+          <ol>
+            <li>
+              <p>
+                Draw a picture of a set <m>A</m> and an element <m>x</m> such that is
+                <em>far away</em> from <m>A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Draw a picture of a set <m>A</m> and an element <m>x</m> such that <m>x</m> is
+                <em>close</em> to <m>A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Compute the definition of
+                <q><m>x</m> is close to <m>A</m></q>. [So negate
+                <q><m>x</m> is far away from <m>A</m></q>.]
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>A=\{1,2,3\}</m>.
+                Show that <m>x=4</m> is <em>far away</em>
+                from <m>A</m>, by using definitions.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>A=\{1,2,3\}</m>.
+                Show that <m>x=1</m> is <em>close</em>
+                to <m>A</m>, by using definitions.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that if <m>x\in A</m>, then <m>x</m> is
+                <em>close</em> to <m>A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>A</m> be the open interval <m>(a,b)</m>.
+                Is the end-point <m>a</m> <em>far away</em> from <m>A</m>?
+                What about the end-point <m>b</m>?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider <xref ref="thm_setbasic">Theorems</xref>
+          and <xref ref="thm_setdist"></xref>.
+          In all seven results,
+          replace the symbols in the first row of the following table with those in the second.
+          Which of the results seem familar?
+          Which are false?
+          <me>
+            \begin{array}{c|c|c|c|c} \emptyset\amp A,B,C\text{ sets } \amp \cup\amp \cap\amp \subseteq\\\hline 0\amp A,B,C\in\N_0\amp +\amp \cdot\amp \le \end{array}
+          </me>
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove that <m>B\setminus A=B\iff A\cap B=\emptyset</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Practice your proof skills by giving formal proofs of the following results from <xref ref="thm_setbasic">Theorems</xref>
+          and <xref ref="thm_setcomp"></xref>.
+          With practice you should be able to prove <em>all</em>
+          of parts of these theorems
+          (and of <xref ref="thm_setdist">Theorem</xref>)
+          these <em>without</em> looking at the arguments in the notes!
+          <ol>
+            <li>
+              <p>
+                <m>\emptyset\cap A=\emptyset</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A\cap (B\cap C)=(A\cap B)\cap C</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\comp{(\comp A)}=A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A\subseteq B\iff \comp B\subseteq \comp A</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Write out a formal proof of the set identity
+          <me>
+            A=(A\setminus B)\cup (A\cap B)
+          </me>
+          by showing that each side is a subset of the other.
+          Now repeat your argument using only results from set algebra
+          (<xref ref="thm_setcomp">Theorems</xref>
+          and <xref ref="thm_setdist"></xref>).
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\cU</m> be a universal set and <m>A</m> and <m>B</m> be sets.
+          Prove the following:
+          <ol>
+            <li>
+              <p>
+                <m>A \cap B = A \setminus (A \setminus B)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \cup (A \cap B) = A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A \setminus B = \comp{B} \setminus \comp{A}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Let <m>A</m> be a set.
+              Prove <m>A</m> is empty if and only if there exists a set <m>B</m> such that <m>A \subseteq B \setminus A</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>A</m>, <m>B</m> and <m>C</m> be sets.
+              Prove or disprove: if <m>A \cap C \subseteq A \cap B</m>,
+              then <m>C \subseteq A \cup B</m>.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> and <m>B</m> be sets.
+          <ol>
+            <li>
+              <p>
+                Let <m>A</m> and <m>B</m> be sets.
+                Show that <m>A \cup B</m> is the smallest set containing both <m>A</m> and <m>B</m>,
+                in the sense that if <m>A \subseteq C</m> and <m>B \subseteq C</m>,
+                then <m>A \cup B \subseteq C</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that <m>A \cap B</m> is the largest set contained in both <m>A</m> and <m>B</m>,
+                in the sense that if <m>C \subseteq A</m> and <m>C \subseteq B</m>,
+                then <m>C \subseteq A \cap B</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\cU</m> be a universal set and <m>A</m> and <m>B</m> be sets.
+          Define the <em>symmetric difference</em>
+          of <m>A</m> and <m>B</m> to be the set
+          <me>
+            A \Delta B = (A \cup B) \setminus (A \cap B)
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Draw a Venn diagram of <m>A</m> and <m>B</m> and shade in the part of the diagram that comprises <m>A \Delta B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove <m>A \Delta B = (A \setminus B) \cup (B \setminus A)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Say we wish to write <m>A \Delta B</m> in set-builder notation as
+                <me>
+                  A \Delta B = \{x \in \cU : (x \in A) \oplus (x \in B)\}
+                </me>.
+                Construct the truth table for <m>\oplus</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> and <m>B</m> be finite sets.
+          Find necessary and sufficient conditions on <m>A</m> and <m>B</m> such that <m>|A \cap B| = |A|</m>.
+          In other words, fill in the blank in the following statement
+          <me>
+            |A \cap B| = |A| \text{ if and only if }  \rule{4cm}{0.15mm}
+          </me>.
+          Prove this statement is true.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> and <m>B</m> be finite sets.
+          <ol>
+            <li>
+              <p>
+                Find and example of <m>A</m> and <m>B</m> for which <m>|A \cup B| \neq |A| + |B|</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find an example of <m>A</m> and <m>B</m> for which <m>|A\cup B| = |A| + |B|</m>.
+                What do you notice about <m>A \cap B</m> in this example?
+              </p>
+            </li>
+            <li>
+              <p>
+                The <em>inclusion-exclusion principle</em>
+                says that, in general, we have
+                <me>
+                  |A \cup B| = |A| + |B| - |A \cap B|
+                </me>.
+                Looking at a Venn diagram, why does this make sense?
+              </p>
+            </li>
+            <li>
+              <p>
+                Consider a calculus class with <m>100</m> students.
+                Suppose that <m>85</m> of the students are either math majors or engineering majors,
+                <m>78</m> are only majoring in engineering,
+                and <m>3</m> are double majoring in both math and engineering.
+                How many math majors are in the class?
+              </p>
+            </li>
+            <li>
+              <p>
+                Formulate a similar expression for the cardinality of the union of three sets <m>A \cup B \cup C</m>
+                (you do not have to prove your assertion is correct).
+              </p>
+            </li>
+            <li>
+              <p>
+                Using your answer to the previous part,
+                find the number of integers between <m>1</m> and <m>100</m> which are not divisible by <m>2</m>,
+                <m>5</m>,
+                or <m>7</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

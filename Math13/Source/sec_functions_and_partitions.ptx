@@ -1,0 +1,599 @@
+<section xml:id="sec_functions_and_partitions">
+  <title>Functions and Partitions</title>
+  <introduction>
+    <p>
+      To complete our discussion of partitions and equivalence relations,
+      we consider how to define a function whose domain is a set of equivalence classes.
+      We take congruence as our motivating example.
+    </p>
+    <p>
+      Suppose we want to define a function <m>f:\Z_4\to\Z_6</m>.
+      Say <m>f(x)=3x\pmod 6</m>.
+      This certainly looks like a function, but is it?
+      Remember that <sq><m>x</m></sq> and <sq><m>3x</m></sq> are really equivalence classes,
+      so we should say<fn>
+      The notation <m>[x]_4</m> is helpful for reminding us which equivalence relation is being applied.
+      When dealing with functions between different quotient sets,
+      it is easy to become confused.
+      </fn>
+      <me>
+        f\bigl([x]_4\bigr)=[3x]_6,\qquad\text{ where }  [x]_4\in\Z_4\text{ and }  [3x]_6\in\Z_6
+      </me>.
+    </p>
+    <p>
+      Is <em>this</em> a function?
+      To make sure, we need to check that <em>any</em>
+      representative <m>a\in[x]_4</m> gives the same result.
+      That is, we need to prove that
+      <me>
+        a\equiv b\tpmod 4\implies 3a\equiv 3b\tpmod 6
+      </me>.
+    </p>
+    <p>
+      This is not so hard:
+      <md>
+        <mrow>a\equiv b\tpmod 4\amp \implies \exists n\in\Z\text{ such that } a=b+4n</mrow>
+        <mrow>\amp \implies 3a=3b+12n\implies 3a\equiv 3b\tpmod 6</mrow>
+      </md>.
+    </p>
+    <p>
+      It might appear to be a minor difference,
+      but attempting to define <m>g:\Z_4\to\Z_6</m> by <m>g(x)=2x\pmod 6</m> does
+      <em>not</em> result in a function.
+      If it were, then we should have
+      <me>
+        a\equiv b\tpmod 4\implies 2a\equiv 2b\tpmod 6
+      </me>.
+    </p>
+    <p>
+      But this is simply not true:
+      for example <m>4\equiv 0\pmod 4</m>,
+      but <m>8\not\equiv 0\pmod 6</m>.
+      It might look like <m>g</m> is a function,
+      but it is not well-defined because <m>[4]=[0]</m> in <m>\Z_4</m> and <m>g\bigl([4]\bigr)\neq g\bigl([0]\bigr)</m> in <m>\Z_6</m>.
+    </p>
+    <p>
+      Just as in <xref ref="defn_well">Definition</xref>,
+      the process of verifying that a rule really is a function is called checking
+      <em>well-definition.</em> In general,
+      if we are defining a function
+      <me>
+        f:\quotient X\sim\to A
+      </me>
+      whose domain is a quotient set,
+      then it is usually necessary to construct <m>f</m> by saying what happens to a <em>representative</em>
+      <m>x</m> of an equivalence class <m>[x]</m>:
+      <me>
+        f\bigl([x]\bigr)=\text{ `do something to \(x\)'. } \tag{(\(\ast\))}
+      </me>
+    </p>
+    <p>
+      We need to make sure that the <sq>something</sq> is
+      <em>independent of the choice of element</em> <m>x</m>.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          Suppose that <m>f:\quotient X\sim\to A</m> is a rule of the form
+          (<m>\ast</m>).
+          We say that <m>f</m> is a <term>well-defined</term> function if
+          <me>
+            [x]=[y]\implies f\bigl([x]\bigr)=f\bigl([y]\bigr)
+          </me>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      If you think carefully,
+      this is nothing more than condition 2.<nbsp/>of <xref ref="defn_func">Definition</xref>.
+    </p>
+    <example>
+      <statement>
+        <p>
+          \item Show that <m>f:\Z_n\to\Z_n</m> defined by <m>f([x])=[x^2+4]</m> is well-defined.
+        </p>
+        <p>
+          We must check that <m>x\equiv y\pmod n\implies x^2+4\equiv y^2+4\pmod n</m>.
+          But this is trivial! \item For which integers <m>k</m> is the rule <m>f_k:\Z_4\to\Z_6</m> defined by
+          <m>f_k([x]_4)=[kx]_6</m> a well-defined function?
+        </p>
+        <p>
+          We start with a special case.
+          If <m>k=1</m>,
+          then we can attempt to construct a table of values for <m>f_1([x]_4)</m>:
+          <me>
+            \begin{array}{c|cccc|cccc|cc} [x]_4 \amp  [0]_4 \amp  [1]_4 \amp  [2]_4 \amp  [3]_4 \amp  [4]_4 \amp  [5]_4 \amp  [6]_4 \amp  [7]_4 \amp  [8]_4 \amp  \cdots\\\hline f_1([x]_4) \amp  [0]_6 \amp  [1]_6 \amp  [2]_6 \amp  [3]_6 \amp  [4]_6 \amp  [5]_6 \amp  [0]_6 \amp  [1]_6 \amp  [2]_6 \amp  \cdots \end{array}
+          </me>
+        </p>
+        <p>
+          The problem is immediately visible!
+          In <m>\Z_4</m> we have <m>[0]_4 = [4]_4</m>,
+          however <m>f_1([0]_4) = [0]_6</m> and <m>f_1([4]_4) = [4]_6</m>
+          <em>which are not equal in <m>\Z_6</m></em>!
+          It follows that <m>f_1</m> is not a function.
+        </p>
+        <p>
+          Rather than try out all possible values of <m>k</m>,
+          we proceed systematically.
+          If <m>f_k</m> is to be well-defined,
+          we require <m>x\equiv y\pmod 4\implies kx\equiv ky\pmod 6</m>.
+          Now
+          <md>
+            <mrow>x\equiv y\pmod 4\amp \implies \exists n\in\Z\text{ such that } x-y=4n</mrow>
+            <mrow>* \amp \implies kx-ky=4kn</mrow>
+          </md>.
+        </p>
+        <p>
+          For <m>f_k</m> to be well-defined,
+          we need to see that <m>k(x-y)=4kn</m> is a multiple of 6 <em>independently</em>
+          of <m>x</m> and <m>y</m>.
+          Thus <m>f_k</m> is well-defined if and only if <m>6\divides 4kn</m><nbsp/>
+          <em>for all</em> <m>n\in\Z</m>.
+          This is the case if and only if <m>6\divides 4k</m>.
+          Otherwise said,
+          <me>
+            \text{ \(f_k\) is well-defined } \iff 6\divides 4k\iff 3\divides 2k\iff 3\divides k
+          </me>.
+        </p>
+        <p>
+          Given that we want <m>[kx]_6\in\Z_6</m>,
+          we need only consider <m>k\in\{0,1,2,3,4,5\}</m>:
+          equivalent values of <m>k</m> modulo 6 won't change the definition of <m>f_k</m>.
+          It follows that there are only <em>two</em>
+          well-defined functions <m>f_k:\Z_4\to\Z_6:x\mapsto kx</m>,
+          namely <m>f_0([x]_4) = [0]_6</m> and <m>f_3([x]_4) = [3x]_6</m>.
+          Here they are in tabular form (dropping the brackets):
+          <me>
+            \begin{array}{c|cccc|cccc|cc} x\amp 0\amp 1\amp 2\amp 3\amp 4\amp 5\amp 6\amp 7\amp 8\amp \cdots\\\hline f_0(x)\amp 0\amp 0\amp 0\amp 0\amp 0\amp 0\amp 0\amp 0\amp 0\amp \cdots\\\hline f_3(x)\amp 0\amp 3\amp 0\amp 3\amp 0\amp 3\amp 0\amp 3\amp 0\amp \cdots \end{array}
+          </me>
+        </p>
+        <p>
+          It should be clear that well-defined functions <m>f_k</m> produce tables whose <m>f_k(x)</m> line is
+          <em>periodic with period four.</em> To ram this point home,
+          here is the table when <m>k=5</m>:
+          <me>
+            \begin{array}{c|cccc|cccc|cc} x\amp 0\amp 1\amp 2\amp 3\amp 4\amp 5\amp 6\amp 7\amp 8\amp \cdots\\\hline f_5(x)\amp 0\amp 5\amp 4\amp 3\amp 2\amp 1\amp 0\amp 5\amp 4\amp \cdots \end{array}
+          </me>
+        </p>
+        <p>
+          This is palpably not a function!
+          You should compare these examples with those on <xref ref="ex_functmod1">page</xref>
+          and with <xref ref="sec_func1">Exercise</xref>.
+          <xref ref="ex_kfunc"></xref>.
+          Are these earlier example still functions when the domains are assumed to be a ring <m>\Z_n</m> rather than simply a set of integers?
+        </p>
+      </statement>
+    </example>
+  </introduction>
+  <subsection xml:id="subsec_cylinder">
+    <title>Functions on the Cylinder and Torus</title>
+    <p>
+      Recall our construction on <xref ref="page_cylinder">page</xref>,
+      where we viewed the cylinder as the set
+      <m>\quotient{\R^2}\sim</m> with respect to the equivalence relation
+      <me>
+        (a,b)\sim (c,d)\iff a-c\in\Z\text{ and }  b=d
+      </me>.
+    </p>
+    <p>
+      We wish to define a function <m>f</m> whose domain is a cylinder.
+      Using the equivalence relation,
+      this is the same as defining a function
+      <m>f:\quotient{\R^2}\sim\to A</m> where <m>A</m> is our chosen codomain.
+      <em>Well-definition</em> requires that <m>f</m> satisfy
+      <me>
+        (a,b)\sim(c,d)\implies \smash{f\Bigl(\bigl[(a,b)\bigr]\Bigr)=f\Bigl(\bigl[(c,d)\bigr]\Bigr).}
+      </me>
+    </p>
+    <p>
+      Since <m>(a,b)\sim(a+1,b)</m>,
+      we require <m>f\Bigl(\bigl[(a,b)\bigr]\Bigr)=f\Bigl(\bigl[(a+1,b)\bigr]\Bigr)</m>,
+      for all <m>a,b\in\R</m>.
+      Otherwise said,
+      <m>f\Bigl(\bigl[(x,y)\bigr]\Bigr)</m> must be periodic in <m>x</m> with period one.
+      It is easy to see that
+      <me>
+        \smash{f\Bigl(\bigl[(x,y)\bigr]\Bigr)=y^2\sin(2\pi x)}
+      </me>
+      is a suitable choice of function <m>f:\quotient{\R^2}\sim\to\R</m>.
+    </p>
+    <p>
+      More generally, to define a function whose domain is the torus
+      <me>
+        T^2=\quotient{\R^2}\sim\text{ where }  (a,b)\sim (c,d)\iff a-c\in\Z\text{ and }  b-d\in\Z
+      </me>,
+      requires a function which is periodic in
+      <em>both</em> <m>x</m> and <m>y</m>.
+      The function
+      <me>
+        f\Bigl(\bigl[(x,y)\bigr]\Bigr)=\sin(2\pi x)\cos(2\pi y)
+      </me>
+      is plotted below,
+      with the color on the torus indicating the value of <m>f</m>.
+      It is easier to instead consider the function
+      <me>
+        F:\R^2\to\R:(x,y)\mapsto\sin(2\pi x)\cos(2\pi y)
+      </me>.
+    </p>
+    <p>
+      This is also plotted, with the same color for each value.
+      The point is that <m>F</m> is really <m>f</m> in disguise,
+      but has the advantage of being much easier to work with.
+    </p>
+    <sidebyside>
+      <image width="73%" source="relations-14-torus"/>
+      The function <m>f</m>: domain <m>T^2</m>
+      The arrows in the two pictures correspond
+      <image width="73%" source="relations-14-torus2"/>
+      The function <m>F</m> restricted to <m>[0,1)\times [0,1)</m>
+    </sidebyside>
+  </subsection>
+  <p>
+    \subsection*<term>The Canonical Map</term>
+  </p>
+  <p>
+    To do this justice,
+    and to give you a taste for the details which are necessary in pure mathematics,
+    here is the important definition.
+  </p>
+  <definition>
+    <statement>
+      <p>
+        Suppose that <m>\sim</m> is an equivalence relation on a set <m>X</m>.
+        The function <m>\gamma:X\to \quotient X\sim</m> defined by <m>\gamma(x)=[x]</m> is the
+        <term>canonical map</term><fn>
+        Canonical, in mathematics, just means natural or obvious.
+        </fn>.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    For us, the purpose of the canonical map is to allow us to construct functions <m>f:\quotient X\sim\to A</m>.
+  </p>
+  <theorem xml:id="thm_firstiso">
+    <statement>
+      <p>
+        Suppose that <m>\sim</m> is an equivalence relation on <m>X</m>.
+        <ol>
+          <li>
+            <p>
+              If <m>f:\quotient X\sim\to A</m> is a function,
+              then <m>F:X\to A</m> defined by <m>F=f\circ\gamma</m> satisfies
+              <me>
+                x\sim y\implies F(x)=F(y)
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              If <m>F:X\to A</m> satisfies <m>x\sim y\implies F(x)=F(y)</m>,
+              then there is a unique function
+              <m>f:\quotient X\sim\to A</m> satisfying <m>F=f\circ\gamma</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <ol>
+      <li>
+        <p>
+          \preinitdisp
+          <md>
+            <mrow>\hspace{4.3pt}\text{ This is trivial: }  x\sim y\amp \implies [x]=[y]\implies \gamma(x)=\gamma(y)</mrow>
+            <mrow>\amp \implies f(\gamma(x))=f(\gamma(y))\implies F(x)=F(y)</mrow>
+          </md>.
+          \postinitdisp
+        </p>
+      </li>
+      <li>
+        <p>
+          <m>f:\quotient X\sim\to A</m> can only be the function
+          <em>defined</em> by <m>f([x])=F(x)</m>.
+          We show that this is well-defined:
+          <md>
+            <mrow>=[y]\implies x\sim y\implies F(x)=F(y)\implies f([x])=f([y])</mrow>
+          </md>.
+        </p>
+      </li>
+    </ol>
+  </proof>
+  <sidebyside>
+    The proof, like much of mathematics, is a masterpiece in concision that seems to be doing nothing at all. The point is that functions of the form <m>f:\quotient X\sim\to A</m> are <em>difficult</em> to work with. The Theorem says that we never need to explicitly use such functions, and can instead work with <em>simpler</em> functions of the form <m>F:X\to A</m>. The only condition is that we must have <m>x\sim y\implies F(x)=F(y)</m>. Essentially, <m>F</m> is <m>f</m> in disguise!
+    <image width="73%" source="relations-17-isomthm"/>
+  </sidebyside>
+  <p>
+    This result will be resurrected when you study Groups, Rings &amp; Fields as part of the famous
+    <em>First Isomorphism Theorem.</em>
+  </p>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>X</m> be a set and <m>\sim</m> an equivalence relation on <m>X</m>.
+          What does it mean for a function <m>f : X/\sim \to B</m> to be well-defined?
+          <ol>
+            <li>
+              <p>
+                It means <m>f</m> is an injection.
+              </p>
+            </li>
+            <li>
+              <p>
+                It means <m>[x] = [y]</m> if and only if <m>f(x) = f(y)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                It means <m>f</m> is a surjection.
+              </p>
+            </li>
+            <li>
+              <p>
+                It means that <m>x \sim y</m> implies <m>f(x) = f(y)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False:
+          the rule <m>[x] \mapsto x : \Z_n \to \Z</m> is not well-defined.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>k</m> be a constant integer.
+          If <m>f:\Z_5\to\Z_{18}:[x]_5\mapsto [kx]_{18}</m> is a well-defined function,
+          what period must the sequence of values <m>f([0]_5),f([1]_5),f([2]_5),\ldots</m> have?
+        </p>
+      </li>
+      <li>
+        <p>
+          In <xref ref="thm_firstiso">Theorem</xref>
+          show that <m>F</m> is a surjection if and only if <m>f</m> is a bijection.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      \item
+      <ol>
+        <li>
+          <p>
+            Prove or disprove:
+            <m>f:\Z_3\to\Z_5:x\mapsto x^3\pmod 5</m> is well-defined.
+          </p>
+        </li>
+        <li>
+          <p>
+            Prove or disprove:
+            <m>f:\Z_{10}\to\Z_{20}:x\mapsto x^2\pmod{20}</m> is well-defined.
+          </p>
+        </li>
+      </ol>
+      <li>
+        <p>
+          Determine whether the following are well-defined.
+          <ol>
+            <li>
+              <p>
+                Define <m>f : \Z_8 \to \Z_{16}</m> by <m>f([a]_8) = [2a]_{16}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Define <m>g : \Z_8 \to \Z_{12}</m> by <m>g([a]_8) = [2a]_{12}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Can we view <m>F(x,y)=(y^2-1)\sin^2(\pi x)</m> as a function whose domain is the cylinder,
+          as described on <xref ref="subsec_cylinder">page</xref>?
+          Explain your answer. \item
+          <ol>
+            <li>
+              <p>
+                Compute <m>(x+4n)^2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>\forall n\in\Z</m>,
+                we have <m>(x+4n)^2\equiv x^2\pmod m</m>.
+                Find all the integers <m>m</m> for which this is a true statement.
+              </p>
+            </li>
+            <li>
+              <p>
+                For what <m>m\in\N_{\ge 2}</m> is the function <m>f:\Z_4\to\Z_m:x\mapsto x^2\pmod m</m> well-defined.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          A rule <m>f:\quotient X\sim\to A</m> is well-defined if <m>[x]=[y]\implies f\bigl([x]\bigr)=f\bigl([y]\bigr)</m>.
+          <ol>
+            <li>
+              <p>
+                State what it means for <m>f:\quotient X\sim\to A</m> to be
+                <em>injective.</em> What do you observe?
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>f:\Z_7\to\Z_{35}:x\mapsto 15x</m> is a well-defined,
+                injective function.
+              </p>
+            </li>
+            <li>
+              <p>
+                Repeat part (b) for the function <m>f:\Z_{100}\to\Z_{300}:x\mapsto 9x</m>.
+                Compare your arguments for well-definition and injectivity.
+                <em>This forces you to write your argument abstractly,
+                rather than using a table!
+                You may find it useful that <m>9\cdot(-11)\equiv 1\pmod{100}</m>.</em>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Define a partition of the sphere
+          <m>S^2=\bigl\{(x,y,z):x^2+y^2+z^2=1\bigr\}</m> into subsets of the form
+          <me>
+            \bigl\{(x,y,z),(-x,-y,-z)\bigr\}
+          </me>.
+          Each subset consists of two points directly opposite each other on the sphere
+          (antipodal points).
+          Let <m>\sim</m> be the equivalence relation whose equivalence classes are the above subsets.
+          <ol>
+            <li>
+              <p>
+                <m>f:\quotient{S^2}{\sim}\to\R:[(x,y,z)]\mapsto xyz</m> is not well-defined.
+                Explain why.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>f:\quotient{S^2}{\sim}\to\R^3:[(x,y,z)]\to(yz,xz,xy)</m> is a well-defined function.
+                <em>The image of this function is Steiner's famous
+                <url href="http://en.wikipedia.org/wiki/Roman_surface">Roman Surface</url>,
+                another example, like the Klein Bottle,
+                of a generalization of the M&#xf6;bius Strip.</em>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Recall <xref ref="sec_welldefn">Exercise</xref>.
+          <xref ref="ex_qequiv"></xref>,
+          where we defined an equivalence relation <m>\sim</m> on <m>\Z\times\N</m>.
+          <ol>
+            <li>
+              <p>
+                Prove that the function <m>f:\quotient{\Z\times\N}\sim\to\Q</m> defined by <m>f\Bigl(\bigl[(x,y)\bigr]\Bigr)=\frac xy</m> is a
+                <em>well-defined bijection.</em>
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>f</m> transforms the operations <m>\oplus</m> and <m>\otimes</m> into the usual addition and multiplication of rational numbers.
+                That is:
+                <md>
+                  <mrow>f\Bigl(\bigl[(a,b)\bigr]\oplus\bigl[(c,d)\bigr]\Bigr)=f\Bigl(\bigl[(a,b)\bigr]\Bigr)+f\Bigl(\bigl[(c,d)\bigr]\Bigr)</mrow>
+                  <mrow>f\Bigl(\bigl[(a,b)\bigr]\otimes\bigl[(c,d)\bigr]\Bigr)=f\Bigl(\bigl[(a,b)\bigr]\Bigr)\cdot f\Bigl(\bigl[(c,d)\bigr]\Bigr)</mrow>
+                </md>
+                <em>The technical term for this is that
+                <m>f:\left(\quotient{\Z\times\N}\sim,\oplus,\otimes\right)\to(\Q,+,\cdot)</m> is an isomorphism of rings.</em>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\mathcal{C} = \{\text{ circles centered at the origin } \} \cup \{(0,0)\}</m>.
+          <ol>
+            <li>
+              <p>
+                Find an equivalence relation <m>\sim</m> on <m>\R^2</m> such that <m>\R^2/\sim \, = \mathcal{C}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>f : \mathcal{C} \to \R</m> by <m>f(C) = \text{ radius of } C</m>.
+                Theorem 7.21 says there is a function <m>F : \R^2 \to \R</m> such that
+                <m>F = f \circ \gamma</m> where <m>\gamma</m> is the canonical map.
+                Determine an explicit formula for <m>F</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Define <m>\sim</m> on <m>\R</m> by
+          <m>x \sim y</m> if and only if <m>x - y \in \Z</m>.
+          <ol>
+            <li>
+              <p>
+                Show <m>\sim</m> is an equivalence relation on <m>\R</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find a function <m>F : \R \to [0,1)</m> such that
+                <m>x \sim y</m> implies <m>F(x) = F(y)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use part (b) to find a well-defined function <m>f : \R / \sim \to [0,1)</m>.
+                Is <m>f</m> a bijection?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Every function can be factored as a composition of a surjection followed by a bijection followed by an injection.
+          Let <m>f : A \to B</m> be a function.
+          We show that <m>f = i \circ g \circ \gamma</m> where <m>i</m> is an injection,
+          <m>g</m> a bijection, and <m>\gamma</m> a surjection.
+          <ol>
+            <li>
+              <p>
+                Define <m>\sim</m> on <m>A</m> by
+                <m>a \sim b</m> if and only if <m>f(a) = f(b)</m>.
+                Show <m>\sim</m> is an equivalence relation on <m>A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>\gamma : A \to A/\sim</m> be the canonical projection.
+                Show there is a well-defined function
+                <m>g : A/\sim \to \range(f)</m> such that <m>f^* = g \circ \gamma</m> where
+                <m>f^* : A \to \range(f)</m> is the function <m>f^*(a) = f(a)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that <m>g</m> is a bijection.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>i : \range(f) \to B</m> be the inclusion map <m>i(b) = b</m>.
+                Show <m>f = i \circ f^*</m>,
+                and conclude that <m>f = i \circ g \circ \gamma</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+    <p>
+      \graphicspath{{notes/8cardinality/}}
+    </p>
+  </subsection>
+</section>

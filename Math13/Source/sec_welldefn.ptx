@@ -1,0 +1,374 @@
+<section xml:id="sec_welldefn">
+  <title>Well-definition, Rings and Congruence</title>
+  <introduction>
+    <p>
+      We return to our discussion of congruence
+      (recall <xref ref="sec_cong">Section</xref>)
+      in the context of equivalence relations and partitions.
+      The important observation is that
+      <em>congruence modulo <m>n</m> is an equivalence relation on <m>\Z</m>,</em>
+      each equivalence class being the set of all integers sharing a remainder modulo <m>n</m>.
+    </p>
+    <theorem xml:id="thm_congequiv1">
+      <statement>
+        <p>
+          For a fixed <m>n\in\N</m>, define <m>x\sim_n y\iff x\equiv y\pmod n</m>.
+          Then <m>\sim_n</m> is an equivalence relation on <m>\Z</m>.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      The theorem is a restatement of <xref ref="ex_cong">Example</xref>
+      on <xref ref="ex_cong">page</xref>,
+      in conjunction with <xref ref="thm_equivpart">Theorem</xref>.
+      You should prove this yourself,
+      as practice in using the definition of equivalence relation.
+    </p>
+    <p>
+      The equivalence classes are precisely those integers which are congruent modulo <m>n</m>:
+      the integers which share the same remainder.
+      <md>
+        <mrow>\amp =\big\{x\in\Z:x\equiv a\tpmod n\big\}</mrow>
+        <mrow>\amp =\big\{x\in\Z:x\text{ has the same remainder as \(a\) when divided by \(n\) } \big\}</mrow>
+        <mrow>\amp =\big\{x\in\Z:x-a\text{ is divisible by \(n\) } \big\}</mrow>
+      </md>
+    </p>
+    <p>
+      In this language,
+      we can restate what it means for two equivalence classes to be equal.
+    </p>
+    <theorem xml:id="thm_congequiv2">
+      <statement>
+        <p>
+          <m>[a]=[b]\iff a\equiv b\pmod n\iff \exists k\in\Z\text{ such that } b=a+kn</m>.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      If the meaning of <em>any</em> of the above is unclear,
+      re-read the previous two sections:
+      they are critically important!
+    </p>
+    <p>
+      The equivalence classes of <m>\sim_n</m> partition the integers <m>\Z</m>.
+      According to <xref ref="thm_congequiv2">Theorem</xref>,
+      there are exactly <m>n</m> equivalence classes,
+      whence we may describe the quotient set as
+      <me>
+        \quotient \Z{\sim_n}=\big\{[0],[1],\ldots,[n-1]\big\}
+      </me>.
+    </p>
+    <p>
+      We use this set to define an extremely important object.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          Define operations <m>+_n</m> and <m>\cdot_n</m> on the set <m>\quotient\Z{\sim_n}</m> as follows:
+          <me>
+            [x]+_n[y]:=[x+y],\qquad [x]\cdot_n[y]:=[x\cdot y]
+          </me>.
+        </p>
+        <p>
+          The <term>ring</term> <m>\Z_n</m> is the set
+          <m>\quotient\Z{\sim_n}</m> together with the operations <m>+_n</m> and <m>\cdot_n</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The operation <m>+_n</m> is telling us how to add
+      <em>equivalence classes,</em> that is,
+      how to produce a new equivalence class from two old ones.
+      It is important to understand that <m>+_n</m> is
+      <em>not the same</em> operation as <m>+</m>:
+      we are <em>defining</em> <m>+_n</m> using <m>+</m>.
+      The former combines equivalence classes,
+      while the latter sums integers.
+      The operation <m>\cdot_n</m> similarly tells us how to multiply equivalence classes.
+      The challenge here is that you have to think of each equivalence class as a single object.
+    </p>
+    <example>
+      <statement>
+        <p>
+          When we write
+          <me>
+            [3]+_8[6]=[3+6]=[9]=[1]
+          </me>,
+          we are thinking about the equivalence classes <m>[3]</m> and <m>[6]</m> as individual objects rather than as collections of elements:
+          remember that <m>[3]=\{\ldots,-5,3,11,19,\ldots\}</m> is an infinite set!
+          There is, moreover, a matter of choice:
+          since, for example, <m>[3]=[11]</m> and
+          <m>[6]=[22]</m> we should be able to observe that
+          <me>
+            [3]+_8[6]=[11]+_8[22]
+          </me>.
+        </p>
+        <p>
+          Is this true?
+          If not, then the operation <m>+_8</m> would not be particularly useful.
+          Thankfully this is not a problem:
+          according to the definition of <m>+_8</m>, we have
+          <me>
+            [11]+_8[22]=[11+22]=[33]=[1]
+          </me>,
+          exactly as we would wish.
+        </p>
+      </statement>
+    </example>
+    <p>
+      Let us think a little more abstractly.
+      Suppose we are given equivalence classes <m>X</m> and <m>Y</m>,
+      how do we compute <m>X+_nY</m>?
+      Here is the process.
+      <ol>
+        <li>
+          <p>
+            <em>Choose</em> elements <m>x\in X</m> and <m>y\in Y</m> so that <m>X=[x]</m> and <m>Y=[y]</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Add <m>x</m> and <m>y</m> to get a new element <m>x+y\in\Z</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Then <m>X+_nY</m> is the equivalence class <m>[x+y]</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      The issue is that there are <em>infinitely many possibilities</em>
+      for the elements <m>x\in X</m> and <m>y\in Y</m> chosen at step 1.
+      If <m>+_n</m> is to make sense,
+      we must obtain the <em>same</em>
+      equivalence class <m>[x+y]</m> <term>regardless of our choices of <m>x\in X</m> and <m>y\in Y</m>.</term>
+    </p>
+    <definition xml:id="defn_well">
+      <statement>
+        <p>
+          A concept is <term>well-defined</term>
+          if it is <term>independent of all choices used in the definition.</term>
+        </p>
+      </statement>
+    </definition>
+    <theorem xml:id="thm_congwd">
+      <statement>
+        <p>
+          The operations <m>+_n</m> and <m>\cdot_n</m> are well-defined.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      The choices made in the definitions of <m>+_n</m> and <m>\cdot_n</m> were of representative elements <m>x</m> and <m>y</m> of the equivalence classes <m>[x]</m> and <m>[y]</m>.
+      All representatives of these classes have the form
+      <me>
+        x+kn\in[x]\text{ and }  y+ln\in[y]
+      </me>
+      for some integers <m>k,l</m>.
+      It therefore suffices to prove that
+      <me>
+        \forall k,l\in\Z, [x+kn]+_n[y+ln]=[x]+_n[y]\text{ and }  [x+kn]\cdot_n[y+ln]=[x]\cdot_n[y]
+      </me>.
+    </p>
+    <p>
+      We are now in a position to prove the Theorem.
+    </p>
+    <proof>
+      <p>
+        We prove that <m>+_n</m> is well-defined.
+        <md>
+          <mrow>+_n[y+ln]\amp =[(x+kn)+(y+ln)]\tag{(by definition of $+_n$)}</mrow>
+          <mrow>\amp =[x+y+(k+l)n]</mrow>
+          <mrow>\amp =[x+y]\tag{(by <xref ref="thm_congequiv2">Theorem</xref>)}</mrow>
+          <mrow>\amp =[x]+_n[y]\tag{(by definition of $+_n$)}</mrow>
+        </md>
+      </p>
+      <p>
+        The argument for <m>\cdot_n</m> is similar.
+      </p>
+    </proof>
+    <p>
+      You should re-read <xref ref="thm_congbasic">Theorem</xref>
+      until you are comfortable that we are doing the same thing!
+    </p>
+    <aside>
+      <p>
+        <term>Aside: Ugly notation</term>
+      </p>
+      <p>
+        Given the usefulness of <m>\Z_n</m> and the cumbersome nature of the above notation,
+        it is customary to drop the square brackets and subscripts and simply write
+        <me>
+          \Z_n=\{0,1,2,\ldots,n-1\},\qquad x+y:=x+y\tpmod n,\qquad x\cdot y:=xy\tpmod n
+        </me>.
+      </p>
+      <p>
+        When using this description of <m>\Z_n</m>,
+        you should realize that we are working with equivalence classes,
+        not numbers.
+        In this context, <m>-3\in\Z_8</m> makes perfect sense,
+        for it really means <m>[-3]\in\Z_8</m>.
+        This is perfectly fine, since
+        <m>[-3]=[5]</m> as equivalence classes,
+        whence it is legitimate to write <m>-3=5</m> in <m>\Z_8</m>.
+        Until you are 100% sure that you know when 3 represents an equivalence class and when it represents a number,
+        you should keep the brackets in place:
+        in particular it might be a good idea to keep using them until you have passed <em>this course</em>!
+      </p>
+    </aside>
+  </introduction>
+  <subsection>
+    <title>Reading Quiz</title>
+    <ol>
+      <li>
+        <p>
+          Which of the following are true and which false?
+          <ol>
+            <li>
+              <p>
+                <m>[28]=[5]</m> in <m>\Z_6</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>[24]+\big([3]+[17]\big)=[-10]</m> in <m>\Z_9</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>[2]^3+[3]^3=[4]^3</m> in <m>\Z_{29}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Is the following True or False?
+          <me>
+            [x]+[y]=[z]\iff x+y=z
+          </me>.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Suppose <m>\gcd(a,n) = 1</m>.
+          Show that there exists <m>b</m> such that <m>[a] \cdot [b] = [1]</m> in <m>\Z_n</m>.
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Show that <m>\gcd(a,n) = 1</m> if and only if there exist <m>m</m> and <m>k</m> such that <m>ma + kn = 1</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Use part (a) to prove that if there is <m>b</m> such that <m>[a] \cdot [b] = [1]</m> in <m>\Z_n</m>,
+              then <m>\gcd(a,n) = 1</m>.
+            </p>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      \item
+      <ol>
+        <li>
+          <p>
+            Explicitly check that <m>[7]+[21]=[98]+[-5]</m> in <m>\Z_{13}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Suppose that <m>[5]\cdot[7]=[8]\cdot[9]</m> makes sense.
+            Find the value of <m>n</m> if we are working in the ring <m>\Z_n</m>.
+          </p>
+        </li>
+      </ol>
+      [2]
+      \item
+      <ol>
+        <li>
+          <p>
+            Prove the second half of <xref ref="thm_congwd">Theorem</xref>,
+            that <m>\cdot_n</m> is well-defined.
+          </p>
+        </li>
+        <li>
+          <p>
+            Prove by induction that the operation of raising to the power <m>m\in\N</m> is well-defined in <m>\Z_n</m>.
+            I.e., prove that
+            <me>
+              \forall m\in\N,\ \forall [x]\in\quotient{\Z}{\sim_n}\text{ we have }  [x^m]=[x]^m
+            </me>.
+            <em>Be careful!
+            <m>n</m> is fixed, your induction variable is <m>m</m>.
+            What base case(s) do you need?</em>
+          </p>
+        </li>
+      </ol>
+      <li>
+        <p>
+          Suppose that <m>p</m> is prime and that in <m>\Z_p</m>,
+          we have <m>[a] \neq [0]</m>.
+          Show <m>[a]^2 \neq [0]</m>.
+          <hint>
+            <p>
+              See <xref ref="ex_primedef">Exercise</xref>
+              in <xref ref="sec_stronginduction">Section</xref>.
+            </p>
+          </hint>
+        </p>
+      </li>
+      <li>
+        <p>
+          Give an explicit proof of <xref ref="thm_congequiv1">Theorem</xref>.
+        </p>
+      </li>
+      <li xml:id="ex_qequiv">
+        <p>
+          Consider the relation <m>\sim</m> defined on <m>\Z\times\N=\{(x,y):x\in\Z,\text{ and } y\in\N\}</m> by
+          <me>
+            (a,b)\sim(c,d)\iff ad=bc
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Prove that <m>\sim</m> is an equivalence relation.
+              </p>
+            </li>
+            <li>
+              <p>
+                List several elements of the equivalence class of <m>(2,3)</m>.
+                Repeat for the equivalence class of <m>(-3,7)</m>.
+                What do the equivalence classes have to do with the set of rational numbers <m>\Q</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Define operations <m>\oplus</m> and <m>\otimes</m> on <m>\quotient{\Z\times\N}\sim</m> by
+                <me>
+                  [(a,b)]\oplus[(c,d)]=[(ad+bc,bd)],\qquad [(a,b)]\otimes[(c,d)]=[(ac,bd)]
+                </me>.
+                Prove that <m>\oplus</m> and <m>\otimes</m> are well-defined.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <em>Try to do this question <em>without</em> using division! We will return to this example in the next section.</em>
+      </li>
+    </ol>
+  </subsection>
+</section>

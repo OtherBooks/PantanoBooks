@@ -1,0 +1,805 @@
+<section xml:id="sec_func2">
+  <title>Functions revisited</title>
+  <introduction>
+    <p>
+      Now that we have the language of relations,
+      we can properly define functions.
+      Recall that a function <m>f:A\to B</m> is a rule that assigns one,
+      and only one, element of <m>B</m> to each element of <m>A</m>.
+      We may therefore view <m>f</m> as a collection of ordered pairs in <m>A\times B</m>:
+      <me>
+        \big\{(a,f(a)):a\in A\big\}
+      </me>.
+    </p>
+    <p>
+      This set is nothing more than the
+      <em>graph</em> of the function,
+      and, being a set of ordered pairs, it is a relation.
+    </p>
+    <definition xml:id="defn_func">
+      <statement>
+        <p>
+          Let <m>\cR\subseteq A\times B</m> be a relation from <m>A</m> to <m>B</m>.
+          The <term>domain</term> and <term>range</term>
+          of <m>\cR</m> are the sets
+          <md>
+            <mrow>\dom(\cR)=\{a\in A:(a,b)\in \cR\text{ for some } b\in B\},</mrow>
+            <mrow>\range(\cR)=\{b\in B:(a,b)\in \cR\text{ for some } a\in A\}</mrow>
+          </md>.
+        </p>
+        <p>
+          A <term>function</term> from <m>A</m> to <m>B</m> is a relation
+          <m>f\subseteq A\times B</m> satisfying the following conditions:
+          <ol>
+            <li>
+              <p>
+                <m>\dom(f)=A</m>,
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(a,b_1),(a,b_2)\in f\implies b_1=b_2</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The two conditions can be thought of as saying:
+      <ol>
+        <li>
+          <p>
+            Every element of <m>A</m> is related to
+            <em>at least one</em> element of <m>B</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Every element of <m>A</m> is related to
+            <em>at most one</em> element of <m>B</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      Putting these together, we see that a relation
+      <m>f\subseteq A\times B</m> is a function if <em>every</em>
+      <m>a\in A</m> is the first entry of one
+      (and only one)
+      ordered pair <m>(a,b)\in f</m>.
+      The second condition is the vertical line test, familiar from calculus.
+    </p>
+    <sidebyside>
+      <image width="73%" source="relations-05-funcvert"/>
+      <m>b_1=b_2=f(a)</m>: a function
+      <image width="73%" source="relations-06-funcvert"/>
+      <m>b_1\neq b_2</m>: not a function
+    </sidebyside>
+    <p>
+      We can also think about injectivity and surjectivity
+      (recall <xref ref="defn_11">Definition</xref>)
+      in this context.
+      A function <m>f\subseteq A\times B</m> is:
+      <ul>
+        <li>
+          <p>
+            <em>Injective</em> if no two pairs in <m>f</m> share the same second entry.
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Surjective</em> if every <m>b\in B</m> appears as the second entry of at least one pair in <m>f</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <em>Bijective</em> if every <m>b\in B</m> appears as the second entry of one
+            (and only one)
+            ordered pair <m>(a,b)\in f</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <example>
+      <statement>
+        <p>
+          Let <m>A=B=\{1,2,3\}</m> and consider the relation
+        </p>
+        <sidebyside>
+          <me>
+            f=\{(1,3),(2,1),(3,3)\}
+          </me>.
+          Observe that <m>\dom(f)=\{1,2,3\}=A</m>, and that each element of <m>A</m> appears exactly once as the first element in a pair <m>(a,b)\in f</m>. The relation therefore satisfies both conditions necessary to be a function. In more elementary language we would write <m>f(1)=3</m>,  <m>f(2)=1</m> and <m>f(3)=3</m>.
+          Since 3 appears twice as a second entry of an ordered pair in <m>f</m> we see that <m>f</m> is <em>not injective.</em>
+          Since 2 never appears as the second entry of an ordered pair in <m>f</m> we see that <m>f</m> is <em>not surjective.</em>
+          <image width="73%" source="relations-18-reln1"/>
+          A function <m>f:A\to B</m>
+        </sidebyside>
+      </statement>
+    </example>
+    <example>
+      <statement>
+        <p>
+          Let <m>A</m> be any set and define a relation <m>\id_A : A \to A</m> by
+          <me>
+            \id_A = \{(a,a) : a \in A\}
+          </me>.
+        </p>
+        <p>
+          Then <m>\id_A</m> is a bijective function
+          (check this!)
+          called the <em>identity function on <m>A</m></em>.
+        </p>
+      </statement>
+    </example>
+  </introduction>
+  <subsection>
+    <title>The Inverse of a Function</title>
+    <p>
+      Since every function is a relation,
+      it is a straightforward business to define the inverse of a function.
+    </p>
+    <definition>
+      <statement>
+        <p>
+          The <term>inverse</term> of a function
+          <m>f\subseteq A\times B</m> is the inverse relation <m>f^{-1}\subseteq B\times A</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      To compute an inverse relation we simply reverse the components of each ordered pair:
+      the following should therefore be clear.
+    </p>
+    <theorem xml:id="thm_inversedomrange">
+      <statement>
+        <p>
+          <m>\dom(f^{-1})=\range(f)</m> and <m>\range(f^{-1})=\dom(f)</m>.
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      In general, you should expect the inverse of a function to be merely a relation and not a function in its own right.
+      We shall shortly
+      (<xref ref="thm_finverse">Theorem</xref>)
+      discuss when the inverse relation is a function.
+    </p>
+    <example>
+      <title>cont</title>
+      <statement>
+        <p>
+          Consider the above example.
+        </p>
+        <sidebyside>
+          The inverse relation
+          <me>
+            f^{-1}=\{(3,1),(1,2),(3,3)\}\subseteq B\times A
+          </me>
+          is <em>not</em> a function due to failing <em>both</em> conditions of <xref ref="defn_func">Definition</xref>.
+          <ul>
+            <li>
+              <p>
+                <m>\dom(f^{-1})=\{1,3\}</m> is not the whole of <m>B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(3,1)\in f^{-1}</m> and <m>(3,3)\in f^{-1}</m>, but <m>1\neq 3</m>.
+              </p>
+            </li>
+          </ul>
+          Both failures are clearly visible in the picture.
+          <image width="73%" source="relations-19-reln1"/>
+          <m>f^{-1}\subseteq B\times A</m>: not a function
+        </sidebyside>
+      </statement>
+    </example>
+    <p>
+      Before we consider exactly when the inverse of a function is a function in its own right,
+      we consider a few more examples.
+    </p>
+    <example xml:id="ex_reln1">
+      <statement>
+        <p>
+          \item Let <m>A=B=\R</m> and <m>f=\{(x,x^2):x\in\R\}</m>.
+          This is simply the function with formula <m>f(x)=x^2</m>.
+          The inverse relation <m>f^{-1}\subseteq\R\times\R</m> is then
+          <me>
+            f^{-1}=\bigl\{(x^2,x):x\in\R\bigr\}=\bigl\{(y,\pm\sqrt y):y\ge 0\bigr\}
+          </me>.
+        </p>
+        <p>
+          In this case, <m>f^{-1}</m> is <em>not a function.</em>
+          In the language of <xref ref="defn_func">Definition</xref>:
+          <ul>
+            <li>
+              <p>
+                <m>\dom(f^{-1})=\R^+_0\neq B</m>.
+                E.g., <m>-1\in B</m> but <m>-1\not\in\dom(f^{-1})</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>(4,2)</m> and <m>(4,-2)</m> are distinct elements of <m>f^{-1}</m> with the same first entry.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <sidebyside>
+          <image width="73%" source="relations-20-reln2"/>
+          <m>f:A\to B</m>
+          <image width="73%" source="relations-21-reln2"/>
+          <m>f^{-1}\subseteq B\times A</m>: not a function
+        </sidebyside>
+        <p>
+          It should be obvious that <m>f</m> is neither injective nor surjective:
+          in the language of relations,
+          <ul>
+            <li>
+              <title>Not injective</title>
+              <p>
+                <nbsp/><nbsp/> <m>(2,4)</m> and <m>(-2,4)</m> are distinct elements of <m>f</m> with the same second entry.
+              </p>
+            </li>
+            <li>
+              <title>Not surjective</title>
+              <p>
+                <nbsp/><nbsp/> For instance,
+                <m>-1</m> never appears as the second entry of any pair in <m>f</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          Observe how these are merely a rewriting of what it means for <m>f^{-1}</m> to fail to be a function.
+        </p>
+        <p>
+          \item Let <m>A=B=\R</m> and <m>f=\{(x,x^3):x\in\R\}</m>,
+          so that <m>f</m> has formula <m>f(x)=x^3</m>.
+          This time, the inverse is also a function and we could write <m>f^{-1}(y)=\sqrt[3]{y}</m>:
+          <me>
+            f^{-1}=\bigl\{(x^3,x):x\in\R\bigr\}=\bigl\{(y,\sqrt[3]{y}):y\in\R\bigr\}
+          </me>.
+        </p>
+        <sidebyside>
+          <image width="73%" source="relations-22-reln3"/>
+          <m>f:A\to B</m>
+          <image width="73%" source="relations-23-reln3"/>
+          <m>f^{-1}:B\to A</m> is a function
+        </sidebyside>
+      </statement>
+    </example>
+    <p>
+      All three of our examples help to illustrate the following important result.
+    </p>
+    <theorem xml:id="thm_finverse">
+      <statement>
+        <p>
+          A relation <m>f^{-1}\subseteq B\times A</m> is a function <m>\iff f</m> is bijective
+          (both injective and surjective).
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        Recalling <xref ref="defn_func">Definition</xref>, we see that
+        <me>
+          f^{-1}\text{ is a function } \iff\begin{cases}\dom(f^{-1})=B,\\ \qquad\textit{{and}}\\ (b,a_1),(b,a_2)\in f^{-1}\implies a_1=a_2. \end{cases}
+        </me>
+      </p>
+      <p>
+        The first of these is equivalent to <m>\range(f)=B</m>,
+        which says that <m>f</m> is surjective.
+      </p>
+      <p>
+        The second is equivalent to <m>(a_1,b),(a_2,b)\in f\implies a_1=a_2</m>,
+        which says that <m>f</m> is injective.
+      </p>
+    </proof>
+    <p>
+      Here is a final example,
+      where the function <m>f</m> is harder to visualize.
+    </p>
+    <example>
+      <statement>
+        <p>
+          Let <m>A=\R</m>, <m>B=\Q</m> and define <m>f</m> using the formula
+          <me>
+            f(x)=\begin{cases}x\amp \text{ if } x\in\Q,\\ 0\amp \text{ if } x\not\in\Q. \end{cases}
+          </me>
+        </p>
+        <p>
+          In the language of relations,
+          this is <m>f=\bigl\{(x,x):x\in\Q\bigr\}\cup\bigl\{(x,0):x\not\in\Q\bigr\}</m>.
+        </p>
+        <p>
+          This is a surjective function since every element of <m>B=\Q</m> appears as the second entry in an ordered pair <m>(a,b)\in f</m>.
+          It is not injective since zero appears more than once in the second entry.
+          For example,
+          <me>
+            (\sqrt 2,0),\ (\sqrt 3,0)\in f
+          </me>.
+        </p>
+        <p>
+          Written in the more common manner,
+          we are observing that <m>f(\sqrt 3)=f(\sqrt 2)</m>.
+        </p>
+        <p>
+          The inverse <m>f^{-1}</m> is not a function,
+          and it fails to be so precisely because <m>f</m> is non-injective.
+          For example
+          <me>
+            (0,\sqrt 2)\text{ and }  (0,\sqrt 3)\text{ are distinct elements of \(f^{-1}\) with the same  first component.}
+          </me>
+        </p>
+      </statement>
+    </example>
+    <p>
+      \paragraph{Inverse Images}
+    </p>
+    <p>
+      Recall that in <xref ref="sec_func1">Section</xref>,
+      we can defined the <em>preimage</em>
+      of a subset <m>V\subseteq B</m> under a function <m>f:A\to B</m> by
+      <me>
+        f^{-1}(V)=\{a\in A:f(a)\in V\}
+      </me>.
+    </p>
+    <p>
+      In particular,
+      if <m>\{b\}\subseteq B</m> has only one element, then its preimage is
+      <me>
+        f^{-1}(\{b\})=\{a\in A:f(a)=b\}
+      </me>.
+    </p>
+    <p>
+      Both are <em>subsets</em> of <m>A</m>.
+      For instance,
+      in the last example the preimage of <m>\{0\}</m> consists of zero and all irrational numbers!
+      <me>
+        f^{-1}(\{0\})=\{0\}\cup(\R\setminus\Q)
+      </me>
+    </p>
+    <p>
+      When <m>f^{-1}\subseteq B\times A</m> is a function,
+      each preimage of a singleton consists of one point of <m>A</m>:
+      thus <m>f^{-1}(\{b\})=\{a\}</m>.
+      <em>Only</em> in such a case are we entitled to write <m>f^{-1}(b)=a</m>.[2]
+    </p>
+    <aside>
+      <p>
+        <term>Equality of functions</term>
+      </p>
+      <p>
+        There are two competing notions of what it means for two functions to be <em>equal.</em>
+        <ul>
+          <li>
+            <title>Same domain, same graph, same codomain</title>
+            <p>
+              <nbsp/><nbsp/> <m>f=g</m> means that <m>f</m> and <m>g</m> are the same subset of the
+              <em>same</em> <m>A\times B</m>.
+              This notion is preferred by set theorists because it sticks rigidly to the idea that a function is a <em>relation,</em>
+              and it requires both the domain <m>A</m> and codomain <m>B</m> to be explicit.
+            </p>
+          </li>
+          <li>
+            <title>Same domain, same graph</title>
+            <p>
+              <nbsp/><nbsp/> <m>f=g</m> means that <m>f\subseteq A\times B</m>,
+              <m>g\subseteq A\times C</m>, and
+              <me>
+                (a,b)\in f\iff (a,b)\in g
+              </me>.
+              This notion considers what a function
+              <em>does</em> to be fundamental;
+              if two functions do the same thing to elements of the same domain then they are the same.
+              This looser notion of equality is used more often,
+              especially in elementary calculus.
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        The second conception of equality,
+        while intuitive, has a problem.
+        For example, let
+        <me>
+          f:\R\to\R,\text{ and }  g:\R\to[-1,1]\text{ satisfy }  f(x)=g(x)=\sin x
+        </me>.
+      </p>
+      <p>
+        Although <m>f</m> and <m>g</m> have the same graph,
+        the different codomains of <m>f</m> and <m>g</m> mean that these are
+        <em>different functions</em>
+        with respect to the first notion.
+        Under the second notion,
+        they are the <em>same function.</em> However,
+        <m>g</m> is surjective while <m>f</m> is not,
+        so wouldn't we prefer <m>f</m> and <m>g</m> to be non-equal?<fn>
+        In elementary calculus,
+        we usually say that a function is invertible if it is 1<ndash/>1.
+        In order for this to make sense,
+        we have to ignore surjectivity and use the second notion of functional equality.
+        </fn>
+      </p>
+      <p>
+        The same problem does not arise when considering domains.
+        For example,
+        in calculus you might have compared functions such as
+        <me>
+          f(x)=x^2+2,\text{ and }  g(x)=\frac{(x^2+2)(x-1)}{x-1}
+        </me>.
+      </p>
+      <p>
+        The implied domains of these functions are
+        <m>\dom(f)=\R</m> and <m>\dom(g)=\R\setminus\{1\}</m>.
+        Even though these have the same graph whenever
+        <em>both</em> are defined,
+        regardless of which notion you choose we have <m>f\neq g</m>,
+        since the functions have <em>different domains.</em>
+      </p>
+    </aside>
+  </subsection>
+  <subsection>
+    <title>Reading Questions</title>
+    <ol>
+      <li>
+        <p>
+          What does it mean for a <em>relation</em>
+          <m>\cR\subseteq A\times B</m> to be a <em>function</em>?
+          Select all that apply.
+          <ol>
+            <li>
+              <p>
+                <m>\dom(\cR) = A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\range(\cR) = B</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                for any <m>a \in A</m>, if
+                <m>(a,b_1), (a,b_2) \in \cR</m>, then <m>b_1 = b_2</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                for any <m>b \in \range(\cR)</m>,
+                if <m>(a_1,b), (a_2,b) \in \cR</m>, then <m>a_1 = a_2</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>f : A \to B</m> be a function.
+          If <m>f^{-1} : B \to A</m> is a function,
+          this means in particular that <m>\dom(f^{-1}) = B</m>.
+          This is equivalent to what property of <m>f</m>?
+          <ol>
+            <li>
+              <p>
+                injectivity
+              </p>
+            </li>
+            <li>
+              <p>
+                surjectivity
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\dom(f) = A</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f</m> is a symmetric relation.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          True or False:
+          a relation <m>\cR</m> has a domain and range if and only if it is a function.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Practice Problems</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>f : A \to A</m> be a function.
+          Viewing <m>f</m> as a relation,
+          if <m>f</m> is symmetric, what can be said about <m>f</m>?
+        </p>
+      </li>
+      <li>
+        <ol>
+          <li>
+            <p>
+              Express the function <m>f:\R\to\R:x\mapsto x^2</m> as a relation.
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the inverse relation <m>f^{-1}</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              Use <xref ref="defn_func">Definition</xref>
+              to prove that the relation <m>f^{-1}</m> is
+              <em>not</em> a function.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove directly from <xref ref="defn_11">Definition</xref>
+              that <m>f</m> is not injective and not surjective.
+              Compare your arguments with your answer to part (c).
+            </p>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          Suppose that <m>f\subseteq\{1,2,3,4\}\times\{1,2,3,4,5,6,7\}</m> is the relation
+          <me>
+            f=\{(1,1),(2,3),(3,5),(4,7)\}
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Show that <m>f</m> is a function <m>f:\{1,2,3,4\}\to\{1,2,3,4,5,6,7\}</m>.
+                Can you find a concise formula <m>f(x)</m> to describe <m>f</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                Is <m>f</m> injective?
+                Justify your answer.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that <m>g\subseteq\{1,2,3,4\}\times B</m> is another relation so that the <em>graphs</em>
+                of <m>f</m> and <m>g</m> are identical: i.e.
+                <me>
+                  \bigl\{(a,f(a)):a\in\{1,2,3,4\}\bigr\}=\bigl\{(a,g(a)):a\in\{1,2,3,4\}\bigr\}
+                </me>.
+                <em>as sets.</em> If <m>g</m> is a bijective function,
+                what is <m>B</m>?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Decide whether each of the following relations are functions.
+          For those which are,
+          decide whether the function is injective and/or surjective.
+          <ol>
+            <li>
+              <p>
+                <m>\cR=\{(x,y)\in[-1,1]\times[-1,1]:x^2+y^2=1\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\cS=\{(x,y)\in[-1,1]\times[0,1]:x^2+y^2=1\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\mathcal T=\{(x,y)\in[0,1]\times[-1,1]:x^2+y^2=1\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\mathcal U=\{(x,y)\in[0,1]\times[0,1]:x^2+y^2=1\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          In <xref ref="ex_reln2">Example</xref>
+          on <xref ref="ex_reln2">page</xref>,
+          explain why the function <m>f</m> is both injective and surjective using the language of relations:
+          i.e., in the same manner as we analyzed <xref ref="ex_reln1">Example</xref>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find a function <m>f : \R \to \R</m> such that simultaneously satisfies: (1) <m>f(x) \neq x</m> for all
+          <m>x \in \R</m> and (2) <m>f = f^{-1}</m>.
+          Is it possible to find such a function from <m>\{1,2,3\} \to \{1,2,3\}</m>?
+        </p>
+      </li>
+      <li>
+        <p>
+          For each of the examples on <xref ref="ex_reln2">page</xref>,
+          compute the following preimages:
+          <ol>
+            <li>
+              <p>
+                <m>f^{-1}(\{0,1\})</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f^{-1}\Big([0,1)\Big)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f^{-1}\Big((-\infty,0]\Big)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f^{-1}\Big(\{-8\}\cup[-7,2]\cup (3,9)\Big)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> and <m>B</m> be nonempty and <m>f : A \to B</m> be a function.
+          <ol>
+            <li>
+              <p>
+                Prove that <m>f</m> is surjective if and only if
+                <m>f^{-1}(\{b\})</m> has at least one element, for all <m>b \in B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>f</m> is injective if and only if
+                <m>f^{-1}(\{b\})</m> has at most one element, for all <m>b \in B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>f</m> is bijective if and only if
+                <m>f^{-1}(\{b\})</m> has exactly one element, for all <m>b \in B</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        \item
+        <ol>
+          <li>
+            <p>
+              Express the function <m>f:\R\to\R:x\mapsto x^4+3</m> as a relation.
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the inverse relation <m>f^{-1}</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              Use <xref ref="defn_func">Definition</xref>
+              to prove that the relation <m>f^{-1}</m> is
+              <em>not</em> a function.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove directly from <xref ref="defn_11">Definition</xref>
+              that <m>f</m> is not injective and not surjective.
+              Compare your arguments with your answer to part (c).
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          Repeat the previous question for <m>f:\R\to\R:x\mapsto \sqrt{x^2-4x+5}</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Give a formal proof of <xref ref="thm_inversedomrange">Theorem</xref>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Prove or disprove the following:
+          if <m>f:A\to B</m> is a function,
+          and <m>U,V\subseteq B</m>, then
+          <me>
+            f^{-1}(U\cap V)=f^{-1}(U)\cap f^{-1}(V)
+          </me>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> and <m>B</m> be nonempty and <m>f : A \to B</m> be a function.
+          <ol>
+            <li>
+              <p>
+                Suppose <m>f</m> is a bijection.
+                Show that <m>f^{-1}</m> satisfies
+                <m>f \circ f^{-1} = \id_B</m> and <m>f^{-1} \circ f = \id_A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose that there is a function <m>g : B \to A</m> such that
+                <m>f \circ g = \id_B</m> and <m>g \circ f = \id_A</m>.
+                Show <m>f</m> is a bijection and that <m>g = f^{-1}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose there are functions
+                <m>g : B \to A</m> and <m>h : B \to A</m> such that
+                <m>f \circ g = \id_B</m> and <m>h \circ f = \id_A</m>.
+                Show that <m>g = h</m> and that both are also equal to <m>f^{-1}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> and <m>B</m> be nonempty and <m>f : A \to B</m> be a function.
+          <ol>
+            <li>
+              <p>
+                Prove that <m>f</m> is surjective if and only if there is
+                <m>g : B \to A</m> such that <m>f \circ g = \id_B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>f</m> is injective if and only if there is
+                <m>h : B \to A</m> such that <m>h \circ f = \id_A</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>A</m> and <m>B</m> be nonempty and <m>f : A \to B</m> be a function.
+          <ol>
+            <li>
+              <p>
+                Prove that <m>f</m> is surjective if and only if for all sets <m>C</m> and functions <m>g,h : B \to C</m>,
+                <m>g \circ f = h \circ f</m> implies <m>g = h</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>f</m> is injective if and only if for all sets <m>C</m> and functions <m>g,h : C \to A</m>,
+                <m>f \circ g = f \circ h</m> implies <m>g = h</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

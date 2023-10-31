@@ -1,0 +1,400 @@
+<section xml:id="sec_theorem_conjecture">
+  <title>Theorem and Conjecture</title>
+  <introduction>
+    <p>
+      Theorems are true mathematical statements that we can prove.
+      These include important and widely applicable
+      <q>named theorems</q>
+      like the Pythagorean theorem,
+      the fundamental theorem of calculus,
+      and the rank-nullity theorem as well as simpler ones like <xref ref="thm_even_sum">Theorem</xref>.
+      Essentially, if you can prove it, then it's a theorem.
+    </p>
+    <p>
+      But what if we're confronted with a statement that we don't know how to prove?
+      It would be a bit arrogant of us to conclude that the statement is false just because we don't know how to prove it.
+      Statements that we believe to be true,
+      but don't yet know how to prove are called <em>conjectures</em>.
+      Conjectures push the boundaries of math as we know it.
+      Much of the creativity in mathematics comes from the pursuit of proving or disproving conjectures.
+      When you think about it,
+      we can't lose <mdash/> we learn something new if we prove the conjecture true <em>or</em> false.
+    </p>
+    <p>
+      A conjecture is the mathematician's equivalent of the experimental scientist's hypothesis:
+      a statement that one would like to be true.
+      The difference lies in what comes next.
+      The mathematician will try to prove that a conjecture is undeniably true by relying on logic,
+      while the scientist will apply the scientific method,
+      conducting experiments attempting,
+      and hopefully failing, to show that a hypothesis is incorrect.
+      To get a taste, consider the following.
+    </p>
+    <conjecture xml:id="conj_n_2-1">
+      <statement>
+        <p>
+          If <m>n</m> is any odd integer,
+          then <m>n^2-1</m> is a multiple of 8.
+        </p>
+      </statement>
+    </conjecture>
+    <conjecture xml:id="conj_n_2_n_41">
+      <statement>
+        <p>
+          For every positive integer <m>n</m>,
+          the integer <m>n^2+n+41</m> is prime.
+        </p>
+      </statement>
+    </conjecture>
+    <p>
+      Once a mathematician proves the validity of a conjecture it becomes a <em>theorem.</em>
+      The job of a mathematics researcher is thus to formulate conjectures,
+      prove them,
+      and publish the resulting theorems.
+      The creativity lies as much in the formulation as in the proof.
+      As you go through the class, try to formulate conjectures.
+      Like as not, many of your conjectures will be false,
+      but you'll gain a lot from trying to form them.
+    </p>
+    <p>
+      Let us return to our conjectures:
+      are they true or false?
+      How can we decide?
+      As a first attempt,
+      we may try to test the conjectures by computing with some small integers <m>n</m>.
+      In practice this would be done <em>before</em> stating the conjectures.
+      <me>
+        \begin{array}{l||c|c|c|c|c|c|c} n \amp  1 \amp  3 \amp  5 \amp  7 \amp  9 \amp  11 \amp  13\\\hline n^2-1 \amp  0 \amp  8 \amp  24 \amp  48 \amp  80 \amp  120 \amp  168 \end{array} \qquad\qquad \begin{array}{l||c|c|c|c|c|c|c} n \amp  1 \amp  2 \amp  3 \amp  4 \amp  5 \amp  6 \amp  7\\\hline n^2+n+41 \amp  43 \amp  47 \amp  53 \amp  61 \amp  71 \amp  83 \amp  97 \end{array}
+      </me>
+    </p>
+    <p>
+      Because 0, 8, 24, 48, 80, 120 and 168 are all multiples of 8, and 43, 47, 53, 61, 71, 83 and 97 are all prime,
+      both conjectures appear to be true.
+      Would you bet $100 that this is indeed the case?
+      Is <m>n^2-1</m> a multiple of 8
+      <em>for every</em> odd integer <m>n</m>?
+      Is <m>n^2+n+41</m> prime <em>for every</em>
+      positive integer <m>n</m>?
+      The only way to establish whether a conjecture is true or false is by doing one of the following:
+      <ul>
+        <li class="custom-list-style-type">
+          <p>
+            <em>Prove it</em> by showing it must be true in <em>all</em> cases, or,
+          </p>
+        </li>
+        <li class="custom-list-style-type">
+          <p>
+            <em>Disprove it</em> by finding <em>at least</em>
+            one instance in which the conjecture is false.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Let us work with <xref ref="conj_n_2-1">Conjecture</xref>.
+      If <m>n</m> is an odd integer, then, by definition,
+      we can write it as <m>n=2k+1</m> for some integer <m>k</m>.
+      Then
+      <me>
+        n^2-1 = (2k+1)^2-1 = (4k^2 +1+4k) -1 = 4k^2 + 4k
+      </me>.
+    </p>
+    <p>
+      We need to investigate whether this is
+      <em>always</em> a multiple of 8.
+      Since
+      <me>
+        4k^2 + 4k = 4(k^2+k)
+      </me>
+      is already a multiple of 4, it all comes down to deciding whether or not <m>k^2+k</m> contains a factor 2 for all possible choices of <m>k</m>;
+      i.e. is <m>k^2+k</m> even?
+      Do we believe this?
+      We can return to trying out some small values of <m>k</m>:
+      <me>
+        \begin{array}{l||c|c|c|c|c|c|c} k \amp  -2 \amp  -1 \amp  0 \amp  1 \amp  2 \amp  3 \amp  4\\\hline k^2+k \amp  2 \amp  0 \amp  0 \amp  2 \amp  6 \amp  12 \amp  20 \end{array}
+      </me>
+    </p>
+    <p>
+      Once again, the claim seems to be true for small values of <m>k</m>,
+      but how do we know it is true for <em>all</em> <m>k</m>?
+      Again, the only way is to <em>prove it</em> or <em>disprove it</em>.
+      How to proceed?
+      The question here is whether or not <m>k^2+k</m> is <em>always</em> even.
+      Factoring out <m>k</m>, we get:
+      <me>
+        k^2+k = k(k+1)
+      </me>.
+    </p>
+    <p>
+      We have therefore expressed <m>k^2+k</m> as a product of two consecutive integers.
+      This is great, because for any two consecutive integers,
+      one is even and the other is odd,
+      and so their product must be even.
+      We have now proved that the conjecture is true.
+      <xref ref="conj_n_2-1">Conjecture</xref> is indeed a <em>theorem!</em>
+      Everything we've done so far has been investigative,
+      and is laid out in an untidy way.
+      We don't want the reader to have to wade through all of our scratch work,
+      so we formalize the above argument.
+      This is the final result of our deliberations;
+      investigate, spot a pattern, conjecture, prove,
+      and finally present your work in as clean and convincing a manner as you can.
+    </p>
+    <theorem>
+      <statement>
+        <p>
+          If <m>n</m> is any odd integer,
+          then <m>n^2-1</m> is a multiple of 8.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        Let <m>n</m> be any odd integer;
+        we want to show that <m>n^2-1</m> is a multiple of 8.
+        By the definition of <em>odd</em> integer,
+        we may write <m>n=2k+1</m> for some integer <m>k</m>.
+        Then
+        <me>
+          n^2-1=(2k+1)^2-1=(4k^2+1+4k)-1=4k^2+4k=4k(k+1)
+        </me>.
+      </p>
+      <p>
+        We distinguish two cases.
+        If <m>k</m> is even,
+        then <m>k(k+1)</m> is even and so <m>4k(k+1)</m> is divisible by 8.
+      </p>
+      <p>
+        If <m>k</m> is odd, then <m>k+1</m> is even.
+        Therefore <m>k(k+1)</m> is again even and <m>4k(k+1)</m> divisible by 8.
+      </p>
+      <p>
+        In both cases <m>n^2-1=4k(k+1)</m> is divisible by 8.
+        This concludes the proof.
+      </p>
+    </proof>
+    <p>
+      It is now time to explore <xref ref="conj_n_2_n_41">Conjecture</xref>.
+      The question here is whether or not
+      <m>n^2+n+41</m> is a prime integer for <em>every</em>
+      positive integer <m>n</m>.
+      We know that when <m>n=1,\,2,\,3,\,4,\,5,\,6</m> or 7 the answer is yes,
+      but examples do not make a proof.
+      At this point,
+      we do not know whether the conjecture is true or false.
+      Let us investigate the question further.
+      Suppose that <m>n</m> is any positive integer;
+      we must ask whether it is possible to factor
+      <m>n^2+n+41</m> as a product of two positive integers,
+      neither of which is one.<fn>
+      Once again we rely on a definition:
+      a positive integer is <em>prime</em>
+      if it cannot be written as a product of two integers, both greater than one.
+      </fn> When <m>n=41</m> such a factorization certainly exists,
+      since we can write
+      <me>
+        41^2+41+41=41(41+1+1)=41\cdot 43
+      </me>.
+    </p>
+    <p>
+      Our <em>counterexample</em> shows that there exists at least one value of <m>n</m> for which
+      <m>n^2+n+41</m> is <em>not</em> prime.
+      We have therefore disproved the conjecture that <sq>for all positive integers <m>n</m>,
+      <m>n^2+n+41</m> is prime,</sq> and so <xref ref="conj_n_2_n_41">Conjecture</xref> is false!
+    </p>
+    <p>
+      <term>The moral of the story is this:
+      to show that a conjecture is true you must prove that it holds for all the cases in consideration,
+      but to show that it is false a single counterexample suffices.</term>
+    </p>
+  </introduction>
+  <subsection xml:id="conjectures-true-or-false">
+    <title>Conjectures: <em>True</em> or <em>False</em>?</title>
+    <p>
+      Do your best to prove or disprove the following conjectures.
+      Then revisit these problems at the end of the course to realize how much your proof skills have improved.
+      <ol>
+        <li>
+          <p>
+            The sum of any three consecutive integers is even.
+          </p>
+        </li>
+        <li>
+          <p>
+            There exist integers <m>m</m> and <m>n</m> such that <m>7m+5n =4</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Every common multiple of 6 and 10 is divisible by 60.
+          </p>
+        </li>
+        <li>
+          <p>
+            There exist integers <m>x</m> and <m>y</m> such that <m>6x+9y =10</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            For every positive real number <m>x</m>,
+            <m>x+\frac{1}{x}</m> is greater than or equal to 2.
+          </p>
+        </li>
+        <li>
+          <p>
+            If <m>x</m> is any real number, then <m>x^2\ge x</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            If <m>n</m> is any integer, <m>n^2+5n</m> must be even.
+          </p>
+        </li>
+        <li>
+          <p>
+            If <m>x</m> is any real number, then <m>|x|\ge -x</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Consider the set <m>\R</m> of all real numbers.
+            For all <m>x</m> in <m>\R</m>,
+            there exists <m>y</m> in <m>\R</m> such that <m>x\lt y</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Consider the set <m>\R</m> of all real numbers.
+            There exists <m>x</m> in <m>\R</m> such that,
+            for all <m>y</m> in <m>\R</m>, <m>x\lt y</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The sets <m>A=\{n\in\N:n^2\lt 25\}</m> and <m>B=\{n^2:n\in\N\text{ and } n\lt 5\}</m> are equal.
+            Here <m>\N</m> denotes the set of natural numbers.
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>
+      Now we know a little of what mathematics is about,
+      it is time to practice some of it!
+    </p>
+  </subsection>
+  <subsection>
+    <title>Discussion Questions</title>
+    <ol>
+      <li>
+        <p>
+          An integer is odd if it isn't even.
+          Prove that an integer <m>a</m> is odd if and only if
+          <m>a = 2b+1</m> for some integer <m>b</m>.
+          That is, prove that all odd integers can be written this way,
+          and that if an integer can be written this way, then it is odd.
+        </p>
+      </li>
+      <li>
+        <p>
+          When you do math,
+          do you feel like you're engaging with the creative side of your personality?
+        </p>
+      </li>
+      <li>
+        <p>
+          Try to come up with some examples for each of the following definitions.
+          Are these definitions problematic in some way?
+          If so, try to fix the definition.
+          <definition>
+            <statement>
+              <p>
+                A rational number <m>a/b</m> is even if <m>a</m> and <m>b</m> are both even integers.
+              </p>
+            </statement>
+          </definition>
+          <definition>
+            <statement>
+              <p>
+                We say that an integer <m>a</m> is <em>very odd</em>
+                if <m>a = bc</m> for odd integers <m>b</m> and <m>c</m>.
+              </p>
+            </statement>
+          </definition>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+  <subsection>
+    <title>Exercises</title>
+    <ol>
+      <li>
+        <p>
+          A rational number, roughly speaking,
+          is what we think of as a fraction.
+          <definition>
+            <statement>
+              <p>
+                A real number <m>r</m> is a
+                <q>rational number</q>
+                if <m>r=\frac{p}{q}</m> for some integer <m>p</m> and for some non-zero integer <m>q</m>.
+              </p>
+            </statement>
+          </definition>
+          <ol>
+            <li>
+              <p>
+                Are integers rational numbers?
+              </p>
+            </li>
+            <li>
+              <p>
+                True or false: Each rational number <m>r</m> has a non-zero integer <m>n</m> so that <m>rn</m> is an integer.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the following definitions.
+          <definition>
+            <statement>
+              <p>
+                An integer is
+                <q>super-odd</q>
+                if it is the product of an odd integer times itself
+                (that is, it is the square of an odd integer).
+              </p>
+            </statement>
+          </definition>
+          <definition>
+            <statement>
+              <p>
+                An integer is
+                <q>super-even</q>
+                if it is the product of an even integer times itself
+                (that is, it is the square of an even integer).
+              </p>
+            </statement>
+          </definition>
+          Using the definitions of the super-odd and super-even integers,
+          come up with a conjecture of your own!
+          Can you prove or disprove your conjecture?
+        </p>
+      </li>
+      <li>
+        <p>
+          Decide whether the following conjecture is true or false,
+          and justify your reasoning.
+          <conjecture>
+            <statement>
+              <p>
+                There is a smallest positive real number.
+              </p>
+            </statement>
+          </conjecture>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>
